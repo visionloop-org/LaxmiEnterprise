@@ -1,0 +1,21 @@
+{
+  "name": "@laxmi/shared",
+  "version": "1.0.0",
+  "description": "Shared code for Laxmi Enterprise attendance systems",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "echo 'No build step needed for JS modules'",
+    "dev": "echo 'No dev script needed'"
+  },
+  "keywords": ["shared", "attendance", "laxmi"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tanstack/react-query": "^5.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
