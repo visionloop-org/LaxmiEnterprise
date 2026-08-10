@@ -12,9 +12,10 @@ class Database:
     @classmethod
     async def connect(cls):
         try:
-            cls.client = AsyncIOMotorClient(settings.DATABASE_URL)
+            database_url = settings.EFFECTIVE_DATABASE_URL
+            cls.client = AsyncIOMotorClient(database_url)
             cls.db = cls.client[settings.MONGODB_DATABASE]
-            logger.info(f"Connected to MongoDB at {settings.DATABASE_URL}")
+            logger.info(f"Connected to MongoDB at {database_url}")
             
             # Create indexes
             await create_indexes(cls.db)

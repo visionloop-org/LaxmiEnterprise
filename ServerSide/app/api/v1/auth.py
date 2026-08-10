@@ -4,10 +4,11 @@ from core.auth import create_access_token, verify_password, get_password_hash, g
 
 router = APIRouter()
 
-# Dummy user for testing - in production this would come from DB
+# Pre-hashed password for "password123" using bcrypt
+# This avoids bcrypt compatibility issues during module import
 DUMMY_USER = {
     "username": "admin",
-    "hashed_password": get_password_hash("password123"),
+    "hashed_password": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyWjWNmOHqWm",
     "role": "admin"
 }
 

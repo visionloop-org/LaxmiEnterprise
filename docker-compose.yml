@@ -41,8 +41,8 @@ services:
 
   supervisor:
     build:
-      context: ./apps/supervisor
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./apps/supervisor/Dockerfile
     container_name: laxmi-supervisor
     ports:
       - "5173:5173"
