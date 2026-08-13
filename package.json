@@ -1,0 +1,17 @@
+{
+  "name": "laxmi-enterprise-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:supervisor": "npm run dev --workspace=apps/supervisor",
+    "dev:admin": "npm run dev --workspace=apps/admin",
+    "build:shared": "npm run build --workspace=packages/shared",
+    "build:supervisor": "npm run build --workspace=apps/supervisor",
+    "build:admin": "npm run build --workspace=apps/admin",
+    "build": "npm run build --workspaces --if-present",
+    "check-types": "npm run check-types --workspace=packages/shared"
+  }
+}

@@ -6,9 +6,17 @@
   "type": "module",
   "scripts": {
     "build": "echo 'No build step needed for JS modules'",
-    "dev": "echo 'No dev script needed'"
+    "dev": "echo 'No dev script needed'",
+    "generate:types": "openapi-typescript ../../ServerSide/openapi.json -o types/api.ts",
+    "check:types": "node check-types.js",
+    "check-types": "node check-types.js",
+    "sync:types": "cd ../../ServerSide && python scripts/export_openapi.py && cd ../packages/shared && npm run generate:types"
   },
-  "keywords": ["shared", "attendance", "laxmi"],
+  "keywords": [
+    "shared",
+    "attendance",
+    "laxmi"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -17,5 +25,8 @@
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.13.0"
   }
 }

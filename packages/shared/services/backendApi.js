@@ -1,47 +1,74 @@
+// @ts-nocheck
 // Direct REST API client for FastAPI backend communication
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1'
+// @ts-ignore - import.meta.env is handled by Vite
+const API_BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE_URL) || 'http://localhost:8000/api/v1'
 const DEFAULT_TIMEOUT = 30000 // 30 seconds
 const MAX_RETRIES = 3
 const RETRY_DELAY = 1000 // 1 second
 
 // Custom error classes
-class NetworkError extends Error {
-  constructor(message, status) {
+class APIError extends Error {
+  constructor(message, status, code = 'API_ERROR', details = null, requestId = null) {
     super(message)
-    this.name = 'NetworkError'
+    this.name = 'APIError'
     this.status = status
+    this.code = code
+    this.details = details
+    this.requestId = requestId
   }
 }
 
-class AuthError extends Error {
-  constructor(message) {
-    super(message)
+class NetworkError extends APIError {
+  constructor(message, status = 503, requestId = null) {
+    super(message, status, 'NETWORK_ERROR', null, requestId)
+    this.name = 'NetworkError'
+  }
+}
+
+class AuthError extends APIError {
+  constructor(message, requestId = null) {
+    super(message, 401, 'UNAUTHORIZED', null, requestId)
     this.name = 'AuthError'
   }
 }
 
-class ValidationError extends Error {
-  constructor(message, details) {
-    super(message)
+class ValidationError extends APIError {
+  constructor(message, details = null, requestId = null) {
+    super(message, 422, 'VALIDATION_ERROR', details, requestId)
     this.name = 'ValidationError'
-    this.details = details
+  }
+}
+
+class ConflictError extends APIError {
+  constructor(message, details = null, requestId = null) {
+    super(message, 409, 'CONFLICT', details, requestId)
+    this.name = 'ConflictError'
+  }
+}
+
+class NotFoundError extends APIError {
+  constructor(message, requestId = null) {
+    super(message, 404, 'NOT_FOUND', null, requestId)
+    this.name = 'NotFoundError'
   }
 }
 
 class BackendApiClient {
   constructor() {
     this.baseURL = API_BASE_URL
-    this.token = localStorage.getItem('auth_token')
+    this.token = typeof localStorage !== 'undefined' ? localStorage.getItem('auth_token') : null
     this.requestInterceptors = []
     this.responseInterceptors = []
   }
 
   setToken(token) {
     this.token = token
-    if (token) {
-      localStorage.setItem('auth_token', token)
-    } else {
-      localStorage.removeItem('auth_token')
+    if (typeof localStorage !== 'undefined') {
+      if (token) {
+        localStorage.setItem('auth_token', token)
+      } else {
+        localStorage.removeItem('auth_token')
+      }
     }
   }
 
@@ -105,7 +132,6 @@ class BackendApiClient {
   async request(endpoint, options = {}) {
     const url = `${this.baseURL}${endpoint}`
     
-    // Apply request interceptors
     let config = {
       ...options,
       headers: {
@@ -120,31 +146,42 @@ class BackendApiClient {
 
     try {
       const response = await this.requestWithTimeout(url, config)
+      const requestId = response.headers.get('X-Request-ID') || null
       
-      // Apply response interceptors
       let processedResponse = response
       for (const interceptor of this.responseInterceptors) {
         processedResponse = interceptor(processedResponse) || processedResponse
       }
       
       if (!response.ok) {
-        const error = await response.json().catch(() => ({ message: 'Network error' }))
+        const body = await response.json().catch(() => ({ message: 'Network or Proxy Error' }))
         
-        // Handle specific error types
+        // Standardized backend error extraction
+        const errorInfo = body.error || {}
+        const message = errorInfo.message || body.detail || body.message || `HTTP ${response.status}`
+        const code = errorInfo.code || (response.status === 401 ? 'UNAUTHORIZED' : response.status === 404 ? 'NOT_FOUND' : response.status === 409 ? 'CONFLICT' : response.status === 422 ? 'VALIDATION_ERROR' : 'API_ERROR')
+        const details = errorInfo.details || body.detail || null
+
         if (response.status === 401) {
-          throw new AuthError(error.detail || error.message || 'Authentication failed')
+          throw new AuthError(message, requestId)
+        } else if (response.status === 404) {
+          throw new NotFoundError(message, requestId)
+        } else if (response.status === 409) {
+          throw new ConflictError(message, details, requestId)
         } else if (response.status === 422) {
-          throw new ValidationError(error.detail || error.message || 'Validation failed', error)
+          throw new ValidationError(message, details, requestId)
         } else if (response.status >= 500) {
-          throw new NetworkError(error.detail || error.message || `Server error: ${response.status}`, response.status)
+          throw new NetworkError(message, response.status, requestId)
         } else {
-          throw new NetworkError(error.detail || error.message || `HTTP ${response.status}`, response.status)
+          throw new APIError(message, response.status, code, details, requestId)
         }
       }
 
       return await response.json()
     } catch (error) {
-      console.error(`Backend API Error [${endpoint}]:`, error)
+      if (!(error instanceof APIError)) {
+        console.error(`Backend API Error [${endpoint}]:`, error)
+      }
       throw error
     }
   }
@@ -183,4 +220,4 @@ class BackendApiClient {
 }
 
 export const backendApiClient = new BackendApiClient()
-export { NetworkError, AuthError, ValidationError }
+export { APIError, NetworkError, AuthError, ValidationError, ConflictError, NotFoundError }

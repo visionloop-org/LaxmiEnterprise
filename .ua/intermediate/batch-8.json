@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "id": "file:apps/admin/Dockerfile",
+      "type": "file",
+      "name": "Dockerfile",
+      "filePath": "apps/admin/Dockerfile",
+      "summary": "Dockerfile infra file (18 lines)",
+      "tags": [
+        "dockerfile",
+        "infra"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

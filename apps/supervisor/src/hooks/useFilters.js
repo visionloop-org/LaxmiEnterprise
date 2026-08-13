@@ -16,6 +16,14 @@ export function useFilters(employees, vehicles, searchQuery, categoryFilter, att
       matchesAttendance = emp.attendance === 'on_time' || emp.attendance === 'arrived'
     } else if (attendanceFilter === 'Absent') {
       matchesAttendance = emp.attendance === 'absent'
+    } else if (attendanceFilter === 'Completed') {
+      matchesAttendance = emp.attendance !== null && emp.attendance !== undefined
+    } else if (attendanceFilter === 'Pending') {
+      matchesAttendance = emp.attendance === null || emp.attendance === undefined
+    } else if (attendanceFilter === 'On Time' || attendanceFilter === 'on_time') {
+      matchesAttendance = emp.attendance === 'on_time'
+    } else if (attendanceFilter === 'Arrived' || attendanceFilter === 'arrived') {
+      matchesAttendance = emp.attendance === 'arrived'
     }
 
     return matchesSearch && matchesCategory && matchesAlphabet && matchesAttendance

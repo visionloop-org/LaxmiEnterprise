@@ -1,6 +1,9 @@
-from pydantic import BaseModel, Field
-from typing import Optional, List
-from datetime import datetime
+from pydantic import BaseModel, Field, ConfigDict
+from typing import Optional
+from datetime import datetime, timezone
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 class UserBase(BaseModel):
     username: str
@@ -18,9 +21,8 @@ class UserUpdate(BaseModel):
     role: Optional[str] = None
 
 class User(UserBase):
-    id: Optional[str] = None
+    id: Optional[str] = Field(None, alias="_id")
     is_active: bool = True
-    created_at: Optional[datetime] = None
+    created_at: datetime = Field(default_factory=utc_now)
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)

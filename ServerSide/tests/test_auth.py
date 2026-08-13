@@ -14,10 +14,30 @@ def test_login_wrong_password(client):
         data={"username": "admin", "password": "wrongpassword"}
     )
     assert response.status_code == 401
+    data = response.json()
+    assert "error" in data
+    assert data["error"]["code"] == "UNAUTHORIZED"
+
+def test_login_missing_credentials(client):
+    response = client.post(
+        "/api/v1/auth/login",
+        data={"username": "admin"}
+    )
+    assert response.status_code == 422
+    data = response.json()
+    assert data["error"]["code"] == "VALIDATION_ERROR"
 
 def test_get_me_unauthorized(client):
     response = client.get("/api/v1/auth/me")
     assert response.status_code == 401
+    data = response.json()
+    assert data["error"]["code"] == "UNAUTHORIZED"
+
+def test_get_me_invalid_token(client):
+    response = client.get("/api/v1/auth/me", headers={"Authorization": "Bearer invalid_token_xyz"})
+    assert response.status_code == 401
+    data = response.json()
+    assert data["error"]["code"] == "UNAUTHORIZED"
 
 def test_get_me_authorized(client, auth_headers):
     response = client.get("/api/v1/auth/me", headers=auth_headers)

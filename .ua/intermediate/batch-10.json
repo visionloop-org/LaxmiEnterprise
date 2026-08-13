@@ -1,0 +1,101 @@
+{
+  "nodes": [
+    {
+      "id": "document:ARCHITECTURE.md",
+      "type": "document",
+      "name": "ARCHITECTURE.md",
+      "filePath": "ARCHITECTURE.md",
+      "summary": "Markdown docs file (58 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:DOCKER_DEPLOYMENT.md",
+      "type": "document",
+      "name": "DOCKER_DEPLOYMENT.md",
+      "filePath": "DOCKER_DEPLOYMENT.md",
+      "summary": "Markdown docs file (93 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:GOALS.md",
+      "type": "document",
+      "name": "GOALS.md",
+      "filePath": "GOALS.md",
+      "summary": "Markdown docs file (70 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:MASTER INSTRUCTIONS.md",
+      "type": "document",
+      "name": "MASTER INSTRUCTIONS.md",
+      "filePath": "MASTER INSTRUCTIONS.md",
+      "summary": "Markdown docs file (68 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:TODO.md",
+      "type": "document",
+      "name": "TODO.md",
+      "filePath": "TODO.md",
+      "summary": "Markdown docs file (94 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:TYPE_SYNC_GUIDE.md",
+      "type": "document",
+      "name": "TYPE_SYNC_GUIDE.md",
+      "filePath": "TYPE_SYNC_GUIDE.md",
+      "summary": "Markdown docs file (106 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:WORKFLOW_PLAN.md",
+      "type": "document",
+      "name": "WORKFLOW_PLAN.md",
+      "filePath": "WORKFLOW_PLAN.md",
+      "summary": "Markdown docs file (207 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docker-compose.yml",
+      "type": "file",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "summary": "Yaml infra file (79 lines)",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

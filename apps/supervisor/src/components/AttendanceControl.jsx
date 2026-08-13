@@ -9,6 +9,7 @@ function AttendanceControl({
   emp,
   isAttendanceLocked,
   handleAttendance,
+  handleToggleEditMode,
   arrivalTimes,
   setArrivalTimes,
   currentTime
@@ -31,6 +32,12 @@ function AttendanceControl({
     setArrivalTimes(prev => ({ ...prev, [emp.id]: e.target.value }))
   }, [emp.id, setArrivalTimes])
 
+  const handleReset = useCallback(() => {
+    if (handleToggleEditMode) {
+      handleToggleEditMode(emp.id)
+    }
+  }, [emp.id, handleToggleEditMode])
+
   if (isAttendanceLocked) {
     return <LockedAttendance status={emp.attendance} time={displayTime} />
   }
@@ -50,17 +57,26 @@ function AttendanceControl({
         />
       )
     case 'on_time':
-      return <AttendanceBadge status="on_time" />
+      return (
+        <div onClick={handleReset} className="cursor-pointer inline-block" title="Click to edit status">
+          <AttendanceBadge status="on_time" />
+        </div>
+      )
     case 'arrived':
       return (
         <ArrivedBadge
           time={displayTime}
           onTimeChange={handleTimeChange}
           currentTime={currentTime}
+          onToggleEdit={handleReset}
         />
       )
     case 'absent':
-      return <AttendanceBadge status="absent" />
+      return (
+        <div onClick={handleReset} className="cursor-pointer inline-block" title="Click to edit status">
+          <AttendanceBadge status="absent" />
+        </div>
+      )
     default:
       return null
   }

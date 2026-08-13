@@ -1,0 +1,4864 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "6f8f24e6df159d8c6f0a8531f3469c0d919be014",
+  "generatedAt": "2026-08-11T14:17:34.383Z",
+  "files": {
+    ".devin/workflows/grillme.md": {
+      "filePath": ".devin/workflows/grillme.md",
+      "contentHash": "013bb20a65033acb1b2fccf189ac9ab6469267865e537f5e7007aa0c1542b1d6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 324,
+      "hasStructuralAnalysis": true
+    },
+    ".devin/workflows/underdatnd.md": {
+      "filePath": ".devin/workflows/underdatnd.md",
+      "contentHash": "d03d90766a1a622ed5a9430549ec59a5f5f8e976578d635ea4400eb508b2a9af",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 84,
+      "hasStructuralAnalysis": true
+    },
+    ".dockerignore": {
+      "filePath": ".dockerignore",
+      "contentHash": "533af5b2a4f0fd7da239f0a0f30ff17dd373c11bf3e11af585ff6841dacad081",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": false
+    },
+    ".ua/.understandignore": {
+      "filePath": ".ua/.understandignore",
+      "contentHash": "cb77a4043d12490250e19e61cef2c576b05eaf1239badde3cd89f5a0e7101034",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 92,
+      "hasStructuralAnalysis": false
+    },
+    "ARCHITECTURE.md": {
+      "filePath": "ARCHITECTURE.md",
+      "contentHash": "ff359d641fd355004d8fd58812becbd1d3a54bc468f4bfda347923edd101a78f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 59,
+      "hasStructuralAnalysis": true
+    },
+    "AttandaceTraker Acvanced/master intructions.md": {
+      "filePath": "AttandaceTraker Acvanced/master intructions.md",
+      "contentHash": "059c403a2cb2a3cfffdf68e18829f8fdbf9b747d8895939d11c3052cae5ca6ff",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1067,
+      "hasStructuralAnalysis": true
+    },
+    "DOCKER_DEPLOYMENT.md": {
+      "filePath": "DOCKER_DEPLOYMENT.md",
+      "contentHash": "a84941564c397d33a3c30295c83a0b6185366258141e8cc4588633fac77b207b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "GOALS.md": {
+      "filePath": "GOALS.md",
+      "contentHash": "b80b937bbb6a5b315554bfa888c13dd415d2d4ea4978f5c24b8e6af0ee9d65cc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "MASTER INSTRUCTIONS.md": {
+      "filePath": "MASTER INSTRUCTIONS.md",
+      "contentHash": "ee12f55789dd59bb0f80866b4e577113ddbca273c84045de1af6c4a6016c5f55",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 69,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/Dockerfile": {
+      "filePath": "ServerSide/Dockerfile",
+      "contentHash": "de9c37caf28eb06295d7a653a93604b7220d0f6c36cde7a6598166810f5d480e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md": {
+      "filePath": "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+      "contentHash": "91d82bd26d5859a95fd8053e60c506b2fdcfa0cde0a659640c08fab09f8df94a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 115,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/api/v1/assignments/routes.py": {
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "contentHash": "2510a9ea303611c8d96c7765b3f4d464bc7696ba4789984f92065bece01e9d92",
+      "functions": [
+        {
+          "name": "get_vehicle_capacity",
+          "params": [
+            "session_id",
+            "vehicle_id"
+          ],
+          "returnType": "dict",
+          "exported": true,
+          "lineCount": 34
+        },
+        {
+          "name": "validate_assignment_rules",
+          "params": [
+            "session_id",
+            "vehicle_id",
+            "employee_id"
+          ],
+          "returnType": "tuple[bool, str]",
+          "exported": true,
+          "lineCount": 64
+        },
+        {
+          "name": "assign_vehicle",
+          "params": [
+            "session_id",
+            "vehicle_id",
+            "employee_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 41
+        },
+        {
+          "name": "unassign_vehicle",
+          "params": [
+            "session_id",
+            "employee_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 54
+        },
+        {
+          "name": "get_vehicle_assignments",
+          "params": [
+            "session_id",
+            "vehicle_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "get_employee_assignment",
+          "params": [
+            "session_id",
+            "employee_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "app.models.assignment",
+          "specifiers": [
+            "VehicleAssignmentResponse",
+            "VehicleAssignmentCreate",
+            "VehicleAssignmentUpdate"
+          ]
+        },
+        {
+          "source": "app.db.mongodb",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "core.auth",
+          "specifiers": [
+            "get_current_active_user"
+          ]
+        }
+      ],
+      "exports": [
+        "get_vehicle_capacity",
+        "validate_assignment_rules",
+        "assign_vehicle",
+        "unassign_vehicle",
+        "get_vehicle_assignments",
+        "get_employee_assignment"
+      ],
+      "totalLines": 235,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/api/v1/attendance/routes.py": {
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "contentHash": "66a10e0142fedde3eeb4a7319d8e2b8a45bf7876f0ad7056d74e88d9a9f17282",
+      "functions": [
+        {
+          "name": "record_attendance",
+          "params": [
+            "session_id",
+            "employee_id",
+            "attendance",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 100
+        },
+        {
+          "name": "get_session_attendance",
+          "params": [
+            "session_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "get_employee_attendance",
+          "params": [
+            "session_id",
+            "employee_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "app.models.attendance",
+          "specifiers": [
+            "AttendanceRecordResponse",
+            "AttendanceRecordCreate",
+            "AttendanceRecordUpdate"
+          ]
+        },
+        {
+          "source": "app.db.mongodb",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "core.auth",
+          "specifiers": [
+            "get_current_active_user"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "record_attendance",
+        "get_session_attendance",
+        "get_employee_attendance"
+      ],
+      "totalLines": 134,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/api/v1/auth.py": {
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "contentHash": "01b29dba71ed0cf6d0c9fb2ee5ad245b4aa61d4008edac8a7ba7191fc9838fc2",
+      "functions": [
+        {
+          "name": "login",
+          "params": [
+            "form_data"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "get_me",
+          "params": [
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "fastapi.security",
+          "specifiers": [
+            "OAuth2PasswordRequestForm"
+          ]
+        },
+        {
+          "source": "core.auth",
+          "specifiers": [
+            "create_access_token",
+            "get_current_active_user"
+          ]
+        }
+      ],
+      "exports": [
+        "login",
+        "get_me"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/api/v1/employees/routes.py": {
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "contentHash": "6c0bae6e1c10d13edc9df8eb1d4a86533d15245d9e7c361c78bbc6cb66a42fbc",
+      "functions": [
+        {
+          "name": "list_employees",
+          "params": [
+            "category",
+            "status",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "create_employee",
+          "params": [
+            "employee",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "get_employee",
+          "params": [
+            "employee_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "update_employee",
+          "params": [
+            "employee_id",
+            "employee_update",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List"
+          ]
+        },
+        {
+          "source": "app.models.employee",
+          "specifiers": [
+            "EmployeeResponse",
+            "EmployeeCreate",
+            "EmployeeUpdate"
+          ]
+        },
+        {
+          "source": "app.db.mongodb",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "core.auth",
+          "specifiers": [
+            "get_current_active_user"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "list_employees",
+        "create_employee",
+        "get_employee",
+        "update_employee"
+      ],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/api/v1/sessions/routes.py": {
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "contentHash": "e17a074e5bb5bcb9a85e19275baad4eed39a442d176c5fd5379047b73f176846",
+      "functions": [
+        {
+          "name": "create_session",
+          "params": [
+            "session",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 32
+        },
+        {
+          "name": "list_sessions",
+          "params": [
+            "session_date",
+            "shift",
+            "status",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "get_session",
+          "params": [
+            "session_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "get_active_session",
+          "params": [
+            "session_date",
+            "shift",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "finalize_session",
+          "params": [
+            "session_id",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Optional"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        },
+        {
+          "source": "app.models.session",
+          "specifiers": [
+            "AttendanceSessionResponse",
+            "AttendanceSessionCreate",
+            "AttendanceSessionUpdate"
+          ]
+        },
+        {
+          "source": "app.db.mongodb",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "core.auth",
+          "specifiers": [
+            "get_current_active_user"
+          ]
+        }
+      ],
+      "exports": [
+        "create_session",
+        "list_sessions",
+        "get_session",
+        "get_active_session",
+        "finalize_session"
+      ],
+      "totalLines": 134,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/api/v1/vehicles/routes.py": {
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "contentHash": "8b8161945c9eaa33083fd01df0f39e0adb9fa1571257f65331370f6e76735e24",
+      "functions": [
+        {
+          "name": "list_vehicles",
+          "params": [
+            "vehicle_type",
+            "status",
+            "active",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "create_vehicle",
+          "params": [
+            "vehicle",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "get_vehicle",
+          "params": [
+            "vehicle_number",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "update_vehicle",
+          "params": [
+            "vehicle_number",
+            "vehicle_update",
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "APIRouter",
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List"
+          ]
+        },
+        {
+          "source": "app.models.vehicle",
+          "specifiers": [
+            "VehicleResponse",
+            "VehicleCreate",
+            "VehicleUpdate"
+          ]
+        },
+        {
+          "source": "app.db.mongodb",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "core.auth",
+          "specifiers": [
+            "get_current_active_user"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "list_vehicles",
+        "create_vehicle",
+        "get_vehicle",
+        "update_vehicle"
+      ],
+      "totalLines": 73,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/db/indexes.py": {
+      "filePath": "ServerSide/app/db/indexes.py",
+      "contentHash": "45270352e2a94df624db4c536360b52f0c9eb7ed48a5ef8bd1df45a0f64c6ce5",
+      "functions": [
+        {
+          "name": "create_indexes",
+          "params": [
+            "db"
+          ],
+          "exported": true,
+          "lineCount": 31
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "motor.motor_asyncio",
+          "specifiers": [
+            "AsyncIOMotorClient"
+          ]
+        },
+        {
+          "source": "core.config",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        }
+      ],
+      "exports": [
+        "create_indexes"
+      ],
+      "totalLines": 38,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/db/mongodb.py": {
+      "filePath": "ServerSide/app/db/mongodb.py",
+      "contentHash": "f2b8c241a4256bd120186e034550a74ebb4caceb8189196edbe0dc85b2cccf5e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Database",
+          "methods": [
+            "connect",
+            "close"
+          ],
+          "properties": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "motor.motor_asyncio",
+          "specifiers": [
+            "AsyncIOMotorClient"
+          ]
+        },
+        {
+          "source": "core.config",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "logging",
+          "specifiers": [
+            "logging"
+          ]
+        },
+        {
+          "source": "app.db.indexes",
+          "specifiers": [
+            "create_indexes"
+          ]
+        }
+      ],
+      "exports": [
+        "Database"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/main.py": {
+      "filePath": "ServerSide/app/main.py",
+      "contentHash": "f1abe159b382b47e32079a1f0e7cac034e2b999d0ee80aec3210b9913689a7ae",
+      "functions": [
+        {
+          "name": "lifespan",
+          "params": [
+            "app"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "general_exception_handler",
+          "params": [
+            "request",
+            "exc"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "health_check",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "readiness_check",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "FastAPI",
+            "Request"
+          ]
+        },
+        {
+          "source": "fastapi.responses",
+          "specifiers": [
+            "JSONResponse"
+          ]
+        },
+        {
+          "source": "fastapi.middleware.cors",
+          "specifiers": [
+            "CORSMiddleware"
+          ]
+        },
+        {
+          "source": "core.config",
+          "specifiers": [
+            "settings"
+          ]
+        },
+        {
+          "source": "app.db.mongodb",
+          "specifiers": [
+            "db"
+          ]
+        },
+        {
+          "source": "uvicorn",
+          "specifiers": [
+            "uvicorn"
+          ]
+        },
+        {
+          "source": "contextlib",
+          "specifiers": [
+            "asynccontextmanager"
+          ]
+        },
+        {
+          "source": "app.api.v1.auth",
+          "specifiers": [
+            "auth_router"
+          ]
+        },
+        {
+          "source": "app.api.v1.employees.routes",
+          "specifiers": [
+            "employees"
+          ]
+        },
+        {
+          "source": "app.api.v1.vehicles.routes",
+          "specifiers": [
+            "vehicles"
+          ]
+        },
+        {
+          "source": "app.api.v1.sessions.routes",
+          "specifiers": [
+            "sessions"
+          ]
+        },
+        {
+          "source": "app.api.v1.attendance.routes",
+          "specifiers": [
+            "attendance"
+          ]
+        },
+        {
+          "source": "app.api.v1.assignments.routes",
+          "specifiers": [
+            "assignments"
+          ]
+        }
+      ],
+      "exports": [
+        "lifespan",
+        "general_exception_handler",
+        "health_check",
+        "readiness_check"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/assignment.py": {
+      "filePath": "ServerSide/app/models/assignment.py",
+      "contentHash": "e72cb256c599e1cb9032433f11b967aecda691df31b4b7449c85d7c4bab82d11",
+      "functions": [],
+      "classes": [
+        {
+          "name": "VehicleAssignmentBase",
+          "methods": [],
+          "properties": [
+            "sessionId",
+            "employeeId",
+            "vehicleId",
+            "assignedAt",
+            "assignedBy",
+            "unassignedAt",
+            "unassignedBy"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "VehicleAssignmentCreate",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "VehicleAssignmentUpdate",
+          "methods": [],
+          "properties": [
+            "vehicleId",
+            "unassignedAt",
+            "unassignedBy"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "VehicleAssignmentResponse",
+          "methods": [],
+          "properties": [
+            "id"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "VehicleAssignment",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "VehicleAssignmentBase",
+        "VehicleAssignmentCreate",
+        "VehicleAssignmentUpdate",
+        "VehicleAssignmentResponse",
+        "VehicleAssignment"
+      ],
+      "totalLines": 31,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/attendance.py": {
+      "filePath": "ServerSide/app/models/attendance.py",
+      "contentHash": "abe4fadd18d923725313d82d76d44364601bd59efe1888873530a4f09165745a",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AttendanceRecordBase",
+          "methods": [],
+          "properties": [
+            "sessionId",
+            "employeeId",
+            "status",
+            "arrivalTime",
+            "recordedBy",
+            "remarks",
+            "version"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "AttendanceRecordCreate",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "AttendanceRecordUpdate",
+          "methods": [],
+          "properties": [
+            "status",
+            "arrivalTime",
+            "remarks",
+            "version"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "AttendanceRecordResponse",
+          "methods": [],
+          "properties": [
+            "id",
+            "recordedAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "AttendanceRecord",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "AttendanceRecordBase",
+        "AttendanceRecordCreate",
+        "AttendanceRecordUpdate",
+        "AttendanceRecordResponse",
+        "AttendanceRecord"
+      ],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/audit_event.py": {
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "contentHash": "5a426a9901ab82733ec19edad8e3262987d4512cc7369bbbe7e468aa6c75510f",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AuditEventBase",
+          "methods": [],
+          "properties": [
+            "sessionId",
+            "actorId",
+            "action",
+            "entityType",
+            "entityId",
+            "previousValue",
+            "newValue"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "AuditEventCreate",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "AuditEvent",
+          "methods": [],
+          "properties": [
+            "id",
+            "createdAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional",
+            "Any",
+            "Dict"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "AuditEventBase",
+        "AuditEventCreate",
+        "AuditEvent"
+      ],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/employee.py": {
+      "filePath": "ServerSide/app/models/employee.py",
+      "contentHash": "42bca972b2faf8c054bb1ee971528416705811858bddef0f3f2b82c0a51e14fd",
+      "functions": [],
+      "classes": [
+        {
+          "name": "EmployeeBase",
+          "methods": [],
+          "properties": [
+            "employeeId",
+            "name",
+            "category",
+            "photoPath",
+            "displayOrder",
+            "status",
+            "contractor",
+            "remarks",
+            "testField"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "EmployeeCreate",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "EmployeeUpdate",
+          "methods": [],
+          "properties": [
+            "name",
+            "category",
+            "photoPath",
+            "displayOrder",
+            "status",
+            "contractor",
+            "remarks"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "EmployeeResponse",
+          "methods": [],
+          "properties": [
+            "createdAt",
+            "updatedAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "Employee",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "EmployeeBase",
+        "EmployeeCreate",
+        "EmployeeUpdate",
+        "EmployeeResponse",
+        "Employee"
+      ],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/session.py": {
+      "filePath": "ServerSide/app/models/session.py",
+      "contentHash": "4048807caf872003429f39152bf9eb591914f4253d4eed3bb6d0bf7fd00fc72d",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AttendanceSessionBase",
+          "methods": [],
+          "properties": [
+            "sessionDate",
+            "shift",
+            "status",
+            "supervisorId",
+            "version"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "AttendanceSessionCreate",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "AttendanceSessionUpdate",
+          "methods": [],
+          "properties": [
+            "status",
+            "supervisorId",
+            "version"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "AttendanceSessionResponse",
+          "methods": [
+            "parse_id"
+          ],
+          "properties": [
+            "id",
+            "finalizedAt",
+            "finalizedBy",
+            "createdAt",
+            "updatedAt"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "AttendanceSession",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field",
+            "field_validator"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "AttendanceSessionBase",
+        "AttendanceSessionCreate",
+        "AttendanceSessionUpdate",
+        "AttendanceSessionResponse",
+        "AttendanceSession"
+      ],
+      "totalLines": 41,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/user.py": {
+      "filePath": "ServerSide/app/models/user.py",
+      "contentHash": "fb1c5415604b61a33ac1052d6c57a92ef10d9a7292b7e240a67a63202da07b1e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "UserBase",
+          "methods": [],
+          "properties": [
+            "username",
+            "email",
+            "full_name",
+            "role"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "UserCreate",
+          "methods": [],
+          "properties": [
+            "password"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "UserUpdate",
+          "methods": [],
+          "properties": [
+            "username",
+            "email",
+            "full_name",
+            "role"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "User",
+          "methods": [],
+          "properties": [
+            "id",
+            "is_active",
+            "created_at"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional",
+            "List"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "UserBase",
+        "UserCreate",
+        "UserUpdate",
+        "User"
+      ],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/app/models/vehicle.py": {
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "contentHash": "336fc3d712de3d62c5d4a0d9a4c2008740856dfb8c03e1d7e8636623ad9ca970",
+      "functions": [],
+      "classes": [
+        {
+          "name": "VehicleBase",
+          "methods": [],
+          "properties": [
+            "vehicleNumber",
+            "vehicleType",
+            "status",
+            "active"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "VehicleCreate",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "VehicleUpdate",
+          "methods": [],
+          "properties": [
+            "vehicleNumber",
+            "vehicleType",
+            "status",
+            "active"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "VehicleResponse",
+          "methods": [],
+          "properties": [
+            "createdAt",
+            "updatedAt"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "Vehicle",
+          "methods": [],
+          "properties": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "pydantic",
+          "specifiers": [
+            "BaseModel",
+            "Field"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime"
+          ]
+        }
+      ],
+      "exports": [
+        "VehicleBase",
+        "VehicleCreate",
+        "VehicleUpdate",
+        "VehicleResponse",
+        "Vehicle"
+      ],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/core/auth.py": {
+      "filePath": "ServerSide/core/auth.py",
+      "contentHash": "0a457e0df5fd99d3140f016ba61f5c9a98341610b9676623fa12f5b7577eff6b",
+      "functions": [
+        {
+          "name": "verify_password",
+          "params": [
+            "plain_password",
+            "hashed_password"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "get_password_hash",
+          "params": [
+            "password"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "create_access_token",
+          "params": [
+            "data",
+            "expires_delta"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "get_current_user",
+          "params": [
+            "token"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "get_current_active_user",
+          "params": [
+            "username"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timedelta"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        },
+        {
+          "source": "jose",
+          "specifiers": [
+            "jwt"
+          ]
+        },
+        {
+          "source": "passlib.context",
+          "specifiers": [
+            "CryptContext"
+          ]
+        },
+        {
+          "source": "fastapi",
+          "specifiers": [
+            "Depends",
+            "HTTPException",
+            "status"
+          ]
+        },
+        {
+          "source": "fastapi.security",
+          "specifiers": [
+            "OAuth2PasswordBearer"
+          ]
+        },
+        {
+          "source": "core.config",
+          "specifiers": [
+            "settings"
+          ]
+        }
+      ],
+      "exports": [
+        "verify_password",
+        "get_password_hash",
+        "create_access_token",
+        "get_current_user",
+        "get_current_active_user"
+      ],
+      "totalLines": 40,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/core/config.py": {
+      "filePath": "ServerSide/core/config.py",
+      "contentHash": "24c531351fc96c576befae57d0104f862e7e4af0d04939a0bbac3599761b579f",
+      "functions": [],
+      "classes": [
+        {
+          "name": "Settings",
+          "methods": [
+            "EFFECTIVE_DATABASE_URL"
+          ],
+          "properties": [
+            "DEBUG",
+            "DATABASE_URL",
+            "MONGODB_DATABASE",
+            "MONGODB_URI",
+            "JWT_SECRET",
+            "ALGORITHM",
+            "ACCESS_TOKEN_EXPIRE_MINUTES"
+          ],
+          "exported": true,
+          "lineCount": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "pydantic_settings",
+          "specifiers": [
+            "BaseSettings"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "Optional"
+          ]
+        }
+      ],
+      "exports": [
+        "Settings"
+      ],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/launch.bat": {
+      "filePath": "ServerSide/launch.bat",
+      "contentHash": "482160d82c1b2311e452c283fe2835270d30dfc6d9d61f2a5f51836df12401b7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": false
+    },
+    "ServerSide/openapi.json": {
+      "filePath": "ServerSide/openapi.json",
+      "contentHash": "7c0043e0bab606a49384dbebd67afc0f73c3919a74e9f27fe0075a587f1d6fcb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2011,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/requirements.txt": {
+      "filePath": "ServerSide/requirements.txt",
+      "contentHash": "ecd250d07d3d7046d162dc3f95c82b90c6d89650141233e3f02b31ae8bce295c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": false
+    },
+    "ServerSide/scripts/export_openapi.py": {
+      "filePath": "ServerSide/scripts/export_openapi.py",
+      "contentHash": "899b962158e0a06175daff18c0bb114f2b417a05073a6c09268efbb4a2bb5d5e",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/scripts/seed_data.py": {
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "contentHash": "072c6dd2617b30a14b1c560084c27d000cd91341330d4b692a0a939eda8df213",
+      "functions": [
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 21
+        }
+      ],
+      "classes": [
+        {
+          "name": "DataSeeder",
+          "methods": [
+            "__init__",
+            "login",
+            "get_headers",
+            "generate_vehicle_number",
+            "seed_employees",
+            "seed_vehicles",
+            "seed_sessions",
+            "seed_attendance",
+            "close"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 232
+        }
+      ],
+      "imports": [
+        {
+          "source": "asyncio",
+          "specifiers": [
+            "asyncio"
+          ]
+        },
+        {
+          "source": "httpx",
+          "specifiers": [
+            "httpx"
+          ]
+        },
+        {
+          "source": "random",
+          "specifiers": [
+            "random"
+          ]
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            "datetime",
+            "timedelta"
+          ]
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            "List",
+            "Dict"
+          ]
+        }
+      ],
+      "exports": [
+        "DataSeeder",
+        "main"
+      ],
+      "totalLines": 286,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/scripts/sync.bat": {
+      "filePath": "ServerSide/scripts/sync.bat",
+      "contentHash": "ea0848127e91065e92a09afd2f20a06cea85406a0952110fd815d7bdd0c7a2ec",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": false
+    },
+    "ServerSide/scripts/sync.py": {
+      "filePath": "ServerSide/scripts/sync.py",
+      "contentHash": "dcc2df63f1c49a917e503d6cc4843f24d05e0d15d1cac3a04d6287d2253a3808",
+      "functions": [
+        {
+          "name": "run_command",
+          "params": [
+            "cmd",
+            "cwd"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "main",
+          "params": [],
+          "exported": true,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        }
+      ],
+      "exports": [
+        "run_command",
+        "main"
+      ],
+      "totalLines": 45,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/scripts/sync.sh": {
+      "filePath": "ServerSide/scripts/sync.sh",
+      "contentHash": "ac479ce9adb4cc81822c4290808191262097d17546d83fd375fac4fffd754eed",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/__init__.py": {
+      "filePath": "ServerSide/tests/__init__.py",
+      "contentHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/conftest.py": {
+      "filePath": "ServerSide/tests/conftest.py",
+      "contentHash": "3463a8c26ef9f3585e52d91b665ef35f1a057e2e0e4b5320963e278c985c5ae0",
+      "functions": [
+        {
+          "name": "client",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "auth_token",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "auth_headers",
+          "params": [
+            "auth_token"
+          ],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "fastapi.testclient",
+          "specifiers": [
+            "TestClient"
+          ]
+        },
+        {
+          "source": "app.main",
+          "specifiers": [
+            "app"
+          ]
+        }
+      ],
+      "exports": [
+        "client",
+        "auth_token",
+        "auth_headers"
+      ],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/test_attendance.py": {
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "contentHash": "ed14c5dd3d7482114b9dba7f4623fc156e99afeaa2bee10606f01c24b90fee8c",
+      "functions": [
+        {
+          "name": "test_attendance_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "test_attendance_unauthorized"
+      ],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/test_auth.py": {
+      "filePath": "ServerSide/tests/test_auth.py",
+      "contentHash": "c05a6d50c6dbb943858b5c6c94fb4720c9ebeb8dade5d8d31ccb7e6f1f49b82c",
+      "functions": [
+        {
+          "name": "test_login_success",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "test_login_wrong_password",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "test_get_me_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_get_me_authorized",
+          "params": [
+            "client",
+            "auth_headers"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "test_login_success",
+        "test_login_wrong_password",
+        "test_get_me_unauthorized",
+        "test_get_me_authorized"
+      ],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/test_employees.py": {
+      "filePath": "ServerSide/tests/test_employees.py",
+      "contentHash": "f676f9457e657583ad41b01377345c6ff82e6e107fde3636a24e7b04414d77bb",
+      "functions": [
+        {
+          "name": "test_list_employees_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_create_employee_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "test_list_employees_unauthorized",
+        "test_create_employee_unauthorized"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/test_sessions.py": {
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "contentHash": "dd348f2d1f3e3c9f40dc0f7ca37cf586bb0ff04cbf12d23d2f689e466336796e",
+      "functions": [
+        {
+          "name": "test_list_sessions_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_create_session_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "test_list_sessions_unauthorized",
+        "test_create_session_unauthorized"
+      ],
+      "totalLines": 13,
+      "hasStructuralAnalysis": true
+    },
+    "ServerSide/tests/test_vehicles.py": {
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "contentHash": "1abaee4f3041f3de7ca22bc667083309a83785a8e6c980bd0d3df27f995c448c",
+      "functions": [
+        {
+          "name": "test_list_vehicles_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "test_create_vehicle_unauthorized",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "test_list_vehicles_unauthorized",
+        "test_create_vehicle_unauthorized"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "TODO.md": {
+      "filePath": "TODO.md",
+      "contentHash": "3002ba7ed3be4178ec445272729fac4282bda5c4a516144f3a93822aa689868f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "TYPE_SYNC_GUIDE.md": {
+      "filePath": "TYPE_SYNC_GUIDE.md",
+      "contentHash": "9bcc42dc0a1c05464b97a79258339ac0d0c77a5d60420818209f3384b68a38a5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 107,
+      "hasStructuralAnalysis": true
+    },
+    "WORKFLOW_PLAN.md": {
+      "filePath": "WORKFLOW_PLAN.md",
+      "contentHash": "338c49afaefe288e18955358dd7a6cf616e1c3e74fa74f5f1f8a7a1abbb9c196",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 208,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/.oxlintrc.json": {
+      "filePath": "apps/admin/.oxlintrc.json",
+      "contentHash": "1be899e45c49b2a2edc715bc3bfb31d8ed8e866ed7ebab2065ff6e55e88c2396",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/Dockerfile": {
+      "filePath": "apps/admin/Dockerfile",
+      "contentHash": "bc39cb021927279f2b97dc06db86bd43a78da4d4c70b9e331080689836a5f5cb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/README.md": {
+      "filePath": "apps/admin/README.md",
+      "contentHash": "1f8fa46483b514305f44e34a47e85e88428c3a667c9494e1583628ef18d7bc79",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/index.html": {
+      "filePath": "apps/admin/index.html",
+      "contentHash": "b4925995b379b0855dc6ce87056351f8cc93634c7b4d296c1c829aef262bce3d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": false
+    },
+    "apps/admin/package.json": {
+      "filePath": "apps/admin/package.json",
+      "contentHash": "6ef4d3e31618a57807f2bb148362acc55390efc799fc0c2d422775bec0eeb60a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/src/App.css": {
+      "filePath": "apps/admin/src/App.css",
+      "contentHash": "e055e706c8c8e4224bb17306268c9e59b996900debd0824536d3fcca4778e02d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 216,
+      "hasStructuralAnalysis": false
+    },
+    "apps/admin/src/App.jsx": {
+      "filePath": "apps/admin/src/App.jsx",
+      "contentHash": "697d9c808b64c2d8c89bb0b49d1ff61dca44f5af6af3e586aef306d749d3a058",
+      "functions": [
+        {
+          "name": "AdminDashboard",
+          "params": [],
+          "exported": false,
+          "lineCount": 216
+        },
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "QueryClient",
+            "QueryClientProvider"
+          ]
+        },
+        {
+          "source": "@laxmi/shared",
+          "specifiers": [
+            "authService",
+            "ErrorBoundary",
+            "LoadingSpinner",
+            "useEmployees",
+            "useVehicles"
+          ]
+        },
+        {
+          "source": "./App.css",
+          "specifiers": []
+        }
+      ],
+      "exports": [],
+      "totalLines": 244,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/src/index.css": {
+      "filePath": "apps/admin/src/index.css",
+      "contentHash": "fda85fffe7f006d822fb9ab4e774b9e2b8fadffa73a3806b038dc0b8456cbbeb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 112,
+      "hasStructuralAnalysis": false
+    },
+    "apps/admin/src/main.jsx": {
+      "filePath": "apps/admin/src/main.jsx",
+      "contentHash": "4b4b864dbe45253425d0c925337180ec07e204295179f80f59551216f466f618",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "./index.css",
+          "specifiers": []
+        },
+        {
+          "source": "./App.jsx",
+          "specifiers": [
+            "App"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "apps/admin/vite.config.js": {
+      "filePath": "apps/admin/vite.config.js",
+      "contentHash": "cea12b43a8c7f4677bd3e5b2b7e7c230dd9ae40fbf858c1e7925c7a620809e7b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/.dockerignore": {
+      "filePath": "apps/supervisor/.dockerignore",
+      "contentHash": "b841aeee7240ac49464ebcee749d867ec9852770f9adfdc1c5f03b64dc3eeb8a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": false
+    },
+    "apps/supervisor/.oxlintrc.json": {
+      "filePath": "apps/supervisor/.oxlintrc.json",
+      "contentHash": "1be899e45c49b2a2edc715bc3bfb31d8ed8e866ed7ebab2065ff6e55e88c2396",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/Dockerfile": {
+      "filePath": "apps/supervisor/Dockerfile",
+      "contentHash": "9689496c39fcb2badfbda0b63c63455c378a1fdfdf3abae2a5da23f595820de8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/MASTER INSTRUCTIONS.md": {
+      "filePath": "apps/supervisor/MASTER INSTRUCTIONS.md",
+      "contentHash": "31be1f304c2d424db40979e64da48fef5f521978114076c3e36eb68673c621d7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/README.md": {
+      "filePath": "apps/supervisor/README.md",
+      "contentHash": "392365bbc69773728dcd84f8c3fe2d184f26a3f798f6b3a622f048a85eb833b5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 128,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/index.html": {
+      "filePath": "apps/supervisor/index.html",
+      "contentHash": "87ef0f0ff3257280390ca6a678a428c6e257a4fc6c72e2cf99436a0e286808b6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": false
+    },
+    "apps/supervisor/package.json": {
+      "filePath": "apps/supervisor/package.json",
+      "contentHash": "80fbad7acf00e626698f4add59a0128d6407203a4b2480808ed6a07f431ea743",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/postcss.config.js": {
+      "filePath": "apps/supervisor/postcss.config.js",
+      "contentHash": "190c877db466995bf1482f4a16abd06e04a89ede3119341e2a86ff96e1737b27",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/App.css": {
+      "filePath": "apps/supervisor/src/App.css",
+      "contentHash": "6e25a776d3e8102da5bacb3cb99f4a5fc662a2e01e6143140671a556d28c3d5c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 185,
+      "hasStructuralAnalysis": false
+    },
+    "apps/supervisor/src/App.jsx": {
+      "filePath": "apps/supervisor/src/App.jsx",
+      "contentHash": "cfa3753cf4ac40a83ae8ef7f890e2f9d26c3db00cd6926996c70604fd9188c99",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 255
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "./App.css",
+          "specifiers": []
+        },
+        {
+          "source": "./components/LeftColumn",
+          "specifiers": [
+            "LeftColumn"
+          ]
+        },
+        {
+          "source": "./components/RightColumn",
+          "specifiers": [
+            "RightColumn"
+          ]
+        },
+        {
+          "source": "./components/EmployeeTable",
+          "specifiers": [
+            "EmployeeTable"
+          ]
+        },
+        {
+          "source": "./components/VehicleAssignmentHistory",
+          "specifiers": [
+            "VehicleAssignmentHistory"
+          ]
+        },
+        {
+          "source": "./components/CapacityConflictModal",
+          "specifiers": [
+            "CapacityConflictModal"
+          ]
+        },
+        {
+          "source": "./components/CapacityReportModal",
+          "specifiers": [
+            "CapacityReportModal"
+          ]
+        },
+        {
+          "source": "./components/CategoryTabs",
+          "specifiers": [
+            "CategoryTabs"
+          ]
+        },
+        {
+          "source": "./components/FilterChips",
+          "specifiers": [
+            "FilterChips"
+          ]
+        },
+        {
+          "source": "./components/VehicleTable",
+          "specifiers": [
+            "VehicleTable"
+          ]
+        },
+        {
+          "source": "./components/LoginModal",
+          "specifiers": [
+            "LoginModal"
+          ]
+        },
+        {
+          "source": "./components/pdf/pdfHandler",
+          "specifiers": [
+            "generateAttendanceReport"
+          ]
+        },
+        {
+          "source": "./hooks/useAttendanceState",
+          "specifiers": [
+            "useAttendanceState"
+          ]
+        },
+        {
+          "source": "./hooks/useAttendanceHandlers",
+          "specifiers": [
+            "useAttendanceHandlers"
+          ]
+        },
+        {
+          "source": "./hooks/useFilters",
+          "specifiers": [
+            "useFilters"
+          ]
+        },
+        {
+          "source": "./hooks/useStatistics",
+          "specifiers": [
+            "useStatistics"
+          ]
+        },
+        {
+          "source": "./hooks/useTableSort",
+          "specifiers": [
+            "useTableSort"
+          ]
+        },
+        {
+          "source": "@laxmi/shared",
+          "specifiers": [
+            "authService"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 278,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/QueryClient.jsx": {
+      "filePath": "apps/supervisor/src/QueryClient.jsx",
+      "contentHash": "5a90fe8fc45a21703a32aff36f7297cd9024a9ea9658c3a0612a9a4251179eab",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "QueryClient",
+            "QueryCache"
+          ]
+        },
+        {
+          "source": "@laxmi/shared",
+          "specifiers": [
+            "AuthError",
+            "authService"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/AttendanceControl.jsx": {
+      "filePath": "apps/supervisor/src/components/AttendanceControl.jsx",
+      "contentHash": "01a140e28848650205b9ab85527c3f130d48b58761e625352e6fad428b807931",
+      "functions": [
+        {
+          "name": "AttendanceControl",
+          "params": [],
+          "exported": false,
+          "lineCount": 60
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "./attendance/attendance.utils",
+          "specifiers": [
+            "getArrivalTime"
+          ]
+        },
+        {
+          "source": "./attendance/LockedAttendance",
+          "specifiers": [
+            "LockedAttendance"
+          ]
+        },
+        {
+          "source": "./attendance/AttendanceBadge",
+          "specifiers": [
+            "AttendanceBadge"
+          ]
+        },
+        {
+          "source": "./attendance/AttendanceButtons",
+          "specifiers": [
+            "AttendanceButtons"
+          ]
+        },
+        {
+          "source": "./attendance/ArrivedBadge",
+          "specifiers": [
+            "ArrivedBadge"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 70,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/CapacityConflictModal.jsx": {
+      "filePath": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "contentHash": "0a12b08a5884dc35c01d690e1fb49a01e7be2069647122cf06d47950447bfae2",
+      "functions": [
+        {
+          "name": "CapacityConflictModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 97
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/CapacityReportModal.jsx": {
+      "filePath": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "contentHash": "81752358ac88a9509a652d930af518b7d928ede182ab707ef5f97095ad3a5841",
+      "functions": [
+        {
+          "name": "CapacityReportModal",
+          "params": [],
+          "exported": false,
+          "lineCount": 194
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 199,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/CategoryTabs.jsx": {
+      "filePath": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "contentHash": "7c64bc6424902c3a0f1407ca2a061112937331532082771c3f4526b86596532a",
+      "functions": [
+        {
+          "name": "CategoryTabs",
+          "params": [],
+          "exported": false,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/EmployeeAvatar.jsx": {
+      "filePath": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "contentHash": "d81249c847629ac59f6cb2977246a59b794f54c72f601404fe63de5a6e52b425",
+      "functions": [
+        {
+          "name": "EmployeeAvatar",
+          "params": [],
+          "exported": false,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 16,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/EmployeeRow.jsx": {
+      "filePath": "apps/supervisor/src/components/EmployeeRow.jsx",
+      "contentHash": "2c4afcd659c0368bde6fd0a988020b1c838fc3c0242ffeef3d5ec360888776f2",
+      "functions": [
+        {
+          "name": "EmployeeRow",
+          "params": [],
+          "exported": false,
+          "lineCount": 104
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "./EmployeeAvatar",
+          "specifiers": [
+            "EmployeeAvatar"
+          ]
+        },
+        {
+          "source": "./AttendanceControl",
+          "specifiers": [
+            "AttendanceControl"
+          ]
+        },
+        {
+          "source": "./ui/VehicleSelect",
+          "specifiers": [
+            "VehicleSelect"
+          ]
+        },
+        {
+          "source": "./ui/LabourRequestButtons",
+          "specifiers": [
+            "LabourRequestButtons"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 113,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/EmployeeTable.jsx": {
+      "filePath": "apps/supervisor/src/components/EmployeeTable.jsx",
+      "contentHash": "9609236115fcb4f36ffd245824035e5352267ff895501e6fd2e54bdd1a684728",
+      "functions": [
+        {
+          "name": "EmployeeTable",
+          "params": [],
+          "exported": false,
+          "lineCount": 150
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "./EmployeeRow",
+          "specifiers": [
+            "EmployeeRow"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 156,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/FilterChips.jsx": {
+      "filePath": "apps/supervisor/src/components/FilterChips.jsx",
+      "contentHash": "da9b2f1a43ab04d755aa60a362e31344bb8f4fd915d1c0780c06b15793f5d71f",
+      "functions": [
+        {
+          "name": "FilterChips",
+          "params": [],
+          "exported": false,
+          "lineCount": 96
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 101,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/LeftColumn.jsx": {
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "contentHash": "ef1702d8360b42e95ca848518910a84d2718dba3d315f888e71f5aa8facd2dd2",
+      "functions": [
+        {
+          "name": "LeftColumn",
+          "params": [],
+          "exported": true,
+          "lineCount": 118
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "LeftColumn"
+      ],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/LoginModal.jsx": {
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "contentHash": "35cefb0c585214ac6ecd03edcd13e01ba2249fbdac1b45bbcd5de8f5c9da0daf",
+      "functions": [
+        {
+          "name": "LoginModal",
+          "params": [],
+          "exported": true,
+          "lineCount": 90
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@laxmi/shared",
+          "specifiers": [
+            "authService",
+            "NetworkError",
+            "AuthError",
+            "ValidationError"
+          ]
+        }
+      ],
+      "exports": [
+        "LoginModal"
+      ],
+      "totalLines": 94,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/RightColumn.jsx": {
+      "filePath": "apps/supervisor/src/components/RightColumn.jsx",
+      "contentHash": "a4ab1340c908ce4362a39ce5ccdd09b5e085d3c2be8ea448e30b6a50a345d916",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 254,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/SyncStatus.jsx": {
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "contentHash": "39ba4600a8d1b4ea718f0e96369e741dc172e5f7b59372997ac79c6668541705",
+      "functions": [
+        {
+          "name": "SyncStatus",
+          "params": [],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "../services/offlineQueue",
+          "specifiers": [
+            "offlineQueue"
+          ]
+        }
+      ],
+      "exports": [
+        "SyncStatus"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/VehicleAssignmentHistory.jsx": {
+      "filePath": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "contentHash": "8c9294e2bae029a954080e3570d0aa13dcfa77c84feedda69d429958a2961562",
+      "functions": [
+        {
+          "name": "VehicleAssignmentHistory",
+          "params": [],
+          "exported": false,
+          "lineCount": 101
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/VehicleTable.jsx": {
+      "filePath": "apps/supervisor/src/components/VehicleTable.jsx",
+      "contentHash": "39a823360fe4783da5bd64189c98970b045b77dbff0fbf3331d6f6c7361d3094",
+      "functions": [
+        {
+          "name": "VehicleTable",
+          "params": [],
+          "exported": false,
+          "lineCount": 241
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo",
+            "Fragment"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 246,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/attendance/ArrivedBadge.jsx": {
+      "filePath": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "contentHash": "979ca0c6a0ab8d4c3efd7c324a5105aab761103eabdf7cf69f0a4cfd95d9f7dc",
+      "functions": [
+        {
+          "name": "ArrivedBadge",
+          "params": [],
+          "exported": false,
+          "lineCount": 21
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/attendance/AttendanceBadge.jsx": {
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "contentHash": "134dc76bac0bd39e8f4195e65cf13afaf009e5489ed48b2a1f7f8ef00972ff2a",
+      "functions": [
+        {
+          "name": "AttendanceBadge",
+          "params": [],
+          "exported": false,
+          "lineCount": 15
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "./attendance.utils",
+          "specifiers": [
+            "getStatusConfig"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 21,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/attendance/AttendanceButtons.jsx": {
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "contentHash": "7bcd9ed174f4479e2d143a7eb3154c654569775b9026566679d32c40ca0350be",
+      "functions": [
+        {
+          "name": "AttendanceButtons",
+          "params": [],
+          "exported": false,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "../ui/ButtonGroup",
+          "specifiers": [
+            "ButtonGroup"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 58,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/attendance/LockedAttendance.jsx": {
+      "filePath": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "contentHash": "400f995b5519e0372e67d5999c97a43b7f57b5187b16fa25548e054759a47203",
+      "functions": [
+        {
+          "name": "LockedAttendance",
+          "params": [],
+          "exported": false,
+          "lineCount": 19
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "./AttendanceBadge",
+          "specifiers": [
+            "AttendanceBadge"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/attendance/attendance.config.js": {
+      "filePath": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "contentHash": "7bf16981ac0d2de2854cc02b5fe2cbebbd03d210c43e975ca0b617af0715d1d9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "ATTENDANCE_STATUS",
+        "ATTENDANCE_COLORS"
+      ],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/attendance/attendance.utils.js": {
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "contentHash": "2a758318b74d3636825c50deb023266a339bf772788f969717c2d9f55700baf8",
+      "functions": [
+        {
+          "name": "getArrivalTime",
+          "params": [
+            "emp",
+            "arrivalTimes",
+            "currentTime"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "getStatusConfig",
+          "params": [
+            "status"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "getButtonColorClass",
+          "params": [
+            "status",
+            "isSelected"
+          ],
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./attendance.config",
+          "specifiers": [
+            "ATTENDANCE_STATUS",
+            "ATTENDANCE_COLORS"
+          ]
+        }
+      ],
+      "exports": [
+        "getArrivalTime",
+        "getStatusConfig",
+        "getButtonColorClass"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/PDFRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "contentHash": "fd69597cbb47b974aced343d239834dac904c2f9b48e4c112f2cb752593955e1",
+      "functions": [],
+      "classes": [
+        {
+          "name": "PDFRenderer",
+          "methods": [
+            "constructor",
+            "render",
+            "save"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 50
+        }
+      ],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        },
+        {
+          "source": "./layout/LayoutManager",
+          "specifiers": [
+            "LayoutManager"
+          ]
+        },
+        {
+          "source": "./renderers/ReportHeaderRenderer",
+          "specifiers": [
+            "ReportHeaderRenderer"
+          ]
+        },
+        {
+          "source": "./renderers/SummaryRenderer",
+          "specifiers": [
+            "SummaryRenderer"
+          ]
+        },
+        {
+          "source": "./renderers/CategorySummaryRenderer",
+          "specifiers": [
+            "CategorySummaryRenderer"
+          ]
+        },
+        {
+          "source": "./renderers/EmployeeSectionRenderer",
+          "specifiers": [
+            "EmployeeSectionRenderer"
+          ]
+        },
+        {
+          "source": "./renderers/VehicleSectionRenderer",
+          "specifiers": [
+            "VehicleSectionRenderer"
+          ]
+        },
+        {
+          "source": "./renderers/ExceptionReportRenderer",
+          "specifiers": [
+            "ExceptionReportRenderer"
+          ]
+        }
+      ],
+      "exports": [
+        "PDFRenderer"
+      ],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/layout/LayoutManager.js": {
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "contentHash": "b5f8482b7e84de22e295b3594d24c3fd4d46daa51f491b2a2509a1226505a648",
+      "functions": [],
+      "classes": [
+        {
+          "name": "LayoutManager",
+          "methods": [
+            "constructor",
+            "getRemainingSpace",
+            "ensureSpace",
+            "addPage",
+            "renderPageHeader",
+            "renderFooter",
+            "setSectionName",
+            "advanceCursor",
+            "getCursor",
+            "getCurrentPage",
+            "getTotalPages",
+            "finalize"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 122
+        }
+      ],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        },
+        {
+          "source": "./pdfLayoutConstants",
+          "specifiers": [
+            "CONTENT_TOP",
+            "CONTENT_BOTTOM",
+            "HEADER_HEIGHT",
+            "FOOTER_HEIGHT",
+            "PAGE_MARGIN_LEFT",
+            "PAGE_MARGIN_RIGHT",
+            "PAGE_MARGIN_TOP",
+            "PAGE_MARGIN_BOTTOM"
+          ]
+        }
+      ],
+      "exports": [
+        "LayoutManager"
+      ],
+      "totalLines": 135,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js": {
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "contentHash": "abbbaca80462fb184d82d7fa8c903b30cdb3dfdb31c09921ff463ce61f700683",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "PAGE_WIDTH",
+        "PAGE_HEIGHT",
+        "PAGE_MARGIN_TOP",
+        "PAGE_MARGIN_BOTTOM",
+        "PAGE_MARGIN_LEFT",
+        "PAGE_MARGIN_RIGHT",
+        "HEADER_HEIGHT",
+        "FOOTER_HEIGHT",
+        "CONTENT_TOP",
+        "CONTENT_BOTTOM",
+        "SECTION_MARGIN",
+        "BLOCK_MARGIN",
+        "ROW_HEIGHT",
+        "TABLE_HEADER_HEIGHT",
+        "TITLE_MARGIN",
+        "TABLE_COL_WIDTHS",
+        "TABLE_COL_STARTS",
+        "SUMMARY_BOX_WIDTH",
+        "SUMMARY_BOX_HEIGHT",
+        "SUMMARY_BOX_GAP",
+        "CATEGORY_TABLE_COL_WIDTHS",
+        "CATEGORY_TABLE_COL_STARTS"
+      ],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/pdfHandler.js": {
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "contentHash": "bad5f8be47fa4f856ee5ce8b24f6f099d6554ae589fff51d3dace03d5a8b12b0",
+      "functions": [
+        {
+          "name": "generateAttendanceReport",
+          "params": [
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 52
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        },
+        {
+          "source": "./PDFRenderer",
+          "specifiers": [
+            "PDFRenderer"
+          ]
+        }
+      ],
+      "exports": [
+        "generateAttendanceReport"
+      ],
+      "totalLines": 56,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/pdfHeaderFooter.js": {
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "contentHash": "a6512e226635c4e55765cd98b20d7581aec0f01e94499ee90be51435a256db9a",
+      "functions": [
+        {
+          "name": "addHeader",
+          "params": [
+            "doc",
+            "currentDate",
+            "pageTitle",
+            "reportId"
+          ],
+          "exported": true,
+          "lineCount": 27
+        },
+        {
+          "name": "addFooter",
+          "params": [
+            "doc",
+            "currentPage",
+            "totalPages",
+            "sectionName"
+          ],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "addHeadersAndFooters",
+          "params": [
+            "doc",
+            "currentDate",
+            "reportId"
+          ],
+          "exported": true,
+          "lineCount": 23
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        }
+      ],
+      "exports": [
+        "addHeader",
+        "addFooter",
+        "addHeadersAndFooters"
+      ],
+      "totalLines": 84,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/pdfPendingException.js": {
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "contentHash": "f9f2e7311c63a166569b869e98ff8d007336e40842c3f1376e9f78bc17e18452",
+      "functions": [
+        {
+          "name": "generatePendingExceptionPage",
+          "params": [
+            "doc",
+            "employees"
+          ],
+          "exported": true,
+          "lineCount": 74
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        }
+      ],
+      "exports": [
+        "generatePendingExceptionPage"
+      ],
+      "totalLines": 77,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/pdfSummary.js": {
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "contentHash": "23886d22ac4614d9a5d7e9695298f625d02fa667dbdef99e9921abff900031f9",
+      "functions": [
+        {
+          "name": "generateSummaryPage",
+          "params": [
+            "doc",
+            "currentDate",
+            "sessionStartTime",
+            "totalCount",
+            "completedCount",
+            "pendingCount",
+            "onTimeCount",
+            "arrivedCount",
+            "absentCount",
+            "employees",
+            "reportId"
+          ],
+          "exported": true,
+          "lineCount": 136
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        }
+      ],
+      "exports": [
+        "generateSummaryPage"
+      ],
+      "totalLines": 139,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/pdfTables.js": {
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "contentHash": "70e0aa2a90f08969158bee094b2cb1cc1cc579fcff8ee0254cfbf99b03bfe2db",
+      "functions": [
+        {
+          "name": "generateTablePages",
+          "params": [
+            "doc",
+            "employees"
+          ],
+          "exported": true,
+          "lineCount": 97
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "jspdf",
+          "specifiers": [
+            "jsPDF"
+          ]
+        }
+      ],
+      "exports": [
+        "generateTablePages"
+      ],
+      "totalLines": 100,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "contentHash": "a1a9dde5a6bbb35dc7147dfa053ac57f1b37a3d27db0a389191d007f789e5c82",
+      "functions": [],
+      "classes": [
+        {
+          "name": "CategorySummaryRenderer",
+          "methods": [
+            "constructor",
+            "measureHeight",
+            "render"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 78
+        }
+      ],
+      "imports": [
+        {
+          "source": "../layout/pdfLayoutConstants",
+          "specifiers": [
+            "PAGE_MARGIN_LEFT",
+            "CATEGORY_TABLE_COL_WIDTHS",
+            "CATEGORY_TABLE_COL_STARTS",
+            "TITLE_MARGIN",
+            "ROW_HEIGHT",
+            "TABLE_HEADER_HEIGHT"
+          ]
+        }
+      ],
+      "exports": [
+        "CategorySummaryRenderer"
+      ],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "contentHash": "0d86df8c9d057f3aae5f0ef60d1dcadedc710f03b140e855a8c49b79ee8f192e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "EmployeeSectionRenderer",
+          "methods": [
+            "constructor",
+            "measureSectionHeight",
+            "render",
+            "renderCategorySection",
+            "renderEmployeeRows",
+            "renderTableHeader"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 133
+        }
+      ],
+      "imports": [
+        {
+          "source": "../layout/pdfLayoutConstants",
+          "specifiers": [
+            "PAGE_MARGIN_LEFT",
+            "TABLE_COL_WIDTHS",
+            "TABLE_COL_STARTS",
+            "TITLE_MARGIN",
+            "ROW_HEIGHT",
+            "TABLE_HEADER_HEIGHT"
+          ]
+        }
+      ],
+      "exports": [
+        "EmployeeSectionRenderer"
+      ],
+      "totalLines": 136,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "contentHash": "457682b75e6c8a19a468d4951f8eeed812d8f2b6037606da89d333a774994d91",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ExceptionReportRenderer",
+          "methods": [
+            "constructor",
+            "measureHeight",
+            "render"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 103
+        }
+      ],
+      "imports": [
+        {
+          "source": "../layout/pdfLayoutConstants",
+          "specifiers": [
+            "PAGE_MARGIN_LEFT",
+            "TITLE_MARGIN",
+            "ROW_HEIGHT"
+          ]
+        }
+      ],
+      "exports": [
+        "ExceptionReportRenderer"
+      ],
+      "totalLines": 106,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "contentHash": "8675f0b266b2afdfe584b57f026d65e4a1f25bb89d264dd5d3da426d7a20fcba",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ReportHeaderRenderer",
+          "methods": [
+            "constructor",
+            "measureHeight",
+            "render"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "imports": [
+        {
+          "source": "../layout/pdfLayoutConstants",
+          "specifiers": [
+            "PAGE_MARGIN_LEFT",
+            "PAGE_MARGIN_RIGHT",
+            "TITLE_MARGIN"
+          ]
+        }
+      ],
+      "exports": [
+        "ReportHeaderRenderer"
+      ],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "contentHash": "b00ca53045d07704dabfee1b4431e721a4fb810a2a3a0d59082771a4dc1656ee",
+      "functions": [],
+      "classes": [
+        {
+          "name": "SummaryRenderer",
+          "methods": [
+            "constructor",
+            "measureHeight",
+            "render"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 84
+        }
+      ],
+      "imports": [
+        {
+          "source": "../layout/pdfLayoutConstants",
+          "specifiers": [
+            "PAGE_MARGIN_LEFT",
+            "SUMMARY_BOX_WIDTH",
+            "SUMMARY_BOX_HEIGHT",
+            "SUMMARY_BOX_GAP",
+            "TITLE_MARGIN"
+          ]
+        }
+      ],
+      "exports": [
+        "SummaryRenderer"
+      ],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js": {
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "contentHash": "f929b89540c3053c8dedfabbb754ae64cae8217b14a561f28c38888afc4722f6",
+      "functions": [],
+      "classes": [
+        {
+          "name": "VehicleSectionRenderer",
+          "methods": [
+            "constructor",
+            "render"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 109
+        }
+      ],
+      "imports": [],
+      "exports": [
+        "VehicleSectionRenderer"
+      ],
+      "totalLines": 110,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/ui/ButtonGroup.jsx": {
+      "filePath": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "contentHash": "acc358e3609200cfdb928b9c2ab31341515fff8f13c98e3c15af4403fe0aec18",
+      "functions": [
+        {
+          "name": "ButtonGroup",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/ui/LabourRequestButtons.jsx": {
+      "filePath": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "contentHash": "8bd377cfd191186feafb305d2f217fc948ee7d7c65d796422a4b59d76d7a07ad",
+      "functions": [
+        {
+          "name": "LabourRequestButtons",
+          "params": [],
+          "exported": false,
+          "lineCount": 28
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "./ButtonGroup",
+          "specifiers": [
+            "ButtonGroup"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/components/ui/VehicleSelect.jsx": {
+      "filePath": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "contentHash": "0fc5f717e39cd05d96c2783d363ef93060dd425dc177564399021115d823d344",
+      "functions": [
+        {
+          "name": "VehicleSelect",
+          "params": [],
+          "exported": false,
+          "lineCount": 75
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "memo"
+          ]
+        },
+        {
+          "source": "./ButtonGroup",
+          "specifiers": [
+            "ButtonGroup"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/hooks/useAttendanceHandlers.js": {
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "contentHash": "e442051f574ac3b38573a3170b27da6757d502d4532c18f7ac3b674c2fd171b9",
+      "functions": [
+        {
+          "name": "useAttendanceHandlers",
+          "params": [],
+          "exported": true,
+          "lineCount": 407
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "useAttendanceHandlers"
+      ],
+      "totalLines": 408,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/hooks/useAttendanceState.js": {
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "contentHash": "e01dc57293eac38798dae1b4cf132babb590d3331272fcc7edb9c4a8ebd165ef",
+      "functions": [
+        {
+          "name": "useAttendanceState",
+          "params": [],
+          "exported": true,
+          "lineCount": 149
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useQueryClient"
+          ]
+        },
+        {
+          "source": "@laxmi/shared",
+          "specifiers": [
+            "useEmployees",
+            "useVehicles",
+            "authService"
+          ]
+        }
+      ],
+      "exports": [
+        "useAttendanceState"
+      ],
+      "totalLines": 157,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/hooks/useFilters.js": {
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "contentHash": "1ca68ef281c803ccc2c54f93e5af4ea5be3ccadfc9553b719bf1ff1df40d55b7",
+      "functions": [
+        {
+          "name": "useFilters",
+          "params": [
+            "employees",
+            "vehicles",
+            "searchQuery",
+            "categoryFilter",
+            "attendanceFilter",
+            "alphabetFilter"
+          ],
+          "exported": true,
+          "lineCount": 33
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "useFilters"
+      ],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/hooks/useStatistics.js": {
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "contentHash": "27eaf9ed4a7ffdf278f839bfaacce5569d9630eb7d6bd0129ce87f73198b005b",
+      "functions": [
+        {
+          "name": "useStatistics",
+          "params": [
+            "employees",
+            "vehicles"
+          ],
+          "exported": true,
+          "lineCount": 79
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "useStatistics"
+      ],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/hooks/useTableSort.js": {
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "contentHash": "f0aef6cd74dfcc7470ae47efdf4451ec2864c7301c2a601470eae3e69244bcb3",
+      "functions": [
+        {
+          "name": "useTableSort",
+          "params": [],
+          "exported": true,
+          "lineCount": 85
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        }
+      ],
+      "exports": [
+        "useTableSort"
+      ],
+      "totalLines": 88,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/index.css": {
+      "filePath": "apps/supervisor/src/index.css",
+      "contentHash": "df9c78548c0d6e95fc88383815dc51ad998881d12db6ceae7545829f9783be9c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": false
+    },
+    "apps/supervisor/src/main.jsx": {
+      "filePath": "apps/supervisor/src/main.jsx",
+      "contentHash": "6fcc2fc9a0165a518ac38d4fb580511703709b923b336f7bdc56dcd7c42cd5c8",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "QueryClientProvider"
+          ]
+        },
+        {
+          "source": "@laxmi/shared",
+          "specifiers": [
+            "ErrorBoundary"
+          ]
+        },
+        {
+          "source": "./index.css",
+          "specifiers": []
+        },
+        {
+          "source": "./App.jsx",
+          "specifiers": [
+            "App"
+          ]
+        },
+        {
+          "source": "./QueryClient.jsx",
+          "specifiers": [
+            "queryClient"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/agentClient.js": {
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "contentHash": "5877735bec56b0691648f3ff565932406e639b81c95bc06248ee6aaad5bb2f31",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AgentClient",
+          "methods": [
+            "sendAction",
+            "waitForJobCompletion",
+            "batchActions",
+            "queryAgent",
+            "syncState"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 124
+        }
+      ],
+      "imports": [
+        {
+          "source": "./api.js",
+          "specifiers": [
+            "apiClient"
+          ]
+        }
+      ],
+      "exports": [
+        "agentClient"
+      ],
+      "totalLines": 130,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/api.js": {
+      "filePath": "apps/supervisor/src/services/api.js",
+      "contentHash": "d979c3d1788e514236550826a18ca64cb5e090c6284ebee8be1cd513adc7c7be",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ApiClient",
+          "methods": [
+            "constructor",
+            "request",
+            "get",
+            "post",
+            "patch",
+            "put",
+            "delete"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 66
+        }
+      ],
+      "imports": [],
+      "exports": [
+        "apiClient"
+      ],
+      "totalLines": 72,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/employeeService.js": {
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "contentHash": "5e111dd2b41e6f08365bfd163f262d4f5fdb7205acc440753d5c3dc65d785ed7",
+      "functions": [],
+      "classes": [
+        {
+          "name": "EmployeeService",
+          "methods": [
+            "fetchEmployees",
+            "fetchEmployee",
+            "updateAttendance",
+            "batchUpdateAttendance",
+            "addEmployee",
+            "updateLabourRequest",
+            "assignVehicle",
+            "searchEmployees",
+            "getEmployeeStats"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 102
+        }
+      ],
+      "imports": [
+        {
+          "source": "./agentClient.js",
+          "specifiers": [
+            "agentClient"
+          ]
+        }
+      ],
+      "exports": [
+        "employeeService"
+      ],
+      "totalLines": 108,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/index.js": {
+      "filePath": "apps/supervisor/src/services/index.js",
+      "contentHash": "4776a514f95ccbeaa87b0a9a08fabf8ab05adb69a0478f13a92fbfa789936411",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "apiClient",
+        "agentClient",
+        "employeeService",
+        "vehicleService",
+        "sessionService",
+        "reportService",
+        "restEmployeeService",
+        "restVehicleService",
+        "restSessionService",
+        "restAssignmentService"
+      ],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/offlineQueue.js": {
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "contentHash": "a12d16600a10362fb44db061c9593172a4693826ea9f27a76af37d88e73b7fb6",
+      "functions": [],
+      "classes": [
+        {
+          "name": "OfflineQueue",
+          "methods": [
+            "constructor",
+            "loadQueue",
+            "saveQueue",
+            "add",
+            "remove",
+            "clear",
+            "getQueue",
+            "getQueueCount",
+            "handleOnline",
+            "handleOffline",
+            "setSyncStatus",
+            "getSyncStatus",
+            "sync",
+            "executeOperation",
+            "subscribe",
+            "notifyListeners"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 149
+        }
+      ],
+      "imports": [],
+      "exports": [
+        "offlineQueue"
+      ],
+      "totalLines": 155,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/reportService.js": {
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "contentHash": "c7e3754769fb75e20526c687bbbe4ceaa2cb37122183a0b5957d0cdabf9a8cf1",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ReportService",
+          "methods": [
+            "generateAttendanceReport",
+            "generateVehicleReport",
+            "generateLabourReport",
+            "generateSummaryReport",
+            "downloadReport",
+            "getReportStatus",
+            "listReports",
+            "deleteReport",
+            "exportToCSV",
+            "exportToExcel"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 117
+        }
+      ],
+      "imports": [
+        {
+          "source": "./agentClient.js",
+          "specifiers": [
+            "agentClient"
+          ]
+        }
+      ],
+      "exports": [
+        "reportService"
+      ],
+      "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/restAssignmentService.js": {
+      "filePath": "apps/supervisor/src/services/restAssignmentService.js",
+      "contentHash": "80aa28d123ed130c357cff85c9a28ffc468407ba50d218b02dcd57928783c7e2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "restAssignmentService"
+      ],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/restEmployeeService.js": {
+      "filePath": "apps/supervisor/src/services/restEmployeeService.js",
+      "contentHash": "da852eaac213610cd2b2404e4ce9d876f59c83329edd3b558ba5f0c228fea8a5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "restEmployeeService"
+      ],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/restSessionService.js": {
+      "filePath": "apps/supervisor/src/services/restSessionService.js",
+      "contentHash": "879cda461f3e305ea8edf75f94aa461313745cd451376a89497d4b08b84510d8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "restSessionService"
+      ],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/restVehicleService.js": {
+      "filePath": "apps/supervisor/src/services/restVehicleService.js",
+      "contentHash": "b5e06986b253e93232c12a50c7e245f77916b7a9432a5e68e99f048cbd363087",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "restVehicleService"
+      ],
+      "totalLines": 3,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/sessionService.js": {
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "contentHash": "54c2b0ccf2e1871645cff0430b44a05c7d9d4493ea0dec6feb162bdfa25dcca0",
+      "functions": [],
+      "classes": [
+        {
+          "name": "SessionService",
+          "methods": [
+            "initializeSession",
+            "loadSession",
+            "getCurrentSession",
+            "finalizeSession",
+            "setAttendanceLock",
+            "saveState",
+            "loadState",
+            "getSessionStats",
+            "listSessions",
+            "deleteSession",
+            "syncSessionState"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 117
+        }
+      ],
+      "imports": [
+        {
+          "source": "./agentClient.js",
+          "specifiers": [
+            "agentClient"
+          ]
+        }
+      ],
+      "exports": [
+        "sessionService"
+      ],
+      "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/src/services/vehicleService.js": {
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "contentHash": "39699df66fcb58388f127059686a8553615ec922e3d1005a295e85d43ae96db4",
+      "functions": [],
+      "classes": [
+        {
+          "name": "VehicleService",
+          "methods": [
+            "fetchVehicles",
+            "fetchVehicle",
+            "updateStatus",
+            "batchUpdateStatus",
+            "assignToEmployee",
+            "getStatusHistory",
+            "searchVehicles",
+            "getVehicleStats",
+            "getAvailableVehicles"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 96
+        }
+      ],
+      "imports": [
+        {
+          "source": "./agentClient.js",
+          "specifiers": [
+            "agentClient"
+          ]
+        }
+      ],
+      "exports": [
+        "vehicleService"
+      ],
+      "totalLines": 102,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/tailwind.config.js": {
+      "filePath": "apps/supervisor/tailwind.config.js",
+      "contentHash": "2248bf828c19499e4a34a9d6696bc862cd53989239b7b4a61a76eef20bfacb79",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "apps/supervisor/vite.config.js": {
+      "filePath": "apps/supervisor/vite.config.js",
+      "contentHash": "e04aa0798cba4ecda9076405dd03e8b6b56270a29003a985eb6c16ba00cf6256",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "docker-compose.yml": {
+      "filePath": "docker-compose.yml",
+      "contentHash": "071bec5c870f729aed1662ce94ad20d021e80a0fda1cc8c76774d2bd4bd0acf8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 80,
+      "hasStructuralAnalysis": true
+    },
+    "launch-containers.bat": {
+      "filePath": "launch-containers.bat",
+      "contentHash": "b012963e7228e25f1549534d554461e87fe3abef1ab02c035040706424073478",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": false
+    },
+    "packages/shared/check-types.bat": {
+      "filePath": "packages/shared/check-types.bat",
+      "contentHash": "699fb61a61275de4a04fc45b6da1b2a525d6059dbc464263303d0373694ef8d8",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": false
+    },
+    "packages/shared/check-types.js": {
+      "filePath": "packages/shared/check-types.js",
+      "contentHash": "e1d7dd8788c0de938c46c09d4fba8345c6bd664b0d0d282b8d08cedfc2a3c083",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "child_process",
+          "specifiers": [
+            "execSync"
+          ]
+        },
+        {
+          "source": "fs",
+          "specifiers": [
+            "fs"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": "url",
+          "specifiers": [
+            "fileURLToPath"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 43,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/check-types.sh": {
+      "filePath": "packages/shared/check-types.sh",
+      "contentHash": "d13a570b31eb345db034bb6070f115c142bfe4a1b71709058801b9daa570d78a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 24,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/components/ErrorBoundary.jsx": {
+      "filePath": "packages/shared/components/ErrorBoundary.jsx",
+      "contentHash": "a01b2e85e07fba79572ddbb3b8944a68ef477d4c3a5e59d91722bf15b9e72495",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ErrorBoundary",
+          "methods": [
+            "constructor",
+            "getDerivedStateFromError",
+            "componentDidCatch",
+            "render"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 69
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Component"
+          ]
+        },
+        {
+          "source": "../services/backendApi",
+          "specifiers": [
+            "NetworkError",
+            "AuthError",
+            "ValidationError"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 75,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/components/LoadingSpinner.jsx": {
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "contentHash": "45bb48ff92f6026d304d6f7a89c26149cd5610187c968571721282fc2cf95eba",
+      "functions": [
+        {
+          "name": "LoadingSpinner",
+          "params": [],
+          "exported": true,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "LoadingSpinner"
+      ],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/hooks/useEmployees.js": {
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "contentHash": "8389c0ddeb1010e60e86cc0930ca201d66856b6fec3ca4dff43bc03f1231e45c",
+      "functions": [
+        {
+          "name": "useEmployees",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "useEmployee",
+          "params": [
+            "employeeId"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "useUpdateAttendance",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "useAddEmployee",
+          "params": [],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "useUpdateEmployee",
+          "params": [],
+          "exported": true,
+          "lineCount": 32
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useQuery",
+            "useMutation",
+            "useQueryClient"
+          ]
+        },
+        {
+          "source": "../services/restEmployeeService",
+          "specifiers": [
+            "restEmployeeService"
+          ]
+        },
+        {
+          "source": "../services/authService",
+          "specifiers": [
+            "authService"
+          ]
+        }
+      ],
+      "exports": [
+        "useEmployees",
+        "useEmployee",
+        "useUpdateAttendance",
+        "useAddEmployee",
+        "useUpdateEmployee"
+      ],
+      "totalLines": 126,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/hooks/useVehicles.js": {
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "contentHash": "50e2e8de2e52c565dbdb427e3f18402188e12b76e5dae30ded264f9df963cda2",
+      "functions": [
+        {
+          "name": "useVehicles",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "useVehicle",
+          "params": [
+            "vehicleNumber"
+          ],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "useUpdateVehicleStatus",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "useAddVehicle",
+          "params": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "useUpdateVehicle",
+          "params": [],
+          "exported": true,
+          "lineCount": 11
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@tanstack/react-query",
+          "specifiers": [
+            "useQuery",
+            "useMutation",
+            "useQueryClient"
+          ]
+        },
+        {
+          "source": "../services/restVehicleService",
+          "specifiers": [
+            "restVehicleService"
+          ]
+        },
+        {
+          "source": "../services/authService",
+          "specifiers": [
+            "authService"
+          ]
+        }
+      ],
+      "exports": [
+        "useVehicles",
+        "useVehicle",
+        "useUpdateVehicleStatus",
+        "useAddVehicle",
+        "useUpdateVehicle"
+      ],
+      "totalLines": 57,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/index.js": {
+      "filePath": "packages/shared/index.js",
+      "contentHash": "9e04f363b920210d8bc522fbcb42bc90808408686bf4e1e932f0b58dabf16d9d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "authService",
+        "backendApiClient",
+        "NetworkError",
+        "AuthError",
+        "ValidationError",
+        "restEmployeeService",
+        "restVehicleService",
+        "restAssignmentService",
+        "restSessionService",
+        "ErrorBoundary",
+        "LoadingSpinner",
+        "useEmployees",
+        "useVehicles"
+      ],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/package.json": {
+      "filePath": "packages/shared/package.json",
+      "contentHash": "d332f6542c0d3a39e298b868a45c4e62b5fcca96b6c491d0cae4cac47b341eb1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/services/authService.js": {
+      "filePath": "packages/shared/services/authService.js",
+      "contentHash": "82123db71986ed7171a09092d9260b052fbe0c71e92504259c5d6122a9d581f8",
+      "functions": [],
+      "classes": [
+        {
+          "name": "AuthService",
+          "methods": [
+            "constructor",
+            "login",
+            "getCurrentUser",
+            "refreshToken",
+            "ensureAuthenticated",
+            "storeCredentials",
+            "clearCredentials",
+            "loginWithCredentials",
+            "logout",
+            "isAuthenticated",
+            "getToken"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 112
+        }
+      ],
+      "imports": [
+        {
+          "source": "./backendApi.js",
+          "specifiers": [
+            "backendApiClient",
+            "AuthError"
+          ]
+        }
+      ],
+      "exports": [
+        "authService"
+      ],
+      "totalLines": 118,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/services/backendApi.js": {
+      "filePath": "packages/shared/services/backendApi.js",
+      "contentHash": "23a0429cc4854d4472bcd6daa86da25ff1a5889fa7ca90bfe71a66c8cab2098e",
+      "functions": [],
+      "classes": [
+        {
+          "name": "NetworkError",
+          "methods": [
+            "constructor"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "AuthError",
+          "methods": [
+            "constructor"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "ValidationError",
+          "methods": [
+            "constructor"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "BackendApiClient",
+          "methods": [
+            "constructor",
+            "setToken",
+            "addRequestInterceptor",
+            "addResponseInterceptor",
+            "getHeaders",
+            "requestWithTimeout",
+            "retryRequest",
+            "request",
+            "get",
+            "post",
+            "put",
+            "patch",
+            "delete"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 153
+        }
+      ],
+      "imports": [],
+      "exports": [
+        "backendApiClient",
+        "NetworkError",
+        "AuthError",
+        "ValidationError"
+      ],
+      "totalLines": 189,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/services/restAssignmentService.js": {
+      "filePath": "packages/shared/services/restAssignmentService.js",
+      "contentHash": "477cdad53d6fc64b3689cdd44435b755fd00f778c019a775f076f1edcf4d5ed9",
+      "functions": [],
+      "classes": [
+        {
+          "name": "RestAssignmentService",
+          "methods": [
+            "assignVehicle",
+            "unassignVehicle",
+            "getVehicleAssignments",
+            "getEmployeeAssignment",
+            "mapBackendToFrontend",
+            "mapFrontendToBackend"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 81
+        }
+      ],
+      "imports": [
+        {
+          "source": "./backendApi.js",
+          "specifiers": [
+            "backendApiClient"
+          ]
+        }
+      ],
+      "exports": [
+        "restAssignmentService"
+      ],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/services/restEmployeeService.js": {
+      "filePath": "packages/shared/services/restEmployeeService.js",
+      "contentHash": "76f904395755440ed1113cff43421472a1a061f728468df3a01100ec8a9d54d3",
+      "functions": [],
+      "classes": [
+        {
+          "name": "RestEmployeeService",
+          "methods": [
+            "fetchEmployees",
+            "fetchEmployee",
+            "updateAttendance",
+            "addEmployee",
+            "updateEmployee",
+            "mapBackendToFrontend",
+            "mapFrontendToBackend",
+            "mapFrontendToBackendForUpdate",
+            "mapAttendanceStatus",
+            "mapAttendanceStatusFromBackend"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 159
+        }
+      ],
+      "imports": [
+        {
+          "source": "./backendApi.js",
+          "specifiers": [
+            "backendApiClient"
+          ]
+        }
+      ],
+      "exports": [
+        "restEmployeeService"
+      ],
+      "totalLines": 187,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/services/restSessionService.js": {
+      "filePath": "packages/shared/services/restSessionService.js",
+      "contentHash": "3f29e8c2bb1dada570826109c4dad6f5cc7a5ee08e67ebf2803e50e238147067",
+      "functions": [],
+      "classes": [
+        {
+          "name": "RestSessionService",
+          "methods": [
+            "createSession",
+            "fetchSessions",
+            "fetchSession",
+            "getActiveSession",
+            "finalizeSession",
+            "getSessionAttendance",
+            "updateAttendance",
+            "mapBackendToFrontend",
+            "mapFrontendToBackend",
+            "mapAttendanceBackendToFrontend",
+            "mapAttendanceFrontendToBackend",
+            "mapAttendanceStatus",
+            "mapAttendanceStatusFromBackend"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 178
+        }
+      ],
+      "imports": [
+        {
+          "source": "./backendApi.js",
+          "specifiers": [
+            "backendApiClient"
+          ]
+        }
+      ],
+      "exports": [
+        "restSessionService"
+      ],
+      "totalLines": 218,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/services/restVehicleService.js": {
+      "filePath": "packages/shared/services/restVehicleService.js",
+      "contentHash": "972ac2bc2dcf0f15cf9fe3d756ccae4e705457f12066e2ccbf5ff9d5a80628dd",
+      "functions": [],
+      "classes": [
+        {
+          "name": "RestVehicleService",
+          "methods": [
+            "fetchVehicles",
+            "fetchVehicle",
+            "updateStatus",
+            "createVehicle",
+            "updateVehicle",
+            "mapBackendToFrontend",
+            "mapFrontendToBackend",
+            "mapFrontendToBackendForUpdate",
+            "mapVehicleStatus",
+            "mapVehicleStatusFromBackend"
+          ],
+          "properties": [],
+          "exported": false,
+          "lineCount": 137
+        }
+      ],
+      "imports": [
+        {
+          "source": "./backendApi.js",
+          "specifiers": [
+            "backendApiClient"
+          ]
+        }
+      ],
+      "exports": [
+        "restVehicleService"
+      ],
+      "totalLines": 161,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/tsconfig.json": {
+      "filePath": "packages/shared/tsconfig.json",
+      "contentHash": "6f0b9ed8cf3cfabada63d4f60c4aab2a9bf1e6857d73d2f37e943c49a86a2102",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 18,
+      "hasStructuralAnalysis": true
+    },
+    "packages/shared/types/api.ts": {
+      "filePath": "packages/shared/types/api.ts",
+      "contentHash": "af015d184c7261a1dfab895b85811393c6041717284a8844d9cf0a232cf811ed",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1343,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/pre-commit.bat": {
+      "filePath": "scripts/pre-commit.bat",
+      "contentHash": "a294e72ee14d079e1da73de36143cda2514be36d9c71e29a5134f39e5c19b3a9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 28,
+      "hasStructuralAnalysis": false
+    },
+    "scripts/pre-commit.sh": {
+      "filePath": "scripts/pre-commit.sh",
+      "contentHash": "1008ff468feee3267cdfdd8c86a8659837f6db7f50e8a2000f54c2855fb44dbe",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

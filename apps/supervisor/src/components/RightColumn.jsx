@@ -57,19 +57,28 @@ export default memo(function RightColumn({
             <div className="text-xs text-gray-500">Total</div>
           </button>
         </div>
-        <div className="border-t border-gray-200 pt-3">
-          <div className="flex justify-between text-xs mb-1">
+        <div className="border-t border-gray-200 pt-3 space-y-1">
+          <button
+            onClick={() => setAttendanceFilter('On Time')}
+            className={`w-full flex justify-between text-xs p-1 rounded hover:bg-gray-100 transition-colors ${attendanceFilter === 'On Time' ? 'bg-green-50 font-semibold' : ''}`}
+          >
             <span className="text-gray-600">🟢 On Time</span>
             <span className="font-medium text-green-600">{onTimeCount}</span>
-          </div>
-          <div className="flex justify-between text-xs mb-1">
+          </button>
+          <button
+            onClick={() => setAttendanceFilter('Arrived')}
+            className={`w-full flex justify-between text-xs p-1 rounded hover:bg-gray-100 transition-colors ${attendanceFilter === 'Arrived' ? 'bg-amber-50 font-semibold' : ''}`}
+          >
             <span className="text-gray-600">🟡 Arrived</span>
             <span className="font-medium text-amber-600">{arrivedCount}</span>
-          </div>
-          <div className="flex justify-between text-xs">
+          </button>
+          <button
+            onClick={() => setAttendanceFilter('Absent')}
+            className={`w-full flex justify-between text-xs p-1 rounded hover:bg-gray-100 transition-colors ${attendanceFilter === 'Absent' ? 'bg-red-50 font-semibold' : ''}`}
+          >
             <span className="text-gray-600">🔴 Absent</span>
             <span className="font-medium text-red-600">{absentCount}</span>
-          </div>
+          </button>
         </div>
       </div>
 

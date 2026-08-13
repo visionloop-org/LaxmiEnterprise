@@ -58,9 +58,9 @@
 - [x] Replace generated employee and vehicle data with server-loaded session data.
 - [x] Replace `localStorage` attendance persistence with API-backed mutations.
 - [x] Move direct component state mutations into attendance and vehicle workflow hooks.
-- [ ] Remove browser `alert()` and `confirm()` usage; display inline validation and conflict feedback.
+- [x] Remove browser `alert()` and `confirm()` usage; display inline validation and conflict feedback.
 - [ ] Implement the Arrived time-selection and confirmation flow.
-- [ ] Disable editable controls only after server-confirmed finalization.
+- [x] Disable editable controls only after server-confirmed finalization.
 - [ ] Add loading, retry, offline, and `409 Conflict` recovery states.
 
 ## Reports and Jobs

@@ -76,16 +76,16 @@ export function useAttendanceState() {
 
   // Create setters that work with React Query cache
   const setEmployees = (updater) => {
-    queryClient.setQueryData(EMPLOYEES_QUERY_KEY, (prev) => {
-      if (!prev) return updater([])
-      return updater(prev)
+    queryClient.setQueriesData({ queryKey: EMPLOYEES_QUERY_KEY }, (prev) => {
+      const current = prev || employees || []
+      return typeof updater === 'function' ? updater(current) : updater
     })
   }
 
   const setVehicles = (updater) => {
-    queryClient.setQueryData(VEHICLES_QUERY_KEY, (prev) => {
-      if (!prev) return updater([])
-      return updater(prev)
+    queryClient.setQueriesData({ queryKey: VEHICLES_QUERY_KEY }, (prev) => {
+      const current = prev || vehicles || []
+      return typeof updater === 'function' ? updater(current) : updater
     })
   }
 

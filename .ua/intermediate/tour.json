@@ -1,0 +1,67 @@
+[
+  {
+    "order": 1,
+    "title": "System Architecture Overview",
+    "description": "Overview of Laxmi Enterprise monorepo layout comprising React Supervisor/Admin web apps, FastAPI backend, and shared libraries.",
+    "nodeIds": [
+      "document:ARCHITECTURE.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "FastAPI Server Application Entry",
+    "description": "Backend entry point configuring FastAPI app, CORS middleware, API route routers, and MongoDB connection lifespan.",
+    "nodeIds": [
+      "file:ServerSide/app/main.py",
+      "file:ServerSide/core/config.py"
+    ]
+  },
+  {
+    "order": 3,
+    "title": "API Routing & Authentication",
+    "description": "REST endpoints handling user login authentication, JWT token validation, employee data, and vehicle assignment management.",
+    "nodeIds": [
+      "file:ServerSide/app/api/v1/auth.py",
+      "file:ServerSide/app/api/v1/employees/routes.py",
+      "file:ServerSide/app/api/v1/assignments/routes.py"
+    ]
+  },
+  {
+    "order": 4,
+    "title": "Data Models & Persistence",
+    "description": "MongoDB asynchronous database connection pool and Pydantic schemas for attendance records and employee tracking.",
+    "nodeIds": [
+      "file:ServerSide/app/db/mongodb.py",
+      "file:ServerSide/app/models/employee.py",
+      "file:ServerSide/app/models/attendance.py"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Supervisor Frontend Application",
+    "description": "Main supervisor frontend dashboard managing daily employee attendance tracking and vehicle loading assignments.",
+    "nodeIds": [
+      "file:apps/supervisor/src/main.jsx",
+      "file:apps/supervisor/src/App.jsx"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Vehicle Assignment & Capacity Table",
+    "description": "Interactive table managing vehicle assignments, driver/chalan capacity rule checks, and real-time utilization progress bars.",
+    "nodeIds": [
+      "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "file:apps/supervisor/src/components/EmployeeTable.jsx"
+    ]
+  },
+  {
+    "order": 7,
+    "title": "Shared Monorepo Libraries",
+    "description": "Shared React hooks (`useEmployees`, `useVehicles`) and REST API client services consumed by supervisor and admin frontends.",
+    "nodeIds": [
+      "file:packages/shared/index.js",
+      "file:packages/shared/hooks/useEmployees.js",
+      "file:packages/shared/services/backendApi.js"
+    ]
+  }
+]

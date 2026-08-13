@@ -1,3 +1,16 @@
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(1.5rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-slide-in { animation: slide-in 0.2s ease-out both; }
+.animate-fade-in  { animation: fade-in  0.15s ease-out both; }
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

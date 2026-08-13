@@ -1,0 +1,548 @@
+{
+  "nodes": [
+    {
+      "id": "file:apps/supervisor/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "apps/supervisor/src/App.jsx",
+      "summary": "Javascript code file (277 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "apps/supervisor/src/App.jsx",
+      "summary": "Function App in apps/supervisor/src/App.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/QueryClient.jsx",
+      "type": "file",
+      "name": "QueryClient.jsx",
+      "filePath": "apps/supervisor/src/QueryClient.jsx",
+      "summary": "Javascript code file (35 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "type": "file",
+      "name": "CapacityConflictModal.jsx",
+      "filePath": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "summary": "Javascript code file (101 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/CapacityConflictModal.jsx:CapacityConflictModal",
+      "type": "function",
+      "name": "CapacityConflictModal",
+      "filePath": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "summary": "Function CapacityConflictModal in apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "type": "file",
+      "name": "CapacityReportModal.jsx",
+      "filePath": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "summary": "Javascript code file (198 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/CapacityReportModal.jsx:CapacityReportModal",
+      "type": "function",
+      "name": "CapacityReportModal",
+      "filePath": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "summary": "Function CapacityReportModal in apps/supervisor/src/components/CapacityReportModal.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "type": "file",
+      "name": "CategoryTabs.jsx",
+      "filePath": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "summary": "Javascript code file (25 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/CategoryTabs.jsx:CategoryTabs",
+      "type": "function",
+      "name": "CategoryTabs",
+      "filePath": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "summary": "Function CategoryTabs in apps/supervisor/src/components/CategoryTabs.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "type": "file",
+      "name": "FilterChips.jsx",
+      "filePath": "apps/supervisor/src/components/FilterChips.jsx",
+      "summary": "Javascript code file (100 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/FilterChips.jsx:FilterChips",
+      "type": "function",
+      "name": "FilterChips",
+      "filePath": "apps/supervisor/src/components/FilterChips.jsx",
+      "summary": "Function FilterChips in apps/supervisor/src/components/FilterChips.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "type": "file",
+      "name": "LeftColumn.jsx",
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "summary": "Javascript code file (118 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+      "type": "function",
+      "name": "LeftColumn",
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "summary": "Function LeftColumn in apps/supervisor/src/components/LeftColumn.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "type": "file",
+      "name": "LoginModal.jsx",
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "summary": "Javascript code file (93 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+      "type": "function",
+      "name": "LoginModal",
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "summary": "Function LoginModal in apps/supervisor/src/components/LoginModal.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/RightColumn.jsx",
+      "type": "file",
+      "name": "RightColumn.jsx",
+      "filePath": "apps/supervisor/src/components/RightColumn.jsx",
+      "summary": "Javascript code file (253 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "type": "file",
+      "name": "VehicleAssignmentHistory.jsx",
+      "filePath": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "summary": "Javascript code file (105 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/VehicleAssignmentHistory.jsx:VehicleAssignmentHistory",
+      "type": "function",
+      "name": "VehicleAssignmentHistory",
+      "filePath": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "summary": "Function VehicleAssignmentHistory in apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "type": "file",
+      "name": "VehicleTable.jsx",
+      "filePath": "apps/supervisor/src/components/VehicleTable.jsx",
+      "summary": "Javascript code file (245 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/VehicleTable.jsx:VehicleTable",
+      "type": "function",
+      "name": "VehicleTable",
+      "filePath": "apps/supervisor/src/components/VehicleTable.jsx",
+      "summary": "Function VehicleTable in apps/supervisor/src/components/VehicleTable.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "type": "file",
+      "name": "useAttendanceHandlers.js",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "summary": "Javascript code file (407 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+      "type": "function",
+      "name": "useAttendanceHandlers",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "summary": "Function useAttendanceHandlers in apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "type": "file",
+      "name": "useAttendanceState.js",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "summary": "Javascript code file (156 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+      "type": "function",
+      "name": "useAttendanceState",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "summary": "Function useAttendanceState in apps/supervisor/src/hooks/useAttendanceState.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useFilters.js",
+      "type": "file",
+      "name": "useFilters.js",
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "summary": "Javascript code file (33 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+      "type": "function",
+      "name": "useFilters",
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "summary": "Function useFilters in apps/supervisor/src/hooks/useFilters.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "type": "file",
+      "name": "useStatistics.js",
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "summary": "Javascript code file (79 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+      "type": "function",
+      "name": "useStatistics",
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "summary": "Function useStatistics in apps/supervisor/src/hooks/useStatistics.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "type": "file",
+      "name": "useTableSort.js",
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "summary": "Javascript code file (87 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+      "type": "function",
+      "name": "useTableSort",
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "summary": "Function useTableSort in apps/supervisor/src/hooks/useTableSort.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/main.jsx",
+      "type": "file",
+      "name": "main.jsx",
+      "filePath": "apps/supervisor/src/main.jsx",
+      "summary": "Javascript code file (17 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/App.css",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/EmployeeTable.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/RightColumn.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useFilters.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/main.jsx",
+      "target": "file:apps/supervisor/src/App.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/main.jsx",
+      "target": "file:apps/supervisor/src/QueryClient.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/main.jsx",
+      "target": "file:apps/supervisor/src/index.css",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "function:apps/supervisor/src/App.jsx:App",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "target": "function:apps/supervisor/src/components/CapacityConflictModal.jsx:CapacityConflictModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "target": "function:apps/supervisor/src/components/CapacityReportModal.jsx:CapacityReportModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "target": "function:apps/supervisor/src/components/CategoryTabs.jsx:CategoryTabs",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "target": "function:apps/supervisor/src/components/FilterChips.jsx:FilterChips",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "target": "function:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "target": "function:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "target": "function:apps/supervisor/src/components/VehicleAssignmentHistory.jsx:VehicleAssignmentHistory",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "target": "function:apps/supervisor/src/components/VehicleTable.jsx:VehicleTable",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "target": "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "target": "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useFilters.js",
+      "target": "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "target": "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "target": "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+      "type": "contains"
+    }
+  ]
+}

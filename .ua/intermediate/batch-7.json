@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "id": "file:ServerSide/Dockerfile",
+      "type": "file",
+      "name": "Dockerfile",
+      "filePath": "ServerSide/Dockerfile",
+      "summary": "Dockerfile infra file (33 lines)",
+      "tags": [
+        "dockerfile",
+        "infra"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

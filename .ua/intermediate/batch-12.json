@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "config:apps/admin/.oxlintrc.json",
+      "type": "config",
+      "name": ".oxlintrc.json",
+      "filePath": "apps/admin/.oxlintrc.json",
+      "summary": "Json config file (8 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:apps/admin/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "apps/admin/README.md",
+      "summary": "Markdown docs file (16 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:apps/admin/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "apps/admin/package.json",
+      "summary": "Json config file (26 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

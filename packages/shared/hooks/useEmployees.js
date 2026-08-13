@@ -34,7 +34,7 @@ export function useUpdateAttendance() {
       const previousEmployees = queryClient.getQueryData(EMPLOYEES_QUERY_KEY)
 
       // Optimistically update to the new value
-      queryClient.setQueryData(EMPLOYEES_QUERY_KEY, (old) => {
+      queryClient.setQueriesData({ queryKey: EMPLOYEES_QUERY_KEY }, (old) => {
         if (!old) return old
         return old.map(emp => {
           if (emp.id === employeeId) {
@@ -73,7 +73,7 @@ export function useAddEmployee() {
       await queryClient.cancelQueries({ queryKey: EMPLOYEES_QUERY_KEY })
       const previousEmployees = queryClient.getQueryData(EMPLOYEES_QUERY_KEY)
 
-      queryClient.setQueryData(EMPLOYEES_QUERY_KEY, (old) => {
+      queryClient.setQueriesData({ queryKey: EMPLOYEES_QUERY_KEY }, (old) => {
         if (!old) return [newEmployee]
         return [...old, newEmployee]
       })
@@ -101,7 +101,7 @@ export function useUpdateEmployee() {
       await queryClient.cancelQueries({ queryKey: EMPLOYEES_QUERY_KEY })
       const previousEmployees = queryClient.getQueryData(EMPLOYEES_QUERY_KEY)
 
-      queryClient.setQueryData(EMPLOYEES_QUERY_KEY, (old) => {
+      queryClient.setQueriesData({ queryKey: EMPLOYEES_QUERY_KEY }, (old) => {
         if (!old) return old
         return old.map(emp => {
           if (emp.id === employeeId) {
@@ -123,3 +123,34 @@ export function useUpdateEmployee() {
     },
   })
 }
+
+export function useApproveEmployee() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (employeeId) => restEmployeeService.approveEmployee(employeeId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: EMPLOYEES_QUERY_KEY })
+    },
+  })
+}
+
+export function useRejectEmployee() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (employeeId) => restEmployeeService.rejectEmployee(employeeId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: EMPLOYEES_QUERY_KEY })
+    },
+  })
+}
+
+export function useDeleteEmployee() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (employeeId) => restEmployeeService.deleteEmployee(employeeId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: EMPLOYEES_QUERY_KEY })
+    },
+  })
+}
+

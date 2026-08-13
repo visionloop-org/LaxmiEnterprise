@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "file:packages/shared/check-types.sh",
+      "type": "file",
+      "name": "check-types.sh",
+      "filePath": "packages/shared/check-types.sh",
+      "summary": "Shell script file (23 lines)",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/shared/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/shared/package.json",
+      "summary": "Json config file (31 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/shared/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/shared/tsconfig.json",
+      "summary": "Json config file (17 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

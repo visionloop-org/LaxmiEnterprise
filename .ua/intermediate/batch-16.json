@@ -1,0 +1,346 @@
+{
+  "nodes": [
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "type": "file",
+      "name": "pdfHeaderFooter.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Javascript code file (83 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+      "type": "function",
+      "name": "addHeader",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Function addHeader in apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+      "type": "function",
+      "name": "addFooter",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Function addFooter in apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+      "type": "function",
+      "name": "addHeadersAndFooters",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Function addHeadersAndFooters in apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "type": "file",
+      "name": "pdfPendingException.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "summary": "Javascript code file (76 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+      "type": "function",
+      "name": "generatePendingExceptionPage",
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "summary": "Function generatePendingExceptionPage in apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+      "type": "file",
+      "name": "pdfSummary.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "summary": "Javascript code file (138 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+      "type": "function",
+      "name": "generateSummaryPage",
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "summary": "Function generateSummaryPage in apps/supervisor/src/components/pdf/pdfSummary.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfTables.js",
+      "type": "file",
+      "name": "pdfTables.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "summary": "Javascript code file (99 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+      "type": "function",
+      "name": "generateTablePages",
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "summary": "Function generateTablePages in apps/supervisor/src/components/pdf/pdfTables.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "apps/supervisor/src/services/index.js",
+      "summary": "Javascript code file (28 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/offlineQueue.js",
+      "type": "file",
+      "name": "offlineQueue.js",
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "summary": "Javascript code file (154 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/offlineQueue.js:OfflineQueue",
+      "type": "class",
+      "name": "OfflineQueue",
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "summary": "Class OfflineQueue in apps/supervisor/src/services/offlineQueue.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restAssignmentService.js",
+      "type": "file",
+      "name": "restAssignmentService.js",
+      "filePath": "apps/supervisor/src/services/restAssignmentService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restEmployeeService.js",
+      "type": "file",
+      "name": "restEmployeeService.js",
+      "filePath": "apps/supervisor/src/services/restEmployeeService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restSessionService.js",
+      "type": "file",
+      "name": "restSessionService.js",
+      "filePath": "apps/supervisor/src/services/restSessionService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restVehicleService.js",
+      "type": "file",
+      "name": "restVehicleService.js",
+      "filePath": "apps/supervisor/src/services/restVehicleService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/tailwind.config.js",
+      "type": "file",
+      "name": "tailwind.config.js",
+      "filePath": "apps/supervisor/tailwind.config.js",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/vite.config.js",
+      "type": "file",
+      "name": "vite.config.js",
+      "filePath": "apps/supervisor/vite.config.js",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/check-types.js",
+      "type": "file",
+      "name": "check-types.js",
+      "filePath": "packages/shared/check-types.js",
+      "summary": "Javascript code file (42 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/components/LoadingSpinner.jsx",
+      "type": "file",
+      "name": "LoadingSpinner.jsx",
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "summary": "Javascript code file (14 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+      "type": "function",
+      "name": "LoadingSpinner",
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "summary": "Function LoadingSpinner in packages/shared/components/LoadingSpinner.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "packages/shared/index.js",
+      "summary": "Javascript code file (17 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/types/api.ts",
+      "type": "file",
+      "name": "api.ts",
+      "filePath": "packages/shared/types/api.ts",
+      "summary": "Typescript code file (1342 lines)",
+      "tags": [
+        "typescript",
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/pre-commit.sh",
+      "type": "file",
+      "name": "pre-commit.sh",
+      "filePath": "scripts/pre-commit.sh",
+      "summary": "Shell script file (26 lines)",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfTables.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/offlineQueue.js",
+      "target": "class:apps/supervisor/src/services/offlineQueue.js:OfflineQueue",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/components/LoadingSpinner.jsx",
+      "target": "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+      "type": "contains"
+    }
+  ]
+}

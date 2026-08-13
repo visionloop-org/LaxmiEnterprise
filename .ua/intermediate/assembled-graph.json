@@ -1,0 +1,5457 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "LaxmiEnterprise",
+    "languages": [
+      "javascript",
+      "python",
+      "html",
+      "css",
+      "json"
+    ],
+    "frameworks": [
+      "react",
+      "vite",
+      "fastapi",
+      "tailwindcss",
+      "mongodb"
+    ],
+    "description": "Supervisor & Admin Attendance Tracking App with FastAPI backend and MongoDB database",
+    "analyzedAt": "2026-08-11T19:46:00Z",
+    "gitCommitHash": "6f8f24e6df159d8c6f0a8531f3469c0d919be014"
+  },
+  "nodes": [
+    {
+      "id": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python code file (234 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+      "type": "function",
+      "name": "get_vehicle_capacity",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function get_vehicle_capacity in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+      "type": "function",
+      "name": "validate_assignment_rules",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function validate_assignment_rules in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+      "type": "function",
+      "name": "assign_vehicle",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function assign_vehicle in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+      "type": "function",
+      "name": "unassign_vehicle",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function unassign_vehicle in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+      "type": "function",
+      "name": "get_vehicle_assignments",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function get_vehicle_assignments in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+      "type": "function",
+      "name": "get_employee_assignment",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function get_employee_assignment in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Python code file (133 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+      "type": "function",
+      "name": "record_attendance",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Function record_attendance in ServerSide/app/api/v1/attendance/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+      "type": "function",
+      "name": "get_session_attendance",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Function get_session_attendance in ServerSide/app/api/v1/attendance/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+      "type": "function",
+      "name": "get_employee_attendance",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Function get_employee_attendance in ServerSide/app/api/v1/attendance/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Python code file (25 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/auth.py:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Function login in ServerSide/app/api/v1/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/auth.py:get_me",
+      "type": "function",
+      "name": "get_me",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Function get_me in ServerSide/app/api/v1/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/employees/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python code file (69 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+      "type": "function",
+      "name": "list_employees",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function list_employees in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+      "type": "function",
+      "name": "create_employee",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function create_employee in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+      "type": "function",
+      "name": "get_employee",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function get_employee in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+      "type": "function",
+      "name": "update_employee",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function update_employee in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python code file (133 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+      "type": "function",
+      "name": "create_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function create_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+      "type": "function",
+      "name": "list_sessions",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function list_sessions in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+      "type": "function",
+      "name": "get_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function get_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+      "type": "function",
+      "name": "get_active_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function get_active_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+      "type": "function",
+      "name": "finalize_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function finalize_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Python code file (72 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+      "type": "function",
+      "name": "list_vehicles",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function list_vehicles in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+      "type": "function",
+      "name": "create_vehicle",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function create_vehicle in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+      "type": "function",
+      "name": "get_vehicle",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function get_vehicle in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+      "type": "function",
+      "name": "update_vehicle",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function update_vehicle in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/db/indexes.py",
+      "type": "file",
+      "name": "indexes.py",
+      "filePath": "ServerSide/app/db/indexes.py",
+      "summary": "Python code file (37 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/db/indexes.py:create_indexes",
+      "type": "function",
+      "name": "create_indexes",
+      "filePath": "ServerSide/app/db/indexes.py",
+      "summary": "Function create_indexes in ServerSide/app/db/indexes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/db/mongodb.py",
+      "type": "file",
+      "name": "mongodb.py",
+      "filePath": "ServerSide/app/db/mongodb.py",
+      "summary": "Python code file (32 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/db/mongodb.py:Database",
+      "type": "class",
+      "name": "Database",
+      "filePath": "ServerSide/app/db/mongodb.py",
+      "summary": "Class Database in ServerSide/app/db/mongodb.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/main.py",
+      "type": "file",
+      "name": "main.py",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python code file (62 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:lifespan",
+      "type": "function",
+      "name": "lifespan",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function lifespan in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:general_exception_handler",
+      "type": "function",
+      "name": "general_exception_handler",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function general_exception_handler in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:health_check",
+      "type": "function",
+      "name": "health_check",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function health_check in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:readiness_check",
+      "type": "function",
+      "name": "readiness_check",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function readiness_check in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/models/assignment.py",
+      "type": "file",
+      "name": "assignment.py",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python code file (30 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+      "type": "class",
+      "name": "VehicleAssignmentBase",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentBase in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+      "type": "class",
+      "name": "VehicleAssignmentCreate",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentCreate in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+      "type": "class",
+      "name": "VehicleAssignmentUpdate",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentUpdate in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+      "type": "class",
+      "name": "VehicleAssignmentResponse",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentResponse in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+      "type": "class",
+      "name": "VehicleAssignment",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignment in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/attendance.py",
+      "type": "file",
+      "name": "attendance.py",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python code file (32 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+      "type": "class",
+      "name": "AttendanceRecordBase",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordBase in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+      "type": "class",
+      "name": "AttendanceRecordCreate",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordCreate in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+      "type": "class",
+      "name": "AttendanceRecordUpdate",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordUpdate in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+      "type": "class",
+      "name": "AttendanceRecordResponse",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordResponse in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+      "type": "class",
+      "name": "AttendanceRecord",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecord in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/employee.py",
+      "type": "file",
+      "name": "employee.py",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python code file (38 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeBase",
+      "type": "class",
+      "name": "EmployeeBase",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeBase in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeCreate",
+      "type": "class",
+      "name": "EmployeeCreate",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeCreate in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+      "type": "class",
+      "name": "EmployeeUpdate",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeUpdate in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeResponse",
+      "type": "class",
+      "name": "EmployeeResponse",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeResponse in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:Employee",
+      "type": "class",
+      "name": "Employee",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class Employee in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/session.py",
+      "type": "file",
+      "name": "session.py",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python code file (40 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+      "type": "class",
+      "name": "AttendanceSessionBase",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionBase in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+      "type": "class",
+      "name": "AttendanceSessionCreate",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionCreate in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+      "type": "class",
+      "name": "AttendanceSessionUpdate",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionUpdate in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+      "type": "class",
+      "name": "AttendanceSessionResponse",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionResponse in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSession",
+      "type": "class",
+      "name": "AttendanceSession",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSession in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/vehicle.py",
+      "type": "file",
+      "name": "vehicle.py",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python code file (29 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleBase",
+      "type": "class",
+      "name": "VehicleBase",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleBase in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+      "type": "class",
+      "name": "VehicleCreate",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleCreate in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+      "type": "class",
+      "name": "VehicleUpdate",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleUpdate in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+      "type": "class",
+      "name": "VehicleResponse",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleResponse in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:Vehicle",
+      "type": "class",
+      "name": "Vehicle",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class Vehicle in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/core/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python code file (39 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:verify_password",
+      "type": "function",
+      "name": "verify_password",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function verify_password in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_password_hash",
+      "type": "function",
+      "name": "get_password_hash",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function get_password_hash in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:create_access_token",
+      "type": "function",
+      "name": "create_access_token",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function create_access_token in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_current_user",
+      "type": "function",
+      "name": "get_current_user",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function get_current_user in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_current_active_user",
+      "type": "function",
+      "name": "get_current_active_user",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function get_current_active_user in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/core/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "ServerSide/core/config.py",
+      "summary": "Python code file (23 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/core/config.py:Settings",
+      "type": "class",
+      "name": "Settings",
+      "filePath": "ServerSide/core/config.py",
+      "summary": "Class Settings in ServerSide/core/config.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/tests/conftest.py",
+      "type": "file",
+      "name": "conftest.py",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python code file (20 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:client",
+      "type": "function",
+      "name": "client",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Function client in ServerSide/tests/conftest.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:auth_token",
+      "type": "function",
+      "name": "auth_token",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Function auth_token in ServerSide/tests/conftest.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:auth_headers",
+      "type": "function",
+      "name": "auth_headers",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Function auth_headers in ServerSide/tests/conftest.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "apps/supervisor/src/App.jsx",
+      "summary": "Javascript code file (277 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "apps/supervisor/src/App.jsx",
+      "summary": "Function App in apps/supervisor/src/App.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/QueryClient.jsx",
+      "type": "file",
+      "name": "QueryClient.jsx",
+      "filePath": "apps/supervisor/src/QueryClient.jsx",
+      "summary": "Javascript code file (35 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "type": "file",
+      "name": "CapacityConflictModal.jsx",
+      "filePath": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "summary": "Javascript code file (101 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/CapacityConflictModal.jsx:CapacityConflictModal",
+      "type": "function",
+      "name": "CapacityConflictModal",
+      "filePath": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "summary": "Function CapacityConflictModal in apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "type": "file",
+      "name": "CapacityReportModal.jsx",
+      "filePath": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "summary": "Javascript code file (198 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/CapacityReportModal.jsx:CapacityReportModal",
+      "type": "function",
+      "name": "CapacityReportModal",
+      "filePath": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "summary": "Function CapacityReportModal in apps/supervisor/src/components/CapacityReportModal.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "type": "file",
+      "name": "CategoryTabs.jsx",
+      "filePath": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "summary": "Javascript code file (25 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/CategoryTabs.jsx:CategoryTabs",
+      "type": "function",
+      "name": "CategoryTabs",
+      "filePath": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "summary": "Function CategoryTabs in apps/supervisor/src/components/CategoryTabs.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "type": "file",
+      "name": "FilterChips.jsx",
+      "filePath": "apps/supervisor/src/components/FilterChips.jsx",
+      "summary": "Javascript code file (100 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/FilterChips.jsx:FilterChips",
+      "type": "function",
+      "name": "FilterChips",
+      "filePath": "apps/supervisor/src/components/FilterChips.jsx",
+      "summary": "Function FilterChips in apps/supervisor/src/components/FilterChips.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "type": "file",
+      "name": "LeftColumn.jsx",
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "summary": "Javascript code file (118 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+      "type": "function",
+      "name": "LeftColumn",
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "summary": "Function LeftColumn in apps/supervisor/src/components/LeftColumn.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "type": "file",
+      "name": "LoginModal.jsx",
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "summary": "Javascript code file (93 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+      "type": "function",
+      "name": "LoginModal",
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "summary": "Function LoginModal in apps/supervisor/src/components/LoginModal.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/RightColumn.jsx",
+      "type": "file",
+      "name": "RightColumn.jsx",
+      "filePath": "apps/supervisor/src/components/RightColumn.jsx",
+      "summary": "Javascript code file (253 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "type": "file",
+      "name": "VehicleAssignmentHistory.jsx",
+      "filePath": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "summary": "Javascript code file (105 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/VehicleAssignmentHistory.jsx:VehicleAssignmentHistory",
+      "type": "function",
+      "name": "VehicleAssignmentHistory",
+      "filePath": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "summary": "Function VehicleAssignmentHistory in apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "type": "file",
+      "name": "VehicleTable.jsx",
+      "filePath": "apps/supervisor/src/components/VehicleTable.jsx",
+      "summary": "Javascript code file (245 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/VehicleTable.jsx:VehicleTable",
+      "type": "function",
+      "name": "VehicleTable",
+      "filePath": "apps/supervisor/src/components/VehicleTable.jsx",
+      "summary": "Function VehicleTable in apps/supervisor/src/components/VehicleTable.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "type": "file",
+      "name": "useAttendanceHandlers.js",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "summary": "Javascript code file (407 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+      "type": "function",
+      "name": "useAttendanceHandlers",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "summary": "Function useAttendanceHandlers in apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "type": "file",
+      "name": "useAttendanceState.js",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "summary": "Javascript code file (156 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+      "type": "function",
+      "name": "useAttendanceState",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "summary": "Function useAttendanceState in apps/supervisor/src/hooks/useAttendanceState.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useFilters.js",
+      "type": "file",
+      "name": "useFilters.js",
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "summary": "Javascript code file (33 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+      "type": "function",
+      "name": "useFilters",
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "summary": "Function useFilters in apps/supervisor/src/hooks/useFilters.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "type": "file",
+      "name": "useStatistics.js",
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "summary": "Javascript code file (79 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+      "type": "function",
+      "name": "useStatistics",
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "summary": "Function useStatistics in apps/supervisor/src/hooks/useStatistics.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "type": "file",
+      "name": "useTableSort.js",
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "summary": "Javascript code file (87 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+      "type": "function",
+      "name": "useTableSort",
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "summary": "Function useTableSort in apps/supervisor/src/hooks/useTableSort.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/main.jsx",
+      "type": "file",
+      "name": "main.jsx",
+      "filePath": "apps/supervisor/src/main.jsx",
+      "summary": "Javascript code file (17 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "type": "file",
+      "name": "AttendanceControl.jsx",
+      "filePath": "apps/supervisor/src/components/AttendanceControl.jsx",
+      "summary": "Javascript code file (69 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/AttendanceControl.jsx:AttendanceControl",
+      "type": "function",
+      "name": "AttendanceControl",
+      "filePath": "apps/supervisor/src/components/AttendanceControl.jsx",
+      "summary": "Function AttendanceControl in apps/supervisor/src/components/AttendanceControl.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "type": "file",
+      "name": "EmployeeAvatar.jsx",
+      "filePath": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "summary": "Javascript code file (15 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/EmployeeAvatar.jsx:EmployeeAvatar",
+      "type": "function",
+      "name": "EmployeeAvatar",
+      "filePath": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "summary": "Function EmployeeAvatar in apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "type": "file",
+      "name": "EmployeeRow.jsx",
+      "filePath": "apps/supervisor/src/components/EmployeeRow.jsx",
+      "summary": "Javascript code file (112 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/EmployeeRow.jsx:EmployeeRow",
+      "type": "function",
+      "name": "EmployeeRow",
+      "filePath": "apps/supervisor/src/components/EmployeeRow.jsx",
+      "summary": "Function EmployeeRow in apps/supervisor/src/components/EmployeeRow.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/EmployeeTable.jsx",
+      "type": "file",
+      "name": "EmployeeTable.jsx",
+      "filePath": "apps/supervisor/src/components/EmployeeTable.jsx",
+      "summary": "Javascript code file (155 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/EmployeeTable.jsx:EmployeeTable",
+      "type": "function",
+      "name": "EmployeeTable",
+      "filePath": "apps/supervisor/src/components/EmployeeTable.jsx",
+      "summary": "Function EmployeeTable in apps/supervisor/src/components/EmployeeTable.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "type": "file",
+      "name": "ArrivedBadge.jsx",
+      "filePath": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "summary": "Javascript code file (25 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/ArrivedBadge.jsx:ArrivedBadge",
+      "type": "function",
+      "name": "ArrivedBadge",
+      "filePath": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "summary": "Function ArrivedBadge in apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "type": "file",
+      "name": "AttendanceBadge.jsx",
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "summary": "Javascript code file (20 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/AttendanceBadge.jsx:AttendanceBadge",
+      "type": "function",
+      "name": "AttendanceBadge",
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "summary": "Function AttendanceBadge in apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "type": "file",
+      "name": "AttendanceButtons.jsx",
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "summary": "Javascript code file (57 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/AttendanceButtons.jsx:AttendanceButtons",
+      "type": "function",
+      "name": "AttendanceButtons",
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "summary": "Function AttendanceButtons in apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "type": "file",
+      "name": "LockedAttendance.jsx",
+      "filePath": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "summary": "Javascript code file (24 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/LockedAttendance.jsx:LockedAttendance",
+      "type": "function",
+      "name": "LockedAttendance",
+      "filePath": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "summary": "Function LockedAttendance in apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/attendance.config.js",
+      "type": "file",
+      "name": "attendance.config.js",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "summary": "Javascript code file (54 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "type": "file",
+      "name": "attendance.utils.js",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Javascript code file (16 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
+      "type": "function",
+      "name": "getArrivalTime",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Function getArrivalTime in apps/supervisor/src/components/attendance/attendance.utils.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
+      "type": "function",
+      "name": "getStatusConfig",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Function getStatusConfig in apps/supervisor/src/components/attendance/attendance.utils.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
+      "type": "function",
+      "name": "getButtonColorClass",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Function getButtonColorClass in apps/supervisor/src/components/attendance/attendance.utils.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "type": "file",
+      "name": "ButtonGroup.jsx",
+      "filePath": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/ui/ButtonGroup.jsx:ButtonGroup",
+      "type": "function",
+      "name": "ButtonGroup",
+      "filePath": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "summary": "Function ButtonGroup in apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "type": "file",
+      "name": "LabourRequestButtons.jsx",
+      "filePath": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "summary": "Javascript code file (33 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/ui/LabourRequestButtons.jsx:LabourRequestButtons",
+      "type": "function",
+      "name": "LabourRequestButtons",
+      "filePath": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "summary": "Function LabourRequestButtons in apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "type": "file",
+      "name": "VehicleSelect.jsx",
+      "filePath": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "summary": "Javascript code file (80 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/ui/VehicleSelect.jsx:VehicleSelect",
+      "type": "function",
+      "name": "VehicleSelect",
+      "filePath": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "summary": "Function VehicleSelect in apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "type": "file",
+      "name": "PDFRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "summary": "Javascript code file (59 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+      "type": "class",
+      "name": "PDFRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "summary": "Class PDFRenderer in apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "type": "file",
+      "name": "LayoutManager.js",
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "summary": "Javascript code file (134 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+      "type": "class",
+      "name": "LayoutManager",
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "summary": "Class LayoutManager in apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "file",
+      "name": "pdfLayoutConstants.js",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Javascript code file (45 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "type": "file",
+      "name": "pdfHandler.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "summary": "Javascript code file (55 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+      "type": "function",
+      "name": "generateAttendanceReport",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "summary": "Function generateAttendanceReport in apps/supervisor/src/components/pdf/pdfHandler.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "type": "file",
+      "name": "CategorySummaryRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "summary": "Javascript code file (80 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+      "type": "class",
+      "name": "CategorySummaryRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "summary": "Class CategorySummaryRenderer in apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "type": "file",
+      "name": "EmployeeSectionRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "summary": "Javascript code file (135 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+      "type": "class",
+      "name": "EmployeeSectionRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "summary": "Class EmployeeSectionRenderer in apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "type": "file",
+      "name": "ExceptionReportRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "summary": "Javascript code file (105 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+      "type": "class",
+      "name": "ExceptionReportRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "summary": "Class ExceptionReportRenderer in apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "type": "file",
+      "name": "ReportHeaderRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "summary": "Javascript code file (35 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+      "type": "class",
+      "name": "ReportHeaderRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "summary": "Class ReportHeaderRenderer in apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "type": "file",
+      "name": "SummaryRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "summary": "Javascript code file (86 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+      "type": "class",
+      "name": "SummaryRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "summary": "Class SummaryRenderer in apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "type": "file",
+      "name": "VehicleSectionRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "summary": "Javascript code file (109 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+      "type": "class",
+      "name": "VehicleSectionRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "summary": "Class VehicleSectionRenderer in apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/components/ErrorBoundary.jsx",
+      "type": "file",
+      "name": "ErrorBoundary.jsx",
+      "filePath": "packages/shared/components/ErrorBoundary.jsx",
+      "summary": "Javascript code file (74 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/shared/components/ErrorBoundary.jsx:ErrorBoundary",
+      "type": "class",
+      "name": "ErrorBoundary",
+      "filePath": "packages/shared/components/ErrorBoundary.jsx",
+      "summary": "Class ErrorBoundary in packages/shared/components/ErrorBoundary.jsx",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/hooks/useEmployees.js",
+      "type": "file",
+      "name": "useEmployees.js",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Javascript code file (125 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useEmployees",
+      "type": "function",
+      "name": "useEmployees",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Function useEmployees in packages/shared/hooks/useEmployees.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useEmployee",
+      "type": "function",
+      "name": "useEmployee",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Function useEmployee in packages/shared/hooks/useEmployees.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
+      "type": "function",
+      "name": "useUpdateAttendance",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Function useUpdateAttendance in packages/shared/hooks/useEmployees.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
+      "type": "function",
+      "name": "useAddEmployee",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Function useAddEmployee in packages/shared/hooks/useEmployees.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
+      "type": "function",
+      "name": "useUpdateEmployee",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Function useUpdateEmployee in packages/shared/hooks/useEmployees.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/hooks/useVehicles.js",
+      "type": "file",
+      "name": "useVehicles.js",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Javascript code file (56 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useVehicles",
+      "type": "function",
+      "name": "useVehicles",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Function useVehicles in packages/shared/hooks/useVehicles.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useVehicle",
+      "type": "function",
+      "name": "useVehicle",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Function useVehicle in packages/shared/hooks/useVehicles.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
+      "type": "function",
+      "name": "useUpdateVehicleStatus",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Function useUpdateVehicleStatus in packages/shared/hooks/useVehicles.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
+      "type": "function",
+      "name": "useAddVehicle",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Function useAddVehicle in packages/shared/hooks/useVehicles.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
+      "type": "function",
+      "name": "useUpdateVehicle",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Function useUpdateVehicle in packages/shared/hooks/useVehicles.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/authService.js",
+      "type": "file",
+      "name": "authService.js",
+      "filePath": "packages/shared/services/authService.js",
+      "summary": "Javascript code file (117 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/authService.js:AuthService",
+      "type": "class",
+      "name": "AuthService",
+      "filePath": "packages/shared/services/authService.js",
+      "summary": "Class AuthService in packages/shared/services/authService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/services/backendApi.js",
+      "type": "file",
+      "name": "backendApi.js",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Javascript code file (188 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/backendApi.js:NetworkError",
+      "type": "class",
+      "name": "NetworkError",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Class NetworkError in packages/shared/services/backendApi.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/backendApi.js:AuthError",
+      "type": "class",
+      "name": "AuthError",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Class AuthError in packages/shared/services/backendApi.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/backendApi.js:ValidationError",
+      "type": "class",
+      "name": "ValidationError",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Class ValidationError in packages/shared/services/backendApi.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/backendApi.js:BackendApiClient",
+      "type": "class",
+      "name": "BackendApiClient",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Class BackendApiClient in packages/shared/services/backendApi.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/services/restAssignmentService.js",
+      "type": "file",
+      "name": "restAssignmentService.js",
+      "filePath": "packages/shared/services/restAssignmentService.js",
+      "summary": "Javascript code file (98 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:packages/shared/services/restAssignmentService.js:RestAssignmentService",
+      "type": "class",
+      "name": "RestAssignmentService",
+      "filePath": "packages/shared/services/restAssignmentService.js",
+      "summary": "Class RestAssignmentService in packages/shared/services/restAssignmentService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/services/restEmployeeService.js",
+      "type": "file",
+      "name": "restEmployeeService.js",
+      "filePath": "packages/shared/services/restEmployeeService.js",
+      "summary": "Javascript code file (186 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/restEmployeeService.js:RestEmployeeService",
+      "type": "class",
+      "name": "RestEmployeeService",
+      "filePath": "packages/shared/services/restEmployeeService.js",
+      "summary": "Class RestEmployeeService in packages/shared/services/restEmployeeService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/services/restSessionService.js",
+      "type": "file",
+      "name": "restSessionService.js",
+      "filePath": "packages/shared/services/restSessionService.js",
+      "summary": "Javascript code file (217 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/restSessionService.js:RestSessionService",
+      "type": "class",
+      "name": "RestSessionService",
+      "filePath": "packages/shared/services/restSessionService.js",
+      "summary": "Class RestSessionService in packages/shared/services/restSessionService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/services/restVehicleService.js",
+      "type": "file",
+      "name": "restVehicleService.js",
+      "filePath": "packages/shared/services/restVehicleService.js",
+      "summary": "Javascript code file (160 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:packages/shared/services/restVehicleService.js:RestVehicleService",
+      "type": "class",
+      "name": "RestVehicleService",
+      "filePath": "packages/shared/services/restVehicleService.js",
+      "summary": "Class RestVehicleService in packages/shared/services/restVehicleService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "file",
+      "name": "agentClient.js",
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "summary": "Javascript code file (129 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/agentClient.js:AgentClient",
+      "type": "class",
+      "name": "AgentClient",
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "summary": "Class AgentClient in apps/supervisor/src/services/agentClient.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/api.js",
+      "type": "file",
+      "name": "api.js",
+      "filePath": "apps/supervisor/src/services/api.js",
+      "summary": "Javascript code file (71 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/api.js:ApiClient",
+      "type": "class",
+      "name": "ApiClient",
+      "filePath": "apps/supervisor/src/services/api.js",
+      "summary": "Class ApiClient in apps/supervisor/src/services/api.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/employeeService.js",
+      "type": "file",
+      "name": "employeeService.js",
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "summary": "Javascript code file (107 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/employeeService.js:EmployeeService",
+      "type": "class",
+      "name": "EmployeeService",
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "summary": "Class EmployeeService in apps/supervisor/src/services/employeeService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/reportService.js",
+      "type": "file",
+      "name": "reportService.js",
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "summary": "Javascript code file (122 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/reportService.js:ReportService",
+      "type": "class",
+      "name": "ReportService",
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "summary": "Class ReportService in apps/supervisor/src/services/reportService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/sessionService.js",
+      "type": "file",
+      "name": "sessionService.js",
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "summary": "Javascript code file (122 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/sessionService.js:SessionService",
+      "type": "class",
+      "name": "SessionService",
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "summary": "Class SessionService in apps/supervisor/src/services/sessionService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/vehicleService.js",
+      "type": "file",
+      "name": "vehicleService.js",
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "summary": "Javascript code file (101 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/vehicleService.js:VehicleService",
+      "type": "class",
+      "name": "VehicleService",
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "summary": "Class VehicleService in apps/supervisor/src/services/vehicleService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/Dockerfile",
+      "type": "file",
+      "name": "Dockerfile",
+      "filePath": "ServerSide/Dockerfile",
+      "summary": "Dockerfile infra file (33 lines)",
+      "tags": [
+        "dockerfile",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/Dockerfile",
+      "type": "file",
+      "name": "Dockerfile",
+      "filePath": "apps/admin/Dockerfile",
+      "summary": "Dockerfile infra file (18 lines)",
+      "tags": [
+        "dockerfile",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/Dockerfile",
+      "type": "file",
+      "name": "Dockerfile",
+      "filePath": "apps/supervisor/Dockerfile",
+      "summary": "Dockerfile infra file (18 lines)",
+      "tags": [
+        "dockerfile",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ARCHITECTURE.md",
+      "type": "document",
+      "name": "ARCHITECTURE.md",
+      "filePath": "ARCHITECTURE.md",
+      "summary": "Markdown docs file (58 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:DOCKER_DEPLOYMENT.md",
+      "type": "document",
+      "name": "DOCKER_DEPLOYMENT.md",
+      "filePath": "DOCKER_DEPLOYMENT.md",
+      "summary": "Markdown docs file (93 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:GOALS.md",
+      "type": "document",
+      "name": "GOALS.md",
+      "filePath": "GOALS.md",
+      "summary": "Markdown docs file (70 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:MASTER INSTRUCTIONS.md",
+      "type": "document",
+      "name": "MASTER INSTRUCTIONS.md",
+      "filePath": "MASTER INSTRUCTIONS.md",
+      "summary": "Markdown docs file (68 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:TODO.md",
+      "type": "document",
+      "name": "TODO.md",
+      "filePath": "TODO.md",
+      "summary": "Markdown docs file (94 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:TYPE_SYNC_GUIDE.md",
+      "type": "document",
+      "name": "TYPE_SYNC_GUIDE.md",
+      "filePath": "TYPE_SYNC_GUIDE.md",
+      "summary": "Markdown docs file (106 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:WORKFLOW_PLAN.md",
+      "type": "document",
+      "name": "WORKFLOW_PLAN.md",
+      "filePath": "WORKFLOW_PLAN.md",
+      "summary": "Markdown docs file (207 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docker-compose.yml",
+      "type": "file",
+      "name": "docker-compose.yml",
+      "filePath": "docker-compose.yml",
+      "summary": "Yaml infra file (79 lines)",
+      "tags": [
+        "yaml",
+        "infra"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+      "type": "document",
+      "name": "MASTER INSTRUCTIONS SERVER SIDE.md",
+      "filePath": "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+      "summary": "Markdown docs file (114 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:ServerSide/openapi.json",
+      "type": "config",
+      "name": "openapi.json",
+      "filePath": "ServerSide/openapi.json",
+      "summary": "Json config file (2011 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:apps/admin/.oxlintrc.json",
+      "type": "config",
+      "name": ".oxlintrc.json",
+      "filePath": "apps/admin/.oxlintrc.json",
+      "summary": "Json config file (8 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:apps/admin/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "apps/admin/README.md",
+      "summary": "Markdown docs file (16 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:apps/admin/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "apps/admin/package.json",
+      "summary": "Json config file (26 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:apps/supervisor/.oxlintrc.json",
+      "type": "config",
+      "name": ".oxlintrc.json",
+      "filePath": "apps/supervisor/.oxlintrc.json",
+      "summary": "Json config file (8 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:apps/supervisor/MASTER INSTRUCTIONS.md",
+      "type": "document",
+      "name": "MASTER INSTRUCTIONS.md",
+      "filePath": "apps/supervisor/MASTER INSTRUCTIONS.md",
+      "summary": "Markdown docs file (77 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:apps/supervisor/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "apps/supervisor/README.md",
+      "summary": "Markdown docs file (127 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:apps/supervisor/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "apps/supervisor/package.json",
+      "summary": "Json config file (29 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/check-types.sh",
+      "type": "file",
+      "name": "check-types.sh",
+      "filePath": "packages/shared/check-types.sh",
+      "summary": "Shell script file (23 lines)",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/shared/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "packages/shared/package.json",
+      "summary": "Json config file (31 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:packages/shared/tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "packages/shared/tsconfig.json",
+      "summary": "Json config file (17 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:.devin/workflows/grillme.md",
+      "type": "document",
+      "name": "grillme.md",
+      "filePath": ".devin/workflows/grillme.md",
+      "summary": "Markdown docs file (323 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.devin/workflows/underdatnd.md",
+      "type": "document",
+      "name": "underdatnd.md",
+      "filePath": ".devin/workflows/underdatnd.md",
+      "summary": "Markdown docs file (83 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AttandaceTraker Acvanced/master intructions.md",
+      "type": "document",
+      "name": "master intructions.md",
+      "filePath": "AttandaceTraker Acvanced/master intructions.md",
+      "summary": "Markdown docs file (1066 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ServerSide/app/models/audit_event.py",
+      "type": "file",
+      "name": "audit_event.py",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Python code file (22 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+      "type": "class",
+      "name": "AuditEventBase",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Class AuditEventBase in ServerSide/app/models/audit_event.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+      "type": "class",
+      "name": "AuditEventCreate",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Class AuditEventCreate in ServerSide/app/models/audit_event.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEvent",
+      "type": "class",
+      "name": "AuditEvent",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Class AuditEvent in ServerSide/app/models/audit_event.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/user.py",
+      "type": "file",
+      "name": "user.py",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python code file (26 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserBase",
+      "type": "class",
+      "name": "UserBase",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class UserBase in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserCreate",
+      "type": "class",
+      "name": "UserCreate",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class UserCreate in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserUpdate",
+      "type": "class",
+      "name": "UserUpdate",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class UserUpdate in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class User in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/export_openapi.py",
+      "type": "file",
+      "name": "export_openapi.py",
+      "filePath": "ServerSide/scripts/export_openapi.py",
+      "summary": "Python code file (32 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/scripts/seed_data.py",
+      "type": "file",
+      "name": "seed_data.py",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Python code file (285 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/scripts/seed_data.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Function main in ServerSide/scripts/seed_data.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/scripts/seed_data.py:DataSeeder",
+      "type": "class",
+      "name": "DataSeeder",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Class DataSeeder in ServerSide/scripts/seed_data.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.py",
+      "type": "file",
+      "name": "sync.py",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Python code file (44 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/scripts/sync.py:run_command",
+      "type": "function",
+      "name": "run_command",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Function run_command in ServerSide/scripts/sync.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/scripts/sync.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Function main in ServerSide/scripts/sync.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.sh",
+      "type": "file",
+      "name": "sync.sh",
+      "filePath": "ServerSide/scripts/sync.sh",
+      "summary": "Shell script file (15 lines)",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "ServerSide/tests/__init__.py",
+      "summary": "Python code file (1 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_attendance.py",
+      "type": "file",
+      "name": "test_attendance.py",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python code file (3 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+      "type": "function",
+      "name": "test_attendance_unauthorized",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Function test_attendance_unauthorized in ServerSide/tests/test_attendance.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_auth.py",
+      "type": "file",
+      "name": "test_auth.py",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python code file (27 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_success",
+      "type": "function",
+      "name": "test_login_success",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_login_success in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+      "type": "function",
+      "name": "test_login_wrong_password",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_login_wrong_password in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+      "type": "function",
+      "name": "test_get_me_unauthorized",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_get_me_unauthorized in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+      "type": "function",
+      "name": "test_get_me_authorized",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_get_me_authorized in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_employees.py",
+      "type": "file",
+      "name": "test_employees.py",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python code file (12 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_list_employees_unauthorized",
+      "type": "function",
+      "name": "test_list_employees_unauthorized",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Function test_list_employees_unauthorized in ServerSide/tests/test_employees.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_create_employee_unauthorized",
+      "type": "function",
+      "name": "test_create_employee_unauthorized",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Function test_create_employee_unauthorized in ServerSide/tests/test_employees.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_sessions.py",
+      "type": "file",
+      "name": "test_sessions.py",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python code file (12 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_list_sessions_unauthorized",
+      "type": "function",
+      "name": "test_list_sessions_unauthorized",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Function test_list_sessions_unauthorized in ServerSide/tests/test_sessions.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_create_session_unauthorized",
+      "type": "function",
+      "name": "test_create_session_unauthorized",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Function test_create_session_unauthorized in ServerSide/tests/test_sessions.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_vehicles.py",
+      "type": "file",
+      "name": "test_vehicles.py",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python code file (11 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_list_vehicles_unauthorized",
+      "type": "function",
+      "name": "test_list_vehicles_unauthorized",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Function test_list_vehicles_unauthorized in ServerSide/tests/test_vehicles.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_unauthorized",
+      "type": "function",
+      "name": "test_create_vehicle_unauthorized",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Function test_create_vehicle_unauthorized in ServerSide/tests/test_vehicles.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Javascript code file (243 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/admin/src/App.jsx:AdminDashboard",
+      "type": "function",
+      "name": "AdminDashboard",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Function AdminDashboard in apps/admin/src/App.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/admin/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Function App in apps/admin/src/App.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/main.jsx",
+      "type": "file",
+      "name": "main.jsx",
+      "filePath": "apps/admin/src/main.jsx",
+      "summary": "Javascript code file (10 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/vite.config.js",
+      "type": "file",
+      "name": "vite.config.js",
+      "filePath": "apps/admin/vite.config.js",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/postcss.config.js",
+      "type": "file",
+      "name": "postcss.config.js",
+      "filePath": "apps/supervisor/postcss.config.js",
+      "summary": "Javascript code file (6 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "type": "file",
+      "name": "SyncStatus.jsx",
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "summary": "Javascript code file (55 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+      "type": "function",
+      "name": "SyncStatus",
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "summary": "Function SyncStatus in apps/supervisor/src/components/SyncStatus.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "type": "file",
+      "name": "pdfHeaderFooter.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Javascript code file (83 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+      "type": "function",
+      "name": "addHeader",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Function addHeader in apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+      "type": "function",
+      "name": "addFooter",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Function addFooter in apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+      "type": "function",
+      "name": "addHeadersAndFooters",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Function addHeadersAndFooters in apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "type": "file",
+      "name": "pdfPendingException.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "summary": "Javascript code file (76 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+      "type": "function",
+      "name": "generatePendingExceptionPage",
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "summary": "Function generatePendingExceptionPage in apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+      "type": "file",
+      "name": "pdfSummary.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "summary": "Javascript code file (138 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+      "type": "function",
+      "name": "generateSummaryPage",
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "summary": "Function generateSummaryPage in apps/supervisor/src/components/pdf/pdfSummary.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfTables.js",
+      "type": "file",
+      "name": "pdfTables.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "summary": "Javascript code file (99 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+      "type": "function",
+      "name": "generateTablePages",
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "summary": "Function generateTablePages in apps/supervisor/src/components/pdf/pdfTables.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "apps/supervisor/src/services/index.js",
+      "summary": "Javascript code file (28 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/offlineQueue.js",
+      "type": "file",
+      "name": "offlineQueue.js",
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "summary": "Javascript code file (154 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/offlineQueue.js:OfflineQueue",
+      "type": "class",
+      "name": "OfflineQueue",
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "summary": "Class OfflineQueue in apps/supervisor/src/services/offlineQueue.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restAssignmentService.js",
+      "type": "file",
+      "name": "restAssignmentService.js",
+      "filePath": "apps/supervisor/src/services/restAssignmentService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restEmployeeService.js",
+      "type": "file",
+      "name": "restEmployeeService.js",
+      "filePath": "apps/supervisor/src/services/restEmployeeService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restSessionService.js",
+      "type": "file",
+      "name": "restSessionService.js",
+      "filePath": "apps/supervisor/src/services/restSessionService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restVehicleService.js",
+      "type": "file",
+      "name": "restVehicleService.js",
+      "filePath": "apps/supervisor/src/services/restVehicleService.js",
+      "summary": "Javascript code file (2 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/tailwind.config.js",
+      "type": "file",
+      "name": "tailwind.config.js",
+      "filePath": "apps/supervisor/tailwind.config.js",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/vite.config.js",
+      "type": "file",
+      "name": "vite.config.js",
+      "filePath": "apps/supervisor/vite.config.js",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/check-types.js",
+      "type": "file",
+      "name": "check-types.js",
+      "filePath": "packages/shared/check-types.js",
+      "summary": "Javascript code file (42 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/components/LoadingSpinner.jsx",
+      "type": "file",
+      "name": "LoadingSpinner.jsx",
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "summary": "Javascript code file (14 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+      "type": "function",
+      "name": "LoadingSpinner",
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "summary": "Function LoadingSpinner in packages/shared/components/LoadingSpinner.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "packages/shared/index.js",
+      "summary": "Javascript code file (17 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/types/api.ts",
+      "type": "file",
+      "name": "api.ts",
+      "filePath": "packages/shared/types/api.ts",
+      "summary": "Typescript code file (1342 lines)",
+      "tags": [
+        "typescript",
+        "code"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/pre-commit.sh",
+      "type": "file",
+      "name": "pre-commit.sh",
+      "filePath": "scripts/pre-commit.sh",
+      "summary": "Shell script file (26 lines)",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "file:ServerSide/app/models/assignment.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "file:ServerSide/app/models/attendance.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "file:ServerSide/app/models/employee.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "file:ServerSide/app/models/session.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "file:ServerSide/app/models/vehicle.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/db/indexes.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/db/mongodb.py",
+      "target": "file:ServerSide/app/db/indexes.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/db/mongodb.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/auth.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/employees/routes.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "file:ServerSide/app/main.py",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "function:ServerSide/app/api/v1/auth.py:login",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "function:ServerSide/app/api/v1/auth.py:get_me",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/db/indexes.py",
+      "target": "function:ServerSide/app/db/indexes.py:create_indexes",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/db/mongodb.py",
+      "target": "class:ServerSide/app/db/mongodb.py:Database",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:lifespan",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:general_exception_handler",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:health_check",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:readiness_check",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeResponse",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:Employee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSession",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:Vehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:verify_password",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_password_hash",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:create_access_token",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_current_user",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_current_active_user",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/core/config.py",
+      "target": "class:ServerSide/core/config.py:Settings",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:client",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:auth_token",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:auth_headers",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/EmployeeTable.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/RightColumn.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useFilters.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/main.jsx",
+      "target": "file:apps/supervisor/src/App.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/main.jsx",
+      "target": "file:apps/supervisor/src/QueryClient.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/App.jsx",
+      "target": "function:apps/supervisor/src/App.jsx:App",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "target": "function:apps/supervisor/src/components/CapacityConflictModal.jsx:CapacityConflictModal",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "target": "function:apps/supervisor/src/components/CapacityReportModal.jsx:CapacityReportModal",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "target": "function:apps/supervisor/src/components/CategoryTabs.jsx:CategoryTabs",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "target": "function:apps/supervisor/src/components/FilterChips.jsx:FilterChips",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "target": "function:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "target": "function:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "target": "function:apps/supervisor/src/components/VehicleAssignmentHistory.jsx:VehicleAssignmentHistory",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "target": "function:apps/supervisor/src/components/VehicleTable.jsx:VehicleTable",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "target": "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "target": "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useFilters.js",
+      "target": "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "target": "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "target": "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "target": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "target": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "target": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "target": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeTable.jsx",
+      "target": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "target": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "target": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "file:apps/supervisor/src/components/attendance/attendance.config.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "target": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "target": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "target": "function:apps/supervisor/src/components/AttendanceControl.jsx:AttendanceControl",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "target": "function:apps/supervisor/src/components/EmployeeAvatar.jsx:EmployeeAvatar",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "target": "function:apps/supervisor/src/components/EmployeeRow.jsx:EmployeeRow",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/EmployeeTable.jsx",
+      "target": "function:apps/supervisor/src/components/EmployeeTable.jsx:EmployeeTable",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "target": "function:apps/supervisor/src/components/attendance/ArrivedBadge.jsx:ArrivedBadge",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "target": "function:apps/supervisor/src/components/attendance/AttendanceBadge.jsx:AttendanceBadge",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "target": "function:apps/supervisor/src/components/attendance/AttendanceButtons.jsx:AttendanceButtons",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "target": "function:apps/supervisor/src/components/attendance/LockedAttendance.jsx:LockedAttendance",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "target": "function:apps/supervisor/src/components/ui/ButtonGroup.jsx:ButtonGroup",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "target": "function:apps/supervisor/src/components/ui/LabourRequestButtons.jsx:LabourRequestButtons",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "target": "function:apps/supervisor/src/components/ui/VehicleSelect.jsx:VehicleSelect",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "target": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "target": "class:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/components/ErrorBoundary.jsx",
+      "target": "file:packages/shared/services/backendApi.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "file:packages/shared/services/authService.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "file:packages/shared/services/restEmployeeService.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "file:packages/shared/services/authService.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "file:packages/shared/services/restVehicleService.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/authService.js",
+      "target": "file:packages/shared/services/backendApi.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restAssignmentService.js",
+      "target": "file:packages/shared/services/backendApi.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restEmployeeService.js",
+      "target": "file:packages/shared/services/backendApi.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restSessionService.js",
+      "target": "file:packages/shared/services/backendApi.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restVehicleService.js",
+      "target": "file:packages/shared/services/backendApi.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/components/ErrorBoundary.jsx",
+      "target": "class:packages/shared/components/ErrorBoundary.jsx:ErrorBoundary",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useEmployees",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useEmployee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useVehicles",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useVehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/authService.js",
+      "target": "class:packages/shared/services/authService.js:AuthService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "class:packages/shared/services/backendApi.js:NetworkError",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "class:packages/shared/services/backendApi.js:AuthError",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "class:packages/shared/services/backendApi.js:ValidationError",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "class:packages/shared/services/backendApi.js:BackendApiClient",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restAssignmentService.js",
+      "target": "class:packages/shared/services/restAssignmentService.js:RestAssignmentService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restEmployeeService.js",
+      "target": "class:packages/shared/services/restEmployeeService.js:RestEmployeeService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restSessionService.js",
+      "target": "class:packages/shared/services/restSessionService.js:RestSessionService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/services/restVehicleService.js",
+      "target": "class:packages/shared/services/restVehicleService.js:RestVehicleService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/agentClient.js",
+      "target": "file:apps/supervisor/src/services/api.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/employeeService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/reportService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/sessionService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/vehicleService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/agentClient.js",
+      "target": "class:apps/supervisor/src/services/agentClient.js:AgentClient",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/api.js",
+      "target": "class:apps/supervisor/src/services/api.js:ApiClient",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/employeeService.js",
+      "target": "class:apps/supervisor/src/services/employeeService.js:EmployeeService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/reportService.js",
+      "target": "class:apps/supervisor/src/services/reportService.js:ReportService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/sessionService.js",
+      "target": "class:apps/supervisor/src/services/sessionService.js:SessionService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/vehicleService.js",
+      "target": "class:apps/supervisor/src/services/vehicleService.js:VehicleService",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/admin/src/main.jsx",
+      "target": "file:apps/admin/src/App.jsx",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "target": "file:apps/supervisor/src/services/offlineQueue.js",
+      "type": "imports",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEvent",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserBase",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserCreate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserUpdate",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:User",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/scripts/seed_data.py",
+      "target": "function:ServerSide/scripts/seed_data.py:main",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/scripts/seed_data.py",
+      "target": "class:ServerSide/scripts/seed_data.py:DataSeeder",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/scripts/sync.py",
+      "target": "function:ServerSide/scripts/sync.py:run_command",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/scripts/sync.py",
+      "target": "function:ServerSide/scripts/sync.py:main",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_success",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_list_employees_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_create_employee_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_list_sessions_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_create_session_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_list_vehicles_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_unauthorized",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/admin/src/App.jsx",
+      "target": "function:apps/admin/src/App.jsx:AdminDashboard",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/admin/src/App.jsx",
+      "target": "function:apps/admin/src/App.jsx:App",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "target": "function:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfTables.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/offlineQueue.js",
+      "target": "class:apps/supervisor/src/services/offlineQueue.js:OfflineQueue",
+      "type": "contains",
+      "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/components/LoadingSpinner.jsx",
+      "target": "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+      "type": "contains",
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:frontend",
+      "name": "Frontend User Interfaces",
+      "description": "React single-page applications for Supervisors and Admins built with Vite and Tailwind CSS.",
+      "nodeIds": [
+        "file:apps/supervisor/src/App.jsx",
+        "function:apps/supervisor/src/App.jsx:App",
+        "file:apps/supervisor/src/QueryClient.jsx",
+        "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+        "function:apps/supervisor/src/components/CapacityConflictModal.jsx:CapacityConflictModal",
+        "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+        "function:apps/supervisor/src/components/CapacityReportModal.jsx:CapacityReportModal",
+        "file:apps/supervisor/src/components/CategoryTabs.jsx",
+        "function:apps/supervisor/src/components/CategoryTabs.jsx:CategoryTabs",
+        "file:apps/supervisor/src/components/FilterChips.jsx",
+        "function:apps/supervisor/src/components/FilterChips.jsx:FilterChips",
+        "file:apps/supervisor/src/components/LeftColumn.jsx",
+        "function:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+        "file:apps/supervisor/src/components/LoginModal.jsx",
+        "function:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+        "file:apps/supervisor/src/components/RightColumn.jsx",
+        "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+        "function:apps/supervisor/src/components/VehicleAssignmentHistory.jsx:VehicleAssignmentHistory",
+        "file:apps/supervisor/src/components/VehicleTable.jsx",
+        "function:apps/supervisor/src/components/VehicleTable.jsx:VehicleTable",
+        "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+        "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+        "file:apps/supervisor/src/hooks/useAttendanceState.js",
+        "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+        "file:apps/supervisor/src/hooks/useFilters.js",
+        "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+        "file:apps/supervisor/src/hooks/useStatistics.js",
+        "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+        "file:apps/supervisor/src/hooks/useTableSort.js",
+        "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+        "file:apps/supervisor/src/main.jsx",
+        "file:apps/supervisor/src/components/AttendanceControl.jsx",
+        "function:apps/supervisor/src/components/AttendanceControl.jsx:AttendanceControl",
+        "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
+        "function:apps/supervisor/src/components/EmployeeAvatar.jsx:EmployeeAvatar",
+        "file:apps/supervisor/src/components/EmployeeRow.jsx",
+        "function:apps/supervisor/src/components/EmployeeRow.jsx:EmployeeRow",
+        "file:apps/supervisor/src/components/EmployeeTable.jsx",
+        "function:apps/supervisor/src/components/EmployeeTable.jsx:EmployeeTable",
+        "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+        "function:apps/supervisor/src/components/attendance/ArrivedBadge.jsx:ArrivedBadge",
+        "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+        "function:apps/supervisor/src/components/attendance/AttendanceBadge.jsx:AttendanceBadge",
+        "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+        "function:apps/supervisor/src/components/attendance/AttendanceButtons.jsx:AttendanceButtons",
+        "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+        "function:apps/supervisor/src/components/attendance/LockedAttendance.jsx:LockedAttendance",
+        "file:apps/supervisor/src/components/attendance/attendance.config.js",
+        "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+        "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
+        "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
+        "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
+        "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+        "function:apps/supervisor/src/components/ui/ButtonGroup.jsx:ButtonGroup",
+        "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+        "function:apps/supervisor/src/components/ui/LabourRequestButtons.jsx:LabourRequestButtons",
+        "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
+        "function:apps/supervisor/src/components/ui/VehicleSelect.jsx:VehicleSelect",
+        "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+        "class:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+        "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+        "class:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+        "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+        "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+        "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+        "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+        "class:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+        "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+        "class:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+        "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+        "class:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+        "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+        "class:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+        "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+        "class:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+        "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+        "class:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+        "file:apps/supervisor/src/services/agentClient.js",
+        "class:apps/supervisor/src/services/agentClient.js:AgentClient",
+        "file:apps/supervisor/src/services/api.js",
+        "class:apps/supervisor/src/services/api.js:ApiClient",
+        "file:apps/supervisor/src/services/employeeService.js",
+        "class:apps/supervisor/src/services/employeeService.js:EmployeeService",
+        "file:apps/supervisor/src/services/reportService.js",
+        "class:apps/supervisor/src/services/reportService.js:ReportService",
+        "file:apps/supervisor/src/services/sessionService.js",
+        "class:apps/supervisor/src/services/sessionService.js:SessionService",
+        "file:apps/supervisor/src/services/vehicleService.js",
+        "class:apps/supervisor/src/services/vehicleService.js:VehicleService",
+        "file:apps/admin/Dockerfile",
+        "file:apps/supervisor/Dockerfile",
+        "config:apps/admin/.oxlintrc.json",
+        "document:apps/admin/README.md",
+        "config:apps/admin/package.json",
+        "config:apps/supervisor/.oxlintrc.json",
+        "document:apps/supervisor/MASTER INSTRUCTIONS.md",
+        "document:apps/supervisor/README.md",
+        "config:apps/supervisor/package.json",
+        "file:apps/admin/src/App.jsx",
+        "function:apps/admin/src/App.jsx:AdminDashboard",
+        "function:apps/admin/src/App.jsx:App",
+        "file:apps/admin/src/main.jsx",
+        "file:apps/admin/vite.config.js",
+        "file:apps/supervisor/postcss.config.js",
+        "file:apps/supervisor/src/components/SyncStatus.jsx",
+        "function:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+        "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+        "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+        "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+        "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+        "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+        "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+        "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+        "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+        "file:apps/supervisor/src/components/pdf/pdfTables.js",
+        "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+        "file:apps/supervisor/src/services/index.js",
+        "file:apps/supervisor/src/services/offlineQueue.js",
+        "class:apps/supervisor/src/services/offlineQueue.js:OfflineQueue",
+        "file:apps/supervisor/src/services/restAssignmentService.js",
+        "file:apps/supervisor/src/services/restEmployeeService.js",
+        "file:apps/supervisor/src/services/restSessionService.js",
+        "file:apps/supervisor/src/services/restVehicleService.js",
+        "file:apps/supervisor/tailwind.config.js",
+        "file:apps/supervisor/vite.config.js"
+      ]
+    },
+    {
+      "id": "layer:backend-api",
+      "name": "Backend API Services",
+      "description": "FastAPI REST API services for user authentication, session control, attendance management, and vehicle assignments.",
+      "nodeIds": [
+        "file:ServerSide/app/api/v1/assignments/routes.py",
+        "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+        "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+        "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+        "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+        "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+        "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+        "file:ServerSide/app/api/v1/attendance/routes.py",
+        "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+        "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+        "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+        "file:ServerSide/app/api/v1/auth.py",
+        "function:ServerSide/app/api/v1/auth.py:login",
+        "function:ServerSide/app/api/v1/auth.py:get_me",
+        "file:ServerSide/app/api/v1/employees/routes.py",
+        "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+        "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+        "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+        "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+        "file:ServerSide/app/api/v1/sessions/routes.py",
+        "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+        "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+        "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+        "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+        "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+        "file:ServerSide/app/api/v1/vehicles/routes.py",
+        "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+        "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+        "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+        "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+        "file:ServerSide/core/auth.py",
+        "function:ServerSide/core/auth.py:verify_password",
+        "function:ServerSide/core/auth.py:get_password_hash",
+        "function:ServerSide/core/auth.py:create_access_token",
+        "function:ServerSide/core/auth.py:get_current_user",
+        "function:ServerSide/core/auth.py:get_current_active_user",
+        "file:ServerSide/core/config.py",
+        "class:ServerSide/core/config.py:Settings"
+      ]
+    },
+    {
+      "id": "layer:database-models",
+      "name": "Database & Data Models",
+      "description": "MongoDB database access layer and Pydantic schemas for employees, vehicles, sessions, and attendance records.",
+      "nodeIds": [
+        "file:ServerSide/app/db/indexes.py",
+        "function:ServerSide/app/db/indexes.py:create_indexes",
+        "file:ServerSide/app/db/mongodb.py",
+        "class:ServerSide/app/db/mongodb.py:Database",
+        "file:ServerSide/app/models/assignment.py",
+        "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+        "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+        "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+        "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+        "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+        "file:ServerSide/app/models/attendance.py",
+        "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+        "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+        "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+        "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+        "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+        "file:ServerSide/app/models/employee.py",
+        "class:ServerSide/app/models/employee.py:EmployeeBase",
+        "class:ServerSide/app/models/employee.py:EmployeeCreate",
+        "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+        "class:ServerSide/app/models/employee.py:EmployeeResponse",
+        "class:ServerSide/app/models/employee.py:Employee",
+        "file:ServerSide/app/models/session.py",
+        "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+        "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+        "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+        "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+        "class:ServerSide/app/models/session.py:AttendanceSession",
+        "file:ServerSide/app/models/vehicle.py",
+        "class:ServerSide/app/models/vehicle.py:VehicleBase",
+        "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+        "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+        "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+        "class:ServerSide/app/models/vehicle.py:Vehicle",
+        "file:ServerSide/app/models/audit_event.py",
+        "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+        "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+        "class:ServerSide/app/models/audit_event.py:AuditEvent",
+        "file:ServerSide/app/models/user.py",
+        "class:ServerSide/app/models/user.py:UserBase",
+        "class:ServerSide/app/models/user.py:UserCreate",
+        "class:ServerSide/app/models/user.py:UserUpdate",
+        "class:ServerSide/app/models/user.py:User"
+      ]
+    },
+    {
+      "id": "layer:shared-packages",
+      "name": "Shared Monorepo Packages",
+      "description": "Reusable React components, custom hooks, and API client utilities shared across application packages.",
+      "nodeIds": [
+        "file:packages/shared/components/ErrorBoundary.jsx",
+        "class:packages/shared/components/ErrorBoundary.jsx:ErrorBoundary",
+        "file:packages/shared/hooks/useEmployees.js",
+        "function:packages/shared/hooks/useEmployees.js:useEmployees",
+        "function:packages/shared/hooks/useEmployees.js:useEmployee",
+        "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
+        "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
+        "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
+        "file:packages/shared/hooks/useVehicles.js",
+        "function:packages/shared/hooks/useVehicles.js:useVehicles",
+        "function:packages/shared/hooks/useVehicles.js:useVehicle",
+        "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
+        "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
+        "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
+        "file:packages/shared/services/authService.js",
+        "class:packages/shared/services/authService.js:AuthService",
+        "file:packages/shared/services/backendApi.js",
+        "class:packages/shared/services/backendApi.js:NetworkError",
+        "class:packages/shared/services/backendApi.js:AuthError",
+        "class:packages/shared/services/backendApi.js:ValidationError",
+        "class:packages/shared/services/backendApi.js:BackendApiClient",
+        "file:packages/shared/services/restAssignmentService.js",
+        "class:packages/shared/services/restAssignmentService.js:RestAssignmentService",
+        "file:packages/shared/services/restEmployeeService.js",
+        "class:packages/shared/services/restEmployeeService.js:RestEmployeeService",
+        "file:packages/shared/services/restSessionService.js",
+        "class:packages/shared/services/restSessionService.js:RestSessionService",
+        "file:packages/shared/services/restVehicleService.js",
+        "class:packages/shared/services/restVehicleService.js:RestVehicleService",
+        "file:packages/shared/check-types.sh",
+        "config:packages/shared/package.json",
+        "config:packages/shared/tsconfig.json",
+        "file:packages/shared/check-types.js",
+        "file:packages/shared/components/LoadingSpinner.jsx",
+        "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+        "file:packages/shared/index.js",
+        "file:packages/shared/types/api.ts"
+      ]
+    },
+    {
+      "id": "layer:tools-extractor",
+      "name": "Data Extractor Tools",
+      "description": "Python CLI and script extractor tools for parsing CS billing extracts and document data.",
+      "nodeIds": []
+    },
+    {
+      "id": "layer:infrastructure",
+      "name": "Infrastructure & Configuration",
+      "description": "Docker Compose containers, environment configs, database seed scripts, and build workflows.",
+      "nodeIds": [
+        "file:ServerSide/app/main.py",
+        "function:ServerSide/app/main.py:lifespan",
+        "function:ServerSide/app/main.py:general_exception_handler",
+        "function:ServerSide/app/main.py:health_check",
+        "function:ServerSide/app/main.py:readiness_check",
+        "file:ServerSide/tests/conftest.py",
+        "function:ServerSide/tests/conftest.py:client",
+        "function:ServerSide/tests/conftest.py:auth_token",
+        "function:ServerSide/tests/conftest.py:auth_headers",
+        "file:ServerSide/Dockerfile",
+        "document:ARCHITECTURE.md",
+        "document:DOCKER_DEPLOYMENT.md",
+        "document:GOALS.md",
+        "document:MASTER INSTRUCTIONS.md",
+        "document:TODO.md",
+        "document:TYPE_SYNC_GUIDE.md",
+        "document:WORKFLOW_PLAN.md",
+        "file:docker-compose.yml",
+        "document:ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+        "config:ServerSide/openapi.json",
+        "document:.devin/workflows/grillme.md",
+        "document:.devin/workflows/underdatnd.md",
+        "document:AttandaceTraker Acvanced/master intructions.md",
+        "file:ServerSide/scripts/export_openapi.py",
+        "file:ServerSide/scripts/seed_data.py",
+        "function:ServerSide/scripts/seed_data.py:main",
+        "class:ServerSide/scripts/seed_data.py:DataSeeder",
+        "file:ServerSide/scripts/sync.py",
+        "function:ServerSide/scripts/sync.py:run_command",
+        "function:ServerSide/scripts/sync.py:main",
+        "file:ServerSide/scripts/sync.sh",
+        "file:ServerSide/tests/__init__.py",
+        "file:ServerSide/tests/test_attendance.py",
+        "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+        "file:ServerSide/tests/test_auth.py",
+        "function:ServerSide/tests/test_auth.py:test_login_success",
+        "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+        "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+        "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+        "file:ServerSide/tests/test_employees.py",
+        "function:ServerSide/tests/test_employees.py:test_list_employees_unauthorized",
+        "function:ServerSide/tests/test_employees.py:test_create_employee_unauthorized",
+        "file:ServerSide/tests/test_sessions.py",
+        "function:ServerSide/tests/test_sessions.py:test_list_sessions_unauthorized",
+        "function:ServerSide/tests/test_sessions.py:test_create_session_unauthorized",
+        "file:ServerSide/tests/test_vehicles.py",
+        "function:ServerSide/tests/test_vehicles.py:test_list_vehicles_unauthorized",
+        "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_unauthorized",
+        "file:scripts/pre-commit.sh"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "System Architecture Overview",
+      "description": "Overview of Laxmi Enterprise monorepo layout comprising React Supervisor/Admin web apps, FastAPI backend, and shared libraries.",
+      "nodeIds": [
+        "document:ARCHITECTURE.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "FastAPI Server Application Entry",
+      "description": "Backend entry point configuring FastAPI app, CORS middleware, API route routers, and MongoDB connection lifespan.",
+      "nodeIds": [
+        "file:ServerSide/app/main.py",
+        "file:ServerSide/core/config.py"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "API Routing & Authentication",
+      "description": "REST endpoints handling user login authentication, JWT token validation, employee data, and vehicle assignment management.",
+      "nodeIds": [
+        "file:ServerSide/app/api/v1/auth.py",
+        "file:ServerSide/app/api/v1/employees/routes.py",
+        "file:ServerSide/app/api/v1/assignments/routes.py"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Data Models & Persistence",
+      "description": "MongoDB asynchronous database connection pool and Pydantic schemas for attendance records and employee tracking.",
+      "nodeIds": [
+        "file:ServerSide/app/db/mongodb.py",
+        "file:ServerSide/app/models/employee.py",
+        "file:ServerSide/app/models/attendance.py"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Supervisor Frontend Application",
+      "description": "Main supervisor frontend dashboard managing daily employee attendance tracking and vehicle loading assignments.",
+      "nodeIds": [
+        "file:apps/supervisor/src/main.jsx",
+        "file:apps/supervisor/src/App.jsx"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Vehicle Assignment & Capacity Table",
+      "description": "Interactive table managing vehicle assignments, driver/chalan capacity rule checks, and real-time utilization progress bars.",
+      "nodeIds": [
+        "file:apps/supervisor/src/components/VehicleTable.jsx",
+        "file:apps/supervisor/src/components/EmployeeTable.jsx"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Shared Monorepo Libraries",
+      "description": "Shared React hooks (`useEmployees`, `useVehicles`) and REST API client services consumed by supervisor and admin frontends.",
+      "nodeIds": [
+        "file:packages/shared/index.js",
+        "file:packages/shared/hooks/useEmployees.js",
+        "file:packages/shared/services/backendApi.js"
+      ]
+    }
+  ]
+}

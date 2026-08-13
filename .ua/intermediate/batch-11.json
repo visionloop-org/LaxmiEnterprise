@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    {
+      "id": "document:ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+      "type": "document",
+      "name": "MASTER INSTRUCTIONS SERVER SIDE.md",
+      "filePath": "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+      "summary": "Markdown docs file (114 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:ServerSide/openapi.json",
+      "type": "config",
+      "name": "openapi.json",
+      "filePath": "ServerSide/openapi.json",
+      "summary": "Json config file (2011 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": []
+}

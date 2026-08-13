@@ -1,0 +1,205 @@
+{
+  "nodes": [
+    {
+      "id": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "file",
+      "name": "agentClient.js",
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "summary": "Javascript code file (129 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/agentClient.js:AgentClient",
+      "type": "class",
+      "name": "AgentClient",
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "summary": "Class AgentClient in apps/supervisor/src/services/agentClient.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/api.js",
+      "type": "file",
+      "name": "api.js",
+      "filePath": "apps/supervisor/src/services/api.js",
+      "summary": "Javascript code file (71 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/api.js:ApiClient",
+      "type": "class",
+      "name": "ApiClient",
+      "filePath": "apps/supervisor/src/services/api.js",
+      "summary": "Class ApiClient in apps/supervisor/src/services/api.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/employeeService.js",
+      "type": "file",
+      "name": "employeeService.js",
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "summary": "Javascript code file (107 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/employeeService.js:EmployeeService",
+      "type": "class",
+      "name": "EmployeeService",
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "summary": "Class EmployeeService in apps/supervisor/src/services/employeeService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/reportService.js",
+      "type": "file",
+      "name": "reportService.js",
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "summary": "Javascript code file (122 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/reportService.js:ReportService",
+      "type": "class",
+      "name": "ReportService",
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "summary": "Class ReportService in apps/supervisor/src/services/reportService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/sessionService.js",
+      "type": "file",
+      "name": "sessionService.js",
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "summary": "Javascript code file (122 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/sessionService.js:SessionService",
+      "type": "class",
+      "name": "SessionService",
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "summary": "Class SessionService in apps/supervisor/src/services/sessionService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/vehicleService.js",
+      "type": "file",
+      "name": "vehicleService.js",
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "summary": "Javascript code file (101 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/services/vehicleService.js:VehicleService",
+      "type": "class",
+      "name": "VehicleService",
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "summary": "Class VehicleService in apps/supervisor/src/services/vehicleService.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:apps/supervisor/src/services/agentClient.js",
+      "target": "file:apps/supervisor/src/services/api.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/employeeService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/reportService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/sessionService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/vehicleService.js",
+      "target": "file:apps/supervisor/src/services/agentClient.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/agentClient.js",
+      "target": "class:apps/supervisor/src/services/agentClient.js:AgentClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/api.js",
+      "target": "class:apps/supervisor/src/services/api.js:ApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/employeeService.js",
+      "target": "class:apps/supervisor/src/services/employeeService.js:EmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/reportService.js",
+      "target": "class:apps/supervisor/src/services/reportService.js:ReportService",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/sessionService.js",
+      "target": "class:apps/supervisor/src/services/sessionService.js:SessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/vehicleService.js",
+      "target": "class:apps/supervisor/src/services/vehicleService.js:VehicleService",
+      "type": "contains"
+    }
+  ]
+}

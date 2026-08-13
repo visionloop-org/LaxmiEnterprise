@@ -20,6 +20,11 @@ COPY --from=builder /root/.local /root/.local
 
 ENV PATH=/root/.local/bin:$PATH
 
+# Install curl for health checks
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy application code
 COPY . .
 

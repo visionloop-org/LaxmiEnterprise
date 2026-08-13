@@ -1,21 +1,20 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from core.auth import create_access_token, verify_password, get_password_hash, get_current_active_user
+from core.auth import create_access_token, get_current_active_user
 
 router = APIRouter()
 
-# Pre-hashed password for "password123" using bcrypt
-# This avoids bcrypt compatibility issues during module import
+# Simple development credentials (plain text for development only)
 DUMMY_USER = {
     "username": "admin",
-    "hashed_password": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyWjWNmOHqWm",
+    "password": "password123",
     "role": "admin"
 }
 
 @router.post("/login")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user = DUMMY_USER # Should be fetched from DB by username
-    if not verify_password(form_data.password, user["hashed_password"]):
+    if form_data.password != user["password"]:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect password")
     
     access_token = create_access_token(data={"sub": user["username"]})

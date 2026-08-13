@@ -1,0 +1,1443 @@
+{
+  "nodes": [
+    {
+      "id": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python code file (234 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+      "type": "function",
+      "name": "get_vehicle_capacity",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function get_vehicle_capacity in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+      "type": "function",
+      "name": "validate_assignment_rules",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function validate_assignment_rules in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+      "type": "function",
+      "name": "assign_vehicle",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function assign_vehicle in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+      "type": "function",
+      "name": "unassign_vehicle",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function unassign_vehicle in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+      "type": "function",
+      "name": "get_vehicle_assignments",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function get_vehicle_assignments in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+      "type": "function",
+      "name": "get_employee_assignment",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Function get_employee_assignment in ServerSide/app/api/v1/assignments/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Python code file (133 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+      "type": "function",
+      "name": "record_attendance",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Function record_attendance in ServerSide/app/api/v1/attendance/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+      "type": "function",
+      "name": "get_session_attendance",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Function get_session_attendance in ServerSide/app/api/v1/attendance/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+      "type": "function",
+      "name": "get_employee_attendance",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Function get_employee_attendance in ServerSide/app/api/v1/attendance/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Python code file (25 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/auth.py:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Function login in ServerSide/app/api/v1/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/auth.py:get_me",
+      "type": "function",
+      "name": "get_me",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Function get_me in ServerSide/app/api/v1/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/employees/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python code file (69 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+      "type": "function",
+      "name": "list_employees",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function list_employees in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+      "type": "function",
+      "name": "create_employee",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function create_employee in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+      "type": "function",
+      "name": "get_employee",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function get_employee in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+      "type": "function",
+      "name": "update_employee",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Function update_employee in ServerSide/app/api/v1/employees/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python code file (133 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+      "type": "function",
+      "name": "create_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function create_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+      "type": "function",
+      "name": "list_sessions",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function list_sessions in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+      "type": "function",
+      "name": "get_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function get_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+      "type": "function",
+      "name": "get_active_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function get_active_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+      "type": "function",
+      "name": "finalize_session",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Function finalize_session in ServerSide/app/api/v1/sessions/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "type": "file",
+      "name": "routes.py",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Python code file (72 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+      "type": "function",
+      "name": "list_vehicles",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function list_vehicles in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+      "type": "function",
+      "name": "create_vehicle",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function create_vehicle in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+      "type": "function",
+      "name": "get_vehicle",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function get_vehicle in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+      "type": "function",
+      "name": "update_vehicle",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Function update_vehicle in ServerSide/app/api/v1/vehicles/routes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/db/indexes.py",
+      "type": "file",
+      "name": "indexes.py",
+      "filePath": "ServerSide/app/db/indexes.py",
+      "summary": "Python code file (37 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/db/indexes.py:create_indexes",
+      "type": "function",
+      "name": "create_indexes",
+      "filePath": "ServerSide/app/db/indexes.py",
+      "summary": "Function create_indexes in ServerSide/app/db/indexes.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/db/mongodb.py",
+      "type": "file",
+      "name": "mongodb.py",
+      "filePath": "ServerSide/app/db/mongodb.py",
+      "summary": "Python code file (32 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/db/mongodb.py:Database",
+      "type": "class",
+      "name": "Database",
+      "filePath": "ServerSide/app/db/mongodb.py",
+      "summary": "Class Database in ServerSide/app/db/mongodb.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/main.py",
+      "type": "file",
+      "name": "main.py",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python code file (62 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:lifespan",
+      "type": "function",
+      "name": "lifespan",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function lifespan in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:general_exception_handler",
+      "type": "function",
+      "name": "general_exception_handler",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function general_exception_handler in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:health_check",
+      "type": "function",
+      "name": "health_check",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function health_check in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:readiness_check",
+      "type": "function",
+      "name": "readiness_check",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Function readiness_check in ServerSide/app/main.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/models/assignment.py",
+      "type": "file",
+      "name": "assignment.py",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python code file (30 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+      "type": "class",
+      "name": "VehicleAssignmentBase",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentBase in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+      "type": "class",
+      "name": "VehicleAssignmentCreate",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentCreate in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+      "type": "class",
+      "name": "VehicleAssignmentUpdate",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentUpdate in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+      "type": "class",
+      "name": "VehicleAssignmentResponse",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignmentResponse in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+      "type": "class",
+      "name": "VehicleAssignment",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Class VehicleAssignment in ServerSide/app/models/assignment.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/attendance.py",
+      "type": "file",
+      "name": "attendance.py",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python code file (32 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+      "type": "class",
+      "name": "AttendanceRecordBase",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordBase in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+      "type": "class",
+      "name": "AttendanceRecordCreate",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordCreate in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+      "type": "class",
+      "name": "AttendanceRecordUpdate",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordUpdate in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+      "type": "class",
+      "name": "AttendanceRecordResponse",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecordResponse in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+      "type": "class",
+      "name": "AttendanceRecord",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Class AttendanceRecord in ServerSide/app/models/attendance.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/employee.py",
+      "type": "file",
+      "name": "employee.py",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python code file (38 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeBase",
+      "type": "class",
+      "name": "EmployeeBase",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeBase in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeCreate",
+      "type": "class",
+      "name": "EmployeeCreate",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeCreate in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+      "type": "class",
+      "name": "EmployeeUpdate",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeUpdate in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeResponse",
+      "type": "class",
+      "name": "EmployeeResponse",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class EmployeeResponse in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:Employee",
+      "type": "class",
+      "name": "Employee",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Class Employee in ServerSide/app/models/employee.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/session.py",
+      "type": "file",
+      "name": "session.py",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python code file (40 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+      "type": "class",
+      "name": "AttendanceSessionBase",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionBase in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+      "type": "class",
+      "name": "AttendanceSessionCreate",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionCreate in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+      "type": "class",
+      "name": "AttendanceSessionUpdate",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionUpdate in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+      "type": "class",
+      "name": "AttendanceSessionResponse",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSessionResponse in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSession",
+      "type": "class",
+      "name": "AttendanceSession",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Class AttendanceSession in ServerSide/app/models/session.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/vehicle.py",
+      "type": "file",
+      "name": "vehicle.py",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python code file (29 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleBase",
+      "type": "class",
+      "name": "VehicleBase",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleBase in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+      "type": "class",
+      "name": "VehicleCreate",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleCreate in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+      "type": "class",
+      "name": "VehicleUpdate",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleUpdate in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+      "type": "class",
+      "name": "VehicleResponse",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class VehicleResponse in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:Vehicle",
+      "type": "class",
+      "name": "Vehicle",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Class Vehicle in ServerSide/app/models/vehicle.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/core/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python code file (39 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:verify_password",
+      "type": "function",
+      "name": "verify_password",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function verify_password in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_password_hash",
+      "type": "function",
+      "name": "get_password_hash",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function get_password_hash in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:create_access_token",
+      "type": "function",
+      "name": "create_access_token",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function create_access_token in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_current_user",
+      "type": "function",
+      "name": "get_current_user",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function get_current_user in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_current_active_user",
+      "type": "function",
+      "name": "get_current_active_user",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Function get_current_active_user in ServerSide/core/auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/core/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "ServerSide/core/config.py",
+      "summary": "Python code file (23 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/core/config.py:Settings",
+      "type": "class",
+      "name": "Settings",
+      "filePath": "ServerSide/core/config.py",
+      "summary": "Class Settings in ServerSide/core/config.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/tests/conftest.py",
+      "type": "file",
+      "name": "conftest.py",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python code file (20 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:client",
+      "type": "function",
+      "name": "client",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Function client in ServerSide/tests/conftest.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:auth_token",
+      "type": "function",
+      "name": "auth_token",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Function auth_token in ServerSide/tests/conftest.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:auth_headers",
+      "type": "function",
+      "name": "auth_headers",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Function auth_headers in ServerSide/tests/conftest.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "file:ServerSide/app/models/assignment.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "file:ServerSide/app/models/attendance.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "file:ServerSide/app/models/employee.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "file:ServerSide/app/models/session.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "file:ServerSide/app/models/vehicle.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "file:ServerSide/core/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/db/indexes.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/db/mongodb.py",
+      "target": "file:ServerSide/app/db/indexes.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/db/mongodb.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/auth.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/employees/routes.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/app/db/mongodb.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "file:ServerSide/core/config.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "file:ServerSide/app/main.py",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "function:ServerSide/app/api/v1/auth.py:login",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "function:ServerSide/app/api/v1/auth.py:get_me",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/indexes.py",
+      "target": "function:ServerSide/app/db/indexes.py:create_indexes",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/mongodb.py",
+      "target": "class:ServerSide/app/db/mongodb.py:Database",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:lifespan",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:general_exception_handler",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:health_check",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:readiness_check",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:Employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSession",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:Vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:verify_password",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_password_hash",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:create_access_token",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_current_user",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_current_active_user",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/config.py",
+      "target": "class:ServerSide/core/config.py:Settings",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:client",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:auth_token",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:auth_headers",
+      "type": "contains"
+    }
+  ]
+}

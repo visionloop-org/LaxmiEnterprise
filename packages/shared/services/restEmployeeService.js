@@ -1,61 +1,137 @@
+// @ts-check
 // REST API service for employees using FastAPI backend
 import { backendApiClient } from './backendApi.js'
 
+/**
+ * @typedef {Object} FrontendEmployee
+ * @property {string} id
+ * @property {string} name
+ * @property {string} category
+ * @property {string | null} photo
+ * @property {string | null} attendance
+ * @property {string | null} arrivalTime
+ * @property {string | null} assignedVehicle
+ * @property {string | null} labourRequest
+ * @property {string} status
+ * @property {string | null} contractor
+ * @property {string | null} remarks
+ */
+
+/**
+ * @typedef {Object} EmployeeFilters
+ * @property {string} [category]
+ * @property {string} [status]
+ */
+
 class RestEmployeeService {
+  /**
+   * @param {EmployeeFilters} [filters={}]
+   * @returns {Promise<FrontendEmployee[]>}
+   */
   async fetchEmployees(filters = {}) {
     const params = new URLSearchParams()
     if (filters.category) params.append('category', filters.category)
     if (filters.status) params.append('status', filters.status)
-    
-    const url = `/employees${params.toString() ? '?' + params.toString() : ''}`
+
+    const url = `/employees/${params.toString() ? '?' + params.toString() : ''}`
     const employees = await backendApiClient.get(url)
-    
-    // Map backend data structure to frontend structure
-    return employees.map(emp => this.mapBackendToFrontend(emp))
+
+    return employees.map((/** @type {import('../types/api.js').components['schemas']['EmployeeResponse']} */ emp) => this.mapBackendToFrontend(emp))
   }
 
+  /**
+   * @param {string} employeeId
+   * @returns {Promise<FrontendEmployee>}
+   */
   async fetchEmployee(employeeId) {
     const employee = await backendApiClient.get(`/employees/${employeeId}`)
     return this.mapBackendToFrontend(employee)
   }
 
+  /**
+   * @param {string} sessionId
+   * @param {string} employeeId
+   * @param {string} status
+   * @param {string | null} [arrivalTime=null]
+   * @param {string | null} [remarks=null]
+   * @returns {Promise<FrontendEmployee>}
+   */
   async updateAttendance(sessionId, employeeId, status, arrivalTime = null, remarks = null) {
     const attendanceData = {
       status: this.mapAttendanceStatus(status),
       arrivalTime: arrivalTime,
       remarks: remarks
     }
-    
+
     const result = await backendApiClient.put(
       `/attendance/sessions/${sessionId}/employees/${employeeId}`,
       attendanceData
     )
-    
+
     return this.mapBackendToFrontend(result)
   }
 
+  /**
+   * @param {FrontendEmployee} employeeData
+   * @returns {Promise<FrontendEmployee>}
+   */
   async addEmployee(employeeData) {
     const backendData = this.mapFrontendToBackend(employeeData)
-    const result = await backendApiClient.post('/employees', backendData)
+    const result = await backendApiClient.post('/employees/', backendData)
     return this.mapBackendToFrontend(result)
   }
 
+  /**
+   * @param {string} employeeId
+   * @param {Partial<FrontendEmployee>} updateData
+   * @returns {Promise<FrontendEmployee>}
+   */
   async updateEmployee(employeeId, updateData) {
-    const backendData = this.mapFrontendToBackend(updateData)
+    const backendData = this.mapFrontendToBackendForUpdate(updateData)
     const result = await backendApiClient.put(`/employees/${employeeId}`, backendData)
     return this.mapBackendToFrontend(result)
   }
 
-  // Map backend camelCase to frontend structure
+  /**
+   * @param {string} employeeId
+   * @returns {Promise<FrontendEmployee>}
+   */
+  async approveEmployee(employeeId) {
+    const result = await backendApiClient.post(`/employees/${employeeId}/approve`, {})
+    return this.mapBackendToFrontend(result)
+  }
+
+  /**
+   * @param {string} employeeId
+   * @returns {Promise<FrontendEmployee>}
+   */
+  async rejectEmployee(employeeId) {
+    const result = await backendApiClient.post(`/employees/${employeeId}/reject`, {})
+    return this.mapBackendToFrontend(result)
+  }
+
+  /**
+   * @param {string} employeeId
+   * @returns {Promise<void>}
+   */
+  async deleteEmployee(employeeId) {
+    await backendApiClient.delete(`/employees/${employeeId}`)
+  }
+
+
+  /**
+   * @param {import('../types/api.js').components['schemas']['EmployeeResponse']} employee
+   * @returns {FrontendEmployee}
+   */
   mapBackendToFrontend(employee) {
     return {
       id: employee.employeeId,
       name: employee.name,
       category: employee.category,
       photo: employee.photoPath,
-      attendance: null, // Will be loaded separately from attendance records
-      arrivalTime: null, // Will be loaded separately from attendance records
-      assignedVehicle: null, // Will be loaded separately from vehicle assignments
+      attendance: null,
+      arrivalTime: null,
+      assignedVehicle: null,
       labourRequest: null,
       status: employee.status,
       contractor: employee.contractor,
@@ -63,7 +139,10 @@ class RestEmployeeService {
     }
   }
 
-  // Map frontend structure to backend camelCase
+  /**
+   * @param {FrontendEmployee} employee
+   * @returns {import('../types/api.js').components['schemas']['EmployeeCreate']}
+   */
   mapFrontendToBackend(employee) {
     return {
       employeeId: employee.id,
@@ -76,7 +155,25 @@ class RestEmployeeService {
     }
   }
 
-  // Map frontend attendance status to backend format
+  /**
+   * @param {Partial<FrontendEmployee>} employee
+   * @returns {import('../types/api.js').components['schemas']['EmployeeUpdate']}
+   */
+  mapFrontendToBackendForUpdate(employee) {
+    const updateData = {}
+    if (employee.name !== undefined) updateData.name = employee.name
+    if (employee.category !== undefined) updateData.category = employee.category
+    if (employee.photo !== undefined) updateData.photoPath = employee.photo
+    if (employee.status !== undefined) updateData.status = employee.status
+    if (employee.contractor !== undefined) updateData.contractor = employee.contractor
+    if (employee.remarks !== undefined) updateData.remarks = employee.remarks
+    return updateData
+  }
+
+  /**
+   * @param {string} status
+   * @returns {string}
+   */
   mapAttendanceStatus(status) {
     const statusMap = {
       'On Time': 'on_time',
@@ -89,7 +186,10 @@ class RestEmployeeService {
     return statusMap[status] || status
   }
 
-  // Map backend attendance status to frontend format
+  /**
+   * @param {string} status
+   * @returns {string}
+   */
   mapAttendanceStatusFromBackend(status) {
     const statusMap = {
       'on_time': 'On Time',

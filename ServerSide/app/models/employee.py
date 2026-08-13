@@ -1,6 +1,9 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import Optional
-from datetime import datetime
+from datetime import datetime, timezone
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 class EmployeeBase(BaseModel):
     employeeId: str
@@ -8,9 +11,13 @@ class EmployeeBase(BaseModel):
     category: str  # Workers, Drivers, Chalan Men, Office, Extra Labour
     photoPath: Optional[str] = None
     displayOrder: Optional[int] = None
-    status: str = "active"  # active, inactive
+    status: str = "active"  # active, pending_approval, rejected, inactive
+    phone: Optional[str] = None
     contractor: Optional[str] = None
     remarks: Optional[str] = None
+    requestedBy: Optional[str] = None
+    approvedBy: Optional[str] = None
+    baseRate: Optional[float] = None  # Daily base pay rate in INR
 
 class EmployeeCreate(EmployeeBase):
     pass
@@ -21,12 +28,24 @@ class EmployeeUpdate(BaseModel):
     photoPath: Optional[str] = None
     displayOrder: Optional[int] = None
     status: Optional[str] = None
+    phone: Optional[str] = None
     contractor: Optional[str] = None
     remarks: Optional[str] = None
+    baseRate: Optional[float] = None
 
-class Employee(EmployeeBase):
-    createdAt: datetime = Field(default_factory=datetime.utcnow)
-    updatedAt: datetime = Field(default_factory=datetime.utcnow)
+class EmployeeResponse(EmployeeBase):
+    id: Optional[str] = Field(None, alias="_id")
+    createdAt: datetime = Field(default_factory=utc_now)
+    updatedAt: datetime = Field(default_factory=utc_now)
 
-    class Config:
-        from_attributes = True
+    @field_validator('id', mode='before')
+    @classmethod
+    def parse_id(cls, v):
+        if v is None:
+            return None
+        return str(v)
+
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
+
+class Employee(EmployeeResponse):
+    pass

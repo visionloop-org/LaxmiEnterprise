@@ -31,6 +31,11 @@ export function useStatistics(employees, vehicles) {
   const getAttendanceCount = (status) => {
     if (status === 'All') return totalCount
     if (status === 'Present') return onTimeCount + arrivedCount
+    if (status === 'Absent') return absentCount
+    if (status === 'Completed') return completedCount
+    if (status === 'Pending') return pendingCount
+    if (status === 'On Time' || status === 'on_time') return onTimeCount
+    if (status === 'Arrived' || status === 'arrived') return arrivedCount
     return employees.filter(e => e.attendance === status).length
   }
 

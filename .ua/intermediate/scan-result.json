@@ -1,0 +1,1199 @@
+{
+  "projectName": "LaxmiEnterprise",
+  "projectDescription": "Supervisor & Admin Attendance Tracking App with FastAPI backend",
+  "languages": [
+    "javascript",
+    "python",
+    "html",
+    "css",
+    "json",
+    "shell"
+  ],
+  "frameworks": [
+    "react",
+    "vite",
+    "fastapi",
+    "tailwindcss",
+    "mongodb"
+  ],
+  "files": [
+    {
+      "path": ".devin/workflows/grillme.md",
+      "language": "markdown",
+      "sizeLines": 323,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".devin/workflows/underdatnd.md",
+      "language": "markdown",
+      "sizeLines": 83,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".dockerignore",
+      "language": "unknown",
+      "sizeLines": 23,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".ua/.understandignore",
+      "language": "unknown",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "language": "markdown",
+      "sizeLines": 58,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "AttandaceTraker Acvanced/master intructions.md",
+      "language": "markdown",
+      "sizeLines": 1066,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "DOCKER_DEPLOYMENT.md",
+      "language": "markdown",
+      "sizeLines": 93,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "GOALS.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "MASTER INSTRUCTIONS.md",
+      "language": "markdown",
+      "sizeLines": 68,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ServerSide/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 33,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
+      "language": "markdown",
+      "sizeLines": 114,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ServerSide/app/api/v1/assignments/routes.py",
+      "language": "python",
+      "sizeLines": 234,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/attendance/routes.py",
+      "language": "python",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/auth.py",
+      "language": "python",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/employees/routes.py",
+      "language": "python",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/sessions/routes.py",
+      "language": "python",
+      "sizeLines": 133,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/vehicles/routes.py",
+      "language": "python",
+      "sizeLines": 72,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/db/indexes.py",
+      "language": "python",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/db/mongodb.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/main.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/assignment.py",
+      "language": "python",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/attendance.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/audit_event.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/employee.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/session.py",
+      "language": "python",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/user.py",
+      "language": "python",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/vehicle.py",
+      "language": "python",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/core/auth.py",
+      "language": "python",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/core/config.py",
+      "language": "python",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/launch.bat",
+      "language": "batch",
+      "sizeLines": 5,
+      "fileCategory": "script"
+    },
+    {
+      "path": "ServerSide/openapi.json",
+      "language": "json",
+      "sizeLines": 2010,
+      "fileCategory": "config"
+    },
+    {
+      "path": "ServerSide/requirements.txt",
+      "language": "txt",
+      "sizeLines": 14,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ServerSide/scripts/export_openapi.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/seed_data.py",
+      "language": "python",
+      "sizeLines": 285,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/sync.bat",
+      "language": "batch",
+      "sizeLines": 15,
+      "fileCategory": "script"
+    },
+    {
+      "path": "ServerSide/scripts/sync.py",
+      "language": "python",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/sync.sh",
+      "language": "shell",
+      "sizeLines": 15,
+      "fileCategory": "script"
+    },
+    {
+      "path": "ServerSide/tests/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/conftest.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_attendance.py",
+      "language": "python",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_auth.py",
+      "language": "python",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_employees.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_sessions.py",
+      "language": "python",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_vehicles.py",
+      "language": "python",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "TODO.md",
+      "language": "markdown",
+      "sizeLines": 93,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "TYPE_SYNC_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 106,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "WORKFLOW_PLAN.md",
+      "language": "markdown",
+      "sizeLines": 207,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "apps/admin/.oxlintrc.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "apps/admin/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 18,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "apps/admin/README.md",
+      "language": "markdown",
+      "sizeLines": 16,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "apps/admin/index.html",
+      "language": "html",
+      "sizeLines": 13,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/admin/package.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
+    },
+    {
+      "path": "apps/admin/src/App.css",
+      "language": "css",
+      "sizeLines": 215,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/admin/src/App.jsx",
+      "language": "javascript",
+      "sizeLines": 243,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/src/index.css",
+      "language": "css",
+      "sizeLines": 111,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/admin/src/main.jsx",
+      "language": "javascript",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/vite.config.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/.dockerignore",
+      "language": "unknown",
+      "sizeLines": 10,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "apps/supervisor/.oxlintrc.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
+    },
+    {
+      "path": "apps/supervisor/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 18,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "apps/supervisor/MASTER INSTRUCTIONS.md",
+      "language": "markdown",
+      "sizeLines": 77,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "apps/supervisor/README.md",
+      "language": "markdown",
+      "sizeLines": 127,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "apps/supervisor/index.html",
+      "language": "html",
+      "sizeLines": 13,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/supervisor/package.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": "apps/supervisor/postcss.config.js",
+      "language": "javascript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/App.css",
+      "language": "css",
+      "sizeLines": 184,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/supervisor/src/App.jsx",
+      "language": "javascript",
+      "sizeLines": 277,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/QueryClient.jsx",
+      "language": "javascript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/AttendanceControl.jsx",
+      "language": "javascript",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "language": "javascript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "language": "javascript",
+      "sizeLines": 198,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "language": "javascript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "language": "javascript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/EmployeeRow.jsx",
+      "language": "javascript",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/EmployeeTable.jsx",
+      "language": "javascript",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/FilterChips.jsx",
+      "language": "javascript",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/LeftColumn.jsx",
+      "language": "javascript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/LoginModal.jsx",
+      "language": "javascript",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/RightColumn.jsx",
+      "language": "javascript",
+      "sizeLines": 253,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/SyncStatus.jsx",
+      "language": "javascript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "language": "javascript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/VehicleTable.jsx",
+      "language": "javascript",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "language": "javascript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "language": "javascript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "language": "javascript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "language": "javascript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "language": "javascript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "language": "javascript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "language": "javascript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "language": "javascript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "language": "javascript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "language": "javascript",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "language": "javascript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "language": "javascript",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "language": "javascript",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "language": "javascript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "language": "javascript",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "language": "javascript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "language": "javascript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "language": "javascript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "language": "javascript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "language": "javascript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "language": "javascript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "language": "javascript",
+      "sizeLines": 407,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "language": "javascript",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useFilters.js",
+      "language": "javascript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useStatistics.js",
+      "language": "javascript",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useTableSort.js",
+      "language": "javascript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/index.css",
+      "language": "css",
+      "sizeLines": 22,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/supervisor/src/main.jsx",
+      "language": "javascript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/agentClient.js",
+      "language": "javascript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/api.js",
+      "language": "javascript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/employeeService.js",
+      "language": "javascript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/index.js",
+      "language": "javascript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/offlineQueue.js",
+      "language": "javascript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/reportService.js",
+      "language": "javascript",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restAssignmentService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restEmployeeService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restSessionService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restVehicleService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/sessionService.js",
+      "language": "javascript",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/vehicleService.js",
+      "language": "javascript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/tailwind.config.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/vite.config.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docker-compose.yml",
+      "language": "yaml",
+      "sizeLines": 79,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "launch-containers.bat",
+      "language": "batch",
+      "sizeLines": 19,
+      "fileCategory": "script"
+    },
+    {
+      "path": "packages/shared/check-types.bat",
+      "language": "batch",
+      "sizeLines": 22,
+      "fileCategory": "script"
+    },
+    {
+      "path": "packages/shared/check-types.js",
+      "language": "javascript",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/check-types.sh",
+      "language": "shell",
+      "sizeLines": 23,
+      "fileCategory": "script"
+    },
+    {
+      "path": "packages/shared/components/ErrorBoundary.jsx",
+      "language": "javascript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/components/LoadingSpinner.jsx",
+      "language": "javascript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/hooks/useEmployees.js",
+      "language": "javascript",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/hooks/useVehicles.js",
+      "language": "javascript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/index.js",
+      "language": "javascript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/package.json",
+      "language": "json",
+      "sizeLines": 31,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/shared/services/authService.js",
+      "language": "javascript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/backendApi.js",
+      "language": "javascript",
+      "sizeLines": 188,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restAssignmentService.js",
+      "language": "javascript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restEmployeeService.js",
+      "language": "javascript",
+      "sizeLines": 186,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restSessionService.js",
+      "language": "javascript",
+      "sizeLines": 217,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restVehicleService.js",
+      "language": "javascript",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tsconfig.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/shared/types/api.ts",
+      "language": "typescript",
+      "sizeLines": 1342,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/pre-commit.bat",
+      "language": "batch",
+      "sizeLines": 27,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/pre-commit.sh",
+      "language": "shell",
+      "sizeLines": 26,
+      "fileCategory": "script"
+    }
+  ],
+  "totalFiles": 147,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "importMap": {
+    ".devin/workflows/grillme.md": [],
+    ".devin/workflows/underdatnd.md": [],
+    ".dockerignore": [],
+    ".ua/.understandignore": [],
+    "ARCHITECTURE.md": [],
+    "AttandaceTraker Acvanced/master intructions.md": [],
+    "DOCKER_DEPLOYMENT.md": [],
+    "GOALS.md": [],
+    "MASTER INSTRUCTIONS.md": [],
+    "ServerSide/Dockerfile": [],
+    "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md": [],
+    "ServerSide/app/api/v1/assignments/routes.py": [
+      "ServerSide/app/db/mongodb.py",
+      "ServerSide/app/models/assignment.py",
+      "ServerSide/core/auth.py"
+    ],
+    "ServerSide/app/api/v1/attendance/routes.py": [
+      "ServerSide/app/db/mongodb.py",
+      "ServerSide/app/models/attendance.py",
+      "ServerSide/core/auth.py"
+    ],
+    "ServerSide/app/api/v1/auth.py": [
+      "ServerSide/core/auth.py"
+    ],
+    "ServerSide/app/api/v1/employees/routes.py": [
+      "ServerSide/app/db/mongodb.py",
+      "ServerSide/app/models/employee.py",
+      "ServerSide/core/auth.py"
+    ],
+    "ServerSide/app/api/v1/sessions/routes.py": [
+      "ServerSide/app/db/mongodb.py",
+      "ServerSide/app/models/session.py",
+      "ServerSide/core/auth.py"
+    ],
+    "ServerSide/app/api/v1/vehicles/routes.py": [
+      "ServerSide/app/db/mongodb.py",
+      "ServerSide/app/models/vehicle.py",
+      "ServerSide/core/auth.py"
+    ],
+    "ServerSide/app/db/indexes.py": [
+      "ServerSide/core/config.py"
+    ],
+    "ServerSide/app/db/mongodb.py": [
+      "ServerSide/app/db/indexes.py",
+      "ServerSide/core/config.py"
+    ],
+    "ServerSide/app/main.py": [
+      "ServerSide/app/api/v1/assignments/routes.py",
+      "ServerSide/app/api/v1/attendance/routes.py",
+      "ServerSide/app/api/v1/auth.py",
+      "ServerSide/app/api/v1/employees/routes.py",
+      "ServerSide/app/api/v1/sessions/routes.py",
+      "ServerSide/app/api/v1/vehicles/routes.py",
+      "ServerSide/app/db/mongodb.py",
+      "ServerSide/core/config.py"
+    ],
+    "ServerSide/app/models/assignment.py": [],
+    "ServerSide/app/models/attendance.py": [],
+    "ServerSide/app/models/audit_event.py": [],
+    "ServerSide/app/models/employee.py": [],
+    "ServerSide/app/models/session.py": [],
+    "ServerSide/app/models/user.py": [],
+    "ServerSide/app/models/vehicle.py": [],
+    "ServerSide/core/auth.py": [
+      "ServerSide/core/config.py"
+    ],
+    "ServerSide/core/config.py": [],
+    "ServerSide/launch.bat": [],
+    "ServerSide/openapi.json": [],
+    "ServerSide/requirements.txt": [],
+    "ServerSide/scripts/export_openapi.py": [],
+    "ServerSide/scripts/seed_data.py": [],
+    "ServerSide/scripts/sync.bat": [],
+    "ServerSide/scripts/sync.py": [],
+    "ServerSide/scripts/sync.sh": [],
+    "ServerSide/tests/__init__.py": [],
+    "ServerSide/tests/conftest.py": [
+      "ServerSide/app/main.py"
+    ],
+    "ServerSide/tests/test_attendance.py": [],
+    "ServerSide/tests/test_auth.py": [],
+    "ServerSide/tests/test_employees.py": [],
+    "ServerSide/tests/test_sessions.py": [],
+    "ServerSide/tests/test_vehicles.py": [],
+    "TODO.md": [],
+    "TYPE_SYNC_GUIDE.md": [],
+    "WORKFLOW_PLAN.md": [],
+    "apps/admin/.oxlintrc.json": [],
+    "apps/admin/Dockerfile": [],
+    "apps/admin/README.md": [],
+    "apps/admin/index.html": [],
+    "apps/admin/package.json": [],
+    "apps/admin/src/App.css": [],
+    "apps/admin/src/App.jsx": [
+      "apps/admin/src/App.css"
+    ],
+    "apps/admin/src/index.css": [],
+    "apps/admin/src/main.jsx": [
+      "apps/admin/src/App.jsx",
+      "apps/admin/src/index.css"
+    ],
+    "apps/admin/vite.config.js": [],
+    "apps/supervisor/.dockerignore": [],
+    "apps/supervisor/.oxlintrc.json": [],
+    "apps/supervisor/Dockerfile": [],
+    "apps/supervisor/MASTER INSTRUCTIONS.md": [],
+    "apps/supervisor/README.md": [],
+    "apps/supervisor/index.html": [],
+    "apps/supervisor/package.json": [],
+    "apps/supervisor/postcss.config.js": [],
+    "apps/supervisor/src/App.css": [],
+    "apps/supervisor/src/App.jsx": [
+      "apps/supervisor/src/App.css",
+      "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "apps/supervisor/src/components/CategoryTabs.jsx",
+      "apps/supervisor/src/components/EmployeeTable.jsx",
+      "apps/supervisor/src/components/FilterChips.jsx",
+      "apps/supervisor/src/components/LeftColumn.jsx",
+      "apps/supervisor/src/components/LoginModal.jsx",
+      "apps/supervisor/src/components/RightColumn.jsx",
+      "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "apps/supervisor/src/components/VehicleTable.jsx",
+      "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "apps/supervisor/src/hooks/useAttendanceState.js",
+      "apps/supervisor/src/hooks/useFilters.js",
+      "apps/supervisor/src/hooks/useStatistics.js",
+      "apps/supervisor/src/hooks/useTableSort.js"
+    ],
+    "apps/supervisor/src/QueryClient.jsx": [],
+    "apps/supervisor/src/components/AttendanceControl.jsx": [
+      "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "apps/supervisor/src/components/attendance/attendance.utils.js"
+    ],
+    "apps/supervisor/src/components/CapacityConflictModal.jsx": [],
+    "apps/supervisor/src/components/CapacityReportModal.jsx": [],
+    "apps/supervisor/src/components/CategoryTabs.jsx": [],
+    "apps/supervisor/src/components/EmployeeAvatar.jsx": [],
+    "apps/supervisor/src/components/EmployeeRow.jsx": [
+      "apps/supervisor/src/components/AttendanceControl.jsx",
+      "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "apps/supervisor/src/components/ui/VehicleSelect.jsx"
+    ],
+    "apps/supervisor/src/components/EmployeeTable.jsx": [
+      "apps/supervisor/src/components/EmployeeRow.jsx"
+    ],
+    "apps/supervisor/src/components/FilterChips.jsx": [],
+    "apps/supervisor/src/components/LeftColumn.jsx": [],
+    "apps/supervisor/src/components/LoginModal.jsx": [],
+    "apps/supervisor/src/components/RightColumn.jsx": [],
+    "apps/supervisor/src/components/SyncStatus.jsx": [
+      "apps/supervisor/src/services/offlineQueue.js"
+    ],
+    "apps/supervisor/src/components/VehicleAssignmentHistory.jsx": [],
+    "apps/supervisor/src/components/VehicleTable.jsx": [],
+    "apps/supervisor/src/components/attendance/ArrivedBadge.jsx": [],
+    "apps/supervisor/src/components/attendance/AttendanceBadge.jsx": [
+      "apps/supervisor/src/components/attendance/attendance.utils.js"
+    ],
+    "apps/supervisor/src/components/attendance/AttendanceButtons.jsx": [
+      "apps/supervisor/src/components/ui/ButtonGroup.jsx"
+    ],
+    "apps/supervisor/src/components/attendance/LockedAttendance.jsx": [
+      "apps/supervisor/src/components/attendance/AttendanceBadge.jsx"
+    ],
+    "apps/supervisor/src/components/attendance/attendance.config.js": [],
+    "apps/supervisor/src/components/attendance/attendance.utils.js": [
+      "apps/supervisor/src/components/attendance/attendance.config.js"
+    ],
+    "apps/supervisor/src/components/pdf/PDFRenderer.js": [
+      "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js"
+    ],
+    "apps/supervisor/src/components/pdf/layout/LayoutManager.js": [
+      "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
+    ],
+    "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js": [],
+    "apps/supervisor/src/components/pdf/pdfHandler.js": [
+      "apps/supervisor/src/components/pdf/PDFRenderer.js"
+    ],
+    "apps/supervisor/src/components/pdf/pdfHeaderFooter.js": [],
+    "apps/supervisor/src/components/pdf/pdfPendingException.js": [],
+    "apps/supervisor/src/components/pdf/pdfSummary.js": [],
+    "apps/supervisor/src/components/pdf/pdfTables.js": [],
+    "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js": [
+      "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
+    ],
+    "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js": [
+      "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
+    ],
+    "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js": [
+      "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
+    ],
+    "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js": [
+      "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
+    ],
+    "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js": [
+      "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
+    ],
+    "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js": [],
+    "apps/supervisor/src/components/ui/ButtonGroup.jsx": [],
+    "apps/supervisor/src/components/ui/LabourRequestButtons.jsx": [
+      "apps/supervisor/src/components/ui/ButtonGroup.jsx"
+    ],
+    "apps/supervisor/src/components/ui/VehicleSelect.jsx": [
+      "apps/supervisor/src/components/ui/ButtonGroup.jsx"
+    ],
+    "apps/supervisor/src/hooks/useAttendanceHandlers.js": [],
+    "apps/supervisor/src/hooks/useAttendanceState.js": [],
+    "apps/supervisor/src/hooks/useFilters.js": [],
+    "apps/supervisor/src/hooks/useStatistics.js": [],
+    "apps/supervisor/src/hooks/useTableSort.js": [],
+    "apps/supervisor/src/index.css": [],
+    "apps/supervisor/src/main.jsx": [
+      "apps/supervisor/src/App.jsx",
+      "apps/supervisor/src/QueryClient.jsx",
+      "apps/supervisor/src/index.css"
+    ],
+    "apps/supervisor/src/services/agentClient.js": [
+      "apps/supervisor/src/services/api.js"
+    ],
+    "apps/supervisor/src/services/api.js": [],
+    "apps/supervisor/src/services/employeeService.js": [
+      "apps/supervisor/src/services/agentClient.js"
+    ],
+    "apps/supervisor/src/services/index.js": [],
+    "apps/supervisor/src/services/offlineQueue.js": [],
+    "apps/supervisor/src/services/reportService.js": [
+      "apps/supervisor/src/services/agentClient.js"
+    ],
+    "apps/supervisor/src/services/restAssignmentService.js": [],
+    "apps/supervisor/src/services/restEmployeeService.js": [],
+    "apps/supervisor/src/services/restSessionService.js": [],
+    "apps/supervisor/src/services/restVehicleService.js": [],
+    "apps/supervisor/src/services/sessionService.js": [
+      "apps/supervisor/src/services/agentClient.js"
+    ],
+    "apps/supervisor/src/services/vehicleService.js": [
+      "apps/supervisor/src/services/agentClient.js"
+    ],
+    "apps/supervisor/tailwind.config.js": [],
+    "apps/supervisor/vite.config.js": [],
+    "docker-compose.yml": [],
+    "launch-containers.bat": [],
+    "packages/shared/check-types.bat": [],
+    "packages/shared/check-types.js": [],
+    "packages/shared/check-types.sh": [],
+    "packages/shared/components/ErrorBoundary.jsx": [
+      "packages/shared/services/backendApi.js"
+    ],
+    "packages/shared/components/LoadingSpinner.jsx": [],
+    "packages/shared/hooks/useEmployees.js": [
+      "packages/shared/services/authService.js",
+      "packages/shared/services/restEmployeeService.js"
+    ],
+    "packages/shared/hooks/useVehicles.js": [
+      "packages/shared/services/authService.js",
+      "packages/shared/services/restVehicleService.js"
+    ],
+    "packages/shared/index.js": [],
+    "packages/shared/package.json": [],
+    "packages/shared/services/authService.js": [
+      "packages/shared/services/backendApi.js"
+    ],
+    "packages/shared/services/backendApi.js": [],
+    "packages/shared/services/restAssignmentService.js": [
+      "packages/shared/services/backendApi.js"
+    ],
+    "packages/shared/services/restEmployeeService.js": [
+      "packages/shared/services/backendApi.js"
+    ],
+    "packages/shared/services/restSessionService.js": [
+      "packages/shared/services/backendApi.js"
+    ],
+    "packages/shared/services/restVehicleService.js": [
+      "packages/shared/services/backendApi.js"
+    ],
+    "packages/shared/tsconfig.json": [],
+    "packages/shared/types/api.ts": [],
+    "scripts/pre-commit.bat": [],
+    "scripts/pre-commit.sh": []
+  }
+}

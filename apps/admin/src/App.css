@@ -213,3 +213,117 @@
 .login-card button:hover {
   background: #2563eb;
 }
+
+/* ── Inline login error (BUG-5) ────────────────────────────────────────────── */
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.375rem;
+  color: #991b1b;
+  font-size: 0.875rem;
+}
+
+.login-error-icon {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  color: #ef4444;
+}
+
+.login-card button.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-hint {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #6b7280;
+}
+
+/* ── Table search (BUG-11) ──────────────────────────────────────────────────── */
+.table-search {
+  margin-bottom: 0.75rem;
+}
+
+.table-search input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+}
+
+.table-search input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ── Table meta ─────────────────────────────────────────────────────────────── */
+.table-meta {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Pagination (BUG-6/7) ───────────────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.pagination button {
+  padding: 0.375rem 0.875rem;
+  background: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.15s;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Empty table row ────────────────────────────────────────────────────────── */
+.empty-row {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+  padding: 1.5rem !important;
+}
+
+/* ── Status / attendance badges ─────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-success  { background: #d1fae5; color: #065f46; }
+.badge-warning  { background: #fef3c7; color: #92400e; }
+.badge-error    { background: #fee2e2; color: #991b1b; }
+.badge-neutral  { background: #f3f4f6; color: #6b7280; }
+

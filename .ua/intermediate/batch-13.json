@@ -1,0 +1,53 @@
+{
+  "nodes": [
+    {
+      "id": "config:apps/supervisor/.oxlintrc.json",
+      "type": "config",
+      "name": ".oxlintrc.json",
+      "filePath": "apps/supervisor/.oxlintrc.json",
+      "summary": "Json config file (8 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:apps/supervisor/MASTER INSTRUCTIONS.md",
+      "type": "document",
+      "name": "MASTER INSTRUCTIONS.md",
+      "filePath": "apps/supervisor/MASTER INSTRUCTIONS.md",
+      "summary": "Markdown docs file (77 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:apps/supervisor/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "apps/supervisor/README.md",
+      "summary": "Markdown docs file (127 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:apps/supervisor/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "apps/supervisor/package.json",
+      "summary": "Json config file (29 lines)",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

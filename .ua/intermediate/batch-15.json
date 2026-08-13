@@ -1,0 +1,691 @@
+{
+  "nodes": [
+    {
+      "id": "document:.devin/workflows/grillme.md",
+      "type": "document",
+      "name": "grillme.md",
+      "filePath": ".devin/workflows/grillme.md",
+      "summary": "Markdown docs file (323 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:.devin/workflows/underdatnd.md",
+      "type": "document",
+      "name": "underdatnd.md",
+      "filePath": ".devin/workflows/underdatnd.md",
+      "summary": "Markdown docs file (83 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:AttandaceTraker Acvanced/master intructions.md",
+      "type": "document",
+      "name": "master intructions.md",
+      "filePath": "AttandaceTraker Acvanced/master intructions.md",
+      "summary": "Markdown docs file (1066 lines)",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:ServerSide/app/models/audit_event.py",
+      "type": "file",
+      "name": "audit_event.py",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Python code file (22 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+      "type": "class",
+      "name": "AuditEventBase",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Class AuditEventBase in ServerSide/app/models/audit_event.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+      "type": "class",
+      "name": "AuditEventCreate",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Class AuditEventCreate in ServerSide/app/models/audit_event.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEvent",
+      "type": "class",
+      "name": "AuditEvent",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Class AuditEvent in ServerSide/app/models/audit_event.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/user.py",
+      "type": "file",
+      "name": "user.py",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python code file (26 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserBase",
+      "type": "class",
+      "name": "UserBase",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class UserBase in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserCreate",
+      "type": "class",
+      "name": "UserCreate",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class UserCreate in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserUpdate",
+      "type": "class",
+      "name": "UserUpdate",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class UserUpdate in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:User",
+      "type": "class",
+      "name": "User",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Class User in ServerSide/app/models/user.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/export_openapi.py",
+      "type": "file",
+      "name": "export_openapi.py",
+      "filePath": "ServerSide/scripts/export_openapi.py",
+      "summary": "Python code file (32 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/scripts/seed_data.py",
+      "type": "file",
+      "name": "seed_data.py",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Python code file (285 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/scripts/seed_data.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Function main in ServerSide/scripts/seed_data.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/scripts/seed_data.py:DataSeeder",
+      "type": "class",
+      "name": "DataSeeder",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Class DataSeeder in ServerSide/scripts/seed_data.py",
+      "tags": [
+        "class",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.py",
+      "type": "file",
+      "name": "sync.py",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Python code file (44 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/scripts/sync.py:run_command",
+      "type": "function",
+      "name": "run_command",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Function run_command in ServerSide/scripts/sync.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/scripts/sync.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Function main in ServerSide/scripts/sync.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.sh",
+      "type": "file",
+      "name": "sync.sh",
+      "filePath": "ServerSide/scripts/sync.sh",
+      "summary": "Shell script file (15 lines)",
+      "tags": [
+        "shell",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "ServerSide/tests/__init__.py",
+      "summary": "Python code file (1 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_attendance.py",
+      "type": "file",
+      "name": "test_attendance.py",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python code file (3 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+      "type": "function",
+      "name": "test_attendance_unauthorized",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Function test_attendance_unauthorized in ServerSide/tests/test_attendance.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_auth.py",
+      "type": "file",
+      "name": "test_auth.py",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python code file (27 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_success",
+      "type": "function",
+      "name": "test_login_success",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_login_success in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+      "type": "function",
+      "name": "test_login_wrong_password",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_login_wrong_password in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+      "type": "function",
+      "name": "test_get_me_unauthorized",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_get_me_unauthorized in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+      "type": "function",
+      "name": "test_get_me_authorized",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Function test_get_me_authorized in ServerSide/tests/test_auth.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_employees.py",
+      "type": "file",
+      "name": "test_employees.py",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python code file (12 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_list_employees_unauthorized",
+      "type": "function",
+      "name": "test_list_employees_unauthorized",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Function test_list_employees_unauthorized in ServerSide/tests/test_employees.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_create_employee_unauthorized",
+      "type": "function",
+      "name": "test_create_employee_unauthorized",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Function test_create_employee_unauthorized in ServerSide/tests/test_employees.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_sessions.py",
+      "type": "file",
+      "name": "test_sessions.py",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python code file (12 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_list_sessions_unauthorized",
+      "type": "function",
+      "name": "test_list_sessions_unauthorized",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Function test_list_sessions_unauthorized in ServerSide/tests/test_sessions.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_create_session_unauthorized",
+      "type": "function",
+      "name": "test_create_session_unauthorized",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Function test_create_session_unauthorized in ServerSide/tests/test_sessions.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_vehicles.py",
+      "type": "file",
+      "name": "test_vehicles.py",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python code file (11 lines)",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_list_vehicles_unauthorized",
+      "type": "function",
+      "name": "test_list_vehicles_unauthorized",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Function test_list_vehicles_unauthorized in ServerSide/tests/test_vehicles.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_unauthorized",
+      "type": "function",
+      "name": "test_create_vehicle_unauthorized",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Function test_create_vehicle_unauthorized in ServerSide/tests/test_vehicles.py",
+      "tags": [
+        "function",
+        "python"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/App.jsx",
+      "type": "file",
+      "name": "App.jsx",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Javascript code file (243 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/admin/src/App.jsx:AdminDashboard",
+      "type": "function",
+      "name": "AdminDashboard",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Function AdminDashboard in apps/admin/src/App.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/admin/src/App.jsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Function App in apps/admin/src/App.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/main.jsx",
+      "type": "file",
+      "name": "main.jsx",
+      "filePath": "apps/admin/src/main.jsx",
+      "summary": "Javascript code file (10 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/vite.config.js",
+      "type": "file",
+      "name": "vite.config.js",
+      "filePath": "apps/admin/vite.config.js",
+      "summary": "Javascript code file (11 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/postcss.config.js",
+      "type": "file",
+      "name": "postcss.config.js",
+      "filePath": "apps/supervisor/postcss.config.js",
+      "summary": "Javascript code file (6 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "type": "file",
+      "name": "SyncStatus.jsx",
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "summary": "Javascript code file (55 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+      "type": "function",
+      "name": "SyncStatus",
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "summary": "Function SyncStatus in apps/supervisor/src/components/SyncStatus.jsx",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:apps/admin/src/App.jsx",
+      "target": "file:apps/admin/src/App.css",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/admin/src/main.jsx",
+      "target": "file:apps/admin/src/App.jsx",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/admin/src/main.jsx",
+      "target": "file:apps/admin/src/index.css",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "target": "file:apps/supervisor/src/services/offlineQueue.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEvent",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:User",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/seed_data.py",
+      "target": "function:ServerSide/scripts/seed_data.py:main",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/seed_data.py",
+      "target": "class:ServerSide/scripts/seed_data.py:DataSeeder",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/sync.py",
+      "target": "function:ServerSide/scripts/sync.py:run_command",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/sync.py",
+      "target": "function:ServerSide/scripts/sync.py:main",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_list_employees_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_create_employee_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_list_sessions_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_create_session_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_list_vehicles_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/admin/src/App.jsx",
+      "target": "function:apps/admin/src/App.jsx:AdminDashboard",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/admin/src/App.jsx",
+      "target": "function:apps/admin/src/App.jsx:App",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "target": "function:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+      "type": "contains"
+    }
+  ]
+}

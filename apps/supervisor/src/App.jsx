@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import './App.css'
 import LeftColumn from './components/LeftColumn'
 import RightColumn from './components/RightColumn'
@@ -10,22 +10,46 @@ import CategoryTabs from './components/CategoryTabs'
 import FilterChips from './components/FilterChips'
 import VehicleTable from './components/VehicleTable'
 import LoginModal from './components/LoginModal'
+import RequestEmployeeModal from './components/RequestEmployeeModal'
+import TripTrackerModal from './components/TripTrackerModal'
+import Toast from './components/ui/Toast'
+import ConfirmModal from './components/ui/ConfirmModal'
 import { generateAttendanceReport } from './components/pdf/pdfHandler'
 import { useAttendanceState } from './hooks/useAttendanceState'
 import { useAttendanceHandlers } from './hooks/useAttendanceHandlers'
 import { useFilters } from './hooks/useFilters'
 import { useStatistics } from './hooks/useStatistics'
 import { useTableSort } from './hooks/useTableSort'
-import { authService } from '@laxmi/shared'
+import { authService, ArrivedTimeModal } from '@laxmi/shared'
 
 function App() {
-  // State management
+  // ─── Inline notification state (replaces alert()) ───────────────────────────
+  const [notification, setNotification] = useState(null)
+  const [confirmModal, setConfirmModal] = useState(null)
+  const [isAddEmployeeModalOpen, setIsAddEmployeeModalOpen] = useState(false)
+  const [isTripTrackerOpen, setIsTripTrackerOpen] = useState(false)
+  const [arrivedEmployee, setArrivedEmployee] = useState(null)
+  const [selectedDate, setSelectedDate] = useState(() => new Date().toISOString().split('T')[0])
+
+
+  const notify = useCallback((type, message) => {
+    setNotification({ type, message })
+  }, [])
+
+  const showConfirm = useCallback((opts) => {
+    setConfirmModal({
+      ...opts,
+      onCancel: () => setConfirmModal(null),
+    })
+  }, [])
+
+  // ─── Core state ─────────────────────────────────────────────────────────────
   const state = useAttendanceState()
-  
-  // Event handlers
-  const handlers = useAttendanceHandlers(state)
-  
-  // Filter logic
+
+  // ─── Handlers (now receive notify + showConfirm instead of using alert/confirm)
+  const handlers = useAttendanceHandlers({ ...state, notify, showConfirm })
+
+  // ─── Filters ────────────────────────────────────────────────────────────────
   const { filteredEmployees, filteredVehicles } = useFilters(
     state.employees,
     state.vehicles,
@@ -34,22 +58,18 @@ function App() {
     state.attendanceFilter,
     state.alphabetFilter
   )
-  
-  // Statistics
+
+  // ─── Statistics ─────────────────────────────────────────────────────────────
   const statistics = useStatistics(state.employees, state.vehicles)
 
-  // Table sorting
+  // ─── Table sorting ──────────────────────────────────────────────────────────
   const { sortConfig, handleSort, sortData } = useTableSort()
   const sortedEmployees = sortData(filteredEmployees, state.categoryFilter, state.employees)
   const sortedVehicles = sortData(filteredVehicles, 'Vehicles', state.employees)
 
-  // Conflict modal state
+  // ─── Modal states ───────────────────────────────────────────────────────────
   const [conflict, setConflict] = useState(null)
-  
-  // Capacity report modal state
   const [showCapacityReport, setShowCapacityReport] = useState(false)
-  
-  // Vehicle assignments expansion state
   const [expandedVehicleId, setExpandedVehicleId] = useState(null)
 
   const categories = ['All', 'Workers', 'Drivers', 'Chalan Men', 'Extra Labour', 'Office', 'Vehicles']
@@ -79,18 +99,19 @@ function App() {
       averageVehicleUtilization: statistics.averageVehicleUtilization,
       fullyUtilizedVehicles: statistics.fullyUtilizedVehicles,
       underUtilizedVehicles: statistics.underUtilizedVehicles,
-      lockedVehicles: statistics.lockedVehicles
+      lockedVehicles: statistics.lockedVehicles,
     })
   }
 
   const handleFinalizeAttendance = () => {
-    if (handlers.handleFinalizeAttendance(statistics.completedCount, statistics.totalCount)) {
+    const success = handlers.handleFinalizeAttendance(statistics.completedCount, statistics.totalCount)
+    if (success) {
       state.setIsAttendanceLocked(true)
+      notify('success', 'Attendance session finalized and locked.')
     }
   }
 
   const handleLoginSuccess = () => {
-    // Reload the page or trigger a state update to fetch data
     window.location.reload()
   }
 
@@ -99,12 +120,11 @@ function App() {
     window.location.reload()
   }
 
-  // Show login modal if not authenticated
+  // ─── Auth / loading gates ───────────────────────────────────────────────────
   if (!state.isAuthenticated && !state.isLoading) {
     return <LoginModal onLoginSuccess={handleLoginSuccess} />
   }
 
-  // Show loading state
   if (state.isLoading) {
     return (
       <div className="flex items-center justify-center h-screen bg-white">
@@ -116,10 +136,26 @@ function App() {
     )
   }
 
+  const handleLoadDayValues = useCallback((dateStr) => {
+    if (!dateStr) return
+    const parts = dateStr.split('-')
+    const formattedDDMMYYYY = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : dateStr
+    notify('success', `Loaded expected day attendance values for ${formattedDDMMYYYY} (${dateStr})`)
+  }, [notify])
+
   return (
     <div className="flex h-screen bg-white">
+      {/* ── Toast notification (replaces alert()) ── */}
+      <Toast notification={notification} onDismiss={() => setNotification(null)} />
+
+      {/* ── Inline confirm modal (replaces confirm()) ── */}
+      <ConfirmModal confirmModal={confirmModal} />
+
       <LeftColumn
         currentDate={state.currentDate}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+        onLoadDayValues={handleLoadDayValues}
         isAttendanceLocked={state.isAttendanceLocked}
         searchQuery={state.searchQuery}
         setSearchQuery={state.setSearchQuery}
@@ -133,18 +169,43 @@ function App() {
         pendingCount={statistics.pendingCount}
         handleFinalizeAttendance={handleFinalizeAttendance}
         onLogout={handleLogout}
+        onOpenAddEmployeeModal={() => setIsAddEmployeeModalOpen(true)}
+        onOpenTripTracker={() => setIsTripTrackerOpen(true)}
       />
+
+      <RequestEmployeeModal
+        isOpen={isAddEmployeeModalOpen}
+        onClose={() => setIsAddEmployeeModalOpen(false)}
+        notify={notify}
+      />
+
+      <TripTrackerModal
+        isOpen={isTripTrackerOpen}
+        onClose={() => setIsTripTrackerOpen(false)}
+        sessionId={`SES-${selectedDate}`}
+      />
+
+      <ArrivedTimeModal
+        isOpen={!!arrivedEmployee}
+        employee={arrivedEmployee}
+        onClose={() => setArrivedEmployee(null)}
+        onConfirm={({ employeeId, arrivalTime, remarks }) => {
+          handlers.handleAttendance(employeeId, 'arrived', arrivalTime, remarks)
+          notify('success', `Recorded arrival time for employee`)
+        }}
+      />
+
 
       {/* Center Column */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <CategoryTabs 
+        <CategoryTabs
           categories={categories}
           categoryFilter={state.categoryFilter}
           setCategoryFilter={state.setCategoryFilter}
           getCategoryCount={statistics.getCategoryCount}
         />
 
-        <FilterChips 
+        <FilterChips
           categoryFilter={state.categoryFilter}
           attendanceFilter={state.attendanceFilter}
           alphabetFilter={state.alphabetFilter}
@@ -214,6 +275,13 @@ function App() {
         onTimeCount={statistics.onTimeCount}
         arrivedCount={statistics.arrivedCount}
         absentCount={statistics.absentCount}
+        attendanceFilter={state.attendanceFilter}
+        setAttendanceFilter={state.setAttendanceFilter}
+        sessionStartTime={state.sessionStartTime}
+        isAttendanceLocked={state.isAttendanceLocked}
+        searchQuery={state.searchQuery}
+        selectedEmployee={state.selectedEmployee}
+        setSelectedEmployee={state.setSelectedEmployee}
         handleDownloadPDF={handleDownloadPDF}
         assignedVehicles={statistics.assignedVehicles}
         averageVehicleUtilization={statistics.averageVehicleUtilization}
@@ -235,17 +303,14 @@ function App() {
           conflict={conflict}
           onResolve={(resolution) => {
             if (resolution.action === 'swap' && resolution.targetEmployeeId) {
-              // Swap employees
               const targetVehicleId = conflict.vehicle.id
               const newEmployeeId = conflict.employee.id
               const oldEmployeeId = resolution.targetEmployeeId
-              
-              // Remove old employee from vehicle
-              state.setEmployees(prev => prev.map(emp => 
+
+              state.setEmployees(prev => prev.map(emp =>
                 emp.id === oldEmployeeId ? { ...emp, assignedVehicle: null } : emp
               ))
-              
-              // Assign new employee to vehicle
+
               const result = handlers.handleVehicleAssignment(newEmployeeId, targetVehicleId)
               if (!result?.conflict) {
                 setConflict(null)

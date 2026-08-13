@@ -1,0 +1,349 @@
+{
+  "nodes": [
+    {
+      "id": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "type": "file",
+      "name": "PDFRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "summary": "Javascript code file (59 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+      "type": "class",
+      "name": "PDFRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "summary": "Class PDFRenderer in apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "type": "file",
+      "name": "LayoutManager.js",
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "summary": "Javascript code file (134 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+      "type": "class",
+      "name": "LayoutManager",
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "summary": "Class LayoutManager in apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "file",
+      "name": "pdfLayoutConstants.js",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Javascript code file (45 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "type": "file",
+      "name": "pdfHandler.js",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "summary": "Javascript code file (55 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+      "type": "function",
+      "name": "generateAttendanceReport",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "summary": "Function generateAttendanceReport in apps/supervisor/src/components/pdf/pdfHandler.js",
+      "tags": [
+        "function",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "type": "file",
+      "name": "CategorySummaryRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "summary": "Javascript code file (80 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+      "type": "class",
+      "name": "CategorySummaryRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "summary": "Class CategorySummaryRenderer in apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "type": "file",
+      "name": "EmployeeSectionRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "summary": "Javascript code file (135 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+      "type": "class",
+      "name": "EmployeeSectionRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "summary": "Class EmployeeSectionRenderer in apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "type": "file",
+      "name": "ExceptionReportRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "summary": "Javascript code file (105 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+      "type": "class",
+      "name": "ExceptionReportRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "summary": "Class ExceptionReportRenderer in apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "type": "file",
+      "name": "ReportHeaderRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "summary": "Javascript code file (35 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+      "type": "class",
+      "name": "ReportHeaderRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "summary": "Class ReportHeaderRenderer in apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "type": "file",
+      "name": "SummaryRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "summary": "Javascript code file (86 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+      "type": "class",
+      "name": "SummaryRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "summary": "Class SummaryRenderer in apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "type": "file",
+      "name": "VehicleSectionRenderer.js",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "summary": "Javascript code file (109 lines)",
+      "tags": [
+        "javascript",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+      "type": "class",
+      "name": "VehicleSectionRenderer",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "summary": "Class VehicleSectionRenderer in apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "tags": [
+        "class",
+        "javascript"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "target": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "target": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "target": "class:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "target": "class:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+      "type": "contains"
+    }
+  ]
+}

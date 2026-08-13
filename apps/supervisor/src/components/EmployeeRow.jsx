@@ -51,6 +51,7 @@ function EmployeeRow({
           emp={emp}
           isAttendanceLocked={isAttendanceLocked}
           handleAttendance={handleAttendance}
+          handleToggleEditMode={handleToggleEditMode}
           arrivalTimes={arrivalTimes}
           setArrivalTimes={setArrivalTimes}
           currentTime={currentTime}

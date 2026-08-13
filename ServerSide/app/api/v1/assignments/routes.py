@@ -1,20 +1,19 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from datetime import datetime
-from app.models.assignment import VehicleAssignment, VehicleAssignmentCreate, VehicleAssignmentUpdate
+from fastapi import APIRouter, Depends, status
+from datetime import datetime, timezone
+from app.models.assignment import VehicleAssignmentResponse, VehicleAssignmentCreate, VehicleAssignmentUpdate
 from app.db.mongodb import db
 from core.auth import get_current_active_user
+from app.core.exceptions import NotFoundException, ConflictException, ValidationException
 
 router = APIRouter()
 
 async def get_vehicle_capacity(session_id: str, vehicle_id: str) -> dict:
-    """Calculate current vehicle capacity usage"""
     active_assignments = await db.db.vehicle_assignments.find({
         "sessionId": session_id,
         "vehicleId": vehicle_id,
         "unassignedAt": None
     }).to_list(length=100)
     
-    # Get employee categories for all assigned employees
     employee_ids = [a["employeeId"] for a in active_assignments]
     employees = await db.db.employees.find({"employeeId": {"$in": employee_ids}}).to_list(length=100)
     employee_map = {e["employeeId"]: e for e in employees}
@@ -41,44 +40,39 @@ async def get_vehicle_capacity(session_id: str, vehicle_id: str) -> dict:
     
     return capacity
 
-async def validate_assignment_rules(session_id: str, vehicle_id: str, employee_id: str) -> tuple[bool, str]:
-    """Validate assignment business rules"""
-    # Check session exists and is not finalized
-    session = await db.db.attendance_sessions.find_one({"_id": session_id})
+async def validate_assignment_rules(session_id: str, vehicle_id: str, employee_id: str) -> tuple[bool, str, str]:
+    """Validate assignment business rules, returning (is_valid, error_code, error_message)"""
+    session = await db.db.attendance_sessions.find_one({"$or": [{"_id": session_id}, {"sessionId": session_id}]})
     if not session:
-        return False, "Session not found"
+        return False, "SESSION_NOT_FOUND", f"Session '{session_id}' not found"
     
-    if session["status"] == "finalized":
-        return False, "Cannot modify assignments for finalized session"
+    if session.get("status") == "finalized":
+        return False, "SESSION_FINALIZED_LOCKED", "Cannot modify assignments for finalized session"
     
-    # Check employee exists and has attendance record (must be present)
     employee = await db.db.employees.find_one({"employeeId": employee_id})
     if not employee:
-        return False, "Employee not found"
+        return False, "EMPLOYEE_NOT_FOUND", f"Employee '{employee_id}' not found"
     
     attendance = await db.db.attendance_records.find_one({
         "sessionId": session_id,
         "employeeId": employee_id
     })
     
-    if not attendance or attendance["status"] == "absent":
-        return False, "Cannot assign absent employee to vehicle"
+    if not attendance or attendance.get("status") == "absent":
+        return False, "EMPLOYEE_ABSENT", "Cannot assign absent employee to vehicle"
     
-    # Check vehicle exists and is active
-    vehicle = await db.db.vehicles.find_one({"vehicleNumber": vehicle_id})
+    vehicle = await db.db.vehicles.find_one({"$or": [{"vehicleNumber": vehicle_id}, {"vehicleId": vehicle_id}]})
     if not vehicle:
-        return False, "Vehicle not found"
+        return False, "VEHICLE_NOT_FOUND", f"Vehicle '{vehicle_id}' not found"
     
     if not vehicle.get("active", True):
-        return False, "Vehicle is not active"
+        return False, "VEHICLE_INACTIVE", "Vehicle is not active"
     
-    if vehicle.get("status") == "maintenance":
-        return False, "Vehicle is under maintenance"
+    if vehicle.get("status") == "Maintenance" or vehicle.get("status") == "maintenance":
+        return False, "VEHICLE_UNDER_MAINTENANCE", "Vehicle is under maintenance"
     
-    # Check capacity rules
     current_capacity = await get_vehicle_capacity(session_id, vehicle_id)
     
-    # Check if employee is already assigned to this vehicle
     existing_assignment = await db.db.vehicle_assignments.find_one({
         "sessionId": session_id,
         "employeeId": employee_id,
@@ -87,46 +81,46 @@ async def validate_assignment_rules(session_id: str, vehicle_id: str, employee_i
     })
     
     if existing_assignment:
-        return False, "Employee already assigned to this vehicle"
+        return False, "ALREADY_ASSIGNED", "Employee is already assigned to this vehicle"
     
-    # Check capacity limits based on employee category
     category = employee.get("category", "").lower()
     
     if "driver" in category and current_capacity["driver"] >= 1:
-        return False, "Vehicle already has a driver assigned (max 1)"
+        return False, "DRIVER_LIMIT_EXCEEDED", "Vehicle already has a driver assigned (max 1)"
     
     if "chalan" in category and current_capacity["chalan_man"] >= 1:
-        return False, "Vehicle already has a chalan man assigned (max 1)"
+        return False, "CHALAN_LIMIT_EXCEEDED", "Vehicle already has a chalan man assigned (max 1)"
     
     if ("worker" in category or "labour" in category) and current_capacity["worker"] >= 6:
-        return False, "Vehicle already has maximum workers assigned (max 6)"
+        return False, "WORKER_LIMIT_EXCEEDED", "Vehicle already has maximum workers assigned (max 6)"
     
     if current_capacity["total"] >= 8:
-        return False, "Vehicle already at maximum capacity (max 8 employees)"
+        return False, "CAPACITY_LIMIT_EXCEEDED", "Vehicle already at maximum capacity (max 8 employees)"
     
-    return True, ""
+    return True, "", ""
 
-@router.post("/sessions/{session_id}/vehicles/{vehicle_id}/employees/{employee_id}", response_model=VehicleAssignment)
+@router.post("/sessions/{session_id}/vehicles/{vehicle_id}/employees/{employee_id}", response_model=VehicleAssignmentResponse, status_code=status.HTTP_201_CREATED, operation_id="assign_vehicle")
 async def assign_vehicle(
     session_id: str,
     vehicle_id: str,
     employee_id: str,
     username: str = Depends(get_current_active_user)
 ):
-    # Validate business rules
-    is_valid, error_message = await validate_assignment_rules(session_id, vehicle_id, employee_id)
+    is_valid, error_code, error_message = await validate_assignment_rules(session_id, vehicle_id, employee_id)
     if not is_valid:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=error_message
-        )
+        if "NOT_FOUND" in error_code:
+            raise NotFoundException(message=error_message, code=error_code)
+        elif "LIMIT_EXCEEDED" in error_code or "ALREADY_ASSIGNED" in error_code:
+            raise ConflictException(message=error_message, code=error_code)
+        else:
+            raise ValidationException(message=error_message, code=error_code)
     
-    # Create assignment
+    now = datetime.now(timezone.utc)
     assignment_data = {
         "sessionId": session_id,
         "vehicleId": vehicle_id,
         "employeeId": employee_id,
-        "assignedAt": datetime.utcnow(),
+        "assignedAt": now,
         "assignedBy": username,
         "unassignedAt": None,
         "unassignedBy": None
@@ -135,7 +129,6 @@ async def assign_vehicle(
     result = await db.db.vehicle_assignments.insert_one(assignment_data)
     created_assignment = await db.db.vehicle_assignments.find_one({"_id": result.inserted_id})
     
-    # Record audit event
     audit_event = {
         "sessionId": session_id,
         "actorId": username,
@@ -143,30 +136,25 @@ async def assign_vehicle(
         "entityType": "vehicle_assignment",
         "entityId": str(result.inserted_id),
         "newValue": assignment_data,
-        "createdAt": datetime.utcnow()
+        "createdAt": now
     }
     await db.db.audit_events.insert_one(audit_event)
     
     return created_assignment
 
-@router.delete("/sessions/{session_id}/employees/{employee_id}", response_model=VehicleAssignment)
+@router.delete("/sessions/{session_id}/employees/{employee_id}", response_model=VehicleAssignmentResponse, operation_id="unassign_vehicle")
 async def unassign_vehicle(
     session_id: str,
     employee_id: str,
     username: str = Depends(get_current_active_user)
 ):
-    # Check session exists and is not finalized
-    session = await db.db.attendance_sessions.find_one({"_id": session_id})
+    session = await db.db.attendance_sessions.find_one({"$or": [{"_id": session_id}, {"sessionId": session_id}]})
     if not session:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Session not found")
+        raise NotFoundException(message=f"Session '{session_id}' not found", code="SESSION_NOT_FOUND")
     
-    if session["status"] == "finalized":
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Cannot modify assignments for finalized session"
-        )
+    if session.get("status") == "finalized":
+        raise ValidationException(message="Cannot modify assignments for finalized session", code="SESSION_FINALIZED_LOCKED")
     
-    # Find active assignment
     assignment = await db.db.vehicle_assignments.find_one({
         "sessionId": session_id,
         "employeeId": employee_id,
@@ -174,20 +162,19 @@ async def unassign_vehicle(
     })
     
     if not assignment:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Active assignment not found")
+        raise NotFoundException(message=f"No active vehicle assignment found for employee '{employee_id}' in session '{session_id}'", code="ASSIGNMENT_NOT_FOUND")
     
-    # Unassign
-    update_result = await db.db.vehicle_assignments.update_one(
+    now = datetime.now(timezone.utc)
+    await db.db.vehicle_assignments.update_one(
         {"_id": assignment["_id"]},
         {
             "$set": {
-                "unassignedAt": datetime.utcnow(),
+                "unassignedAt": now,
                 "unassignedBy": username
             }
         }
     )
     
-    # Record audit event
     audit_event = {
         "sessionId": session_id,
         "actorId": username,
@@ -196,16 +183,16 @@ async def unassign_vehicle(
         "entityId": str(assignment["_id"]),
         "previousValue": assignment,
         "newValue": {
-            "unassignedAt": datetime.utcnow(),
+            "unassignedAt": now,
             "unassignedBy": username
         },
-        "createdAt": datetime.utcnow()
+        "createdAt": now
     }
     await db.db.audit_events.insert_one(audit_event)
     
     return await db.db.vehicle_assignments.find_one({"_id": assignment["_id"]})
 
-@router.get("/sessions/{session_id}/vehicles/{vehicle_id}", response_model=list[VehicleAssignment])
+@router.get("/sessions/{session_id}/vehicles/{vehicle_id}", response_model=list[VehicleAssignmentResponse], operation_id="get_vehicle_assignments")
 async def get_vehicle_assignments(
     session_id: str,
     vehicle_id: str,
@@ -218,7 +205,7 @@ async def get_vehicle_assignments(
     })
     return await cursor.to_list(length=100)
 
-@router.get("/sessions/{session_id}/employees/{employee_id}", response_model=VehicleAssignment)
+@router.get("/sessions/{session_id}/employees/{employee_id}", response_model=VehicleAssignmentResponse, operation_id="get_employee_assignment")
 async def get_employee_assignment(
     session_id: str,
     employee_id: str,
@@ -230,5 +217,5 @@ async def get_employee_assignment(
         "unassignedAt": None
     })
     if not assignment:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No active assignment found")
+        raise NotFoundException(message=f"No active vehicle assignment found for employee '{employee_id}'", code="ASSIGNMENT_NOT_FOUND")
     return assignment

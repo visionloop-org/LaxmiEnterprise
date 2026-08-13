@@ -1,6 +1,9 @@
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 from typing import Optional
-from datetime import datetime
+from datetime import datetime, timezone
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 class AttendanceSessionBase(BaseModel):
     sessionDate: str  # ISO date string YYYY-MM-DD
@@ -10,19 +13,19 @@ class AttendanceSessionBase(BaseModel):
     version: int = 1
 
 class AttendanceSessionCreate(AttendanceSessionBase):
-    pass
+    sessionId: Optional[str] = None
 
 class AttendanceSessionUpdate(BaseModel):
     status: Optional[str] = None
     supervisorId: Optional[str] = None
     version: Optional[int] = None
 
-class AttendanceSession(AttendanceSessionBase):
+class AttendanceSessionResponse(AttendanceSessionBase):
     id: Optional[str] = Field(None, alias="_id")
     finalizedAt: Optional[datetime] = None
     finalizedBy: Optional[str] = None
-    createdAt: datetime = Field(default_factory=datetime.utcnow)
-    updatedAt: datetime = Field(default_factory=datetime.utcnow)
+    createdAt: datetime = Field(default_factory=utc_now)
+    updatedAt: datetime = Field(default_factory=utc_now)
 
     @field_validator('id', mode='before')
     @classmethod
@@ -31,6 +34,7 @@ class AttendanceSession(AttendanceSessionBase):
             return None
         return str(v)
 
-    class Config:
-        from_attributes = True
-        populate_by_name = True
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
+
+class AttendanceSession(AttendanceSessionResponse):
+    pass

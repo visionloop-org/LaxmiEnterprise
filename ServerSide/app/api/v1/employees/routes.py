@@ -1,16 +1,17 @@
-from fastapi import APIRouter, Depends, HTTPException, status
-from typing import List
-from app.models.employee import Employee, EmployeeCreate, EmployeeUpdate
+from fastapi import APIRouter, Depends, status
+from typing import List, Optional
+from app.models.employee import EmployeeResponse, EmployeeCreate, EmployeeUpdate
 from app.db.mongodb import db
 from core.auth import get_current_active_user
-from datetime import datetime
+from datetime import datetime, timezone
+from app.core.exceptions import NotFoundException, ConflictException
 
 router = APIRouter()
 
-@router.get("/", response_model=List[Employee])
+@router.get("/", response_model=List[EmployeeResponse], operation_id="list_employees")
 async def list_employees(
-    category: str = None,
-    status: str = None,
+    category: Optional[str] = None,
+    status: Optional[str] = None,
     username: str = Depends(get_current_active_user)
 ):
     query = {}
@@ -18,37 +19,41 @@ async def list_employees(
         query["category"] = category
     if status:
         query["status"] = status
-    
+
     cursor = db.db.employees.find(query).sort("displayOrder", 1)
     return await cursor.to_list(length=200)
 
-@router.post("/", response_model=Employee)
+@router.post("/", response_model=EmployeeResponse, status_code=status.HTTP_201_CREATED, operation_id="create_employee")
 async def create_employee(employee: EmployeeCreate, username: str = Depends(get_current_active_user)):
-    # Check if employeeId already exists
     existing = await db.db.employees.find_one({"employeeId": employee.employeeId})
     if existing:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Employee with this ID already exists"
-        )
-    
+        raise ConflictException(message=f"Employee with ID '{employee.employeeId}' already exists", code="DUPLICATE_EMPLOYEE_ID")
+
     employee_data = employee.dict()
-    employee_data["createdAt"] = datetime.utcnow()
-    employee_data["updatedAt"] = datetime.utcnow()
-    
+    now = datetime.now(timezone.utc)
+    employee_data["createdAt"] = now
+    employee_data["updatedAt"] = now
+
+    # Approval flow: If requested by supervisor, default to pending_approval unless specified
+    if username != "admin" and not employee_data.get("status"):
+        employee_data["status"] = "pending_approval"
+        employee_data["requestedBy"] = username
+    elif not employee_data.get("status"):
+        employee_data["status"] = "active"
+
     result = await db.db.employees.insert_one(employee_data)
     created_employee = await db.db.employees.find_one({"_id": result.inserted_id})
-    
+
     return created_employee
 
-@router.get("/{employee_id}", response_model=Employee)
+@router.get("/{employee_id}", response_model=EmployeeResponse, operation_id="get_employee")
 async def get_employee(employee_id: str, username: str = Depends(get_current_active_user)):
     employee = await db.db.employees.find_one({"employeeId": employee_id})
     if not employee:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Employee not found")
+        raise NotFoundException(message=f"Employee with ID '{employee_id}' not found", code="EMPLOYEE_NOT_FOUND")
     return employee
 
-@router.put("/{employee_id}", response_model=Employee)
+@router.put("/{employee_id}", response_model=EmployeeResponse, operation_id="update_employee")
 async def update_employee(
     employee_id: str,
     employee_update: EmployeeUpdate,
@@ -56,14 +61,50 @@ async def update_employee(
 ):
     employee = await db.db.employees.find_one({"employeeId": employee_id})
     if not employee:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Employee not found")
-    
+        raise NotFoundException(message=f"Employee with ID '{employee_id}' not found", code="EMPLOYEE_NOT_FOUND")
+
     update_data = employee_update.dict(exclude_unset=True)
-    update_data["updatedAt"] = datetime.utcnow()
-    
+    update_data["updatedAt"] = datetime.now(timezone.utc)
+
     await db.db.employees.update_one(
         {"employeeId": employee_id},
         {"$set": update_data}
     )
-    
+
     return await db.db.employees.find_one({"employeeId": employee_id})
+
+@router.post("/{employee_id}/approve", response_model=EmployeeResponse, operation_id="approve_employee")
+async def approve_employee(employee_id: str, username: str = Depends(get_current_active_user)):
+    employee = await db.db.employees.find_one({"employeeId": employee_id})
+    if not employee:
+        raise NotFoundException(message=f"Employee with ID '{employee_id}' not found", code="EMPLOYEE_NOT_FOUND")
+
+    now = datetime.now(timezone.utc)
+    await db.db.employees.update_one(
+        {"employeeId": employee_id},
+        {"$set": {"status": "active", "approvedBy": username, "updatedAt": now}}
+    )
+    return await db.db.employees.find_one({"employeeId": employee_id})
+
+@router.post("/{employee_id}/reject", response_model=EmployeeResponse, operation_id="reject_employee")
+async def reject_employee(employee_id: str, username: str = Depends(get_current_active_user)):
+    employee = await db.db.employees.find_one({"employeeId": employee_id})
+    if not employee:
+        raise NotFoundException(message=f"Employee with ID '{employee_id}' not found", code="EMPLOYEE_NOT_FOUND")
+
+    now = datetime.now(timezone.utc)
+    await db.db.employees.update_one(
+        {"employeeId": employee_id},
+        {"$set": {"status": "rejected", "approvedBy": username, "updatedAt": now}}
+    )
+    return await db.db.employees.find_one({"employeeId": employee_id})
+
+@router.delete("/{employee_id}", status_code=status.HTTP_204_NO_CONTENT, operation_id="delete_employee")
+async def delete_employee(employee_id: str, username: str = Depends(get_current_active_user)):
+    employee = await db.db.employees.find_one({"employeeId": employee_id})
+    if not employee:
+        raise NotFoundException(message=f"Employee with ID '{employee_id}' not found", code="EMPLOYEE_NOT_FOUND")
+
+    await db.db.employees.delete_one({"employeeId": employee_id})
+    return None
+
