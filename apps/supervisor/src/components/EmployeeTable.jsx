@@ -4,6 +4,8 @@ import EmployeeRow from './EmployeeRow'
 function EmployeeTable({
   filteredEmployees,
   isAttendanceLocked,
+  isAttendanceFinalized,
+  isSheetFinalized,
   handleAttendance,
   arrivalTimes,
   setArrivalTimes,
@@ -83,6 +85,8 @@ function EmployeeTable({
               emp={emp}
               index={index}
               isAttendanceLocked={isAttendanceLocked}
+              isAttendanceFinalized={isAttendanceFinalized}
+              isSheetFinalized={isSheetFinalized}
               handleAttendance={handleAttendance}
               arrivalTimes={arrivalTimes}
               setArrivalTimes={setArrivalTimes}

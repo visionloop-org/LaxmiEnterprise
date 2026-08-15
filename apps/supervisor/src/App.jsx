@@ -106,8 +106,16 @@ function App() {
   const handleFinalizeAttendance = () => {
     const success = handlers.handleFinalizeAttendance(statistics.completedCount, statistics.totalCount)
     if (success) {
-      state.setIsAttendanceLocked(true)
-      notify('success', 'Attendance session finalized and locked.')
+      state.setIsAttendanceFinalized(true)
+      notify('success', 'Attendance status finalized and locked.')
+    }
+  }
+
+  const handleFinalizeSheet = () => {
+    const success = handlers.handleFinalizeSheet(state.isAttendanceFinalized)
+    if (success) {
+      state.setIsSheetFinalized(true)
+      notify('success', 'Daily attendance sheet finalized! Vehicle assignments and Min/Max demands are now locked.')
     }
   }
 
@@ -119,6 +127,13 @@ function App() {
     authService.logout()
     window.location.reload()
   }
+
+  const handleLoadDayValues = useCallback((dateStr) => {
+    if (!dateStr) return
+    const parts = dateStr.split('-')
+    const formattedDDMMYYYY = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : dateStr
+    notify('success', `Loaded expected day attendance values for ${formattedDDMMYYYY} (${dateStr})`)
+  }, [notify])
 
   // ─── Auth / loading gates ───────────────────────────────────────────────────
   if (!state.isAuthenticated && !state.isLoading) {
@@ -136,13 +151,6 @@ function App() {
     )
   }
 
-  const handleLoadDayValues = useCallback((dateStr) => {
-    if (!dateStr) return
-    const parts = dateStr.split('-')
-    const formattedDDMMYYYY = parts.length === 3 ? `${parts[2]}-${parts[1]}-${parts[0]}` : dateStr
-    notify('success', `Loaded expected day attendance values for ${formattedDDMMYYYY} (${dateStr})`)
-  }, [notify])
-
   return (
     <div className="flex h-screen bg-white">
       {/* ── Toast notification (replaces alert()) ── */}
@@ -157,6 +165,8 @@ function App() {
         setSelectedDate={setSelectedDate}
         onLoadDayValues={handleLoadDayValues}
         isAttendanceLocked={state.isAttendanceLocked}
+        isAttendanceFinalized={state.isAttendanceFinalized}
+        isSheetFinalized={state.isSheetFinalized}
         searchQuery={state.searchQuery}
         setSearchQuery={state.setSearchQuery}
         attendanceFilter={state.attendanceFilter}
@@ -168,6 +178,11 @@ function App() {
         resetFilters={resetFilters}
         pendingCount={statistics.pendingCount}
         handleFinalizeAttendance={handleFinalizeAttendance}
+        handleFinalizeSheet={handleFinalizeSheet}
+        minDemandCount={statistics.minDemandCount}
+        maxDemandCount={statistics.maxDemandCount}
+        pendingDemandCount={statistics.pendingDemandCount}
+        assignedVehiclesCount={statistics.assignedVehicles?.length || 0}
         onLogout={handleLogout}
         onOpenAddEmployeeModal={() => setIsAddEmployeeModalOpen(true)}
         onOpenTripTracker={() => setIsTripTrackerOpen(true)}
@@ -216,6 +231,7 @@ function App() {
           setSearchQuery={state.setSearchQuery}
           setShowAddWorker={state.setShowAddWorker}
           isAttendanceLocked={state.isAttendanceLocked}
+          isSheetFinalized={state.isSheetFinalized}
           statistics={statistics}
           filteredCount={state.categoryFilter === 'Vehicles' ? filteredVehicles.length : filteredEmployees.length}
           totalCount={state.categoryFilter === 'Vehicles' ? state.vehicles.length : statistics.totalCount}
@@ -241,6 +257,8 @@ function App() {
             <EmployeeTable
               filteredEmployees={sortedEmployees}
               isAttendanceLocked={state.isAttendanceLocked}
+              isAttendanceFinalized={state.isAttendanceFinalized}
+              isSheetFinalized={state.isSheetFinalized}
               handleAttendance={handlers.handleAttendance}
               arrivalTimes={state.arrivalTimes}
               setArrivalTimes={state.setArrivalTimes}
@@ -279,6 +297,10 @@ function App() {
         setAttendanceFilter={state.setAttendanceFilter}
         sessionStartTime={state.sessionStartTime}
         isAttendanceLocked={state.isAttendanceLocked}
+        isAttendanceFinalized={state.isAttendanceFinalized}
+        isSheetFinalized={state.isSheetFinalized}
+        minDemandCount={statistics.minDemandCount}
+        maxDemandCount={statistics.maxDemandCount}
         searchQuery={state.searchQuery}
         selectedEmployee={state.selectedEmployee}
         setSelectedEmployee={state.setSelectedEmployee}

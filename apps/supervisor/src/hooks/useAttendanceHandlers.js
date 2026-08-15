@@ -197,10 +197,18 @@ export function useAttendanceHandlers({
     const completionRate = (completedCount / totalCount) * 100
 
     if (completionRate < 50) {
-      notify('error', `Cannot finalize. At least 50% completion required. Current: ${completionRate.toFixed(1)}%`)
+      notify('error', `Cannot finalize attendance. At least 50% attendance completion required. Current: ${completionRate.toFixed(1)}%`)
       return false
     }
 
+    return true
+  }
+
+  const handleFinalizeSheet = (isAttendanceFinalized) => {
+    if (!isAttendanceFinalized) {
+      notify('warning', 'Please finalize attendance status before finalizing the full daily sheet.')
+      return false
+    }
     return true
   }
 
@@ -367,6 +375,7 @@ export function useAttendanceHandlers({
     confirmArrival,
     handleAddWorker,
     handleFinalizeAttendance,
+    handleFinalizeSheet,
     handleUnlockVehicle,
     handleBulkReassign,
     handleExportVehicleAssignments,

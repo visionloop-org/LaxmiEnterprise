@@ -64,9 +64,9 @@ export default function TripTrackerModal({ isOpen, onClose, sessionId }) {
         <div className="flex items-center justify-between border-b border-slate-800 pb-3">
           <div>
             <h2 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-              <span>🚛 Vehicle Trip & Delivery Lifecycle</span>
+              <span>🚛 Vehicle Trip &amp; Delivery Lifecycle</span>
             </h2>
-            <p className="text-xs text-slate-400">Track dispatch, site arrival, material delivery & vehicle returns</p>
+            <p className="text-xs text-slate-400">Track dispatch, site arrival, material delivery &amp; vehicle returns</p>
           </div>
           <button onClick={onClose} className="text-slate-400 hover:text-slate-200 text-xl font-bold p-1">
             ✕
@@ -83,7 +83,7 @@ export default function TripTrackerModal({ isOpen, onClose, sessionId }) {
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Active & Past Trips ({trips.length})
+            Active &amp; Past Trips ({trips.length})
           </button>
           <button
             onClick={() => setActiveTab('new')}

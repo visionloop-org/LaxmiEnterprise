@@ -23,6 +23,12 @@ export function useStatistics(employees, vehicles) {
   }).length
   const lockedVehicles = vehicles.filter(v => v.locked).length
 
+  // Min / Max Labour Request Metrics
+  const chalanMen = employees.filter(e => e.category === 'Chalan Men')
+  const minDemandCount = chalanMen.filter(e => e.labourRequest === 'minimum').length
+  const maxDemandCount = chalanMen.filter(e => e.labourRequest === 'more').length
+  const pendingDemandCount = chalanMen.filter(e => (e.attendance === 'on_time' || e.attendance === 'arrived') && !e.labourRequest).length
+
   const getCategoryCount = (category) => {
     if (category === 'All') return totalCount
     return employees.filter(e => e.category === category).length
@@ -79,6 +85,11 @@ export function useStatistics(employees, vehicles) {
     averageVehicleUtilization,
     fullyUtilizedVehicles,
     underUtilizedVehicles,
-    lockedVehicles
+    lockedVehicles,
+    // Min/Max labour demand metrics
+    minDemandCount,
+    maxDemandCount,
+    pendingDemandCount,
+    chalanMenCount: chalanMen.length
   }
 }

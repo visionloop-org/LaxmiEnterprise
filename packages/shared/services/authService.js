@@ -1,4 +1,3 @@
-// Authentication service for FastAPI backend
 import { backendApiClient, AuthError } from './backendApi.js'
 
 class AuthService {

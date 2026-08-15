@@ -54,18 +54,35 @@ export function useAttendanceState() {
     return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })
   })
 
-  const [isAttendanceLocked, setIsAttendanceLocked] = useState(() => {
+  const [isAttendanceFinalized, setIsAttendanceFinalized] = useState(() => {
     const savedState = localStorage.getItem('attendanceAppState')
     if (savedState) {
       try {
         const parsed = JSON.parse(savedState)
-        return parsed.isAttendanceLocked || false
+        return parsed.isAttendanceFinalized ?? parsed.isAttendanceLocked ?? false
       } catch (e) {
         return false
       }
     }
     return false
   })
+
+  const [isSheetFinalized, setIsSheetFinalized] = useState(() => {
+    const savedState = localStorage.getItem('attendanceAppState')
+    if (savedState) {
+      try {
+        const parsed = JSON.parse(savedState)
+        return parsed.isSheetFinalized ?? false
+      } catch (e) {
+        return false
+      }
+    }
+    return false
+  })
+
+  // Backward compatibility alias
+  const isAttendanceLocked = isAttendanceFinalized
+  const setIsAttendanceLocked = setIsAttendanceFinalized
 
   // Use React Query for data fetching
   const { data: employees = [], isLoading: isLoadingEmployees, error: employeesError } = useEmployees()
@@ -112,11 +129,13 @@ export function useAttendanceState() {
       employees,
       vehicles,
       arrivalTimes,
-      isAttendanceLocked,
+      isAttendanceFinalized,
+      isSheetFinalized,
+      isAttendanceLocked: isAttendanceFinalized,
       sessionStartTime,
     }
     localStorage.setItem('attendanceAppState', JSON.stringify(stateToSave))
-  }, [employees, vehicles, arrivalTimes, isAttendanceLocked, sessionStartTime])
+  }, [employees, vehicles, arrivalTimes, isAttendanceFinalized, isSheetFinalized, sessionStartTime])
 
   return {
     // Filter states
@@ -143,6 +162,8 @@ export function useAttendanceState() {
     currentTime,
     currentDate,
     sessionStartTime,
+    isAttendanceFinalized, setIsAttendanceFinalized,
+    isSheetFinalized, setIsSheetFinalized,
     isAttendanceLocked, setIsAttendanceLocked,
     
     // Loading and auth states

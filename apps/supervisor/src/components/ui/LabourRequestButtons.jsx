@@ -7,10 +7,11 @@ function LabourRequestButtons({ value, onChange, disabled = false }) {
       <button
         onClick={() => onChange('minimum')}
         disabled={disabled}
-        className={`px-3 py-1.5 text-xs font-medium transition-colors border-r border-gray-300 ${
+        title="Request Minimum required labour"
+        className={`px-3 py-1.5 text-xs font-semibold transition-colors border-r border-gray-300 ${
           value === 'minimum'
-            ? 'bg-blue-600 text-white'
-            : 'bg-white text-gray-700 hover:bg-gray-50'
+            ? 'bg-blue-600 text-white shadow-inner font-bold'
+            : 'bg-white text-gray-700 hover:bg-blue-50'
         } disabled:opacity-50`}
       >
         Min
@@ -18,13 +19,14 @@ function LabourRequestButtons({ value, onChange, disabled = false }) {
       <button
         onClick={() => onChange('more')}
         disabled={disabled}
-        className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+        title="Request Maximum / Extra labour"
+        className={`px-3 py-1.5 text-xs font-semibold transition-colors ${
           value === 'more'
-            ? 'bg-orange-500 text-white'
-            : 'bg-white text-gray-700 hover:bg-gray-50'
+            ? 'bg-orange-600 text-white shadow-inner font-bold'
+            : 'bg-white text-gray-700 hover:bg-orange-50'
         } disabled:opacity-50`}
       >
-        More
+        Max
       </button>
     </ButtonGroup>
   )

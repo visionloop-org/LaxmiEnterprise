@@ -1,4 +1,4 @@
-import { backendApiClient } from './backendApi'
+import { backendApiClient } from './backendApi.js'
 
 export const restTripService = {
   async fetchTrips(filters = {}) {
@@ -8,22 +8,22 @@ export const restTripService = {
     if (filters.status) params.append('status', filters.status)
 
     const queryStr = params.toString() ? `?${params.toString()}` : ''
-    return backendApiClient.request(`/api/v1/trips/${queryStr}`)
+    return backendApiClient.request(`/trips/${queryStr}`)
   },
 
   async fetchTrip(tripId) {
-    return backendApiClient.request(`/api/v1/trips/${tripId}`)
+    return backendApiClient.request(`/trips/${tripId}`)
   },
 
   async createTrip(tripData) {
-    return backendApiClient.request('/api/v1/trips/', {
+    return backendApiClient.request('/trips/', {
       method: 'POST',
       body: JSON.stringify(tripData)
     })
   },
 
   async updateTripStatus(tripId, { status, locationName, remarks }) {
-    return backendApiClient.request(`/api/v1/trips/${tripId}/status`, {
+    return backendApiClient.request(`/trips/${tripId}/status`, {
       method: 'PUT',
       body: JSON.stringify({ status, locationName, remarks })
     })

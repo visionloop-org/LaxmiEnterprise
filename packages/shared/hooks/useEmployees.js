@@ -1,12 +1,14 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { restEmployeeService } from '../services/restEmployeeService'
-import { authService } from '../services/authService'
+import { restEmployeeService } from '../services/restEmployeeService.js'
+import { authService } from '../services/authService.js'
 
 const EMPLOYEES_QUERY_KEY = ['employees']
+const EMPTY_FILTERS = Object.freeze({})
 
-export function useEmployees(filters = {}) {
+export function useEmployees(filters = EMPTY_FILTERS) {
+  const hasFilters = filters && Object.keys(filters).length > 0
   return useQuery({
-    queryKey: [...EMPLOYEES_QUERY_KEY, filters],
+    queryKey: hasFilters ? [...EMPLOYEES_QUERY_KEY, filters] : EMPLOYEES_QUERY_KEY,
     queryFn: () => restEmployeeService.fetchEmployees(filters),
     enabled: authService.isAuthenticated(),
   })
@@ -27,13 +29,9 @@ export function useUpdateAttendance() {
     mutationFn: ({ sessionId, employeeId, status, arrivalTime, remarks }) =>
       restEmployeeService.updateAttendance(sessionId, employeeId, status, arrivalTime, remarks),
     onMutate: async ({ employeeId, status, arrivalTime }) => {
-      // Cancel any outgoing refetches
       await queryClient.cancelQueries({ queryKey: EMPLOYEES_QUERY_KEY })
-
-      // Snapshot the previous value
       const previousEmployees = queryClient.getQueryData(EMPLOYEES_QUERY_KEY)
 
-      // Optimistically update to the new value
       queryClient.setQueriesData({ queryKey: EMPLOYEES_QUERY_KEY }, (old) => {
         if (!old) return old
         return old.map(emp => {
@@ -48,17 +46,14 @@ export function useUpdateAttendance() {
         })
       })
 
-      // Return context with previous value for rollback
       return { previousEmployees }
     },
     onError: (err, variables, context) => {
-      // Rollback to previous value on error
       if (context?.previousEmployees) {
         queryClient.setQueryData(EMPLOYEES_QUERY_KEY, context.previousEmployees)
       }
     },
     onSuccess: () => {
-      // Invalidate employees query to refetch
       queryClient.invalidateQueries({ queryKey: EMPLOYEES_QUERY_KEY })
     },
   })

@@ -1,7 +1,6 @@
 // @ts-nocheck
 // Direct REST API client for FastAPI backend communication
-// @ts-ignore - import.meta.env is handled by Vite
-const API_BASE_URL = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_BASE_URL) || 'http://localhost:8000/api/v1'
+const API_BASE_URL = process.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1'
 const DEFAULT_TIMEOUT = 30000 // 30 seconds
 const MAX_RETRIES = 3
 const RETRY_DELAY = 1000 // 1 second
@@ -129,10 +128,27 @@ class BackendApiClient {
     }
   }
 
+  buildUrl(endpoint) {
+    let base = (this.baseURL || '/api/v1').replace(/\/+$/, '')
+    let path = endpoint.startsWith('/') ? endpoint : `/${endpoint}`
+    
+    // Guard against duplicate /api/v1 or /api prefixes
+    if (base.endsWith('/api/v1') && path.startsWith('/api/v1')) {
+      path = path.substring(7) // remove '/api/v1'
+      if (!path.startsWith('/')) path = `/${path}`
+    } else if (base.endsWith('/api') && path.startsWith('/api/')) {
+      path = path.substring(4) // remove '/api'
+      if (!path.startsWith('/')) path = `/${path}`
+    }
+    
+    return `${base}${path}`
+  }
+
   async request(endpoint, options = {}) {
-    const url = `${this.baseURL}${endpoint}`
+    const url = this.buildUrl(endpoint)
     
     let config = {
+      method: options.method || 'GET',
       ...options,
       headers: {
         ...this.getHeaders(),
@@ -220,4 +236,11 @@ class BackendApiClient {
 }
 
 export const backendApiClient = new BackendApiClient()
-export { APIError, NetworkError, AuthError, ValidationError, ConflictError, NotFoundError }
+export {
+  APIError,
+  NetworkError,
+  AuthError,
+  ValidationError,
+  ConflictError,
+  NotFoundError
+}

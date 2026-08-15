@@ -13,6 +13,10 @@ export default memo(function RightColumn({
   setAttendanceFilter,
   sessionStartTime,
   isAttendanceLocked,
+  isAttendanceFinalized,
+  isSheetFinalized,
+  minDemandCount = 0,
+  maxDemandCount = 0,
   searchQuery,
   selectedEmployee,
   setSelectedEmployee,
@@ -23,6 +27,9 @@ export default memo(function RightColumn({
   underUtilizedVehicles,
   lockedVehicles
 }) {
+  const attendanceDone = isAttendanceFinalized ?? isAttendanceLocked ?? false
+  const sheetDone = isSheetFinalized ?? false
+
   const renderDefaultContent = () => (
     <>
       {/* Unified Session Summary */}
@@ -95,9 +102,21 @@ export default memo(function RightColumn({
             <span className="text-gray-700">Shift A</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-500">Status</span>
-            <span className={isAttendanceLocked ? 'text-green-600' : 'text-blue-600'}>
-              {isAttendanceLocked ? 'Finalized' : 'In Progress'}
+            <span className="text-gray-500">Attendance</span>
+            <span className={`font-semibold ${attendanceDone ? 'text-emerald-600' : 'text-blue-600'}`}>
+              {attendanceDone ? '✓ Finalized' : 'In Progress'}
+            </span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-500">Daily Sheet</span>
+            <span className={`font-semibold ${sheetDone ? 'text-purple-600' : 'text-slate-600'}`}>
+              {sheetDone ? '🔒 Finalized' : 'In Progress'}
+            </span>
+          </div>
+          <div className="flex justify-between border-t border-gray-100 pt-1.5">
+            <span className="text-gray-500">Labour Demands</span>
+            <span className="font-medium text-slate-700">
+              Min: {minDemandCount} | Max: {maxDemandCount}
             </span>
           </div>
         </div>
@@ -218,18 +237,18 @@ export default memo(function RightColumn({
             </button>
           </div>
 
-          {selectedEmployee ? renderEmployeeContent() : searchQuery ? renderSearchContent() : pendingCount > 0 && isAttendanceLocked ? renderFinalizationContent() : renderDefaultContent()}
+          {selectedEmployee ? renderEmployeeContent() : searchQuery ? renderSearchContent() : pendingCount > 0 && attendanceDone ? renderFinalizationContent() : renderDefaultContent()}
 
-          {/* Download PDF Button - Only show when finalized */}
-          {isAttendanceLocked && !selectedEmployee && !searchQuery && (
+          {/* Download PDF Button - Available when Sheet or Attendance is finalized */}
+          {(sheetDone || attendanceDone) && !selectedEmployee && !searchQuery && (
             <button
               onClick={handleDownloadPDF}
-              className="w-full mt-4 px-4 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="w-full mt-4 px-4 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 shadow-sm"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              Download Report
+              {sheetDone ? 'Download Finalized Report' : 'Download Attendance Report'}
             </button>
           )}
 

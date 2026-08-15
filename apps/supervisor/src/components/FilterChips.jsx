@@ -11,6 +11,7 @@ function FilterChips({
   setSearchQuery, 
   setShowAddWorker, 
   isAttendanceLocked,
+  isSheetFinalized,
   statistics,
   filteredCount,
   totalCount,
@@ -22,7 +23,7 @@ function FilterChips({
         <span className="text-sm font-semibold text-gray-700">
           Showing {filteredCount} of {totalCount} {isVehicles ? 'vehicles' : 'employees'}
         </span>
-        {categoryFilter === 'Extra Labour' && !isAttendanceLocked && (
+        {categoryFilter === 'Extra Labour' && !isSheetFinalized && (
           <button
             onClick={() => setShowAddWorker(true)}
             className="px-3 py-1 bg-green-600 text-white rounded-full text-sm font-medium hover:bg-green-700 transition-colors"

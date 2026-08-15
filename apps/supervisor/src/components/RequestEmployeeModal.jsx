@@ -49,7 +49,7 @@ export default function RequestEmployeeModal({ isOpen, onClose, notify }) {
         <div className="flex justify-between items-center mb-4 border-b pb-3">
           <div>
             <h2 className="text-lg font-bold text-gray-900">Request New Employee</h2>
-            <p className="text-xs text-gray-500">Submitted to Admin for verification & approval</p>
+            <p className="text-xs text-gray-500">Submitted to Admin for verification &amp; approval</p>
           </div>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-lg">✕</button>
         </div>

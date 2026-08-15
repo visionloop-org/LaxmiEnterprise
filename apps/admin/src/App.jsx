@@ -115,11 +115,10 @@ function AdminDashboard({ onLogout }) {
   const [editingEmp, setEditingEmp] = useState(null)
   const [notificationMsg, setNotificationMsg] = useState('')
 
-  const isLoading = isLoadingEmployees || isLoadingVehicles
+  const [sessionUnlockId, setSessionUnlockId] = useState('')
+  const [isUnlockingSession, setIsUnlockingSession] = useState(false)
 
-  if (isLoading) {
-    return <LoadingSpinner text="Loading admin dashboard..." />
-  }
+  const isLoading = isLoadingEmployees || isLoadingVehicles
 
   // Pending approvals filter
   const pendingEmployees = employees.filter(e => e.status === 'pending_approval')
@@ -307,9 +306,6 @@ function AdminDashboard({ onLogout }) {
     return <span className={`badge ${b.cls}`}>{b.label}</span>
   }
 
-  const [sessionUnlockId, setSessionUnlockId] = useState('')
-  const [isUnlockingSession, setIsUnlockingSession] = useState(false)
-
   const handleUnlockSession = async (e) => {
     e.preventDefault()
     if (!sessionUnlockId) return
@@ -324,6 +320,10 @@ function AdminDashboard({ onLogout }) {
     } finally {
       setIsUnlockingSession(false)
     }
+  }
+
+  if (isLoading) {
+    return <LoadingSpinner text="Loading admin dashboard..." />
   }
 
   return (
@@ -466,7 +466,7 @@ function AdminDashboard({ onLogout }) {
         {/* Employees */}
         <div className="section">
           <div className="section-header">
-            <h2>Employee Management & Payroll</h2>
+            <h2>Employee Management &amp; Payroll</h2>
             <button className="export-button" onClick={exportEmployeeData}>Export Payroll CSV</button>
           </div>
 
@@ -594,7 +594,7 @@ function AdminDashboard({ onLogout }) {
       {/* Vehicle Trip & Delivery Overview */}
       <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', padding: '20px', borderRadius: '12px', marginTop: '24px' }}>
         <h2 style={{ color: '#0f172a', marginTop: 0, fontSize: '1.2rem', fontWeight: 'bold' }}>
-          🚚 Active & Historical Vehicle Trips ({trips.length})
+          🚚 Active &amp; Historical Vehicle Trips ({trips.length})
         </h2>
         <table className="data-table" style={{ marginTop: '12px' }}>
           <thead>

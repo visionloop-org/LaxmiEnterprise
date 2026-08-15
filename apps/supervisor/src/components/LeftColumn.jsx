@@ -4,6 +4,8 @@ export default function LeftColumn({
   setSelectedDate,
   onLoadDayValues,
   isAttendanceLocked,
+  isAttendanceFinalized,
+  isSheetFinalized,
   searchQuery,
   setSearchQuery,
   attendanceFilter,
@@ -15,19 +17,26 @@ export default function LeftColumn({
   resetFilters,
   pendingCount,
   handleFinalizeAttendance,
+  handleFinalizeSheet,
+  minDemandCount = 0,
+  maxDemandCount = 0,
+  pendingDemandCount = 0,
+  assignedVehiclesCount = 0,
   onLogout,
   onOpenAddEmployeeModal,
   onOpenTripTracker
 }) {
+  const attendanceDone = isAttendanceFinalized ?? isAttendanceLocked ?? false
+  const sheetDone = isSheetFinalized ?? false
 
   return (
-    <div className="w-56 flex-shrink-0 border-r border-gray-200 p-4 flex flex-col">
+    <div className="w-64 flex-shrink-0 border-r border-gray-200 p-4 flex flex-col overflow-y-auto max-h-screen scrollbar-thin">
       {/* Session Header */}
       <div className="mb-4">
         <h1 className="text-xl font-bold text-gray-900 mb-1">Supervisor Attendance</h1>
         
         {/* Date Selector for Date-wise Tracking */}
-        <div className="mb-3 bg-gray-50 p-2.5 rounded-lg border border-gray-200">
+        <div className="mb-3 bg-gray-50 p-2.5 rounded-lg border border-gray-200 shadow-sm">
           <label className="block text-xs font-semibold text-gray-700 mb-1">Select Date:</label>
           <input
             type="date"
@@ -48,16 +57,34 @@ export default function LeftColumn({
           <span className="font-semibold text-blue-700">{selectedDate || currentDate}</span>
           <span className="font-medium text-gray-700 bg-gray-100 px-2 py-0.5 rounded">Shift A</span>
         </div>
-        <div className={`text-xs font-medium px-2 py-1.5 rounded text-center leading-snug ${
-          isAttendanceLocked 
-            ? 'bg-amber-100 text-amber-900 border border-amber-300' 
-            : 'bg-blue-100 text-blue-800'
-        }`}>
-          {isAttendanceLocked ? '🔒 Finalized (Edits Locked — Admin Reset Required)' : '🔄 In Progress'}
+
+        {/* Dual Status Card */}
+        <div className="space-y-1.5 bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-xs">
+          <div className="flex items-center justify-between">
+            <span className="text-gray-600 font-medium">Attendance:</span>
+            <span className={`px-2 py-0.5 rounded font-semibold text-[11px] ${
+              attendanceDone
+                ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
+                : 'bg-amber-100 text-amber-800'
+            }`}>
+              {attendanceDone ? '✓ Finalized' : 'In Progress'}
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-gray-600 font-medium">Daily Sheet:</span>
+            <span className={`px-2 py-0.5 rounded font-semibold text-[11px] ${
+              sheetDone
+                ? 'bg-purple-100 text-purple-800 border border-purple-300'
+                : attendanceDone
+                ? 'bg-blue-100 text-blue-800'
+                : 'bg-gray-200 text-gray-700'
+            }`}>
+              {sheetDone ? '🔒 Finalized' : attendanceDone ? '📝 Open' : '⏳ Pending'}
+            </span>
+          </div>
         </div>
 
       </div>
-
 
       {/* Add Employee Request Button (Supervisor Rights) */}
       <button
@@ -76,7 +103,6 @@ export default function LeftColumn({
       </button>
 
       <div className="border-t border-gray-200 my-2"></div>
-
 
       {/* Search */}
       <div className="mb-4">
@@ -132,8 +158,6 @@ export default function LeftColumn({
         Reset Filters
       </button>
 
-      <div className="border-t border-gray-200 my-3"></div>
-
       {/* Logout Button */}
       <button
         onClick={onLogout}
@@ -142,28 +166,103 @@ export default function LeftColumn({
         Logout
       </button>
 
-      <div className="border-t border-gray-200 my-3"></div>
+      <div className="border-t border-gray-200 my-2"></div>
 
-      {/* Finalize Button */}
-      {!isAttendanceLocked && (
-        <button
-          onClick={handleFinalizeAttendance}
-          className={`w-full px-4 py-3 rounded-lg font-medium transition-colors ${
-            pendingCount === 0
-              ? 'bg-green-600 text-white hover:bg-green-700'
-              : 'bg-orange-500 text-white hover:bg-orange-600'
-          }`}
-        >
-          {pendingCount === 0 ? (
-            'Finalize Attendance'
-          ) : (
-            <span className="flex flex-col leading-tight">
-              <span>Finalize Anyway</span>
-              <span className="text-xs opacity-80">{pendingCount} Pending</span>
+      {/* ─── TWO-CATEGORY FINALIZATION CONTROLS ─── */}
+      <div className="space-y-3 mt-auto pt-2">
+        {/* Category 1: Attendance Finalization */}
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-800 flex items-center gap-1">
+              <span>📋</span> 1. Attendance
             </span>
+            {attendanceDone && (
+              <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded border border-emerald-300">
+                Fixed &amp; Locked
+              </span>
+            )}
+          </div>
+          <p className="text-[11px] text-slate-500 leading-tight">
+            Fixes attendance marks (Present/Arrived/Absent).
+          </p>
+
+          {!attendanceDone ? (
+            <button
+              onClick={handleFinalizeAttendance}
+              className={`w-full py-2.5 px-3 rounded-lg text-xs font-bold transition-all shadow-sm ${
+                pendingCount === 0
+                  ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                  : 'bg-amber-600 text-white hover:bg-amber-700'
+              }`}
+            >
+              {pendingCount === 0 ? (
+                'Finalize Attendance'
+              ) : (
+                <span>Finalize Attendance ({pendingCount} Pending)</span>
+              )}
+            </button>
+          ) : (
+            <div className="text-center py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded border border-emerald-200">
+              ✓ Attendance Finalized
+            </div>
           )}
-        </button>
-      )}
+        </div>
+
+        {/* Category 2: Sheet Finalization */}
+        <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-800 flex items-center gap-1">
+              <span>📑</span> 2. Daily Sheet
+            </span>
+            {sheetDone && (
+              <span className="text-[10px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.5 rounded border border-purple-300">
+                Full Lock
+              </span>
+            )}
+          </div>
+          <p className="text-[11px] text-slate-500 leading-tight">
+            Locks Min/Max labour requests and vehicle assignments.
+          </p>
+
+          {/* Min/Max Status Summary Widget */}
+          <div className="bg-white rounded-lg p-2 border border-slate-200 text-[11px] space-y-1">
+            <div className="flex justify-between text-slate-600">
+              <span>Min / Max Demands:</span>
+              <span className="font-semibold text-slate-800">
+                Min: {minDemandCount} · Max: {maxDemandCount}
+              </span>
+            </div>
+            {pendingDemandCount > 0 && !sheetDone && (
+              <div className="text-[10px] text-amber-600 font-medium">
+                ⚠️ {pendingDemandCount} Chalan Men demand pending
+              </div>
+            )}
+            <div className="flex justify-between text-slate-600">
+              <span>Assigned Vehicles:</span>
+              <span className="font-semibold text-slate-800">{assignedVehiclesCount}</span>
+            </div>
+          </div>
+
+          {!sheetDone ? (
+            <button
+              onClick={handleFinalizeSheet}
+              disabled={!attendanceDone}
+              className={`w-full py-2.5 px-3 rounded-lg text-xs font-bold transition-all shadow-sm ${
+                attendanceDone
+                  ? 'bg-purple-600 text-white hover:bg-purple-700'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
+              title={!attendanceDone ? 'Finalize attendance first' : 'Finalize full daily sheet'}
+            >
+              {attendanceDone ? 'Finalize Daily Sheet' : 'Finalize Attendance First'}
+            </button>
+          ) : (
+            <div className="text-center py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded border border-purple-200">
+              🔒 Sheet Finalized &amp; Locked
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
