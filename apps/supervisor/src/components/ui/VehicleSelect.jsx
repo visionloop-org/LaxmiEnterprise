@@ -65,7 +65,7 @@ function VehicleSelect({ value, onChange, vehicles, disabled = false, employees 
               value={v.id}
               disabled={v.locked || isFull || !canAccept}
             >
-              {v.number} ({v.type}) - D:{capacity.driverCount}/1 C:{capacity.chalanManCount}/1 W:{capacity.workerCount}/6
+              {v.number || v.name || v.id}{v.type ? ` (${v.type})` : ''} - D:{capacity.driverCount}/1 C:{capacity.chalanManCount}/1 W:{capacity.workerCount}/6
               {v.locked ? ' [LOCKED]' : ''}
               {isFull ? ' [FULL]' : ''}
               {!canAccept && !isFull && !v.locked ? ' [NO CAPACITY]' : ''}

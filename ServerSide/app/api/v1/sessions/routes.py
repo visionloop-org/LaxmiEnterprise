@@ -154,7 +154,15 @@ async def unlock_session(session_id: str, username: str = Depends(get_current_ac
             code="ADMIN_ONLY_UNLOCK"
         )
 
-    session = await db.db.attendance_sessions.find_one({"$or": [{"_id": session_id}, {"sessionId": session_id}]})
+    query_conditions = [{"_id": session_id}, {"sessionId": session_id}, {"sessionDate": session_id}]
+    try:
+        from bson import ObjectId
+        if ObjectId.is_valid(session_id):
+            query_conditions.append({"_id": ObjectId(session_id)})
+    except Exception:
+        pass
+
+    session = await db.db.attendance_sessions.find_one({"$or": query_conditions})
     if not session:
         raise NotFoundException(message=f"Session '{session_id}' not found", code="SESSION_NOT_FOUND")
 

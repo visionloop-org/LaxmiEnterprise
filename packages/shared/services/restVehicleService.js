@@ -73,9 +73,14 @@ class RestVehicleService {
    * @returns {FrontendVehicle}
    */
   mapBackendToFrontend(vehicle) {
+    const number = vehicle.vehicleNumber || vehicle.number || vehicle.id || ''
+    const type = vehicle.vehicleType || vehicle.type || 'Truck'
+    const name = vehicle.name || number
     return {
-      id: vehicle.vehicleNumber,
-      name: vehicle.vehicleNumber,
+      id: vehicle.vehicleNumber || vehicle.id || number,
+      number,
+      type,
+      name,
       category: 'Vehicles',
       capacity: vehicle.capacity || 0,
       status: vehicle.status,

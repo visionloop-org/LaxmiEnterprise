@@ -111,6 +111,12 @@ function App() {
     }
   }
 
+  const handleResetAttendanceFinalization = () => {
+    state.setIsAttendanceFinalized(false)
+    state.setIsSheetFinalized(false)
+    notify('success', 'Attendance finalization unlocked! You can now edit attendance and assignments.')
+  }
+
   const handleFinalizeSheet = () => {
     const success = handlers.handleFinalizeSheet(state.isAttendanceFinalized)
     if (success) {
@@ -178,6 +184,7 @@ function App() {
         resetFilters={resetFilters}
         pendingCount={statistics.pendingCount}
         handleFinalizeAttendance={handleFinalizeAttendance}
+        handleResetAttendanceFinalization={handleResetAttendanceFinalization}
         handleFinalizeSheet={handleFinalizeSheet}
         minDemandCount={statistics.minDemandCount}
         maxDemandCount={statistics.maxDemandCount}

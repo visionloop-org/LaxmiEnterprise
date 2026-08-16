@@ -17,6 +17,7 @@ export default function LeftColumn({
   resetFilters,
   pendingCount,
   handleFinalizeAttendance,
+  handleResetAttendanceFinalization,
   handleFinalizeSheet,
   minDemandCount = 0,
   maxDemandCount = 0,
@@ -202,8 +203,20 @@ export default function LeftColumn({
               )}
             </button>
           ) : (
-            <div className="text-center py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded border border-emerald-200">
-              ✓ Attendance Finalized
+            <div className="space-y-1.5">
+              <div className="text-center py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded border border-emerald-200">
+                ✓ Attendance Finalized
+              </div>
+              {handleResetAttendanceFinalization && (
+                <button
+                  type="button"
+                  onClick={handleResetAttendanceFinalization}
+                  className="w-full py-1.5 px-2 text-xs font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-lg transition-colors flex items-center justify-center gap-1 shadow-sm"
+                  title="Unlock and reset attendance finalization so supervisors can edit"
+                >
+                  <span>🔓</span> Reset / Unlock Finalization
+                </button>
+              )}
             </div>
           )}
         </div>

@@ -54,3 +54,20 @@ def test_finalize_session_idempotent(client, auth_headers, seed_data):
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "finalized"
+
+def test_unlock_session_admin_success(client, auth_headers, seed_data):
+    # Unlock a finalized session as admin
+    response = client.post("/api/v1/sessions/SES-2026-08-10/unlock", headers=auth_headers)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "in_progress"
+
+def test_unlock_session_by_date_success(client, auth_headers, seed_data):
+    # First finalize
+    client.post("/api/v1/sessions/SES-2026-08-11/finalize", headers=auth_headers)
+    # Unlock using sessionDate
+    response = client.post("/api/v1/sessions/2026-08-11/unlock", headers=auth_headers)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["status"] == "in_progress"
+
