@@ -230,7 +230,7 @@ grep -A 5 "healthcheck" docker-compose.yml
 ```bash
 # Check React versions
 grep "react" apps/admin/package.json
-grep "react" "SupervisorBases Attandance Tracking/app/package.json"
+grep "react" apps/supervisor/package.json
 grep "react" packages/shared/package.json
 
 # Check peer dependencies

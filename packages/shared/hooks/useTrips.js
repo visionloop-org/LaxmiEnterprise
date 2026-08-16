@@ -38,8 +38,8 @@ export function useUpdateTripStatus() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: ({ tripId, status, locationName, remarks }) =>
-      restTripService.updateTripStatus(tripId, { status, locationName, remarks }),
+    mutationFn: ({ tripId, status, locationName, receiverName, remarks }) =>
+      restTripService.updateTripStatus(tripId, { status, locationName, receiverName, remarks }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: TRIPS_QUERY_KEY })
     },

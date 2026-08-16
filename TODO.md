@@ -1,94 +1,123 @@
-# Laxmi Enterprise TODO
+# Laxmi Enterprise TODO & Roadmap
 
-## Completed (Aug 11, 2026)
+**Last Updated:** August 16, 2026  
+**Current System Status:** Production-Ready Monorepo with Shared Architecture, FastAPI Backend, Supervisor Tablet UI, Admin Analytics Portal, Trip Tracking Lifecycle, and Automated OpenAPI Type Sync.
 
-- ✅ Created FastAPI application in `ServerSide` with environment-based configuration
-- ✅ Configured MongoDB (Docker container) for development
-- ✅ Added health and readiness endpoints
-- ✅ Set up JWT authentication with demo user
-- ✅ Defined MongoDB models for employees, vehicles, sessions, attendance records
-- ✅ Published `/api/v1` OpenAPI specification
-- ✅ Added API error response standards
-- ✅ Implemented employee and vehicle read APIs
-- ✅ Implemented session creation, loading, and active-session lookup
-- ✅ Implemented server-validated attendance recording
-- ✅ Recorded immutable audit events for attendance changes
-- ✅ Implemented idempotent session finalization and attendance locking
-- ✅ Implemented server-side vehicle assignment and unassignment endpoints
-- ✅ Added domain validation for assignments
-- ✅ Used MongoDB transactions for assignment updates
-- ✅ Implemented assignment history and vehicle utilization endpoints
-- ✅ Created monorepo structure with shared packages
-- ✅ Created admin dashboard using shared packages
-- ✅ Configured CORS for both applications
-- ✅ Regenerated knowledge graph (784 nodes, 1238 edges, 62 communities)
-- ✅ Documented understanding workflow
+---
 
-## Now — Foundation
+## 🚀 Completed Milestones & Features
 
-- [x] Create the FastAPI application in `ServerSide` with environment-based configuration.
-- [x] Configure MongoDB Atlas or a local MongoDB replica set for development.
-- [x] Add health and readiness endpoints.
-- [x] Set up JWT authentication, role-based authorization, and user management.
-- [x] Define MongoDB models and indexes for employees, vehicles, sessions, attendance records, assignments, and audit events.
-- [x] Publish the initial `/api/v1` OpenAPI specification.
-- [x] Add API error response standards and session-version conflict responses.
+### 1. Foundation & Backend Core (Completed)
+- ✅ Created FastAPI backend service in `ServerSide/` with environment configuration (`MONGODB_URI`, `DEBUG`, `SECRET_KEY`).
+- ✅ Configured MongoDB replica set / container support with persistent volume configuration.
+- ✅ Implemented JWT authentication (`/api/v1/auth/login`, `/api/v1/auth/me`) with role-based access control (Admin, Supervisor).
+- ✅ Built database models & indexes for `employees`, `vehicles`, `attendance_sessions`, `attendance_records`, `vehicle_assignments`, `vehicle_trips`, and `audit_events`.
+- ✅ Implemented error handling standard with structured error codes (`CONFLICT`, `VALIDATION_ERROR`, `NOT_FOUND`, `UNAUTHORIZED`).
+- ✅ Implemented optimistic concurrency control using `attendance_sessions.version` returning HTTP `409 Conflict` on stale updates.
+- ✅ Created database indexes (`app/db/indexes.py`) ensuring uniqueness and high query performance.
+- ✅ Implemented comprehensive seed script (`ServerSide/scripts/seed_data.py`) for employees, vehicles, sessions, and demo accounts.
 
-## Next — Core Attendance API
+### 2. Core Attendance & Session Management (Completed)
+- ✅ Implemented session lifecycle (`GET /api/v1/sessions`, `GET /api/v1/sessions/{id}`, `GET /api/v1/sessions/active`).
+- ✅ Implemented attendance recording (`PUT /api/v1/sessions/{id}/attendance/{employeeId}`) supporting statuses: `on_time`, `arrived` (with arrival time), and `absent`.
+- ✅ Added immutable audit trail recording (`audit_events`) for every attendance and session mutation.
+- ✅ Implemented idempotent session finalization (`POST /api/v1/sessions/{id}/finalize`) with attendance locking.
+- ✅ Implemented admin-exclusive session reset/unlock endpoint (`POST /api/v1/sessions/{id}/unlock`) to allow supervisor adjustments when approved.
 
-- [x] Implement employee and vehicle read APIs.
-- [x] Implement session creation, loading, and active-session lookup.
-- [x] Implement server-validated attendance recording for On Time, Arrived, and Absent.
-- [x] Record immutable audit events for every attendance change.
-- [x] Implement idempotent session finalization and attendance locking.
-- [ ] Add transaction and concurrency tests for attendance mutations.
+### 3. Vehicle Assignment & Capacity Engine (Completed)
+- ✅ Implemented transaction-safe vehicle assignment and unassignment endpoints (`PUT|DELETE /api/v1/sessions/{id}/assignments/{employeeId}`).
+- ✅ Enforced strict server-side domain capacity rules:
+  - Maximum 1 Driver per vehicle
+  - Maximum 1 Chalan Man per vehicle
+  - Maximum 6 Workers / Extra Labour per vehicle
+  - Maximum 8 total employees per vehicle
+- ✅ Added vehicle status management (`available`, `in_use`, `maintenance`) and vehicle active state toggling.
+- ✅ Implemented vehicle assignment history and utilization tracking endpoints.
+- ✅ Created structured capacity conflict responses with current vehicle state for seamless client-side resolution.
 
-## Next — Vehicle Assignment API
+### 4. Vehicle Trip & Task Completion Lifecycle (Completed)
+- ✅ Defined `VehicleTrip` schema and MongoDB persistence with status timeline events (`app/models/trip.py`).
+- ✅ Implemented trip lifecycle endpoints (`/api/v1/trips/`):
+  - `POST /api/v1/trips/` — Dispatch vehicle with assigned driver, destination location, and product details.
+  - `GET /api/v1/trips/` — Filter active and historical trips by session, vehicle, or status.
+  - `PUT /api/v1/trips/{id}/status` — Progress trip through the complete task completion flow:
+    1. **Dispatched** (Vehicle departs quarry/yard with load)
+    2. **Reached Location** (Vehicle arrives at destination site)
+    3. **Delivered Product** (Material / aggregate unloaded, receiver name recorded & verified)
+    4. **Returned / Completed** (Vehicle returns and becomes available for new assignment)
+- ✅ Built quick on-site delivery confirmation modal in `TripTrackerModal.jsx` with receiver name capture and expandable timeline history.
+- ✅ Integrated trip monitoring in the admin portal with real-time status display and receiver details.
 
-- [x] Implement server-side vehicle assignment and unassignment endpoints.
-- [x] Add domain validation for eligibility, maintenance status, per-role capacity, and total capacity.
-- [x] Use MongoDB transactions for assignment and audit-event updates.
-- [x] Return structured capacity conflict responses with current vehicle state.
-- [x] Implement assignment history and vehicle utilization endpoints.
-- [ ] Add tests for single assignment, reassignment, unassignment, concurrent edits, and finalization locks.
+### 5. Monorepo & Shared Architecture (Completed)
+- ✅ Established npm workspaces monorepo: `packages/shared`, `apps/supervisor`, `apps/admin`.
+- ✅ Built `@laxmi/shared` package exporting:
+  - **Services**: `authService`, `backendApi`, `restAssignmentService`, `restEmployeeService`, `restSessionService`, `restTripService`, `restVehicleService`.
+  - **Hooks**: `useEmployees`, `useVehicles`, `useTrips`, `useApproveEmployee`, `useRejectEmployee`, `useUpdateEmployee`, `useDeleteEmployee`, `useCreateTrip`, `useUpdateTripStatus`.
+  - **Components**: `ArrivedTimeModal`, `ErrorBoundary`, `LoadingSpinner`.
+  - **Types**: Auto-generated TypeScript types (`types/api.ts`).
+- ✅ Refactored both `apps/supervisor` and `apps/admin` to consume `@laxmi/shared` with zero code duplication.
+- ✅ Automated OpenAPI TypeScript synchronization pipeline (`scripts/export_openapi.py`, `sync.py`, `check-types.js`, pre-commit hooks).
 
-## Frontend Migration
+### 6. Supervisor Web Application (Completed)
+- ✅ Touch-first landscape tablet optimized spreadsheet layout with large 48–56px touch rows.
+- ✅ Category navigation tabs: All, Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles.
+- ✅ Real-time search by ID/Name, Attendance status filter (Pending, Completed, All), and alphabetical range chips.
+- ✅ Inline attendance buttons with instant feedback for On Time / Absent.
+- ✅ `ArrivedTimeModal` with time presets and manual arrival time selection.
+- ✅ Visual vehicle capacity indicators with color-coded utilization progress bars and violation alerts.
+- ✅ Capacity conflict resolution modal and vehicle assignment history modal.
+- ✅ Employee addition request workflow (`RequestEmployeeModal.jsx`) allowing supervisors to request new workers/contractors for admin approval.
+- ✅ Offline mutation queue with background synchronization and visual sync indicator (`SyncStatus.jsx`).
+- ✅ Client-side PDF generation module with clean tabular layout, vehicle breakdown, and exception reports.
 
-- [x] Add a versioned API client to the supervisor web application.
-- [x] Replace generated employee and vehicle data with server-loaded session data.
-- [x] Replace `localStorage` attendance persistence with API-backed mutations.
-- [x] Move direct component state mutations into attendance and vehicle workflow hooks.
-- [x] Remove browser `alert()` and `confirm()` usage; display inline validation and conflict feedback.
-- [ ] Implement the Arrived time-selection and confirmation flow.
-- [x] Disable editable controls only after server-confirmed finalization.
-- [ ] Add loading, retry, offline, and `409 Conflict` recovery states.
+### 7. Admin Portal & Analytics (Completed)
+- ✅ Role-gated Admin authentication interface.
+- ✅ Date range filtering (Today, Last 7 Days, Last 30 Days, Custom Range).
+- ✅ Real-time attendance summary (Total Employees, Total Vehicles, Present Today, Vehicles In Use).
+- ✅ Automated Payroll & Extra Duty calculation engine based on category hourly rates.
+- ✅ Contractor Payroll & Settlement Engine aggregating daily wages and overtime grouped by labour contractor.
+- ✅ Dedicated "Export Contractor Settlement CSV" for accounting and bank NEFT/RTGS disbursements.
+- ✅ Pending Employee Request Approval workflow (Approve, Reject, Edit, Delete).
+- ✅ Emergency Session Unlock tool to reset finalized sessions.
+- ✅ One-click CSV exports for Employee Payroll/Attendance and Vehicle Status.
 
-## Reports and Jobs
+### 8. Testing & Validation Suite (Completed)
+- ✅ Backend pytest test suite (`ServerSide/tests/`):
+  - `test_auth.py` — Authentication & JWT validation
+  - `test_employees.py` — Employee CRUD and approval workflows
+  - `test_sessions.py` — Session creation, locking, and unlocking
+  - `test_attendance.py` — Attendance transitions and concurrency
+  - `test_assignments.py` — Vehicle assignment rules and capacity limits
+  - `test_trips.py` — Trip lifecycle and task completion state transitions
+  - `test_vehicles.py` — Vehicle status and utilization
+  - `test_error_handling.py` — Standardized error responses
+- ✅ Frontend test suite in `packages/shared/tests/` (Mocha + Chai + Babel):
+  - Service unit and edge case tests (`authService`, `backendApi`, `restEmployeeService`, `restVehicleService`, `restAssignmentService`)
+  - Hook tests (`useEmployees`, `useVehicles`, `useTrips`)
+  - Component tests (`ArrivedTimeModal`, `ErrorBoundary`, `LoadingSpinner`)
 
-- [ ] Add Redis and a Python background-job worker.
-- [ ] Implement server-side PDF generation from finalized persisted sessions.
-- [ ] Implement server-side CSV export with correct field escaping.
-- [ ] Add report job status and authorized download endpoints.
-- [ ] Store report metadata, access controls, and generation audit events.
+---
 
-## Client Integration
+## 🛠️ In Progress & Current Focus
 
-- [ ] Generate or contract-test the TypeScript API client for the supervisor app.
-- [ ] Generate or contract-test a Python API client for other applications.
-- [ ] Document authentication, pagination, filtering, error codes, and versioning.
-- [ ] Add optional realtime session updates with WebSockets or Server-Sent Events.
-- [ ] Confirm every external application uses the API rather than direct MongoDB access.
+- [ ] **Automated CI/CD Pipeline**: Setup GitHub Actions workflow to run backend pytest and shared package tests on PRs.
+- [ ] **Server-Side PDF Generation**: Add Python `ReportLab` worker to generate official auditable PDF reports directly from persisted MongoDB session data.
+- [ ] **WebSocket / SSE Realtime Updates**: Broadcast live attendance and vehicle changes across supervisor and admin dashboards.
+- [ ] **E2E Integration Testing**: Playwright test suite validating end-to-end supervisor attendance marking, vehicle assignment, trip tracking, and admin approvals.
 
-## Quality and Operations
+---
 
-- [ ] Add unit tests for domain rules and application use cases.
-- [ ] Add API integration tests against a MongoDB replica set.
-- [ ] Add frontend component tests with mocked APIs.
-- [ ] Add end-to-end tests for attendance, assignment, conflict, finalization, and report flows.
-- [ ] Set up structured logs, error monitoring, backups, and access review.
-- [ ] Add deployment configuration for development, staging, and production.
-- [ ] Refresh the project dependency graph after major architecture changes.
+## 🔮 Upcoming Roadmap
 
+### Phase 4: Production Infrastructure & Background Jobs
+- [ ] Add Redis container and Celery/RQ background worker for asynchronous report exports.
+- [ ] Add structured JSON logging and OpenTelemetry/Sentry error monitoring.
+- [ ] Implement automated MongoDB backup scripts and restore procedures.
+- [ ] Configure HTTPS/TLS reverse proxy (Nginx / Caddy) with Docker production profiles.
 
-
-tak completion like reached location deliverd the prodict etc
+### Phase 5: Hardware & Attendance Scanner Integrations (LWAS Prototype)
+- [ ] USB QR Scanner keyboard-wedge listener for rapid worker ID scanning at entry gates.
+- [ ] Turnstile rotation sensor integration for physical gate access verification.
+- [ ] Thermal token printer integration for single-use physical entry tokens.
+- [ ] Mobile/PWA camera QR scanner support for field supervisors.
+- [ ] Long-term hardware evaluation: NFC/RFID badge readers and biometric/face recognition modules.

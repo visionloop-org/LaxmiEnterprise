@@ -1,207 +1,131 @@
-# Laxmi Enterprise - Coherent Workflow Plan
+# Laxmi Enterprise — Coherent Workflow Plan
 
-## Current Status (Updated Aug 11, 2026)
-- ✅ Monorepo structure established
-- ✅ Shared packages created (@laxmi/shared)
-- ✅ Admin dashboard using shared packages
-- ✅ Supervisor app running (not yet using shared packages)
-- ✅ Backend API running with MongoDB
-- ✅ CORS configured for both apps
-- ✅ Knowledge graph regenerated (784 nodes, 1238 edges, 62 communities)
-- ✅ Understanding workflow documented
+**Last Updated:** August 16, 2026  
+**Status:** Phase 1 Complete, Phase 2 Complete, Phase 3 Advanced, Moving to Phase 4 & 5
 
-## Phase 1: Code Consolidation (High Priority)
+---
 
-### 1.1 Refactor Supervisor App to Use Shared Packages
-**Goal**: Eliminate code duplication between apps
-**Tasks**:
-- Update supervisor app package.json to use @laxmi/shared
-- Replace local imports with shared package imports
-- Remove duplicate files from supervisor app
-- Test supervisor app functionality
-- Verify both apps work with shared packages
+## Current Status Overview
 
-**Benefits**: Single source of truth, easier maintenance, consistent behavior
+- ✅ **Monorepo & Shared Architecture**: Established `@laxmi/shared` workspace package with shared services, React Query hooks, and UI components.
+- ✅ **Supervisor Tablet App**: Fully refactored to consume `@laxmi/shared` with zero local service duplication.
+- ✅ **Admin Dashboard**: Live with date range filtering, payroll calculation, supervisor request approvals, session unlock, and CSV export.
+- ✅ **Vehicle Trip & Task Completion**: End-to-end trip tracking implemented (`dispatched` → `reached_location` → `delivered` → `returned`).
+- ✅ **Automated Type Sync**: OpenAPI export script, TypeScript type generator, and pre-commit hook in place.
+- ✅ **Backend Test Suite**: Pytest test suite covering auth, sessions, attendance, assignments, trips, and error handling.
+- ✅ **Frontend Test Suite**: Mocha + Chai test suite for shared services, hooks, and components.
 
-### 1.2 Move More Code to Shared Packages
-**Goal**: Maximize code reuse
-**Tasks**:
-- Move common UI components (tables, forms, modals) to shared
-- Move utility functions (formatters, validators) to shared
-- Move additional hooks (useFilters, useStatistics) to shared
-- Update both apps to use new shared components
-- Test all shared components in both contexts
+---
 
-**Benefits**: Consistent UI, reduced development time for new features
+## Phase 1: Code Consolidation & Monorepo Unification (Completed)
 
-## Phase 2: Admin Dashboard Enhancement (High Priority)
+### 1.1 Refactor Supervisor App to Use Shared Packages ✅
+- [x] Update supervisor `package.json` with `@laxmi/shared` dependency.
+- [x] Replace local duplicate services with `@laxmi/shared` exports (`backendApi`, `authService`, `restSessionService`, `restVehicleService`, `restAssignmentService`, `restEmployeeService`).
+- [x] Remove duplicate service files from `apps/supervisor/src/services/`.
+- [x] Verify supervisor tablet app runs cleanly against shared packages.
 
-### 2.1 Add Date Range Filtering
-**Goal**: Enable historical data analysis
-**Tasks**:
-- Add date range picker component
-- Update API calls to include date parameters
-- Filter attendance and vehicle data by date range
-- Add session selection dropdown
-- Display statistics for selected period
+### 1.2 Move Common UI & Logic to Shared Package ✅
+- [x] Centralize `ErrorBoundary` and `LoadingSpinner` in `packages/shared/components/`.
+- [x] Create and share `ArrivedTimeModal` for consistent touch arrival time selection.
+- [x] Centralize shared React Query hooks (`useEmployees`, `useVehicles`, `useTrips`, `useApproveEmployee`, `useRejectEmployee`, `useUpdateEmployee`, `useDeleteEmployee`).
+- [x] Export unified type definitions from `packages/shared/types/api.ts`.
 
-**Benefits**: Better data analysis, historical reporting
+---
 
-### 2.2 Add Export Functionality
-**Goal**: Enable data export for reporting
-**Tasks**:
-- Add CSV export for employee attendance
-- Add CSV export for vehicle status
-- Add PDF report generation
-- Add export buttons to admin dashboard
-- Test export functionality
+## Phase 2: Admin Dashboard & Governance (Completed)
 
-**Benefits**: Offline reporting, data sharing, compliance
+### 2.1 Date Range Filtering & Time-Series View ✅
+- [x] Add date range picker with presets (Today, Last 7 Days, Last 30 Days, Custom Range).
+- [x] Filter employee attendance and vehicle utilization by date range.
+- [x] Implement pagination for large employee and vehicle tables.
 
-### 2.3 Add Advanced Analytics
-**Goal**: Provide deeper insights
-**Tasks**:
-- Add attendance trends charts
-- Add vehicle utilization metrics
-- Add employee performance metrics
-- Add comparative analysis (week-over-week, month-over-month)
-- Create analytics dashboard section
+### 2.2 Export Functionality ✅
+- [x] Implement CSV export for employee attendance and payroll records.
+- [x] Implement CSV export for vehicle status and utilization.
+- [x] Ensure proper field formatting and escaping in exported CSV files.
 
-**Benefits**: Better decision making, performance tracking
+### 2.3 Payroll & Compensation Calculation Engine ✅
+- [x] Add category base wage presets (Drivers ₹800, Chalan Men ₹650, Workers ₹500, Office ₹750, Extra Labour ₹450).
+- [x] Calculate daily base pay, overtime / extra duty hours, and total payout.
+- [x] Include comprehensive payroll breakdown in admin data tables and CSV exports.
 
-## Phase 3: Backend Improvements (Medium Priority)
+### 2.4 Multi-Role Approvals & Session Unlock Tool ✅
+- [x] Build Pending Approvals queue for supervisor-submitted employee additions.
+- [x] Add Admin actions: Approve, Reject, Edit details, Delete.
+- [x] Build Session Unlock tool to reset finalized sessions back to in-progress when administrative edits are authorized.
 
-### 3.1 Implement Refresh Token Endpoint
-**Goal**: Improve authentication security
-**Tasks**:
-- Add /auth/refresh endpoint to backend
-- Update frontend to use refresh tokens
-- Implement proper token rotation
-- Add token blacklist on logout
-- Test refresh token flow
+---
 
-**Benefits**: Better security, improved user experience
+## Phase 3: Trip Lifecycle, APIs & Testing (Completed / Advanced)
 
-### 3.2 Add User Management
-**Goal**: Enable multi-user support
-**Tasks**:
-- Create user model in backend
-- Add user CRUD endpoints
-- Add role-based access control
-- Update admin dashboard with user management
-- Add user creation/deletion in admin
+### 3.1 Vehicle Trip & Task Completion Lifecycle ✅
+- [x] Define `VehicleTrip` schema, models, and timeline event structure.
+- [x] Build REST endpoints (`POST /api/v1/trips/`, `GET /api/v1/trips/`, `PUT /api/v1/trips/{id}/status`).
+- [x] Build `TripTrackerModal` in supervisor application for live task progression:
+  1. Vehicle Dispatched
+  2. Reached Location
+  3. Delivered Product
+  4. Returned / Completed
+- [x] Integrate trip tracking overview in the Admin dashboard.
 
-**Benefits**: Multi-user support, better security, audit trails
+### 3.2 Automated Type Synchronization ✅
+- [x] Server-independent OpenAPI spec exporter (`ServerSide/scripts/export_openapi.py`).
+- [x] TypeScript type generation script (`npm run generate:types`).
+- [x] Git pre-commit hook to prevent backend/frontend type drift.
 
-### 3.3 Add Audit Logging
-**Goal**: Track all system changes
-**Tasks**:
-- Enhance existing audit events
-- Add comprehensive logging for all operations
-- Create audit log viewer in admin
-- Add export functionality for audit logs
-- Add log retention policies
+### 3.3 Test Automation Suites ✅
+- [x] Pytest backend suite (`ServerSide/tests/`) covering authentication, session transitions, concurrency, assignments, trips, and error handling.
+- [x] Mocha/Chai test suite in `packages/shared/tests/` for services, hooks, and components.
 
-**Benefits**: Compliance, debugging, security monitoring
+---
 
-## Phase 4: Security Enhancements (Low Priority)
+## Phase 4: Server Reports & Background Workers (Current Focus)
 
-### 4.1 Move to httpOnly Cookies
-**Goal**: Improve token security
-**Tasks**:
-- Update backend to use httpOnly cookies
-- Update frontend to work with cookie-based auth
-- Remove localStorage token storage
-- Test cookie-based authentication
-- Update documentation
+### 4.1 Redis & Asynchronous Job Queue
+- [ ] Add Redis container to `docker-compose.yml`.
+- [ ] Implement Celery or RQ background worker in `ServerSide/`.
+- [ ] Add job status monitoring and polling endpoints.
 
-**Benefits**: Better security, protection against XSS
+### 4.2 Server-Side PDF Report Generation
+- [ ] Build ReportLab PDF generator service in `ServerSide/`.
+- [ ] Generate official, tamper-evident PDF reports from persisted MongoDB session records.
+- [ ] Add authorized report download endpoint (`GET /api/v1/reports/{id}/download`).
 
-### 4.2 Add CSRF Protection
-**Goal**: Prevent cross-site request forgery
-**Tasks**:
-- Implement CSRF token generation in backend
-- Add CSRF validation to all state-changing endpoints
-- Update frontend to include CSRF tokens
-- Test CSRF protection
-- Update documentation
+### 4.3 Real-Time Session Updates (WebSockets / SSE)
+- [ ] Implement Server-Sent Events (SSE) or WebSocket channel on `/api/v1/ws/sessions`.
+- [ ] Broadcast attendance status changes and vehicle assignments in real time.
+- [ ] Auto-invalidate React Query caches upon receiving push events.
 
-**Benefits**: Better security, protection against CSRF attacks
+---
 
-## Phase 5: Deployment & DevOps (Medium Priority)
+## Phase 5: Production Infrastructure & Security
 
-### 5.1 Docker Configuration
-**Goal**: Containerize applications
-**Tasks**:
-- Create Dockerfile for supervisor app
-- Create Dockerfile for admin app
-- Create docker-compose.yml for all services
-- Add environment variable configuration
-- Test local Docker deployment
+### 5.1 Security Hardening
+- [ ] Migrate authentication tokens to `httpOnly`, `Secure`, `SameSite=Strict` cookies.
+- [ ] Implement CSRF double-submit cookie or header validation for mutating endpoints.
+- [ ] Implement rate limiting on `/api/v1/auth/login` and sensitive endpoints.
 
-**Benefits**: Consistent deployment, easier scaling
+### 5.2 CI/CD & Deployment Automation
+- [ ] Configure GitHub Actions workflow for automated linting, type checks, pytest, and mocha tests.
+- [ ] Configure production multi-stage Dockerfiles with Nginx reverse proxy.
+- [ ] Setup automated database backup and restore routines.
 
-### 5.2 CI/CD Pipeline
-**Goal**: Automate testing and deployment
-**Tasks**:
-- Set up GitHub Actions or similar CI/CD
-- Add automated testing
-- Add automated builds
-- Add deployment to staging/production
-- Add rollback capabilities
+---
 
-**Benefits**: Automated deployment, faster releases, better quality
+## Phase 6: Hardware & Scanner Integrations (LWAS Prototype)
 
-## Phase 6: Documentation (Low Priority)
+### 6.1 Gate Scanning & Entry Tokens
+- [ ] USB QR Scanner keyboard-wedge listener for rapid worker ID scanning at entry gates.
+- [ ] Turnstile rotation sensor event processing and gate unlock signaling.
+- [ ] ESC/POS thermal token printer integration for single-use physical entry tokens.
 
-### 6.1 Technical Documentation
-**Goal**: Comprehensive developer documentation
-**Tasks**:
-- Document shared package API
-- Document backend API endpoints
-- Document component library
-- Add code examples
-- Create architecture diagrams
+---
 
-**Benefits**: Easier onboarding, better maintenance
+## Execution Roadmap
 
-### 6.2 User Documentation
-**Goal**: End-user guides
-**Tasks**:
-- Create supervisor app user guide
-- Create admin dashboard user guide
-- Add troubleshooting section
-- Create video tutorials
-- Add FAQ section
-
-**Benefits**: Better user experience, reduced support burden
-
-## Execution Order
-
-### Immediate (This Week)
-1. Refactor supervisor app to use shared packages
-2. Add date range filtering to admin dashboard
-3. Add export functionality to admin dashboard
-
-### Short Term (Next 2 Weeks)
-4. Move more components to shared packages
-5. Implement refresh token endpoint
-6. Add user management to backend
-
-### Medium Term (Next Month)
-7. Add advanced analytics to admin dashboard
-8. Create Docker configuration
-9. Add audit logging
-
-### Long Term (Ongoing)
-10. Security enhancements (httpOnly cookies, CSRF)
-11. CI/CD pipeline setup
-12. Comprehensive documentation
-
-## Success Metrics
-- Code duplication reduced by 80%
-- Both apps using 100% shared packages
-- Admin dashboard has full date range filtering
-- Export functionality working for all data types
-- Docker deployment working locally
-- Documentation complete for all shared components
+```
+Aug 16 – Aug 22, 2026:  Phase 4.1 & 4.2 (Redis background queue & Server-side PDF generation)
+Aug 23 – Aug 30, 2026:  Phase 4.3 (Real-time SSE updates) & Phase 5.2 (CI/CD GitHub Actions)
+Sep 01 – Sep 15, 2026:  Phase 5.1 (Cookie auth & CSRF) & Phase 6 (USB QR & Turnstile prototype)
+```

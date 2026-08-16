@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, status
 from typing import List, Optional
-from app.models.employee import EmployeeResponse, EmployeeCreate, EmployeeUpdate
+from app.models.employee import EmployeeResponse, EmployeeCreate, EmployeeUpdate, BulkCompensationItem
 from app.db.mongodb import db
 from core.auth import get_current_active_user
 from datetime import datetime, timezone
@@ -45,6 +45,41 @@ async def create_employee(employee: EmployeeCreate, username: str = Depends(get_
     created_employee = await db.db.employees.find_one({"_id": result.inserted_id})
 
     return created_employee
+
+@router.put("/bulk/compensation", response_model=List[EmployeeResponse], operation_id="bulk_update_compensation")
+async def bulk_update_compensation(
+    items: List[BulkCompensationItem],
+    username: str = Depends(get_current_active_user)
+):
+    now = datetime.now(timezone.utc)
+    for item in items:
+        update_fields = {"updatedAt": now}
+        if item.baseRate is not None:
+            update_fields["baseRate"] = float(item.baseRate)
+        if item.extraHours is not None:
+            update_fields["extraHours"] = float(item.extraHours)
+        if item.incentive is not None:
+            update_fields["incentive"] = float(item.incentive)
+
+        await db.db.employees.update_one(
+            {"employeeId": item.employeeId},
+            {"$set": update_fields}
+        )
+
+    # Log bulk audit event
+    audit_event = {
+        "sessionId": "BULK-COMPENSATION",
+        "actorId": username,
+        "action": "bulk_update_compensation",
+        "entityType": "employees",
+        "entityId": f"{len(items)}_employees",
+        "newValue": {"count": len(items), "updatedAt": now.isoformat()},
+        "createdAt": now
+    }
+    await db.db.audit_events.insert_one(audit_event)
+
+    cursor = db.db.employees.find({}).sort("displayOrder", 1)
+    return await cursor.to_list(length=200)
 
 @router.get("/{employee_id}", response_model=EmployeeResponse, operation_id="get_employee")
 async def get_employee(employee_id: str, username: str = Depends(get_current_active_user)):
@@ -107,4 +142,3 @@ async def delete_employee(employee_id: str, username: str = Depends(get_current_
 
     await db.db.employees.delete_one({"employeeId": employee_id})
     return None
-

@@ -1,77 +1,70 @@
 # Attendance System
 # Supervisor Web Application Instructions
 
-Version: 3.0
+**Version:** 3.1  
+**Last Updated:** August 16, 2026
 
-## Objective
+---
 
-Develop a fast, touch-first landscape-tablet interface for supervisors to record attendance and manage vehicle assignments.
+## 1. Objective
 
-The application communicates only through the versioned REST API at `/api/v1`. The server is authoritative for employees, vehicles, sessions, attendance, assignments, capacities, finalization, audits, and official reports.
+Provide a fast, touch-first landscape-tablet web application for on-site supervisors to record daily attendance, manage vehicle assignments, track trip/delivery tasks, and request extra labour.
 
-## Frontend Boundaries
+The application communicates solely via the versioned REST API at `/api/v1` through the `@laxmi/shared` workspace package. The server is authoritative for validation, capacity, locking, trips, audits, and official records.
 
-Components render data and emit user intent. They must not directly mutate attendance, assignment, vehicle, or session state.
+---
 
-Flow hooks/use cases call APIs, manage loading and error state, perform safe optimistic updates, and reconcile every change with the returned server state.
+## 2. Architecture & Shared Package Integration
 
-The API client handles HTTP concerns only: base URL, authentication headers, serialization, response parsing, and normalized errors.
+- **Presentation Layer Only**: React components emit user intent. State and network synchronization are managed by `@laxmi/shared` services and React Query hooks (`useEmployees`, `useVehicles`, `useTrips`).
+- **No Direct DB Access**: The supervisor app never communicates with MongoDB.
+- **Offline Support**: `services/offlineQueue.js` buffers mutations when offline and syncs them automatically upon network restoration.
+- **Optimistic Reconciliation**: Mutations update UI state optimistically and reconcile immediately with server responses. On `409 Conflict`, reload server state and display inline notifications.
 
-`localStorage` may store non-sensitive UI preferences or an explicitly designed offline queue. It must never be the source of truth or present a queued action as confirmed before server reconciliation.
+---
 
-Do not access MongoDB from the UI. Do not implement final capacity, vehicle locking, attendance-transition, or finalization rules in the UI. Client-side checks are optional usability hints only.
+## 3. Required API Flows via `@laxmi/shared`
 
-## Required API Usage
+- `GET /api/v1/sessions/{sessionId}` — Load editable session.
+- `PUT /api/v1/sessions/{sessionId}/attendance/{employeeId}` — Record On Time, Arrived, or Absent.
+- `PUT /api/v1/sessions/{sessionId}/assignments/{employeeId}` — Assign present employee to vehicle.
+- `DELETE /api/v1/sessions/{sessionId}/assignments/{employeeId}` — Remove vehicle assignment.
+- `POST /api/v1/trips` & `PUT /api/v1/trips/{id}/status` — Dispatch vehicles and advance trip delivery stages.
+- `POST /api/v1/employees` — Request extra labour or new employee addition (status: `pending_approval`).
+- `POST /api/v1/sessions/{sessionId}/finalize` — Idempotently finalize and lock session.
 
-- `GET /api/v1/sessions/{sessionId}` loads the editable session.
-- `PUT /api/v1/sessions/{sessionId}/attendance/{employeeId}` records attendance.
-- `PUT /api/v1/sessions/{sessionId}/assignments/{employeeId}` assigns a vehicle.
-- `DELETE /api/v1/sessions/{sessionId}/assignments/{employeeId}` removes an assignment.
-- `POST /api/v1/sessions/{sessionId}/finalize` finalizes and locks a session.
-- `POST /api/v1/sessions/{sessionId}/reports` requests an official report.
+---
 
-Send the server-provided session version on mutations. On `409 Conflict`, reload current state and show a clear non-blocking explanation.
+## 4. UI Layout & User Experience
 
-Display API validation errors inline or through accessible notifications. Avoid browser `alert()` and `confirm()` dialogs.
+### 4.1. Layout
+- Fixed left sidebar and scrollable spreadsheet table optimized for touch interaction (48–56px row height).
+- Real-time search by Employee ID or Name.
+- Quick filter chips: Category tabs (All, Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles), Attendance status (Pending, Completed, All), and Alphabetical range chips.
 
-## Design Goals
+### 4.2. Attendance Marking
+- Segmented touch buttons: **On Time**, **Arrived**, **Absent**.
+- On Time and Absent submit immediately.
+- Arrived opens `ArrivedTimeModal` allowing quick time presets (e.g. 08:15, 08:30, 09:00) or manual time selection.
+- Display server-confirmed status badge (e.g. `Arrived (08:30)`) upon successful mutation.
 
-- Landscape tablet optimized, responsive, fast, minimal, spreadsheet-style.
-- Large 48–56px touch rows, sticky sidebar and table header.
-- No full-page refreshes.
-- No cards and no popups where an inline interaction is practical.
-- User-selected filters remain unchanged until manually changed.
+### 4.3. Vehicle Capacity & Conflict Management
+- Displays live vehicle capacity bars (max 1 Driver, 1 Chalan Man, 6 Workers, 8 Total).
+- Capacity violations highlight in warning colors and trigger `CapacityConflictModal` with automated fix options.
+- Assignment history per vehicle available in `VehicleAssignmentHistory`.
 
-## Layout and Filters
+### 4.4. Vehicle Trip & Task Completion Lifecycle
+- `TripTrackerModal` allows supervisors to:
+  1. Dispatch vehicle with assigned driver, destination location, and product details.
+  2. Advance trip status through task completion milestones:
+     - **Dispatched** → **Reached Location** → **Delivered Product** → **Returned / Completed**.
+  3. View historical and active trip timelines.
 
-Use a fixed left sidebar and scrollable right content area.
+### 4.5. Extra Labour & Employee Requests
+- `RequestEmployeeModal` enables supervisors to request additional labour on the fly.
+- Newly requested workers display `Pending Approval` badge until approved by an administrator.
 
-The sidebar includes instant employee ID/name search, category filter, attendance filter, alphabet filter, reset filters, and session finalization state.
-
-Category tabs are: All, Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles. Tabs only control visible data.
-
-Attendance filters are: Pending, Completed, All. Pending hides completed rows immediately; Completed shows only completed rows.
-
-## Attendance Interaction
-
-Employee table columns are Employee ID, Photo, Employee Name, Category, Attendance, and Vehicle Assignment.
-
-Use a segmented control with On Time, Arrived, and Absent. On Time and Absent submit immediately. Arrived expands inline, permits arrival-time selection, and submits only after an explicit Confirm action succeeds.
-
-After a successful server response, display the persisted status, for example `Arrived (08:15)`. Do not show a local status as final while the request is pending or failed.
-
-## Vehicles
-
-Vehicle data and assignment eligibility come from server responses. The UI displays capacity indicators and server-reported violations, but does not determine final validity.
-
-Support vehicle status display, assignment expansion, inline remove intent, history display, CSV export request, and capacity report request. Official CSV and reports are generated by the server.
-
-## Extra Labour and Finalization
-
-Extra labour creation submits name, optional contractor, and optional remarks through the API; newly created employees appear only after server confirmation.
-
-Finalization remains pending until the server confirms it. Once confirmed, display Attendance Locked and disable mutable controls. The UI must not lock attendance based solely on a local completion calculation.
-
-## Integration and Testing
-
-Use the backend OpenAPI contract and generated or contract-tested TypeScript client. The application must run against mocked APIs for component tests and against the real API for integration tests.
+### 4.6. Finalization & Reporting
+- Finalization submits to `POST /api/v1/sessions/{id}/finalize`.
+- Once confirmed by the server, editable controls lock and status changes to "Attendance Locked".
+- Local PDF generation module produces clean formatted attendance sheets and vehicle utilization reports.

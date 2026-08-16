@@ -4,14 +4,26 @@ from app.db.mongodb import db
 from app.models.trip import VehicleTripCreate, VehicleTripUpdateStatus
 from app.core.exceptions import NotFoundException, ConflictException, ValidationException
 
+STATUS_ALIASES = {
+    "delivered_product": "delivered",
+    "completed": "returned"
+}
+
 class TripService:
+    @staticmethod
+    def normalize_status(status: str) -> str:
+        s = (status or "").lower().strip()
+        return STATUS_ALIASES.get(s, s)
+
     @staticmethod
     async def create_trip(trip_data: VehicleTripCreate, actor: str) -> Dict[str, Any]:
         now = datetime.now(timezone.utc)
         trip_id = f"TRIP-{now.strftime('%Y%m%d%H%M%S')}-{trip_data.vehicleNumber}"
         
+        initial_status = TripService.normalize_status(trip_data.status or "dispatched")
+        
         timeline_event = {
-            "status": trip_data.status or "dispatched",
+            "status": initial_status,
             "timestamp": now,
             "recordedBy": actor,
             "locationName": trip_data.destinationLocation,
@@ -20,6 +32,7 @@ class TripService:
         
         doc = trip_data.model_dump(exclude_none=True)
         doc["_id"] = trip_id
+        doc["status"] = initial_status
         doc["dispatchedAt"] = now
         doc["dispatchedBy"] = actor
         doc["timeline"] = [timeline_event]
@@ -49,7 +62,7 @@ class TripService:
             raise NotFoundException(message=f"Trip '{trip_id}' not found", code="TRIP_NOT_FOUND")
 
         now = datetime.now(timezone.utc)
-        new_status = update_payload.status
+        new_status = TripService.normalize_status(update_payload.status)
 
         valid_transitions = {
             "dispatched": ["reached_location", "delivered", "returned"],
@@ -58,7 +71,7 @@ class TripService:
             "returned": []
         }
         
-        current_status = trip.get("status", "dispatched")
+        current_status = TripService.normalize_status(trip.get("status", "dispatched"))
         if current_status != new_status and new_status not in valid_transitions.get(current_status, []):
             raise ValidationException(
                 message=f"Invalid trip status transition from '{current_status}' to '{new_status}'",
@@ -70,6 +83,7 @@ class TripService:
             "timestamp": now,
             "recordedBy": actor,
             "locationName": update_payload.locationName or trip.get("destinationLocation"),
+            "receiverName": update_payload.receiverName or trip.get("receiverName"),
             "remarks": update_payload.remarks or f"Status updated to {new_status}"
         }
 
@@ -77,6 +91,9 @@ class TripService:
             "status": new_status,
             "updatedAt": now
         }
+
+        if update_payload.receiverName:
+            updates["receiverName"] = update_payload.receiverName
 
         if new_status == "reached_location" and not trip.get("reachedLocationAt"):
             updates["reachedLocationAt"] = now
@@ -103,7 +120,7 @@ class TripService:
             "entityType": "vehicle_trip",
             "entityId": trip_id,
             "previousValue": {"status": current_status},
-            "newValue": {"status": new_status},
+            "newValue": {"status": new_status, "receiverName": update_payload.receiverName},
             "createdAt": now
         }
         await db.db.audit_events.insert_one(audit_event)
@@ -118,7 +135,7 @@ class TripService:
         if vehicle_id:
             query["vehicleId"] = vehicle_id
         if status:
-            query["status"] = status
+            query["status"] = TripService.normalize_status(status)
 
         cursor = db.db.vehicle_trips.find(query).sort("createdAt", -1)
         return await cursor.to_list(length=200)

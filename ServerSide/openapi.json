@@ -87,7 +87,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Category"
             }
           },
@@ -96,7 +103,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Status"
             }
           }
@@ -150,7 +164,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": {
               "application/json": {
@@ -171,6 +185,60 @@
             }
           }
         }
+      }
+    },
+    "/api/v1/employees/bulk/compensation": {
+      "put": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Bulk Update Compensation",
+        "operationId": "bulk_update_compensation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/BulkCompensationItem"
+                },
+                "type": "array",
+                "title": "Items"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EmployeeResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Bulk Update Compensation"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
       }
     },
     "/api/v1/employees/{employee_id}": {
@@ -273,6 +341,138 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Delete Employee",
+        "operationId": "delete_employee",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Employee Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employees/{employee_id}/approve": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Approve Employee",
+        "operationId": "approve_employee",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Employee Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/employees/{employee_id}/reject": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Reject Employee",
+        "operationId": "reject_employee",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "employee_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Employee Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmployeeResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/v1/vehicles/": {
@@ -293,7 +493,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Vehicle Type"
             }
           },
@@ -302,7 +509,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string",
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Status"
             }
           },
@@ -311,7 +525,14 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "boolean",
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "title": "Active"
             }
           }
@@ -365,7 +586,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": {
               "application/json": {
@@ -513,7 +734,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": {
               "application/json": {
@@ -774,6 +995,53 @@
         }
       }
     },
+    "/api/v1/sessions/{session_id}/unlock": {
+      "post": {
+        "tags": [
+          "Sessions"
+        ],
+        "summary": "Unlock Session",
+        "operationId": "unlock_session",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttendanceSessionResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/attendance/sessions/{session_id}/employees/{employee_id}": {
       "put": {
         "tags": [
@@ -987,7 +1255,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful Response",
             "content": {
               "application/json": {
@@ -1180,6 +1448,366 @@
         }
       }
     },
+    "/api/v1/pay/rates": {
+      "get": {
+        "tags": [
+          "Pay"
+        ],
+        "summary": "Get Pay Rates",
+        "operationId": "get_pay_rates",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/pay/calculate": {
+      "post": {
+        "tags": [
+          "Pay"
+        ],
+        "summary": "Calculate Pay",
+        "operationId": "calculate_pay",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayCalculationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayCalculationResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/pay/summary": {
+      "get": {
+        "tags": [
+          "Pay"
+        ],
+        "summary": "Get Pay Summary",
+        "operationId": "get_pay_summary",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/": {
+      "post": {
+        "tags": [
+          "Trips"
+        ],
+        "summary": "Create Trip",
+        "operationId": "create_trip",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VehicleTripCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleTripResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Trips"
+        ],
+        "summary": "List Trips",
+        "operationId": "list_trips",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Id"
+            }
+          },
+          {
+            "name": "vehicle_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Vehicle Id"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/VehicleTripResponse"
+                  },
+                  "title": "Response List Trips"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/{trip_id}": {
+      "get": {
+        "tags": [
+          "Trips"
+        ],
+        "summary": "Get Trip",
+        "operationId": "get_trip",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "trip_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trip Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleTripResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/{trip_id}/status": {
+      "put": {
+        "tags": [
+          "Trips"
+        ],
+        "summary": "Update Trip Status",
+        "operationId": "update_trip_status",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "trip_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Trip Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VehicleTripUpdateStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VehicleTripResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "summary": "Health Check",
@@ -1261,7 +1889,53 @@
             "title": "Version",
             "default": 1
           },
-          "id": {
+          "hoursWorked": {
+            "type": "number",
+            "title": "Hoursworked",
+            "default": 8.0
+          },
+          "extraHours": {
+            "type": "number",
+            "title": "Extrahours",
+            "default": 0.0
+          },
+          "basePay": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basepay",
+            "default": 0.0
+          },
+          "extraDutyPay": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extradutypay",
+            "default": 0.0
+          },
+          "totalPay": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Totalpay",
+            "default": 0.0
+          },
+          "_id": {
             "anyOf": [
               {
                 "type": "string"
@@ -1270,7 +1944,7 @@
                 "type": "null"
               }
             ],
-            "title": "Id"
+            "title": " Id"
           },
           "recordedAt": {
             "type": "string",
@@ -1333,6 +2007,61 @@
               }
             ],
             "title": "Version"
+          },
+          "hoursWorked": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hoursworked"
+          },
+          "extraHours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extrahours"
+          },
+          "basePay": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Basepay"
+          },
+          "extraDutyPay": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extradutypay"
+          },
+          "totalPay": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Totalpay"
           }
         },
         "type": "object",
@@ -1361,6 +2090,17 @@
             "type": "integer",
             "title": "Version",
             "default": 1
+          },
+          "sessionId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sessionid"
           }
         },
         "type": "object",
@@ -1507,6 +2247,52 @@
         ],
         "title": "Body_login_api_v1_auth_login_post"
       },
+      "BulkCompensationItem": {
+        "properties": {
+          "employeeId": {
+            "type": "string",
+            "title": "Employeeid"
+          },
+          "baseRate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baserate"
+          },
+          "extraHours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extrahours"
+          },
+          "incentive": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incentive"
+          }
+        },
+        "type": "object",
+        "required": [
+          "employeeId"
+        ],
+        "title": "BulkCompensationItem"
+      },
       "EmployeeCreate": {
         "properties": {
           "employeeId": {
@@ -1548,6 +2334,17 @@
             "title": "Status",
             "default": "active"
           },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
           "contractor": {
             "anyOf": [
               {
@@ -1570,7 +2367,7 @@
             ],
             "title": "Remarks"
           },
-          "testField": {
+          "requestedBy": {
             "anyOf": [
               {
                 "type": "string"
@@ -1579,7 +2376,53 @@
                 "type": "null"
               }
             ],
-            "title": "Testfield"
+            "title": "Requestedby"
+          },
+          "approvedBy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approvedby"
+          },
+          "baseRate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baserate"
+          },
+          "extraHours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extrahours",
+            "default": 0.0
+          },
+          "incentive": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incentive",
+            "default": 0.0
           }
         },
         "type": "object",
@@ -1631,6 +2474,17 @@
             "title": "Status",
             "default": "active"
           },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
           "contractor": {
             "anyOf": [
               {
@@ -1653,7 +2507,7 @@
             ],
             "title": "Remarks"
           },
-          "testField": {
+          "requestedBy": {
             "anyOf": [
               {
                 "type": "string"
@@ -1662,7 +2516,64 @@
                 "type": "null"
               }
             ],
-            "title": "Testfield"
+            "title": "Requestedby"
+          },
+          "approvedBy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approvedby"
+          },
+          "baseRate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baserate"
+          },
+          "extraHours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extrahours",
+            "default": 0.0
+          },
+          "incentive": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incentive",
+            "default": 0.0
+          },
+          "_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": " Id"
           },
           "createdAt": {
             "type": "string",
@@ -1740,6 +2651,17 @@
             ],
             "title": "Status"
           },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
           "contractor": {
             "anyOf": [
               {
@@ -1761,6 +2683,39 @@
               }
             ],
             "title": "Remarks"
+          },
+          "baseRate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baserate"
+          },
+          "extraHours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extrahours"
+          },
+          "incentive": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Incentive"
           }
         },
         "type": "object",
@@ -1778,6 +2733,143 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "PayCalculationRequest": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "hoursWorked": {
+            "type": "number",
+            "title": "Hoursworked",
+            "default": 8.0
+          },
+          "extraHours": {
+            "type": "number",
+            "title": "Extrahours",
+            "default": 0.0
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "status"
+        ],
+        "title": "PayCalculationRequest"
+      },
+      "PayCalculationResponse": {
+        "properties": {
+          "category": {
+            "type": "string",
+            "title": "Category"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "baseRate": {
+            "type": "number",
+            "title": "Baserate"
+          },
+          "hourlyRate": {
+            "type": "number",
+            "title": "Hourlyrate"
+          },
+          "hoursWorked": {
+            "type": "number",
+            "title": "Hoursworked"
+          },
+          "extraHours": {
+            "type": "number",
+            "title": "Extrahours"
+          },
+          "basePay": {
+            "type": "number",
+            "title": "Basepay"
+          },
+          "extraDutyPay": {
+            "type": "number",
+            "title": "Extradutypay"
+          },
+          "totalPay": {
+            "type": "number",
+            "title": "Totalpay"
+          }
+        },
+        "type": "object",
+        "required": [
+          "category",
+          "status",
+          "baseRate",
+          "hourlyRate",
+          "hoursWorked",
+          "extraHours",
+          "basePay",
+          "extraDutyPay",
+          "totalPay"
+        ],
+        "title": "PayCalculationResponse"
+      },
+      "TripTimelineEvent": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Timestamp"
+          },
+          "recordedBy": {
+            "type": "string",
+            "title": "Recordedby"
+          },
+          "locationName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locationname"
+          },
+          "receiverName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Receivername"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "recordedBy"
+        ],
+        "title": "TripTimelineEvent"
       },
       "ValidationError": {
         "properties": {
@@ -1858,7 +2950,7 @@
             ],
             "title": "Unassignedby"
           },
-          "id": {
+          "_id": {
             "anyOf": [
               {
                 "type": "string"
@@ -1867,7 +2959,7 @@
                 "type": "null"
               }
             ],
-            "title": "Id"
+            "title": " Id"
           }
         },
         "type": "object",
@@ -1888,6 +2980,22 @@
           "vehicleType": {
             "type": "string",
             "title": "Vehicletype"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "capacity": {
+            "type": "integer",
+            "title": "Capacity",
+            "default": 8
           },
           "status": {
             "type": "string",
@@ -1917,6 +3025,22 @@
             "type": "string",
             "title": "Vehicletype"
           },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "capacity": {
+            "type": "integer",
+            "title": "Capacity",
+            "default": 8
+          },
           "status": {
             "type": "string",
             "title": "Status",
@@ -1926,6 +3050,17 @@
             "type": "boolean",
             "title": "Active",
             "default": true
+          },
+          "_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": " Id"
           },
           "createdAt": {
             "type": "string",
@@ -1944,6 +3079,293 @@
           "vehicleType"
         ],
         "title": "VehicleResponse"
+      },
+      "VehicleTripCreate": {
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "title": "Sessionid"
+          },
+          "vehicleId": {
+            "type": "string",
+            "title": "Vehicleid"
+          },
+          "vehicleNumber": {
+            "type": "string",
+            "title": "Vehiclenumber"
+          },
+          "driverEmployeeId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driveremployeeid"
+          },
+          "driverName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Drivername"
+          },
+          "destinationLocation": {
+            "type": "string",
+            "title": "Destinationlocation"
+          },
+          "productDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Productdetails",
+            "default": "Material / Aggregate Delivery"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "dispatched"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sessionId",
+          "vehicleId",
+          "vehicleNumber",
+          "destinationLocation"
+        ],
+        "title": "VehicleTripCreate"
+      },
+      "VehicleTripResponse": {
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "title": "Sessionid"
+          },
+          "vehicleId": {
+            "type": "string",
+            "title": "Vehicleid"
+          },
+          "vehicleNumber": {
+            "type": "string",
+            "title": "Vehiclenumber"
+          },
+          "driverEmployeeId": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driveremployeeid"
+          },
+          "driverName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Drivername"
+          },
+          "destinationLocation": {
+            "type": "string",
+            "title": "Destinationlocation"
+          },
+          "productDetails": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Productdetails",
+            "default": "Material / Aggregate Delivery"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "dispatched"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          },
+          "_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": " Id"
+          },
+          "dispatchedAt": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Dispatchedat"
+          },
+          "dispatchedBy": {
+            "type": "string",
+            "title": "Dispatchedby"
+          },
+          "reachedLocationAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reachedlocationat"
+          },
+          "deliveredAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deliveredat"
+          },
+          "returnedAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Returnedat"
+          },
+          "receiverName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Receivername"
+          },
+          "timeline": {
+            "items": {
+              "$ref": "#/components/schemas/TripTimelineEvent"
+            },
+            "type": "array",
+            "title": "Timeline"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Createdat"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updatedat"
+          }
+        },
+        "type": "object",
+        "required": [
+          "sessionId",
+          "vehicleId",
+          "vehicleNumber",
+          "destinationLocation",
+          "dispatchedBy"
+        ],
+        "title": "VehicleTripResponse"
+      },
+      "VehicleTripUpdateStatus": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "locationName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Locationname"
+          },
+          "receiverName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Receivername"
+          },
+          "remarks": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remarks"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "VehicleTripUpdateStatus"
       },
       "VehicleUpdate": {
         "properties": {
@@ -1968,6 +3390,28 @@
               }
             ],
             "title": "Vehicletype"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "capacity": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capacity"
           },
           "status": {
             "anyOf": [

@@ -4,13 +4,9 @@
  * This script should be run in CI to ensure types are regenerated when the API changes
  */
 
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { execSync } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 
 console.log('Checking if generated types are up to date...');
 
@@ -24,7 +20,9 @@ try {
   const newTypes = fs.readFileSync(tempFile, 'utf8');
 
   // Clean up temp file
-  fs.unlinkSync(tempFile);
+  if (fs.existsSync(tempFile)) {
+    fs.unlinkSync(tempFile);
+  }
 
   // Compare
   if (currentTypes === newTypes) {

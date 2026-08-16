@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, field_validator, ConfigDict
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime, timezone
 
 def utc_now() -> datetime:
@@ -18,6 +18,8 @@ class EmployeeBase(BaseModel):
     requestedBy: Optional[str] = None
     approvedBy: Optional[str] = None
     baseRate: Optional[float] = None  # Daily base pay rate in INR
+    extraHours: Optional[float] = 0.0  # Extra duty hours
+    incentive: Optional[float] = 0.0  # Daily incentive bonus in INR
 
 class EmployeeCreate(EmployeeBase):
     pass
@@ -32,6 +34,14 @@ class EmployeeUpdate(BaseModel):
     contractor: Optional[str] = None
     remarks: Optional[str] = None
     baseRate: Optional[float] = None
+    extraHours: Optional[float] = None
+    incentive: Optional[float] = None
+
+class BulkCompensationItem(BaseModel):
+    employeeId: str
+    baseRate: Optional[float] = None
+    extraHours: Optional[float] = None
+    incentive: Optional[float] = None
 
 class EmployeeResponse(EmployeeBase):
     id: Optional[str] = Field(None, alias="_id")

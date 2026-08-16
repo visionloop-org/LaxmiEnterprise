@@ -119,6 +119,16 @@ export function useUpdateEmployee() {
   })
 }
 
+export function useBulkUpdateCompensation() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: (items) => restEmployeeService.bulkUpdateCompensation(items),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: EMPLOYEES_QUERY_KEY })
+    },
+  })
+}
+
 export function useApproveEmployee() {
   const queryClient = useQueryClient()
   return useMutation({
@@ -148,4 +158,3 @@ export function useDeleteEmployee() {
     },
   })
 }
-

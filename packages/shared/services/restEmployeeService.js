@@ -15,6 +15,9 @@ import { backendApiClient } from './backendApi.js'
  * @property {string} status
  * @property {string | null} contractor
  * @property {string | null} remarks
+ * @property {number | null} [baseRate]
+ * @property {number} [extraHours]
+ * @property {number} [incentive]
  */
 
 /**
@@ -36,7 +39,7 @@ class RestEmployeeService {
     const url = `/employees/${params.toString() ? '?' + params.toString() : ''}`
     const employees = await backendApiClient.get(url)
 
-    return employees.map((/** @type {import('../types/api.js').components['schemas']['EmployeeResponse']} */ emp) => this.mapBackendToFrontend(emp))
+    return employees.map((/** @type {any} */ emp) => this.mapBackendToFrontend(emp))
   }
 
   /**
@@ -93,6 +96,15 @@ class RestEmployeeService {
   }
 
   /**
+   * @param {Array<{employeeId: string, baseRate?: number, extraHours?: number, incentive?: number}>} items
+   * @returns {Promise<FrontendEmployee[]>}
+   */
+  async bulkUpdateCompensation(items) {
+    const result = await backendApiClient.put('/employees/bulk/compensation', items)
+    return result.map((/** @type {any} */ emp) => this.mapBackendToFrontend(emp))
+  }
+
+  /**
    * @param {string} employeeId
    * @returns {Promise<FrontendEmployee>}
    */
@@ -118,9 +130,8 @@ class RestEmployeeService {
     await backendApiClient.delete(`/employees/${employeeId}`)
   }
 
-
   /**
-   * @param {import('../types/api.js').components['schemas']['EmployeeResponse']} employee
+   * @param {any} employee
    * @returns {FrontendEmployee}
    */
   mapBackendToFrontend(employee) {
@@ -135,13 +146,16 @@ class RestEmployeeService {
       labourRequest: null,
       status: employee.status,
       contractor: employee.contractor,
-      remarks: employee.remarks
+      remarks: employee.remarks,
+      baseRate: employee.baseRate !== undefined && employee.baseRate !== null ? Number(employee.baseRate) : null,
+      extraHours: employee.extraHours !== undefined && employee.extraHours !== null ? Number(employee.extraHours) : 0,
+      incentive: employee.incentive !== undefined && employee.incentive !== null ? Number(employee.incentive) : 0
     }
   }
 
   /**
    * @param {FrontendEmployee} employee
-   * @returns {import('../types/api.js').components['schemas']['EmployeeCreate']}
+   * @returns {any}
    */
   mapFrontendToBackend(employee) {
     return {
@@ -151,15 +165,19 @@ class RestEmployeeService {
       photoPath: employee.photo,
       status: employee.status || 'active',
       contractor: employee.contractor,
-      remarks: employee.remarks
+      remarks: employee.remarks,
+      baseRate: employee.baseRate !== undefined ? employee.baseRate : null,
+      extraHours: employee.extraHours !== undefined ? employee.extraHours : 0,
+      incentive: employee.incentive !== undefined ? employee.incentive : 0
     }
   }
 
   /**
    * @param {Partial<FrontendEmployee>} employee
-   * @returns {import('../types/api.js').components['schemas']['EmployeeUpdate']}
+   * @returns {any}
    */
   mapFrontendToBackendForUpdate(employee) {
+    /** @type {Record<string, any>} */
     const updateData = {}
     if (employee.name !== undefined) updateData.name = employee.name
     if (employee.category !== undefined) updateData.category = employee.category
@@ -167,6 +185,9 @@ class RestEmployeeService {
     if (employee.status !== undefined) updateData.status = employee.status
     if (employee.contractor !== undefined) updateData.contractor = employee.contractor
     if (employee.remarks !== undefined) updateData.remarks = employee.remarks
+    if (employee.baseRate !== undefined) updateData.baseRate = employee.baseRate
+    if (employee.extraHours !== undefined) updateData.extraHours = employee.extraHours
+    if (employee.incentive !== undefined) updateData.incentive = employee.incentive
     return updateData
   }
 

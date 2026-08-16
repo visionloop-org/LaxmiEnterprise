@@ -29,6 +29,7 @@ export {
   useUpdateAttendance,
   useAddEmployee,
   useUpdateEmployee,
+  useBulkUpdateCompensation,
   useApproveEmployee,
   useRejectEmployee,
   useDeleteEmployee

@@ -22,10 +22,10 @@ export const restTripService = {
     })
   },
 
-  async updateTripStatus(tripId, { status, locationName, remarks }) {
+  async updateTripStatus(tripId, { status, locationName, receiverName, remarks }) {
     return backendApiClient.request(`/trips/${tripId}/status`, {
       method: 'PUT',
-      body: JSON.stringify({ status, locationName, remarks })
+      body: JSON.stringify({ status, locationName, receiverName, remarks })
     })
   }
 }

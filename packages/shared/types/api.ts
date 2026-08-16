@@ -56,6 +56,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/employees/bulk/compensation": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Bulk Update Compensation */
+        put: operations["bulk_update_compensation"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/employees/{employee_id}": {
         parameters: {
             query?: never;
@@ -68,6 +85,41 @@ export interface paths {
         /** Update Employee */
         put: operations["update_employee"];
         post?: never;
+        /** Delete Employee */
+        delete: operations["delete_employee"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/employees/{employee_id}/approve": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Approve Employee */
+        post: operations["approve_employee"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/employees/{employee_id}/reject": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Reject Employee */
+        post: operations["reject_employee"];
         delete?: never;
         options?: never;
         head?: never;
@@ -179,6 +231,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/sessions/{session_id}/unlock": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Unlock Session */
+        post: operations["unlock_session"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/attendance/sessions/{session_id}/employees/{employee_id}": {
         parameters: {
             query?: never;
@@ -266,6 +335,109 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/pay/rates": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Pay Rates */
+        get: operations["get_pay_rates"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/pay/calculate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Calculate Pay */
+        post: operations["calculate_pay"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/pay/summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Pay Summary */
+        get: operations["get_pay_summary"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/trips/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** List Trips */
+        get: operations["list_trips"];
+        put?: never;
+        /** Create Trip */
+        post: operations["create_trip"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/trips/{trip_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Trip */
+        get: operations["get_trip"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/trips/{trip_id}/status": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /** Update Trip Status */
+        put: operations["update_trip_status"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/health": {
         parameters: {
             query?: never;
@@ -323,8 +495,33 @@ export interface components {
              * @default 1
              */
             version: number;
+            /**
+             * Hoursworked
+             * @default 8
+             */
+            hoursWorked: number;
+            /**
+             * Extrahours
+             * @default 0
+             */
+            extraHours: number;
+            /**
+             * Basepay
+             * @default 0
+             */
+            basePay: number | null;
+            /**
+             * Extradutypay
+             * @default 0
+             */
+            extraDutyPay: number | null;
+            /**
+             * Totalpay
+             * @default 0
+             */
+            totalPay: number | null;
             /** Id */
-            id?: string | null;
+            _id?: string | null;
             /**
              * Recordedat
              * Format: date-time
@@ -341,6 +538,16 @@ export interface components {
             remarks?: string | null;
             /** Version */
             version?: number | null;
+            /** Hoursworked */
+            hoursWorked?: number | null;
+            /** Extrahours */
+            extraHours?: number | null;
+            /** Basepay */
+            basePay?: number | null;
+            /** Extradutypay */
+            extraDutyPay?: number | null;
+            /** Totalpay */
+            totalPay?: number | null;
         };
         /** AttendanceSessionCreate */
         AttendanceSessionCreate: {
@@ -360,6 +567,8 @@ export interface components {
              * @default 1
              */
             version: number;
+            /** Sessionid */
+            sessionId?: string | null;
         };
         /** AttendanceSessionResponse */
         AttendanceSessionResponse: {
@@ -420,6 +629,17 @@ export interface components {
              */
             client_secret?: string | null;
         };
+        /** BulkCompensationItem */
+        BulkCompensationItem: {
+            /** Employeeid */
+            employeeId: string;
+            /** Baserate */
+            baseRate?: number | null;
+            /** Extrahours */
+            extraHours?: number | null;
+            /** Incentive */
+            incentive?: number | null;
+        };
         /** EmployeeCreate */
         EmployeeCreate: {
             /** Employeeid */
@@ -437,12 +657,28 @@ export interface components {
              * @default active
              */
             status: string;
+            /** Phone */
+            phone?: string | null;
             /** Contractor */
             contractor?: string | null;
             /** Remarks */
             remarks?: string | null;
-            /** Testfield */
-            testField?: string | null;
+            /** Requestedby */
+            requestedBy?: string | null;
+            /** Approvedby */
+            approvedBy?: string | null;
+            /** Baserate */
+            baseRate?: number | null;
+            /**
+             * Extrahours
+             * @default 0
+             */
+            extraHours: number | null;
+            /**
+             * Incentive
+             * @default 0
+             */
+            incentive: number | null;
         };
         /** EmployeeResponse */
         EmployeeResponse: {
@@ -461,12 +697,30 @@ export interface components {
              * @default active
              */
             status: string;
+            /** Phone */
+            phone?: string | null;
             /** Contractor */
             contractor?: string | null;
             /** Remarks */
             remarks?: string | null;
-            /** Testfield */
-            testField?: string | null;
+            /** Requestedby */
+            requestedBy?: string | null;
+            /** Approvedby */
+            approvedBy?: string | null;
+            /** Baserate */
+            baseRate?: number | null;
+            /**
+             * Extrahours
+             * @default 0
+             */
+            extraHours: number | null;
+            /**
+             * Incentive
+             * @default 0
+             */
+            incentive: number | null;
+            /** Id */
+            _id?: string | null;
             /**
              * Createdat
              * Format: date-time
@@ -490,15 +744,79 @@ export interface components {
             displayOrder?: number | null;
             /** Status */
             status?: string | null;
+            /** Phone */
+            phone?: string | null;
             /** Contractor */
             contractor?: string | null;
             /** Remarks */
             remarks?: string | null;
+            /** Baserate */
+            baseRate?: number | null;
+            /** Extrahours */
+            extraHours?: number | null;
+            /** Incentive */
+            incentive?: number | null;
         };
         /** HTTPValidationError */
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
+        };
+        /** PayCalculationRequest */
+        PayCalculationRequest: {
+            /** Category */
+            category: string;
+            /** Status */
+            status: string;
+            /**
+             * Hoursworked
+             * @default 8
+             */
+            hoursWorked: number;
+            /**
+             * Extrahours
+             * @default 0
+             */
+            extraHours: number;
+        };
+        /** PayCalculationResponse */
+        PayCalculationResponse: {
+            /** Category */
+            category: string;
+            /** Status */
+            status: string;
+            /** Baserate */
+            baseRate: number;
+            /** Hourlyrate */
+            hourlyRate: number;
+            /** Hoursworked */
+            hoursWorked: number;
+            /** Extrahours */
+            extraHours: number;
+            /** Basepay */
+            basePay: number;
+            /** Extradutypay */
+            extraDutyPay: number;
+            /** Totalpay */
+            totalPay: number;
+        };
+        /** TripTimelineEvent */
+        TripTimelineEvent: {
+            /** Status */
+            status: string;
+            /**
+             * Timestamp
+             * Format: date-time
+             */
+            timestamp?: string;
+            /** Recordedby */
+            recordedBy: string;
+            /** Locationname */
+            locationName?: string | null;
+            /** Receivername */
+            receiverName?: string | null;
+            /** Remarks */
+            remarks?: string | null;
         };
         /** ValidationError */
         ValidationError: {
@@ -529,7 +847,7 @@ export interface components {
             /** Unassignedby */
             unassignedBy?: string | null;
             /** Id */
-            id?: string | null;
+            _id?: string | null;
         };
         /** VehicleCreate */
         VehicleCreate: {
@@ -537,6 +855,13 @@ export interface components {
             vehicleNumber: string;
             /** Vehicletype */
             vehicleType: string;
+            /** Name */
+            name?: string | null;
+            /**
+             * Capacity
+             * @default 8
+             */
+            capacity: number;
             /**
              * Status
              * @default available
@@ -554,6 +879,13 @@ export interface components {
             vehicleNumber: string;
             /** Vehicletype */
             vehicleType: string;
+            /** Name */
+            name?: string | null;
+            /**
+             * Capacity
+             * @default 8
+             */
+            capacity: number;
             /**
              * Status
              * @default available
@@ -564,6 +896,8 @@ export interface components {
              * @default true
              */
             active: boolean;
+            /** Id */
+            _id?: string | null;
             /**
              * Createdat
              * Format: date-time
@@ -575,12 +909,110 @@ export interface components {
              */
             updatedAt?: string;
         };
+        /** VehicleTripCreate */
+        VehicleTripCreate: {
+            /** Sessionid */
+            sessionId: string;
+            /** Vehicleid */
+            vehicleId: string;
+            /** Vehiclenumber */
+            vehicleNumber: string;
+            /** Driveremployeeid */
+            driverEmployeeId?: string | null;
+            /** Drivername */
+            driverName?: string | null;
+            /** Destinationlocation */
+            destinationLocation: string;
+            /**
+             * Productdetails
+             * @default Material / Aggregate Delivery
+             */
+            productDetails: string | null;
+            /**
+             * Status
+             * @default dispatched
+             */
+            status: string;
+            /** Remarks */
+            remarks?: string | null;
+        };
+        /** VehicleTripResponse */
+        VehicleTripResponse: {
+            /** Sessionid */
+            sessionId: string;
+            /** Vehicleid */
+            vehicleId: string;
+            /** Vehiclenumber */
+            vehicleNumber: string;
+            /** Driveremployeeid */
+            driverEmployeeId?: string | null;
+            /** Drivername */
+            driverName?: string | null;
+            /** Destinationlocation */
+            destinationLocation: string;
+            /**
+             * Productdetails
+             * @default Material / Aggregate Delivery
+             */
+            productDetails: string | null;
+            /**
+             * Status
+             * @default dispatched
+             */
+            status: string;
+            /** Remarks */
+            remarks?: string | null;
+            /** Id */
+            _id?: string | null;
+            /**
+             * Dispatchedat
+             * Format: date-time
+             */
+            dispatchedAt?: string;
+            /** Dispatchedby */
+            dispatchedBy: string;
+            /** Reachedlocationat */
+            reachedLocationAt?: string | null;
+            /** Deliveredat */
+            deliveredAt?: string | null;
+            /** Returnedat */
+            returnedAt?: string | null;
+            /** Receivername */
+            receiverName?: string | null;
+            /** Timeline */
+            timeline?: components["schemas"]["TripTimelineEvent"][];
+            /**
+             * Createdat
+             * Format: date-time
+             */
+            createdAt?: string;
+            /**
+             * Updatedat
+             * Format: date-time
+             */
+            updatedAt?: string;
+        };
+        /** VehicleTripUpdateStatus */
+        VehicleTripUpdateStatus: {
+            /** Status */
+            status: string;
+            /** Locationname */
+            locationName?: string | null;
+            /** Receivername */
+            receiverName?: string | null;
+            /** Remarks */
+            remarks?: string | null;
+        };
         /** VehicleUpdate */
         VehicleUpdate: {
             /** Vehiclenumber */
             vehicleNumber?: string | null;
             /** Vehicletype */
             vehicleType?: string | null;
+            /** Name */
+            name?: string | null;
+            /** Capacity */
+            capacity?: number | null;
             /** Status */
             status?: string | null;
             /** Active */
@@ -651,8 +1083,8 @@ export interface operations {
     list_employees: {
         parameters: {
             query?: {
-                category?: string;
-                status?: string;
+                category?: string | null;
+                status?: string | null;
             };
             header?: never;
             path?: never;
@@ -694,12 +1126,45 @@ export interface operations {
         };
         responses: {
             /** @description Successful Response */
-            200: {
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
                     "application/json": components["schemas"]["EmployeeResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    bulk_update_compensation: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["BulkCompensationItem"][];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmployeeResponse"][];
                 };
             };
             /** @description Validation Error */
@@ -779,12 +1244,103 @@ export interface operations {
             };
         };
     };
+    delete_employee: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                employee_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    approve_employee: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                employee_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmployeeResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    reject_employee: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                employee_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["EmployeeResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     list_vehicles: {
         parameters: {
             query?: {
-                vehicle_type?: string;
-                status?: string;
-                active?: boolean;
+                vehicle_type?: string | null;
+                status?: string | null;
+                active?: boolean | null;
             };
             header?: never;
             path?: never;
@@ -826,7 +1382,7 @@ export interface operations {
         };
         responses: {
             /** @description Successful Response */
-            200: {
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -958,7 +1514,7 @@ export interface operations {
         };
         responses: {
             /** @description Successful Response */
-            200: {
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -1041,6 +1597,37 @@ export interface operations {
         };
     };
     finalize_session: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                session_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AttendanceSessionResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    unlock_session: {
         parameters: {
             query?: never;
             header?: never;
@@ -1184,7 +1771,7 @@ export interface operations {
         requestBody?: never;
         responses: {
             /** @description Successful Response */
-            200: {
+            201: {
                 headers: {
                     [name: string]: unknown;
                 };
@@ -1286,6 +1873,222 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["VehicleAssignmentResponse"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_pay_rates: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+        };
+    };
+    calculate_pay: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PayCalculationRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PayCalculationResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_pay_summary: {
+        parameters: {
+            query?: {
+                session_date?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    list_trips: {
+        parameters: {
+            query?: {
+                session_id?: string | null;
+                vehicle_id?: string | null;
+                status?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VehicleTripResponse"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    create_trip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VehicleTripCreate"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VehicleTripResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_trip: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                trip_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VehicleTripResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    update_trip_status: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                trip_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["VehicleTripUpdateStatus"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["VehicleTripResponse"];
                 };
             };
             /** @description Validation Error */

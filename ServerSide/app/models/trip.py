@@ -10,6 +10,7 @@ class TripTimelineEvent(BaseModel):
     timestamp: datetime = Field(default_factory=utc_now)
     recordedBy: str
     locationName: Optional[str] = None
+    receiverName: Optional[str] = None
     remarks: Optional[str] = None
 
 class VehicleTripBase(BaseModel):
@@ -29,6 +30,7 @@ class VehicleTripCreate(VehicleTripBase):
 class VehicleTripUpdateStatus(BaseModel):
     status: str
     locationName: Optional[str] = None
+    receiverName: Optional[str] = None
     remarks: Optional[str] = None
 
 class VehicleTripResponse(VehicleTripBase):
@@ -38,6 +40,7 @@ class VehicleTripResponse(VehicleTripBase):
     reachedLocationAt: Optional[datetime] = None
     deliveredAt: Optional[datetime] = None
     returnedAt: Optional[datetime] = None
+    receiverName: Optional[str] = None
     timeline: List[TripTimelineEvent] = Field(default_factory=list)
     createdAt: datetime = Field(default_factory=utc_now)
     updatedAt: datetime = Field(default_factory=utc_now)

@@ -1,70 +1,116 @@
-# Laxmi Enterprise Goals
+# Laxmi Enterprise Goals & Milestones
 
-## Product Goal
+**Last Updated:** August 16, 2026  
+**Status:** Milestones 1–3 Complete, Milestone 4 In Progress, Milestone 5 Roadmapped
 
-Deliver a reliable supervisor attendance system that records daily attendance, manages vehicle assignments, and produces auditable official reports for Laxmi Enterprise.
+---
 
-## Architecture Goals
+## 1. Product Goal
 
-1. Establish the FastAPI service and MongoDB as the single source of truth.
-2. Keep the supervisor UI, Python applications, mobile clients, and automation tools independent consumers of the same versioned `/api/v1` contract.
-3. Keep UI rendering, workflow orchestration, API transport, business rules, and persistence as separate layers.
-4. Prevent all client applications from directly writing attendance-session data to MongoDB.
-5. Publish OpenAPI documentation and provide tested TypeScript and Python client integrations.
+Deliver a resilient, high-speed attendance, fleet capacity, vehicle trip lifecycle, and payroll intelligence platform for Laxmi Enterprise's daily workforce of 120–150+ workers across quarry, yard, transport, and office operations.
 
-## Attendance Goals
+---
 
-1. Create one attendance session for each date and shift.
-2. Record each employee once per session as On Time, Arrived with an arrival time, or Absent.
-3. Let supervisors correct attendance only while the session is in progress.
-4. Finalize sessions through the server, lock further edits, and preserve the finalized result.
-5. Maintain complete audit history for attendance, assignment, unlock, and finalization actions.
+## 2. Architecture Goals
 
-## Vehicle Goals
+1. **Single Source of Truth**: Centralize all business rules, transactions, capacity constraints, and audit trails in the FastAPI backend and MongoDB replica set.
+2. **API-First Monorepo**: Keep web apps (`apps/supervisor`, `apps/admin`), Python automation scripts, and future mobile/kiosk clients strictly decoupled consumers of the versioned `/api/v1` contract.
+3. **No Direct DB Access**: Frontend applications and external scripts must never connect directly to MongoDB.
+4. **Code Reuse via Workspace Packages**: Centralize common React Query hooks, API transports, UI utilities, and TypeScript types in `@laxmi/shared`.
+5. **Continuous Type Synchronization**: Automatically generate and validate frontend TypeScript contracts from the backend OpenAPI schema.
 
-1. Assign only present, eligible employees to active, non-maintenance vehicles.
-2. Enforce capacity on the server: one Driver, one Chalan Man, six Workers/Extra Labour, and eight total employees per vehicle.
-3. Support assignment, unassignment, reassignment, and clear capacity-conflict responses.
-4. Provide current utilization, violations, and assignment history to every client.
+---
 
-## Reliability Goals
+## 3. Attendance Goals
 
-1. Use MongoDB transactions for all multi-document attendance, assignment, finalization, and audit changes.
-2. Use optimistic concurrency and return `409 Conflict` for stale session updates.
-3. Make finalization idempotent so duplicate requests cannot create duplicate finalization events or reports.
-4. Store reports and official records from server-side persisted data only.
-5. Support secure recovery from connectivity failures with an explicit offline queue, if offline mode is introduced.
+1. **Daily Session Isolation**: Create exactly one attendance session per date and shift (e.g. `SES-2026-08-16-Shift A`).
+2. **Deterministic Statuses**: Record each employee once per session as **On Time**, **Arrived** (with mandatory arrival time), or **Absent**.
+3. **Optimistic & Fast Entry**: Allow supervisors to mark attendance rapidly with immediate tactile feedback, reconciling with the backend asynchronously.
+4. **Audited Finalization & Locking**: Finalize sessions via the backend to lock further edits. Support emergency unlocks exclusively through authenticated Admin approval with full audit logs.
+5. **Immutable Audit Trail**: Record actor, timestamp, previous value, and new value for every attendance transition.
 
-## User Experience Goals
+---
 
-1. Optimize the supervisor interface for landscape tablets and quick daily entry.
-2. Keep filters stable until changed by the user.
-3. Provide inline, accessible feedback rather than blocking browser dialogs.
-4. Display loading, success, validation, and conflict states clearly for every server mutation.
-5. Generate downloadable attendance and vehicle reports from the finalized session.
+## 4. Vehicle Capacity & Assignment Goals
 
-## Delivery Milestones
+1. **Present-Only Assignments**: Permit vehicle assignment only to employees marked present (`on_time` or `arrived`) in the active session.
+2. **Strict Server-Side Capacity Enforcement**:
+   - Max 1 Driver per vehicle
+   - Max 1 Chalan Man per vehicle
+   - Max 6 Workers / Extra Labour per vehicle
+   - Max 8 total employees per vehicle
+3. **Atomic Reassignment & Unassignment**: Handle assignment transfers between vehicles inside MongoDB transactions to prevent duplicate or phantom seats.
+4. **Conflict Resolution**: Return structured capacity violation details enabling supervisors to resolve conflicts directly in the UI.
 
-### Milestone 1 — API Foundation
+---
 
-- Create the FastAPI project, MongoDB connection, authentication, OpenAPI documentation, and health checks.
-- Implement employee, vehicle, session, and attendance read/write endpoints.
+## 5. Vehicle Trip & Task Completion Lifecycle Goals
 
-### Milestone 2 — Core Attendance
+1. **End-to-End Delivery Tracking**: Track vehicle tasks through their complete lifecycle:
+   - **Dispatched**: Vehicle departs yard/quarry with driver and material load.
+   - **Reached Location**: Vehicle arrives at the designated customer site or unloading zone.
+   - **Delivered Product**: Material / aggregate delivery is completed and verified.
+   - **Returned / Completed**: Vehicle returns to base and becomes available for new dispatch.
+2. **Timeline History**: Record every milestone event with timestamp, acting user, and optional site remarks.
+3. **Operational Visibility**: Display active trips in real time on both supervisor tablets and the admin portal.
 
-- Implement attendance recording, authorization, audit events, session locking, and finalization.
-- Update the supervisor UI to load and mutate server-backed session data.
+---
 
-### Milestone 3 — Vehicle Assignments
+## 6. Administrative & Payroll Intelligence Goals
 
-- Implement transaction-safe assignment, capacity validation, unassignment, reassignment, and conflict responses.
-- Replace frontend-only assignment rules with API-backed flows.
+1. **Date Range Analytics**: Provide flexible date range filters (Today, 7 Days, 30 Days, Custom Range) for attendance and fleet trends.
+2. **Automated Payroll Engine**: Compute daily base wage and overtime / extra duty compensation dynamically according to category wage presets.
+3. **Supervisor Request Governance**: Enable supervisors to submit employee addition requests while restricting final approval to authorized administrators.
+4. **Instant Data Portability**: Provide robust CSV exports for employee payroll, attendance summaries, and fleet utilization.
 
-### Milestone 4 — Reports and Operations
+---
 
-- Add asynchronous PDF/CSV report generation, authorized downloads, monitoring, backups, and error logging.
-- Add integration tests for high-risk API flows and contract tests for TypeScript and Python clients.
+## 7. Reliability & Quality Goals
 
-## Definition of Done
+1. **Transactional Integrity**: All multi-document mutations execute within MongoDB ACID transactions.
+2. **Optimistic Concurrency**: Prevent concurrent edit overwrite with `session.version` checks returning `409 Conflict`.
+3. **Automated Test Coverage**:
+   - Backend: Comprehensive pytest suites for auth, employees, sessions, attendance, assignments, trips, and error handling.
+   - Frontend/Shared: Mocha/Chai unit and edge case suites for services, hooks, and shared components.
+4. **Offline Resilience**: Queue supervisor mutations in `localStorage` when network connectivity drops, syncing automatically upon reconnection.
 
-The system is ready for operational use when attendance and vehicle assignment data survives refreshes and concurrent use, all official changes are server-validated and audited, finalized sessions cannot be altered, reports come from persisted server data, and every supported client uses the documented API contract.
+---
+
+## 8. Delivery Milestones
+
+```mermaid
+gantt
+    title Laxmi Enterprise Delivery Roadmap
+    dateFormat  YYYY-MM-DD
+    section Milestones
+    Milestone 1 - API & Monorepo Foundation      :done,    m1, 2026-08-01, 2026-08-11
+    Milestone 2 - Core Attendance & Session Lock :done,    m2, 2026-08-11, 2026-08-14
+    Milestone 3 - Vehicle Capacity & Assignment  :done,    m3, 2026-08-14, 2026-08-16
+    Milestone 4 - Trips, Admin Portal & Testing  :active,  m4, 2026-08-16, 2026-08-25
+    Milestone 5 - Reports, Background Workers    :         m5, 2026-08-25, 2026-09-05
+    Milestone 6 - LWAS Biometric & Hardware      :         m6, 2026-09-05, 2026-09-20
+```
+
+### Milestone 1 — API & Monorepo Foundation ✅
+- FastAPI backend, MongoDB setup, JWT authentication, OpenAPI schema, shared workspace package `@laxmi/shared`.
+
+### Milestone 2 — Core Attendance & Locking ✅
+- Attendance recording (`on_time`, `arrived`, `absent`), audit logging, optimistic concurrency, idempotent finalization.
+
+### Milestone 3 — Vehicle Capacity & Assignment Engine ✅
+- Domain capacity validation, transaction-safe vehicle assignments, conflict modals, supervisor tablet UI.
+
+### Milestone 4 — Trips, Admin Analytics & Testing Suite 🔄 (In Progress)
+- Vehicle trip dispatch and task completion lifecycle (`dispatched` → `reached_location` → `delivered` → `returned`).
+- Admin portal with date filtering, payroll computation, supervisor request approvals, and session unlocking.
+- Comprehensive backend and frontend test suites.
+
+### Milestone 5 — Server Reports & Background Workers 🔮 (Upcoming)
+- Redis and Python background worker for asynchronous report generation.
+- Server-side ReportLab PDF generator from persisted MongoDB session data.
+- WebSocket / Server-Sent Events for real-time dashboard synchronization.
+
+### Milestone 6 — Hardware & Biometric Turnstile Integration (LWAS) 🔮 (Roadmapped)
+- USB QR scanner listener for worker ID gate entry.
+- Turnstile rotation sensor event processing and thermal token printing.
+- Future biometric (fingerprint/face recognition) evaluation.

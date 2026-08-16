@@ -1,127 +1,120 @@
-# Supervisor Attendance Tracking System
+# Supervisor Attendance Tracking & Fleet Management System
 
-A touch-first web interface for tracking employee attendance and vehicle assignments, optimized for landscape tablets.
+A high-speed, touch-first web interface for field supervisors to track employee attendance, manage vehicle assignments, track trip/delivery lifecycles, and request extra labour, optimized for landscape tablets.
 
-## Features
+---
 
-### Attendance Management
-- **Real-time attendance tracking** with instant search and filtering
-- **Category-based organization**: Workers, Drivers, Chalan Men, Extra Labour, Office
-- **Attendance statuses**: On Time, Arrived (with time recording), Absent
-- **Touch-optimized UI** with large touch targets and spreadsheet-style layout
-- **Filter chips** for category, attendance status, and alphabet ranges
-- **Extra Labour management** with contractor and remarks fields
+## 🌟 Key Features
 
-### Vehicle Assignment System
-- **Vehicle capacity management** with real-time utilization tracking
-- **Capacity constraints**: Max 1 Driver, 1 Chalan Man, 6 Workers per vehicle (total 8)
-- **Visual capacity indicators** with color-coded progress bars
-- **Inline employee removal** directly from vehicle rows
-- **Capacity violation detection** with "Fix Violations" workflow
-- **Vehicle status management**: Available, In Use, Maintenance
-- **Vehicle locking** to prevent further assignments
-- **Assignment history** per vehicle
-- **Bulk reassignment** of employees between vehicles
-- **Auto-suggest available vehicles** based on capacity and category
-- **Capacity report modal** showing empty, under-utilized, optimal, and full vehicles
-- **CSV export** for vehicle assignments
-- **Vehicle efficiency metrics** in the right panel
+### 1. Attendance Management
+- **Real-Time Attendance Marking**: Large 48–56px touch targets for instant marking of **On Time** and **Absent**.
+- **Arrived Time Flow (`ArrivedTimeModal`)**: Popover with quick presets (e.g. 08:15, 08:30, 09:00) and manual arrival time selection.
+- **Category Organization**: Category tabs for All, Workers, Drivers, Chalan Men, Extra Labour, Office, and Vehicles.
+- **Fast Search & Filter Chips**: Instant search by Employee ID/Name, Attendance status filter (Pending, Completed, All), and Alphabetical range chips.
+- **Attendance Locking**: Once the session is confirmed finalized by the server, all controls lock to prevent accidental modification.
 
-### UI Features
-- **Table sorting** by clicking headers (ID, Name, Category, Status, Capacity)
-- **Sticky headers** for easy navigation
-- **Responsive design** optimized for landscape tablets
-- **Real-time filtering** without page refreshes
-- **Auto-save** to localStorage
-- **PDF report generation** with attendance and vehicle assignment details
+### 2. Vehicle Capacity & Assignment Engine
+- **Capacity Constraints**: Strictly validates max 1 Driver, 1 Chalan Man, 6 Workers / Extra Labour, and 8 total employees per vehicle.
+- **Visual Utilization Indicators**: Color-coded progress bars displaying current headcount against seat limits.
+- **Conflict Resolution (`CapacityConflictModal`)**: Instant feedback on capacity violations with one-click resolution.
+- **Inline Assignment & Removal**: Assign or unassign present employees directly from vehicle or employee rows.
+- **Assignment History (`VehicleAssignmentHistory`)**: Complete per-vehicle assignment and unassignment timelines.
 
-## Tech Stack
+### 3. Vehicle Trip & Task Completion Lifecycle (`TripTrackerModal`)
+- **Task Progression Flow**: Track vehicle dispatches through four distinct operational milestones:
+  1. **Dispatched**: Vehicle departs quarry/yard with driver and product payload.
+  2. **Reached Location**: Vehicle arrives at the designated destination site.
+  3. **Delivered Product**: Material / aggregate delivery verified and unloaded.
+  4. **Returned / Completed**: Vehicle returns to base and becomes available for new dispatch.
+- **Timeline Tracking**: Visual event log recording timestamps, acting supervisors, and site remarks.
 
-- **React** with Vite
-- **TailwindCSS** for styling
-- **jsPDF** for PDF generation
-- **LocalStorage** for data persistence
+### 4. Workforce Requests (`RequestEmployeeModal`)
+- Enables on-site supervisors to quickly request extra labour or temporary workers.
+- Submitted entries enter the Admin Approval queue with a `Pending Approval` badge until authorized.
 
-## Project Structure
+### 5. Resilient Offline Mode & PDF Reporting
+- **Offline Mutation Queue (`offlineQueue.js`)**: Buffers mutations locally during network dropouts and synchronizes automatically upon reconnecting.
+- **Client-Side PDF Generator**: Generates formatted attendance and fleet allocation reports with exception breakdowns.
+
+---
+
+## 🛠️ Architecture & Tech Stack
+
+- **Framework**: React 19 with Vite
+- **Data Layer**: `@laxmi/shared` React Query hooks (`useEmployees`, `useVehicles`, `useTrips`, `useCreateTrip`, `useUpdateTripStatus`)
+- **API Transport**: `backendApi` with automatic JWT bearer token injection and optimistic updates
+- **Styling**: TailwindCSS 3.4 & Vanilla CSS with landscape tablet optimization
+- **PDF Engine**: jsPDF with custom tabular renderers and layout manager
+
+---
+
+## 📁 Directory Structure
 
 ```
-app/src/
+apps/supervisor/src/
 ├── components/
-│   ├── CategoryTabs.jsx          # Category navigation
-│   ├── EmployeeTable.jsx         # Employee table with sorting
-│   ├── EmployeeRow.jsx           # Individual employee row
-│   ├── FilterChips.jsx           # Active filter display
-│   ├── LeftColumn.jsx            # Sidebar with filters
-│   ├── RightColumn.jsx           # Statistics panel
-│   ├── VehicleTable.jsx          # Vehicle management table
-│   ├── CapacityReportModal.jsx   # Capacity analysis modal
-│   ├── CapacityConflictModal.jsx  # Conflict resolution modal
-│   ├── VehicleAssignmentHistory.jsx # Assignment history modal
-│   └── pdf/                      # PDF generation
-│       ├── pdfHandler.js
-│       ├── PDFRenderer.js
-│       ├── renderers/
-│       │   ├── VehicleSectionRenderer.js
-│       │   └── ...
-│       └── layout/
+│   ├── attendance/               # ArrivedBadge, AttendanceButtons, LockedAttendance
+│   ├── pdf/                      # PDFRenderer, LayoutManager, Renderers
+│   ├── ui/                       # ButtonGroup, LabourRequestButtons, VehicleSelect, Toast
+│   ├── ArrivedTimeModal.jsx      # Arrival time picker (from @laxmi/shared)
+│   ├── CapacityConflictModal.jsx # Overcapacity resolution modal
+│   ├── CapacityReportModal.jsx   # Fleet capacity overview modal
+│   ├── CategoryTabs.jsx          # Tab navigation
+│   ├── EmployeeRow.jsx           # Individual touch table row
+│   ├── EmployeeTable.jsx         # Touch spreadsheet table
+│   ├── FilterChips.jsx           # Active filter chips
+│   ├── LeftColumn.jsx            # Filter sidebar & finalization trigger
+│   ├── LoginModal.jsx            # Authentication modal
+│   ├── RequestEmployeeModal.jsx  # Extra labour request modal
+│   ├── RightColumn.jsx           # Live stats & PDF download button
+│   ├── SyncStatus.jsx            # Online/offline sync badge
+│   ├── TripTrackerModal.jsx      # Trip & task completion lifecycle modal
+│   ├── VehicleAssignmentHistory.jsx # Assignment audit modal
+│   └── VehicleTable.jsx          # Vehicle fleet assignment table
+│
 ├── hooks/
-│   ├── useAttendanceState.js     # State management
-│   ├── useAttendanceHandlers.js  # Event handlers
-│   ├── useFilters.js             # Filtering logic
-│   ├── useStatistics.js          # Statistics calculation
-│   └── useTableSort.js           # Table sorting
-└── data/
-    ├── generateEmployees.js
-    └── generateVehicles.js
+│   ├── useAttendanceHandlers.js  # Event handler orchestrations
+│   ├── useAttendanceState.js     # Component UI state management
+│   ├── useFilters.js             # Table filtering and search logic
+│   ├── useStatistics.js          # Shift stats calculation
+│   └── useTableSort.js           # Multi-column sorting
+│
+└── services/
+    ├── offlineQueue.js           # Local offline mutation buffer
+    └── reportService.js          # Client-side PDF generation service
 ```
 
-## Getting Started
+---
 
+## 🚀 Getting Started
+
+### Local Development
 ```bash
-# Install dependencies
+# From workspace root
+npm run dev:supervisor
+
+# Or from apps/supervisor directory
+cd apps/supervisor
 npm install
-
-# Start development server
 npm run dev
+```
+Runs at `http://localhost:5173`.
 
-# Build for production
+### Production Build & Linting
+```bash
 npm run build
+npm run lint
 ```
 
-## Usage
+### Docker Container
+```bash
+docker build -t laxmi-supervisor .
+docker run -p 5173:5173 -e VITE_API_BASE_URL=http://localhost:8000/api/v1 laxmi-supervisor
+```
 
-1. **Select a category** from the tabs (All, Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles)
-2. **Filter employees** using search, attendance status, or alphabet range
-3. **Mark attendance** by clicking On Time, Arrived, or Absent
-4. **Assign vehicles** from the Vehicles tab or employee dropdown
-5. **Monitor capacity** using the visual indicators and progress bars
-6. **Fix violations** by clicking "Fix Violations" and removing employees
-7. **Generate reports** using the Download Report button (when finalized)
+---
 
-## Vehicle Capacity Rules
+## 🔐 Default Credentials (Demo)
 
-- **Drivers**: Maximum 1 per vehicle
-- **Chalan Men**: Maximum 1 per vehicle
-- **Workers/Extra Labour**: Maximum 6 per vehicle
-- **Total Capacity**: 8 employees per vehicle
-- **Violations** are highlighted in orange and must be resolved before finalizing
-
-## PDF Report
-
-The generated PDF includes:
-- Session summary (total, completed, pending counts)
-- Category breakdown
-- Employee attendance details
-- Vehicle assignments with capacity breakdown
-- Vehicle efficiency metrics
-- Capacity violations (if any)
-- Exception report
-
-## Data Persistence
-
-All data is automatically saved to localStorage under the key `attendanceAppState`.
-
-## Version
-
-Current Version: 2.0
-
+- **Username**: `supervisor` (or `admin`)
+- **Password**: `password123`

@@ -4,80 +4,54 @@ description: Understand the Laxmi Enterprise codebase architecture and workflow
 
 # Understanding Laxmi Enterprise Codebase
 
-## Overview (Updated Aug 11, 2026)
-This workflow helps understand the Laxmi Enterprise attendance system architecture, including the monorepo structure, shared packages, and applications. The knowledge graph has been regenerated with 784 nodes, 1238 edges, and 62 communities.
+## Overview (Updated August 16, 2026)
+This workflow provides a guided tour through the Laxmi Enterprise monorepo architecture, shared packages, applications, and backend services.
 
 ## Steps to Understand the Codebase
 
-### 1. Review Architecture
-- ✅ Read `ARCHITECTURE.md` to understand the monorepo structure
-- ✅ Review the directory structure: `packages/`, `apps/`, `ServerSide/`
-- ✅ Understand the shared package concept
+### 1. Review Architecture & Boundaries
+- ✅ Read `ARCHITECTURE.md` to understand the monorepo structure and subsystem layers.
+- ✅ Review directory structure: `packages/shared/`, `apps/supervisor/`, `apps/admin/`, `ServerSide/`.
+- ✅ Read `MASTER INSTRUCTIONS.md` to understand single-source-of-truth rules.
 
-### 2. Examine Shared Packages
-- ✅ Review `packages/shared/` directory
-- ✅ Check shared services: `authService.js`, `backendApi.js`, `restEmployeeService.js`, `restVehicleService.js`
-- ✅ Review shared components: `ErrorBoundary.jsx`, `LoadingSpinner.jsx`
-- ✅ Check shared hooks: `useEmployees.js`, `useVehicles.js`
+### 2. Examine Shared Package (`@laxmi/shared`)
+- ✅ Review `packages/shared/` directory.
+- ✅ Check shared services: `authService.js`, `backendApi.js`, `restSessionService.js`, `restEmployeeService.js`, `restVehicleService.js`, `restAssignmentService.js`, `restTripService.js`.
+- ✅ Review shared UI components: `ArrivedTimeModal.jsx`, `ErrorBoundary.jsx`, `LoadingSpinner.jsx`.
+- ✅ Check React Query hooks: `useEmployees.js`, `useVehicles.js`, `useTrips.js`.
+- ✅ Review auto-generated TypeScript contracts: `packages/shared/types/api.ts`.
 
 ### 3. Review Applications
-- ✅ **Supervisor App**: `apps/supervisor/` (currently not using shared packages)
-- ✅ **Admin App**: `apps/admin/` (using shared packages)
-- ✅ Compare how each app uses the shared packages
+- ✅ **Supervisor App (`apps/supervisor/`)**: Touch-first tablet UI for attendance, vehicle capacity, trip progression (`TripTrackerModal`), and labour requests (`RequestEmployeeModal`).
+- ✅ **Admin Portal (`apps/admin/`)**: Comprehensive analytics, date range filtering, automated payroll calculation, supervisor request approvals, and session unlocking.
+- ✅ **Shared Packages Integration**: Both apps consume `@laxmi/shared` as a direct workspace dependency.
 
-### 4. Backend Architecture
-- ✅ Review `ServerSide/` FastAPI backend
-- ✅ Check API endpoints in `ServerSide/app/api/v1/`
-- ✅ Review database models in `ServerSide/app/models/`
-- ✅ Understand MongoDB integration
+### 4. Backend Architecture (`ServerSide/`)
+- ✅ Review `ServerSide/` FastAPI application and route definitions in `app/api/v1/`.
+- ✅ Review Pydantic schemas in `app/models/` (Employee, Vehicle, Session, Attendance, Assignment, Trip, User).
+- ✅ Review services in `app/services/` (`trip_service.py`) and MongoDB transactions in `app/db/mongodb.py`.
+- ✅ Understand optimistic concurrency via `attendance_sessions.version`.
 
-### 5. Current Status
-- ✅ Check running applications
-- ✅ Review CORS configuration
-- ✅ Verify MongoDB connection
-- ✅ Test authentication flow
+### 5. Type Synchronization Pipeline
+- ✅ Review `TYPE_SYNC_GUIDE.md`.
+- ✅ Check `ServerSide/scripts/export_openapi.py` and `ServerSide/scripts/sync.py`.
 
-### 6. Workflow Plan
-- ✅ Review `WORKFLOW_PLAN.md` for next steps
-- ✅ Understand the phased approach
-- ✅ Check current TODO list status
+### 6. Workflow Plan & Roadmap
+- ✅ Review `WORKFLOW_PLAN.md` for phase progression and delivery schedules.
+- ✅ Check `TODO.md` for completed milestones and upcoming tasks.
 
-## Key Components
+## Key Services & Endpoints
+- **Authentication**: `POST /api/v1/auth/login`, `GET /api/v1/auth/me`
+- **Sessions & Locking**: `GET|POST /api/v1/sessions`, `POST /api/v1/sessions/{id}/finalize`, `POST /api/v1/sessions/{id}/unlock`
+- **Attendance**: `PUT /api/v1/sessions/{id}/attendance/{employeeId}`
+- **Vehicle Capacity & Assignment**: `PUT|DELETE /api/v1/sessions/{id}/assignments/{employeeId}`
+- **Trip & Task Completion**: `POST /api/v1/trips`, `GET /api/v1/trips`, `PUT /api/v1/trips/{id}/status`
+- **Employees & Approvals**: `GET|POST /api/v1/employees`, `POST /api/v1/employees/{id}/approve`, `POST /api/v1/employees/{id}/reject`
+- **Vehicles**: `GET /api/v1/vehicles`, `PATCH /api/v1/vehicles/{id}`
 
-### Shared Services
-- `authService`: Handles login, token management, refresh
-- `backendApi`: Direct REST API client with error handling
-- `restEmployeeService`: Employee API operations
-- `restVehicleService`: Vehicle API operations
-
-### Shared Hooks
-- `useEmployees`: React Query hook for employee data
-- `useVehicles`: React Query hook for vehicle data
-
-### Applications
-- **Supervisor**: Attendance tracking, vehicle assignment (http://localhost:5173)
-- **Admin**: Overview, statistics, reporting (http://localhost:5174)
-
-## Completed Tasks (Aug 11, 2026)
-- ✅ Monorepo structure established
-- ✅ Shared packages created (@laxmi/shared)
-- ✅ Admin dashboard using shared packages
-- ✅ Supervisor app running (not yet using shared packages)
-- ✅ Backend API running with MongoDB
-- ✅ CORS configured for both apps
-- ✅ Knowledge graph regenerated (784 nodes, 1238 edges, 62 communities)
-- ✅ Understanding workflow documented
-- ✅ Planning documentation updated
-- ✅ TODO.md updated with completed items
-
-## Next Steps
-Based on the workflow plan, the next immediate steps are:
-1. Refactor supervisor app to use shared packages
-2. Add date range filtering to admin dashboard
-3. Add export functionality to admin dashboard
-
-## Running Applications
-- **Supervisor App**: http://localhost:5173
-- **Admin App**: http://localhost:5174
-- **Backend API**: http://localhost:8000
-- **MongoDB**: Docker container running
+## Running the Applications
+- **Supervisor App**: http://localhost:5173 (`npm run dev:supervisor`)
+- **Admin Portal**: http://localhost:5174 (`npm run dev:admin`)
+- **Backend API**: http://localhost:8000 (`uvicorn app.main:app --reload`)
+- **Interactive Swagger Docs**: http://localhost:8000/docs
+- **Launch All with Docker**: `.\launch-containers.bat`
