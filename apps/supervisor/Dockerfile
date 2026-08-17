@@ -1,5 +1,8 @@
 FROM node:20-alpine
 
+# Install wget for Docker health checks
+RUN apk add --no-cache wget
+
 WORKDIR /app
 
 # Copy shared package for local dependency

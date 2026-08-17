@@ -1,37 +1,43 @@
-export function useStatistics(employees, vehicles) {
-  const completedCount = employees.filter(e => e.attendance !== null).length
-  const totalCount = employees.length
+export function useStatistics(employees = [], vehicles = []) {
+  const emps = employees || []
+  const vechs = vehicles || []
+
+  const completedCount = emps.filter(e => e && e.attendance !== null && e.attendance !== undefined).length
+  const totalCount = emps.length
   const pendingCount = totalCount - completedCount
-  const onTimeCount = employees.filter(e => e.attendance === 'on_time').length
-  const arrivedCount = employees.filter(e => e.attendance === 'arrived').length
-  const absentCount = employees.filter(e => e.attendance === 'absent').length
+  const onTimeCount = emps.filter(e => e && e.attendance === 'on_time').length
+  const arrivedCount = emps.filter(e => e && e.attendance === 'arrived').length
+  const absentCount = emps.filter(e => e && e.attendance === 'absent').length
 
   // Vehicle assignment efficiency metrics
-  const assignedVehicles = vehicles.filter(v => v.status === 'in_use')
-  const totalVehicleCapacity = vehicles.length * 8
-  const currentVehicleAssignments = employees.filter(e => e.assignedVehicle).length
-  const averageVehicleUtilization = vehicles.length > 0 
+  const assignedVehicles = vechs.filter(v => v && (v.status === 'in_use' || v.status === 'In Use'))
+  const totalVehicleCapacity = vechs.length * 8
+  const currentVehicleAssignments = emps.filter(e => e && e.assignedVehicle).length
+  const averageVehicleUtilization = vechs.length > 0 
     ? Math.round((currentVehicleAssignments / totalVehicleCapacity) * 100) 
     : 0
-  const fullyUtilizedVehicles = vehicles.filter(v => {
-    const assignments = employees.filter(e => e.assignedVehicle === v.id)
+  const fullyUtilizedVehicles = vechs.filter(v => {
+    if (!v) return false
+    const assignments = emps.filter(e => e && e.assignedVehicle === v.id)
     return assignments.length >= 8
   }).length
-  const underUtilizedVehicles = vehicles.filter(v => {
-    const assignments = employees.filter(e => e.assignedVehicle === v.id)
+  const underUtilizedVehicles = vechs.filter(v => {
+    if (!v) return false
+    const assignments = emps.filter(e => e && e.assignedVehicle === v.id)
     return assignments.length > 0 && assignments.length < 4
   }).length
-  const lockedVehicles = vehicles.filter(v => v.locked).length
+  const lockedVehicles = vechs.filter(v => v && v.locked).length
 
   // Min / Max Labour Request Metrics
-  const chalanMen = employees.filter(e => e.category === 'Chalan Men')
+  const chalanMen = emps.filter(e => e && e.category === 'Chalan Men')
   const minDemandCount = chalanMen.filter(e => e.labourRequest === 'minimum').length
   const maxDemandCount = chalanMen.filter(e => e.labourRequest === 'more').length
   const pendingDemandCount = chalanMen.filter(e => (e.attendance === 'on_time' || e.attendance === 'arrived') && !e.labourRequest).length
 
   const getCategoryCount = (category) => {
     if (category === 'All') return totalCount
-    return employees.filter(e => e.category === category).length
+    if (category === 'Vehicles' || category === 'vehicles') return vechs.length
+    return emps.filter(e => e && e.category === category).length
   }
 
   const getAttendanceCount = (status) => {
@@ -42,7 +48,7 @@ export function useStatistics(employees, vehicles) {
     if (status === 'Pending') return pendingCount
     if (status === 'On Time' || status === 'on_time') return onTimeCount
     if (status === 'Arrived' || status === 'arrived') return arrivedCount
-    return employees.filter(e => e.attendance === status).length
+    return emps.filter(e => e && e.attendance === status).length
   }
 
   const getAlphabetCount = (range) => {
@@ -56,14 +62,17 @@ export function useStatistics(employees, vehicles) {
       'U-Z': ['U', 'V', 'W', 'X', 'Y', 'Z']
     }
     const letters = ranges[range] || []
-    return employees.filter(e => letters.includes(e.name.charAt(0).toUpperCase())).length
+    return emps.filter(e => e && e.name && letters.includes(e.name.charAt(0).toUpperCase())).length
   }
 
   const getSearchCount = (query) => {
     if (!query) return totalCount
-    return employees.filter(e => 
-      e.name.toLowerCase().includes(query.toLowerCase()) ||
-      e.id.toLowerCase().includes(query.toLowerCase())
+    const q = query.toLowerCase()
+    return emps.filter(e => 
+      e && (
+        (e.name && e.name.toLowerCase().includes(q)) ||
+        (e.id && String(e.id).toLowerCase().includes(q))
+      )
     ).length
   }
 

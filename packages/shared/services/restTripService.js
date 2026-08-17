@@ -1,6 +1,6 @@
-import { backendApiClient } from './backendApi.js'
+const { backendApiClient } = require('./backendApi')
 
-export const restTripService = {
+const restTripService = {
   async fetchTrips(filters = {}) {
     const params = new URLSearchParams()
     if (filters.sessionId) params.append('session_id', filters.sessionId)
@@ -29,3 +29,6 @@ export const restTripService = {
     })
   }
 }
+
+module.exports = restTripService
+module.exports.restTripService = restTripService

@@ -15,6 +15,10 @@ import { authService } from '../../services/authService.js';
 describe('useVehicles Hook', () => {
   let queryClient;
   let originalFetchVehicles;
+  let originalFetchVehicle;
+  let originalUpdateStatus;
+  let originalAddVehicle;
+  let originalUpdateVehicle;
   let originalIsAuthenticated;
 
   beforeEach(() => {
@@ -27,11 +31,19 @@ describe('useVehicles Hook', () => {
     });
 
     originalFetchVehicles = restVehicleService.fetchVehicles;
+    originalFetchVehicle = restVehicleService.fetchVehicle;
+    originalUpdateStatus = restVehicleService.updateStatus;
+    originalAddVehicle = restVehicleService.addVehicle;
+    originalUpdateVehicle = restVehicleService.updateVehicle;
     originalIsAuthenticated = authService.isAuthenticated;
   });
 
   afterEach(() => {
     restVehicleService.fetchVehicles = originalFetchVehicles;
+    restVehicleService.fetchVehicle = originalFetchVehicle;
+    restVehicleService.updateStatus = originalUpdateStatus;
+    restVehicleService.addVehicle = originalAddVehicle;
+    restVehicleService.updateVehicle = originalUpdateVehicle;
     authService.isAuthenticated = originalIsAuthenticated;
   });
 
@@ -65,17 +77,18 @@ describe('useVehicles Hook', () => {
 
     it('should pass filters to fetchVehicles', async () => {
       authService.isAuthenticated = () => true;
+      let capturedFilters = null;
       restVehicleService.fetchVehicles = async (filters) => {
-        expect(filters.vehicle_type).to.equal('Truck');
-        expect(filters.status).to.equal('Available');
-        return [];
+        capturedFilters = filters;
+        return [{ id: 'VH001', name: 'VH001', category: 'Vehicles', capacity: 10, status: 'Available', active: true }];
       };
 
-      renderHook(() => useVehicles({ vehicle_type: 'Truck', status: 'Available' }), { wrapper });
+      const { result } = renderHook(() => useVehicles({ vehicle_type: 'Truck', status: 'Available' }), { wrapper });
 
       await waitFor(() => {
-        expect(restVehicleService.fetchVehicles).to.have.been.called;
+        expect(result.current.data).to.have.lengthOf(1);
       });
+      expect(capturedFilters).to.deep.equal({ vehicle_type: 'Truck', status: 'Available' });
     });
   });
 
@@ -117,20 +130,17 @@ describe('useVehicles Hook', () => {
   describe('useUpdateVehicleStatus', () => {
     it('should update vehicle status', async () => {
       authService.isAuthenticated = () => true;
-      restVehicleService.fetchVehicles = async () => [
-        { id: 'VH001', name: 'VH001', category: 'Vehicles', capacity: 10, status: 'Available', active: true }
-      ];
+      let updatedNumber = null;
+      let updatedStatus = null;
       restVehicleService.updateStatus = async (vehicleNumber, status) => {
-        return { id: vehicleNumber, name: vehicleNumber, category: 'Vehicles', capacity: 10, status: status, active: true };
+        updatedNumber = vehicleNumber;
+        updatedStatus = status;
+        return { id: vehicleNumber, status };
       };
 
       const { result } = renderHook(() => useUpdateVehicleStatus(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         vehicleNumber: 'VH001',
         status: 'In Use'
       });
@@ -138,24 +148,21 @@ describe('useVehicles Hook', () => {
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
       });
+      expect(updatedNumber).to.equal('VH001');
+      expect(updatedStatus).to.equal('In Use');
     });
   });
 
   describe('useAddVehicle', () => {
     it('should add new vehicle', async () => {
       authService.isAuthenticated = () => true;
-      restVehicleService.fetchVehicles = async () => [];
       restVehicleService.addVehicle = async (vehicleData) => {
         return { ...vehicleData, id: 'VH001' };
       };
 
       const { result } = renderHook(() => useAddVehicle(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         id: 'VH001',
         category: 'Truck',
         capacity: 10,
@@ -165,6 +172,7 @@ describe('useVehicles Hook', () => {
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
+        expect(result.current.data.id).to.equal('VH001');
       });
     });
   });
@@ -172,26 +180,20 @@ describe('useVehicles Hook', () => {
   describe('useUpdateVehicle', () => {
     it('should update existing vehicle', async () => {
       authService.isAuthenticated = () => true;
-      restVehicleService.fetchVehicles = async () => [
-        { id: 'VH001', name: 'VH001', category: 'Vehicles', capacity: 10, status: 'Available', active: true }
-      ];
       restVehicleService.updateVehicle = async (vehicleNumber, updateData) => {
         return { id: vehicleNumber, name: vehicleNumber, category: 'Vehicles', ...updateData };
       };
 
       const { result } = renderHook(() => useUpdateVehicle(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         vehicleNumber: 'VH001',
         updateData: { status: 'In Use', capacity: 12 }
       });
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
+        expect(result.current.data.capacity).to.equal(12);
       });
     });
   });

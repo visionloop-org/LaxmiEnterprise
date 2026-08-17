@@ -87,23 +87,30 @@ LaxmiEnterprise/
   - `/vehicles`: Fleet master status, capacity limits, and utilization metrics.
 
 ### 3.2. Shared Workspace Package (`packages/shared/`)
-- Exported under `@laxmi/shared` as a local workspace dependency.
+- Exported under `@laxmi/shared` as a local workspace dependency with dual ESM/CommonJS module support.
 - **Services**:
-  - `backendApi`: Resilient HTTP client with automatic JWT token injection, unified error parsing, and retry handling.
-  - `authService`: Token persistence and user session management.
+  - `backendApi`: Resilient HTTP client with automatic JWT token injection, unified error parsing, `X-Request-ID` propagation, and retry handling.
+  - `authService`: Token persistence and user session management with auto-refresh capability.
   - `restSessionService`, `restEmployeeService`, `restVehicleService`, `restAssignmentService`, `restTripService`.
 - **Custom React Query Hooks**:
-  - Cached, synchronized queries (`useEmployees`, `useVehicles`, `useTrips`).
-  - Optimistic mutations (`useCreateTrip`, `useUpdateTripStatus`, `useApproveEmployee`, `useRejectEmployee`, `useUpdateEmployee`, `useDeleteEmployee`).
+  - Cached, synchronized queries (`useEmployees`, `useVehicles`, `useTrips`) with fine-tuned caching (`staleTime: 5m/3m/30s`, `gcTime: 10m/5m`).
+  - Optimistic mutations (`useCreateTrip`, `useUpdateTripStatus`, `useApproveEmployee`, `useRejectEmployee`, `useUpdateEmployee`, `useDeleteEmployee`, `useBulkUpdateCompensation`).
+  - `usePerformanceMonitor`: Component render tracking, slow render logging (>16ms), async duration profiling (`measureAsync`), and performance marks.
 - **Shared UI Components**:
   - `ArrivedTimeModal`: Precise touch-friendly arrival time picker.
   - `ErrorBoundary`: Graceful UI crash containment with recovery prompts.
   - `LoadingSpinner`: Standardized accessible loader.
+- **Core Utilities**:
+  - `requestId`: Unique request ID generation (`REQ-<timestamp>-<rand>`) and lifecycle tracking.
+  - `logger`: Structured JSON logging with configurable log levels (`DEBUG`, `INFO`, `WARN`, `ERROR`) and sensitive field scrubbing.
+  - `security`: JWT format validation, XSS escaping, CSRF token generation, and `RateLimiter` class.
+  - `config`: Centralized configuration constants and environment management.
 
 ### 3.3. Supervisor Tablet App (`apps/supervisor/`)
 - **Design Philosophy**: Touch-first, spreadsheet-style layout tailored for landscape tablets.
+- **Performance & Code Splitting**: Heavy modal components (`TripTrackerModal`, `CapacityConflictModal`, `CapacityReportModal`, `VehicleAssignmentHistory`, `RequestEmployeeModal`) are lazily loaded with scoped `<Suspense>` boundaries.
 - **Key Capabilities**:
-  - Real-time search, category tabs (Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles), and alphabet range chips.
+  - Real-time search, category tabs (Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles) with accurate dynamic counts (`Vehicles (25)`), and alphabet range chips.
   - Fast attendance recording (instant submission for On Time / Absent, modal for Arrived).
   - Vehicle capacity enforcement with color-coded utilization bars (max 1 Driver, 1 Chalan Man, 6 Workers, 8 total).
   - **Trip & Task Completion**: `TripTrackerModal` tracks vehicle dispatch, site arrival, material delivery, and return.
@@ -112,13 +119,16 @@ LaxmiEnterprise/
   - Client-side PDF generation for attendance sheets and vehicle utilization.
 
 ### 3.4. Admin Analytics Portal (`apps/admin/`)
+- **Architecture**: Wrapped with root `QueryClientProvider` and `ErrorBoundary` in `main.jsx` for resilient state management and authentication error handling.
 - **Key Capabilities**:
   - **Payroll Engine**: Automated base wage and overtime calculation with category rate presets.
+  - **Bulk Wage Editor**: Batch wage updates across employee categories and CSV upload parsing.
+  - **Contractor Settlements**: Real-time aggregation of attendance, base wages, extra hours, and incentives grouped by labour contractor.
   - **Date Range Filtering**: Analyze historical attendance across custom date ranges or presets (7d, 30d).
   - **Employee Approval Center**: Review, approve, reject, edit, or delete supervisor-requested workers.
   - **Session Unlock Control**: Reset finalized sessions back to in-progress when administrative corrections are needed.
   - **Fleet & Trip Oversight**: Real-time vehicle utilization and trip status monitoring.
-  - **CSV Exports**: One-click exports for payroll, attendance, and vehicle status reports.
+  - **CSV Exports**: One-click exports for payroll, contractor settlements, attendance, and vehicle status reports.
 
 ---
 
@@ -162,12 +172,12 @@ To guarantee complete type safety without manual duplication:
 ---
 
 ## 6. Docker & Deployment
-
-All services run inside isolated Docker containers connected via `laxmi-network`:
-- **MongoDB**: `localhost:27017` (data persisted in `mongodb_data` volume)
-- **FastAPI Backend**: `http://localhost:8000` (docs at `http://localhost:8000/docs`)
-- **Supervisor App**: `http://localhost:5173`
-- **Admin Portal**: `http://localhost:5174`
+ 
+ All services run inside isolated Docker containers connected via `laxmi-network`:
+ - **MongoDB**: `localhost:27017` (data persisted in `mongodb_data` volume)
+ - **FastAPI Backend**: `http://localhost:8000` (docs at `http://localhost:8000/docs`, health check at `/health` & `/ready`)
+ - **Supervisor App**: `http://localhost:5173` (with live hot-reload volume mounts)
+ - **Admin Portal**: `http://localhost:5174` (with live hot-reload volume mounts)
 
 Start all containers in development:
 ```bash
@@ -175,3 +185,4 @@ Start all containers in development:
 # or
 docker-compose up --build
 ```
+

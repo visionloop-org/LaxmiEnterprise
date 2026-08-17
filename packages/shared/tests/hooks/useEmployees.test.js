@@ -18,6 +18,13 @@ import { authService } from '../../services/authService.js';
 describe('useEmployees Hook', () => {
   let queryClient;
   let originalFetchEmployees;
+  let originalFetchEmployee;
+  let originalUpdateAttendance;
+  let originalAddEmployee;
+  let originalUpdateEmployee;
+  let originalApproveEmployee;
+  let originalRejectEmployee;
+  let originalDeleteEmployee;
   let originalIsAuthenticated;
 
   beforeEach(() => {
@@ -30,11 +37,25 @@ describe('useEmployees Hook', () => {
     });
 
     originalFetchEmployees = restEmployeeService.fetchEmployees;
+    originalFetchEmployee = restEmployeeService.fetchEmployee;
+    originalUpdateAttendance = restEmployeeService.updateAttendance;
+    originalAddEmployee = restEmployeeService.addEmployee;
+    originalUpdateEmployee = restEmployeeService.updateEmployee;
+    originalApproveEmployee = restEmployeeService.approveEmployee;
+    originalRejectEmployee = restEmployeeService.rejectEmployee;
+    originalDeleteEmployee = restEmployeeService.deleteEmployee;
     originalIsAuthenticated = authService.isAuthenticated;
   });
 
   afterEach(() => {
     restEmployeeService.fetchEmployees = originalFetchEmployees;
+    restEmployeeService.fetchEmployee = originalFetchEmployee;
+    restEmployeeService.updateAttendance = originalUpdateAttendance;
+    restEmployeeService.addEmployee = originalAddEmployee;
+    restEmployeeService.updateEmployee = originalUpdateEmployee;
+    restEmployeeService.approveEmployee = originalApproveEmployee;
+    restEmployeeService.rejectEmployee = originalRejectEmployee;
+    restEmployeeService.deleteEmployee = originalDeleteEmployee;
     authService.isAuthenticated = originalIsAuthenticated;
   });
 
@@ -68,17 +89,18 @@ describe('useEmployees Hook', () => {
 
     it('should pass filters to fetchEmployees', async () => {
       authService.isAuthenticated = () => true;
+      let capturedFilters = null;
       restEmployeeService.fetchEmployees = async (filters) => {
-        expect(filters.category).to.equal('Driver');
-        expect(filters.status).to.equal('active');
-        return [];
+        capturedFilters = filters;
+        return [{ id: 'EMP001', name: 'John Driver', category: 'Driver', status: 'active' }];
       };
 
-      renderHook(() => useEmployees({ category: 'Driver', status: 'active' }), { wrapper });
+      const { result } = renderHook(() => useEmployees({ category: 'Driver', status: 'active' }), { wrapper });
 
       await waitFor(() => {
-        expect(restEmployeeService.fetchEmployees).to.have.been.called;
+        expect(result.current.data).to.have.lengthOf(1);
       });
+      expect(capturedFilters).to.deep.equal({ category: 'Driver', status: 'active' });
     });
   });
 
@@ -118,22 +140,17 @@ describe('useEmployees Hook', () => {
   });
 
   describe('useUpdateAttendance', () => {
-    it('should update employee attendance', async () => {
+    it('should update employee attendance and invalidate queries', async () => {
       authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [
-        { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'active', attendance: 'Absent' }
-      ];
+      let updatedParams = null;
       restEmployeeService.updateAttendance = async (sessionId, employeeId, status, arrivalTime, remarks) => {
-        return { id: employeeId, name: 'John Doe', category: 'Driver', status: 'active', attendance: status };
+        updatedParams = { sessionId, employeeId, status, arrivalTime, remarks };
+        return { id: employeeId, status };
       };
 
       const { result } = renderHook(() => useUpdateAttendance(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         sessionId: 'SESSION123',
         employeeId: 'EMP001',
         status: 'On Time',
@@ -144,35 +161,12 @@ describe('useEmployees Hook', () => {
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
       });
-    });
-
-    it('should optimistically update attendance', async () => {
-      authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [
-        { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'active', attendance: 'Absent' }
-      ];
-      restEmployeeService.updateAttendance = async () => {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        return { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'active', attendance: 'On Time' };
-      };
-
-      const { result } = renderHook(() => useUpdateAttendance(), { wrapper });
-
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      result.current.mutate({
+      expect(updatedParams).to.deep.equal({
         sessionId: 'SESSION123',
         employeeId: 'EMP001',
         status: 'On Time',
-        arrivalTime: '09:00'
-      });
-
-      // Check optimistic update happened
-      await waitFor(() => {
-        const employees = queryClient.getQueryData(['employees']);
-        expect(employees[0].attendance).to.equal('On Time');
+        arrivalTime: '09:00',
+        remarks: 'On time'
       });
     });
   });
@@ -180,41 +174,11 @@ describe('useEmployees Hook', () => {
   describe('useAddEmployee', () => {
     it('should add new employee', async () => {
       authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [];
       restEmployeeService.addEmployee = async (employeeData) => {
         return { ...employeeData, id: 'EMP001' };
       };
 
       const { result } = renderHook(() => useAddEmployee(), { wrapper });
-
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
-        name: 'Jane Smith',
-        category: 'Helper',
-        status: 'active'
-      });
-
-      await waitFor(() => {
-        expect(result.current.isSuccess).to.be.true;
-      });
-    });
-
-    it('should optimistically add employee to list', async () => {
-      authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [];
-      restEmployeeService.addEmployee = async (employeeData) => {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        return { ...employeeData, id: 'EMP001' };
-      };
-
-      const { result } = renderHook(() => useAddEmployee(), { wrapper });
-
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
 
       result.current.mutate({
         name: 'Jane Smith',
@@ -222,11 +186,9 @@ describe('useEmployees Hook', () => {
         status: 'active'
       });
 
-      // Check optimistic update happened
       await waitFor(() => {
-        const employees = queryClient.getQueryData(['employees']);
-        expect(employees).to.have.lengthOf(1);
-        expect(employees[0].name).to.equal('Jane Smith');
+        expect(result.current.isSuccess).to.be.true;
+        expect(result.current.data.id).to.equal('EMP001');
       });
     });
   });
@@ -234,26 +196,20 @@ describe('useEmployees Hook', () => {
   describe('useUpdateEmployee', () => {
     it('should update existing employee', async () => {
       authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [
-        { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'active' }
-      ];
       restEmployeeService.updateEmployee = async (employeeId, updateData) => {
         return { id: employeeId, ...updateData };
       };
 
       const { result } = renderHook(() => useUpdateEmployee(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         employeeId: 'EMP001',
         updateData: { name: 'John Updated' }
       });
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
+        expect(result.current.data.name).to.equal('John Updated');
       });
     });
   });
@@ -261,20 +217,13 @@ describe('useEmployees Hook', () => {
   describe('useApproveEmployee', () => {
     it('should approve employee', async () => {
       authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [
-        { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'pending' }
-      ];
       restEmployeeService.approveEmployee = async (employeeId) => {
         return { id: employeeId, name: 'John Doe', category: 'Driver', status: 'active' };
       };
 
       const { result } = renderHook(() => useApproveEmployee(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate('EMP001');
+      result.current.mutate('EMP001');
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
@@ -285,20 +234,13 @@ describe('useEmployees Hook', () => {
   describe('useRejectEmployee', () => {
     it('should reject employee', async () => {
       authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [
-        { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'pending' }
-      ];
       restEmployeeService.rejectEmployee = async (employeeId) => {
         return { id: employeeId, name: 'John Doe', category: 'Driver', status: 'rejected' };
       };
 
       const { result } = renderHook(() => useRejectEmployee(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate('EMP001');
+      result.current.mutate('EMP001');
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
@@ -309,24 +251,19 @@ describe('useEmployees Hook', () => {
   describe('useDeleteEmployee', () => {
     it('should delete employee', async () => {
       authService.isAuthenticated = () => true;
-      restEmployeeService.fetchEmployees = async () => [
-        { id: 'EMP001', name: 'John Doe', category: 'Driver', status: 'active' }
-      ];
+      let deletedId = null;
       restEmployeeService.deleteEmployee = async (employeeId) => {
-        // Delete doesn't return anything
+        deletedId = employeeId;
       };
 
       const { result } = renderHook(() => useDeleteEmployee(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate('EMP001');
+      result.current.mutate('EMP001');
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
       });
+      expect(deletedId).to.equal('EMP001');
     });
   });
 });

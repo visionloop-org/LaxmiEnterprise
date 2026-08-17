@@ -17,8 +17,8 @@
       "mongodb"
     ],
     "description": "Supervisor & Admin Attendance Tracking App with FastAPI backend and MongoDB database",
-    "analyzedAt": "2026-08-11T19:46:00Z",
-    "gitCommitHash": "6f8f24e6df159d8c6f0a8531f3469c0d919be014"
+    "analyzedAt": "2026-08-17T08:28:52.520379+00:00",
+    "gitCommitHash": "d5feba8e33b36c8b2eefe207bb7a9061622de54d"
   },
   "nodes": [
     {
@@ -3524,6 +3524,90 @@
         "script"
       ],
       "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/hooks/usePerformanceMonitor.js",
+      "type": "file",
+      "name": "usePerformanceMonitor.js",
+      "filePath": "packages/shared/hooks/usePerformanceMonitor.js",
+      "summary": "Custom hook for performance profiling, render tracking, slow render logging, and async operation measurement",
+      "tags": [
+        "javascript",
+        "hook",
+        "performance",
+        "shared"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/utils/requestId.js",
+      "type": "file",
+      "name": "requestId.js",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Request ID generator and tracking utilities for end-to-end API tracing",
+      "tags": [
+        "javascript",
+        "utils",
+        "tracing",
+        "shared"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/utils/logger.js",
+      "type": "file",
+      "name": "logger.js",
+      "filePath": "packages/shared/utils/logger.js",
+      "summary": "Structured JSON logging utility with configurable log levels and security scrubbing",
+      "tags": [
+        "javascript",
+        "utils",
+        "logging",
+        "shared"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/utils/security.js",
+      "type": "file",
+      "name": "security.js",
+      "filePath": "packages/shared/utils/security.js",
+      "summary": "Security validation, token sanitization, XSS defense, CSRF token generator, and RateLimiter class",
+      "tags": [
+        "javascript",
+        "utils",
+        "security",
+        "shared"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/utils/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "packages/shared/utils/config.js",
+      "summary": "Centralized runtime configuration constants and environment management",
+      "tags": [
+        "javascript",
+        "utils",
+        "config",
+        "shared"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/QueryClient.jsx",
+      "type": "file",
+      "name": "QueryClient.jsx",
+      "filePath": "apps/admin/src/QueryClient.jsx",
+      "summary": "React Query client configuration with global auth error handling for Admin app",
+      "tags": [
+        "javascript",
+        "react",
+        "react-query",
+        "admin"
+      ],
+      "complexity": "simple"
     }
   ],
   "edges": [
@@ -5050,6 +5134,51 @@
       "target": "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
       "type": "contains",
       "direction": "forward"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "file:packages/shared/hooks/usePerformanceMonitor.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "file:packages/shared/utils/requestId.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "file:packages/shared/utils/logger.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "file:packages/shared/utils/security.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "file:packages/shared/utils/config.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "file:packages/shared/utils/requestId.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "file:packages/shared/utils/logger.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "file:packages/shared/utils/config.js",
+      "type": "imports"
+    },
+    {
+      "source": "file:apps/admin/src/main.jsx",
+      "target": "file:apps/admin/src/QueryClient.jsx",
+      "type": "imports"
     }
   ],
   "layers": [
@@ -5321,7 +5450,14 @@
         "file:packages/shared/components/LoadingSpinner.jsx",
         "function:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
         "file:packages/shared/index.js",
-        "file:packages/shared/types/api.ts"
+        "file:packages/shared/types/api.ts",
+        "file:packages/shared/hooks/usePerformanceMonitor.js",
+        "file:packages/shared/utils/requestId.js",
+        "file:packages/shared/utils/logger.js",
+        "file:packages/shared/utils/security.js",
+        "file:packages/shared/utils/config.js",
+        "file:apps/admin/src/QueryClient.jsx",
+        "file:apps/supervisor/src/QueryClient.jsx"
       ]
     },
     {

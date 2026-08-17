@@ -6,12 +6,21 @@
     "apps/*"
   ],
   "scripts": {
+    "prepare": "husky",
     "dev:supervisor": "npm run dev --workspace=apps/supervisor",
     "dev:admin": "npm run dev --workspace=apps/admin",
     "build:shared": "npm run build --workspace=packages/shared",
     "build:supervisor": "npm run build --workspace=apps/supervisor",
     "build:admin": "npm run build --workspace=apps/admin",
     "build": "npm run build --workspaces --if-present",
-    "check-types": "npm run check-types --workspace=packages/shared"
+    "check-types": "npm run check-types --workspace=packages/shared",
+    "lint": "npx oxlint packages/shared/hooks packages/shared/services apps/supervisor/src apps/admin/src",
+    "lint:fix": "npx oxlint --fix packages/shared/hooks packages/shared/services apps/supervisor/src apps/admin/src",
+    "test:shared": "npm run test --workspace=packages/shared"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "oxlint": "^1.78.0"
   }
 }

@@ -176,20 +176,55 @@ app.include_router(trips_router, prefix="/api/v1/trips", tags=["Trips"])
 
 @app.get("/health")
 async def health_check():
+    """
+    Health check endpoint for monitoring system status
+    Returns overall system health without external dependencies
+    """
     return {
         "status": "healthy" if db.is_connected else "degraded",
-        "database_connected": db.is_connected,
-        "database": settings.MONGODB_DATABASE
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "version": "2.0",
+        "database": {
+            "connected": db.is_connected,
+            "name": settings.MONGODB_DATABASE,
+            "url": settings.EFFECTIVE_DATABASE_URL
+        },
+        "debug": settings.DEBUG
     }
 
 @app.get("/ready")
 async def readiness_check():
-    if not db.is_connected:
-        await db.connect()
-    return {
-        "status": "ready" if db.is_connected else "not_ready",
-        "database_connected": db.is_connected
-    }
+    """
+    Readiness check endpoint for monitoring application readiness
+    Checks if the application is ready to handle requests
+    """
+    try:
+        if not db.is_connected:
+            await db.connect()
+        
+        # Check database health by attempting a simple operation
+        await db.client.admin.command('ping')
+        
+        return {
+            "status": "ready",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "database": {
+                "connected": db.is_connected,
+                "responsive": True,
+                "name": settings.MONGODB_DATABASE
+            }
+        }
+    except Exception as e:
+        logger.error(f"Readiness check failed: {e}")
+        return {
+            "status": "not_ready",
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "database": {
+                "connected": db.is_connected,
+                "responsive": False,
+                "error": str(e)
+            }
+        }
 
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=settings.DEBUG)

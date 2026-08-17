@@ -6,8 +6,10 @@ const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
   resources: 'usable'
 });
 
+const { performance } = require('perf_hooks');
 global.window = dom.window;
 global.document = dom.window.document;
+global.performance = performance;
 global.localStorage = {
   getItem: (key) => global.localStorage._store[key] || null,
   setItem: (key, value) => { global.localStorage._store[key] = value.toString(); },

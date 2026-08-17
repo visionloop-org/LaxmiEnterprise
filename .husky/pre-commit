@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Husky pre-commit hook for Laxmi Enterprise monorepo
+# Runs quality checks before every commit
+
+# 1. Run lint-staged (oxlint on changed JS/JSX files)
+npx lint-staged
+
+# 2. Check TypeScript/JSDoc type definitions in shared package
+echo "🔍 Checking shared package types..."
+npm run check-types --workspace=packages/shared
+
+echo "✅ Pre-commit checks passed!"

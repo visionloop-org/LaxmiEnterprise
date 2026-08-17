@@ -100,10 +100,11 @@ gantt
 ### Milestone 3 — Vehicle Capacity & Assignment Engine ✅
 - Domain capacity validation, transaction-safe vehicle assignments, conflict modals, supervisor tablet UI.
 
-### Milestone 4 — Trips, Admin Analytics & Testing Suite 🔄 (In Progress)
+### Milestone 4 — Trips, Admin Analytics & Quality Suite ✅
 - Vehicle trip dispatch and task completion lifecycle (`dispatched` → `reached_location` → `delivered` → `returned`).
-- Admin portal with date filtering, payroll computation, supervisor request approvals, and session unlocking.
-- Comprehensive backend and frontend test suites.
+- Admin portal with date filtering, payroll computation, contractor settlements, bulk wage editor, supervisor request approvals, and session unlocking.
+- React Query v5 optimizations (`staleTime`, `gcTime`, error handlers), structured JSON logging, request tracing, and performance profiling.
+- Comprehensive backend (pytest) and frontend (45 passing unit/hook tests) quality test suites.
 
 ### Milestone 5 — Server Reports & Background Workers 🔮 (Upcoming)
 - Redis and Python background worker for asynchronous report generation.
@@ -114,3 +115,4 @@ gantt
 - USB QR scanner listener for worker ID gate entry.
 - Turnstile rotation sensor event processing and thermal token printing.
 - Future biometric (fingerprint/face recognition) evaluation.
+

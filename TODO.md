@@ -92,9 +92,20 @@
   - `test_vehicles.py` — Vehicle status and utilization
   - `test_error_handling.py` — Standardized error responses
 - ✅ Frontend test suite in `packages/shared/tests/` (Mocha + Chai + Babel):
-  - Service unit and edge case tests (`authService`, `backendApi`, `restEmployeeService`, `restVehicleService`, `restAssignmentService`)
-  - Hook tests (`useEmployees`, `useVehicles`, `useTrips`)
-  - Component tests (`ArrivedTimeModal`, `ErrorBoundary`, `LoadingSpinner`)
+  - Hook tests (37 passing: `useEmployees`, `useVehicles`, `useTrips`, `usePerformanceMonitor`, `useStatistics`)
+  - Utility tests (8 passing: `requestId`, `security`, `config`)
+  - Health check service tests (`healthCheck`)
+
+### 9. Frontend Performance, Security & Developer Experience (Completed)
+- ✅ **React Query v5 Optimizations**: Configured fine-tuned `staleTime` and `gcTime` policies (`staleTime: 5m` for employees, `3m` for vehicles, `30s` for trips), eliminated query key collisions, and added global `QueryCache` and `MutationCache` 401 authentication handlers.
+- ✅ **Structured JSON Logging & Tracing**: Implemented `packages/shared/utils/logger.js` with structured levels (`DEBUG`, `INFO`, `WARN`, `ERROR`), request tracing, and automated sensitive data redaction.
+- ✅ **Request ID Lifecycle Tracking**: Implemented `packages/shared/utils/requestId.js` generating `REQ-<timestamp>-<rand>` identifiers propagated across `X-Request-ID` headers.
+- ✅ **Performance Profiling Hook**: Created `usePerformanceMonitor.js` to track component render count, detect slow renders (>16ms), measure async execution duration (`measureAsync`), and set performance marks.
+- ✅ **Code Splitting & Bundle Optimization**: Code-split heavy supervisor modals (`TripTrackerModal`, `CapacityConflictModal`, `CapacityReportModal`, `VehicleAssignmentHistory`, `RequestEmployeeModal`) with scoped `<Suspense>` boundaries.
+- ✅ **Pre-Commit Quality Gate**: Integrated Husky (`.husky/pre-commit`) and `.lintstagedrc.json` with automated `oxlint` checks on staged files.
+- ✅ **Docker Container Hot-Reloading**: Configured live volume bind mounts for `packages/shared` and app `src/` directories in `docker-compose.yml` for instant Vite HMR.
+- ✅ **Backend Health Checks**: Implemented `/health` and `/ready` endpoints diagnosing database ping status, uptime, and system health.
+- ✅ **UI Category Count Bug Fix**: Corrected `useStatistics.js` category count calculation so the Vehicles tab renders accurate live fleet counts (`Vehicles (25)`).
 
 ---
 

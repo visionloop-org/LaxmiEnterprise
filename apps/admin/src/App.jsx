@@ -1,5 +1,4 @@
 import { useState, useMemo, useRef } from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   authService,
   restSessionService,
@@ -16,12 +15,6 @@ import {
 } from '@laxmi/shared'
 
 import './App.css'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: { refetchOnWindowFocus: false, retry: 1, staleTime: 5 * 60 * 1000 },
-  },
-})
 
 const DEFAULT_RATES = {
   Drivers: 800, 'Chalan Men': 650, Workers: 500, Office: 750, 'Extra Labour': 450
@@ -1119,19 +1112,15 @@ function AdminDashboard({ onLogout }) {
 }
 
 // ─── App Root ─────────────────────────────────────────────────────────────────
+// QueryClientProvider and ErrorBoundary are provided by main.jsx
 function App() {
   const [authed, setAuthed] = useState(() => authService.isAuthenticated())
   const logout = () => { authService.logout(); setAuthed(false) }
 
   return (
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        {authed
-          ? <AdminDashboard onLogout={logout} />
-          : <LoginPage onLoginSuccess={() => setAuthed(true)} />
-        }
-      </QueryClientProvider>
-    </ErrorBoundary>
+    authed
+      ? <AdminDashboard onLogout={logout} />
+      : <LoginPage onLoginSuccess={() => setAuthed(true)} />
   )
 }
 

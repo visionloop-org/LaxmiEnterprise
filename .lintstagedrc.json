@@ -1,0 +1,8 @@
+{
+  "*.{js,jsx}": [
+    "npx oxlint --fix"
+  ],
+  "*.{ts,tsx}": [
+    "npx oxlint --fix"
+  ]
+}

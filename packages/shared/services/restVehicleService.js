@@ -1,88 +1,62 @@
-// @ts-check
-// REST API service for vehicles using FastAPI backend
-import { backendApiClient } from './backendApi.js'
-
-/**
- * @typedef {Object} FrontendVehicle
- * @property {string} id
- * @property {string} name
- * @property {string} category
- * @property {number} capacity
- * @property {string} status
- * @property {boolean} active
- * @property {Object.<string, number>} [perRoleCapacity]
- * @property {string | null} [assignedDriver]
- */
-
-/**
- * @typedef {Object} VehicleFilters
- * @property {string} [vehicle_type]
- * @property {string} [status]
- * @property {boolean} [active]
- */
+const { backendApiClient } = require('./backendApi')
 
 class RestVehicleService {
-  /**
-   * @param {VehicleFilters} [filters={}]
-   * @returns {Promise<FrontendVehicle[]>}
-   */
   async fetchVehicles(filters = {}) {
     const params = new URLSearchParams()
     if (filters.vehicle_type) params.append('vehicle_type', filters.vehicle_type)
     if (filters.status) params.append('status', filters.status)
-    if (filters.active !== undefined) params.append('active', String(filters.active))
+    if (filters.active !== undefined) params.append('active', filters.active.toString())
 
-    const url = `/vehicles/${params.toString() ? '?' + params.toString() : ''}`
+    const url = `/vehicles${params.toString() ? '?' + params.toString() : ''}`
     const vehicles = await backendApiClient.get(url)
 
-    return vehicles.map((/** @type {import('../types/api.js').components['schemas']['VehicleResponse']} */ vehicle) => this.mapBackendToFrontend(vehicle))
+    return vehicles.map((vehicle) => this.mapBackendToFrontend(vehicle))
   }
 
-  /**
-   * @param {string} vehicleNumber
-   * @returns {Promise<FrontendVehicle>}
-   */
   async fetchVehicle(vehicleNumber) {
     const vehicle = await backendApiClient.get(`/vehicles/${vehicleNumber}`)
     return this.mapBackendToFrontend(vehicle)
   }
 
-  /**
-   * @param {FrontendVehicle} vehicleData
-   * @returns {Promise<FrontendVehicle>}
-   */
   async addVehicle(vehicleData) {
     const backendData = this.mapFrontendToBackend(vehicleData)
-    const result = await backendApiClient.post('/vehicles/', backendData)
+    const result = await backendApiClient.post('/vehicles', backendData)
     return this.mapBackendToFrontend(result)
   }
 
-  /**
-   * @param {string} vehicleNumber
-   * @param {Partial<FrontendVehicle>} updateData
-   * @returns {Promise<FrontendVehicle>}
-   */
-  async updateVehicle(vehicleNumber, updateData) {
-    const backendData = this.mapFrontendToBackendForUpdate(updateData)
-    const result = await backendApiClient.patch(`/vehicles/${vehicleNumber}`, backendData)
+  async updateVehicle(vehicleNumber, vehicleData) {
+    const backendData = this.mapFrontendToBackend(vehicleData)
+    const result = await backendApiClient.put(`/vehicles/${vehicleNumber}`, backendData)
     return this.mapBackendToFrontend(result)
   }
 
-  /**
-   * @param {import('../types/api.js').components['schemas']['VehicleResponse']} vehicle
-   * @returns {FrontendVehicle}
-   */
+  async updateVehicleStatus(vehicleNumber, status) {
+    const result = await backendApiClient.patch(`/vehicles/${vehicleNumber}/status`, { status })
+    return this.mapBackendToFrontend(result)
+  }
+
+  async assignDriver(vehicleNumber, driverId) {
+    const result = await backendApiClient.post(`/vehicles/${vehicleNumber}/driver/${driverId}`)
+    return this.mapBackendToFrontend(result)
+  }
+
+  async unassignDriver(vehicleNumber) {
+    const result = await backendApiClient.delete(`/vehicles/${vehicleNumber}/driver`)
+    return this.mapBackendToFrontend(result)
+  }
+
+  async deleteVehicle(vehicleNumber) {
+    await backendApiClient.delete(`/vehicles/${vehicleNumber}`)
+    return true
+  }
+
   mapBackendToFrontend(vehicle) {
-    const number = vehicle.vehicleNumber || vehicle.number || vehicle.id || ''
-    const type = vehicle.vehicleType || vehicle.type || 'Truck'
-    const name = vehicle.name || number
     return {
-      id: vehicle.vehicleNumber || vehicle.id || number,
-      number,
-      type,
-      name,
+      id: vehicle.vehicleNumber,
+      name: vehicle.vehicleNumber,
       category: 'Vehicles',
-      capacity: vehicle.capacity || 0,
+      vehicleType: vehicle.vehicleType,
+      capacity: vehicle.capacity,
       status: vehicle.status,
       active: vehicle.active,
       perRoleCapacity: vehicle.perRoleCapacity || {},
@@ -90,27 +64,20 @@ class RestVehicleService {
     }
   }
 
-  /**
-   * @param {FrontendVehicle} vehicle
-   * @returns {import('../types/api.js').components['schemas']['VehicleCreate']}
-   */
   mapFrontendToBackend(vehicle) {
-    return {
+    const backendData = {
       vehicleNumber: vehicle.id || vehicle.name,
-      vehicleType: vehicle.category || 'Truck',
+      vehicleType: vehicle.category || vehicle.vehicleType || 'Truck',
+      capacity: vehicle.capacity !== undefined ? vehicle.capacity : 10,
       status: vehicle.status || 'Available',
       active: vehicle.active !== undefined ? vehicle.active : true,
-      capacity: vehicle.capacity,
-      perRoleCapacity: vehicle.perRoleCapacity,
-      assignedDriver: vehicle.assignedDriver
+      perRoleCapacity: vehicle.perRoleCapacity || {},
+      assignedDriver: vehicle.assignedDriver || null
     }
+    return backendData
   }
 
-  /**
-   * @param {Partial<FrontendVehicle>} vehicle
-   * @returns {import('../types/api.js').components['schemas']['VehicleUpdate']}
-   */
-  mapFrontendToBackendForUpdate(vehicle) {
+  mapUpdateData(vehicle) {
     const updateData = {}
     if (vehicle.id !== undefined) updateData.vehicleNumber = vehicle.id
     if (vehicle.category !== undefined) updateData.vehicleType = vehicle.category
@@ -121,6 +88,14 @@ class RestVehicleService {
     if (vehicle.assignedDriver !== undefined) updateData.assignedDriver = vehicle.assignedDriver
     return updateData
   }
+
+  mapFrontendToBackendForUpdate(vehicle) {
+    return this.mapUpdateData(vehicle)
+  }
 }
 
-export const restVehicleService = new RestVehicleService()
+const restVehicleService = new RestVehicleService()
+
+module.exports = restVehicleService
+module.exports.restVehicleService = restVehicleService
+module.exports.RestVehicleService = RestVehicleService

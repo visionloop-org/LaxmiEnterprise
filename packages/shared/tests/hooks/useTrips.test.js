@@ -14,6 +14,9 @@ import { authService } from '../../services/authService.js';
 describe('useTrips Hook', () => {
   let queryClient;
   let originalFetchTrips;
+  let originalFetchTrip;
+  let originalCreateTrip;
+  let originalUpdateTripStatus;
   let originalIsAuthenticated;
 
   beforeEach(() => {
@@ -26,11 +29,17 @@ describe('useTrips Hook', () => {
     });
 
     originalFetchTrips = restTripService.fetchTrips;
+    originalFetchTrip = restTripService.fetchTrip;
+    originalCreateTrip = restTripService.createTrip;
+    originalUpdateTripStatus = restTripService.updateTripStatus;
     originalIsAuthenticated = authService.isAuthenticated;
   });
 
   afterEach(() => {
     restTripService.fetchTrips = originalFetchTrips;
+    restTripService.fetchTrip = originalFetchTrip;
+    restTripService.createTrip = originalCreateTrip;
+    restTripService.updateTripStatus = originalUpdateTripStatus;
     authService.isAuthenticated = originalIsAuthenticated;
   });
 
@@ -64,18 +73,18 @@ describe('useTrips Hook', () => {
 
     it('should pass filters to fetchTrips', async () => {
       authService.isAuthenticated = () => true;
+      let capturedFilters = null;
       restTripService.fetchTrips = async (filters) => {
-        expect(filters.sessionId).to.equal('SESSION123');
-        expect(filters.vehicleId).to.equal('VH001');
-        expect(filters.status).to.equal('In Progress');
-        return [];
+        capturedFilters = filters;
+        return [{ id: 'TRIP001', sessionId: 'SESSION123', vehicleId: 'VH001', status: 'In Progress' }];
       };
 
-      renderHook(() => useTrips({ sessionId: 'SESSION123', vehicleId: 'VH001', status: 'In Progress' }), { wrapper });
+      const { result } = renderHook(() => useTrips({ sessionId: 'SESSION123', vehicleId: 'VH001', status: 'In Progress' }), { wrapper });
 
       await waitFor(() => {
-        expect(restTripService.fetchTrips).to.have.been.called;
+        expect(result.current.data).to.have.lengthOf(1);
       });
+      expect(capturedFilters).to.deep.equal({ sessionId: 'SESSION123', vehicleId: 'VH001', status: 'In Progress' });
     });
   });
 
@@ -117,18 +126,13 @@ describe('useTrips Hook', () => {
   describe('useCreateTrip', () => {
     it('should create new trip', async () => {
       authService.isAuthenticated = () => true;
-      restTripService.fetchTrips = async () => [];
       restTripService.createTrip = async (tripData) => {
         return { ...tripData, id: 'TRIP001' };
       };
 
       const { result } = renderHook(() => useCreateTrip(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         sessionId: 'SESSION123',
         vehicleId: 'VH001',
         status: 'Scheduled'
@@ -136,6 +140,7 @@ describe('useTrips Hook', () => {
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
+        expect(result.current.data.id).to.equal('TRIP001');
       });
     });
   });
@@ -143,20 +148,15 @@ describe('useTrips Hook', () => {
   describe('useUpdateTripStatus', () => {
     it('should update trip status', async () => {
       authService.isAuthenticated = () => true;
-      restTripService.fetchTrips = async () => [
-        { id: 'TRIP001', sessionId: 'SESSION123', vehicleId: 'VH001', status: 'In Progress' }
-      ];
-      restTripService.updateTripStatus = async (tripId, { status, locationName, remarks }) => {
-        return { id: tripId, sessionId: 'SESSION123', vehicleId: 'VH001', status, locationName, remarks };
+      let updatedPayload = null;
+      restTripService.updateTripStatus = async (tripId, data) => {
+        updatedPayload = { tripId, ...data };
+        return { id: tripId, sessionId: 'SESSION123', vehicleId: 'VH001', ...data };
       };
 
       const { result } = renderHook(() => useUpdateTripStatus(), { wrapper });
 
-      await waitFor(() => {
-        expect(result.current.data).to.exist;
-      });
-
-      await result.current.mutate({
+      result.current.mutate({
         tripId: 'TRIP001',
         status: 'Completed',
         locationName: 'Site A',
@@ -165,6 +165,13 @@ describe('useTrips Hook', () => {
 
       await waitFor(() => {
         expect(result.current.isSuccess).to.be.true;
+      });
+      expect(updatedPayload).to.deep.equal({
+        tripId: 'TRIP001',
+        status: 'Completed',
+        locationName: 'Site A',
+        receiverName: undefined,
+        remarks: 'Trip completed successfully'
       });
     });
   });

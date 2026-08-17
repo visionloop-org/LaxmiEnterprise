@@ -1,25 +1,6 @@
-// @ts-check
-// REST API service for vehicle assignments using FastAPI backend
-import { backendApiClient } from './backendApi.js'
-
-/**
- * @typedef {Object} FrontendAssignment
- * @property {string} sessionId
- * @property {string} employeeId
- * @property {string} vehicleId
- * @property {string} assignedAt
- * @property {string} assignedBy
- * @property {string | null} unassignedAt
- * @property {string | null} unassignedBy
- */
+const { backendApiClient } = require('./backendApi')
 
 class RestAssignmentService {
-  /**
-   * @param {string} sessionId
-   * @param {string} vehicleId
-   * @param {string} employeeId
-   * @returns {Promise<FrontendAssignment>}
-   */
   async assignVehicle(sessionId, vehicleId, employeeId) {
     const result = await backendApiClient.post(
       `/assignments/sessions/${sessionId}/vehicles/${vehicleId}/employees/${employeeId}`
@@ -27,11 +8,6 @@ class RestAssignmentService {
     return this.mapBackendToFrontend(result)
   }
 
-  /**
-   * @param {string} sessionId
-   * @param {string} employeeId
-   * @returns {Promise<FrontendAssignment>}
-   */
   async unassignVehicle(sessionId, employeeId) {
     const result = await backendApiClient.delete(
       `/assignments/sessions/${sessionId}/employees/${employeeId}`
@@ -39,23 +15,13 @@ class RestAssignmentService {
     return this.mapBackendToFrontend(result)
   }
 
-  /**
-   * @param {string} sessionId
-   * @param {string} vehicleId
-   * @returns {Promise<FrontendAssignment[]>}
-   */
   async getVehicleAssignments(sessionId, vehicleId) {
     const assignments = await backendApiClient.get(
       `/assignments/sessions/${sessionId}/vehicles/${vehicleId}`
     )
-    return assignments.map((/** @type {import('../types/api.js').components['schemas']['VehicleAssignmentResponse']} */ assignment) => this.mapBackendToFrontend(assignment))
+    return assignments.map((assignment) => this.mapBackendToFrontend(assignment))
   }
 
-  /**
-   * @param {string} sessionId
-   * @param {string} employeeId
-   * @returns {Promise<FrontendAssignment>}
-   */
   async getEmployeeAssignment(sessionId, employeeId) {
     const assignment = await backendApiClient.get(
       `/assignments/sessions/${sessionId}/employees/${employeeId}`
@@ -63,11 +29,6 @@ class RestAssignmentService {
     return this.mapBackendToFrontend(assignment)
   }
 
-  // Map backend camelCase to frontend structure
-  /**
-   * @param {import('../types/api.js').components['schemas']['VehicleAssignmentResponse']} assignment
-   * @returns {FrontendAssignment}
-   */
   mapBackendToFrontend(assignment) {
     return {
       sessionId: assignment.sessionId,
@@ -80,11 +41,6 @@ class RestAssignmentService {
     }
   }
 
-  // Map frontend structure to backend camelCase
-  /**
-   * @param {Partial<FrontendAssignment>} assignment
-   * @returns {{sessionId: string, vehicleId: string, employeeId: string, assignedBy: string}}
-   */
   mapFrontendToBackend(assignment) {
     return {
       sessionId: assignment.sessionId,
@@ -95,4 +51,8 @@ class RestAssignmentService {
   }
 }
 
-export const restAssignmentService = new RestAssignmentService()
+const restAssignmentService = new RestAssignmentService()
+
+module.exports = restAssignmentService
+module.exports.restAssignmentService = restAssignmentService
+module.exports.RestAssignmentService = RestAssignmentService
