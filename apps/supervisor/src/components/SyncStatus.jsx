@@ -35,10 +35,10 @@ export default function SyncStatus() {
 
   const getStatusText = () => {
     if (!status.isOnline) return 'Offline'
-    if (status.syncStatus === 'syncing') return 'Syncing...'
-    if (status.syncStatus === 'error') return 'Sync Error'
-    if (status.syncStatus === 'partial') return `Syncing (${status.count} pending)`
-    return 'Synced'
+    if (status.syncStatus === 'syncing') return 'Syncing with Odoo...'
+    if (status.syncStatus === 'error') return 'Odoo Sync Error'
+    if (status.syncStatus === 'partial') return `Syncing to Odoo (${status.count} pending)`
+    return 'Odoo 18 Synced'
   }
 
   return (

@@ -13,6 +13,7 @@ import {
   useBulkUpdateCompensation,
   useTrips
 } from '@laxmi/shared'
+import GoogleSheetsSyncModal from './components/GoogleSheetsSyncModal'
 
 import './App.css'
 
@@ -153,8 +154,11 @@ function AdminDashboard({ onLogout }) {
   const [vehSearch,  setVehSearch]  = useState('')
   const [vehPage,    setVehPage]    = useState(1)
 
-  const [toast, setToast]  = useState('')
-  const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(''), 4000) }
+  const [toast, setToast]  = useState(null)
+  const showToast = (msg, type = 'success') => {
+    setToast(typeof msg === 'object' ? msg : { message: msg, type })
+    setTimeout(() => setToast(null), 4000)
+  }
 
   // ── Collapsible panel state ───────────────────────────────────────────────
   const [showSessionPanel,  setShowSessionPanel]  = useState(false)
@@ -164,6 +168,7 @@ function AdminDashboard({ onLogout }) {
   // ── Session unlock ────────────────────────────────────────────────────────
   const [sessionId,      setSessionId]      = useState('')
   const [unlocking,      setUnlocking]      = useState(false)
+  const [isSheetsModalOpen, setIsSheetsModalOpen] = useState(false)
 
   // ── Edit modal ────────────────────────────────────────────────────────────
   const [editingEmp, setEditingEmp] = useState(null)
@@ -283,9 +288,11 @@ function AdminDashboard({ onLogout }) {
     setUnlocking(true)
     try {
       await restSessionService.unlockSession(sessionId)
-      showToast(`Session "${sessionId}" unlocked — supervisors can now edit.`)
+      showToast(`Session "${sessionId}" reset & unlocked — supervisors can now edit.`, 'success')
       setSessionId('')
-    } catch (err) { alert(err.message || 'Unlock failed.') }
+    } catch (err) {
+      showToast(err.message || 'Unlock failed.', 'error')
+    }
     finally { setUnlocking(false) }
   }
 
@@ -440,7 +447,29 @@ function AdminDashboard({ onLogout }) {
           <h1>🏢 Laxmi Enterprise Admin</h1>
           <p className="header-subtitle">Payroll · Contractor Settlements · Fleet · Bulk Compensation</p>
         </div>
-        <div className="header-actions">
+        <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{
+            fontSize: '12px',
+            color: '#94a3b8',
+            backgroundColor: '#1e293b',
+            padding: '6px 12px',
+            borderRadius: '8px',
+            border: '1px solid #334155'
+          }}>
+            👤 <span style={{ color: '#f8fafc', fontWeight: '600' }}>{authService.getUser()?.name || authService.getUser()?.username || 'Ruhil Jaiswal'}</span>
+            <span style={{
+              marginLeft: '6px',
+              padding: '2px 6px',
+              backgroundColor: '#6366f1',
+              color: '#ffffff',
+              borderRadius: '4px',
+              fontSize: '10px',
+              fontWeight: '700'
+            }}>
+              {(authService.getUser()?.role || 'Developer').toUpperCase()}
+            </span>
+          </div>
+          <button className="btn-primary" style={{ background: '#059669', borderColor: '#047857' }} onClick={() => setIsSheetsModalOpen(true)}>📊 Google Sheets Sync</button>
           <button className="btn-primary" onClick={openBulkEditor}>⚡ Bulk Wage Editor</button>
           <button className="btn-danger"  onClick={onLogout}>Logout</button>
         </div>
@@ -449,7 +478,11 @@ function AdminDashboard({ onLogout }) {
       <div className="dashboard-body">
 
         {/* ── Toast ── */}
-        {toast && <div className="toast-notification">✅ {toast}</div>}
+        {toast && (
+          <div className={`toast-notification ${toast.type === 'error' ? 'toast-error' : ''}`} style={toast.type === 'error' ? { background: '#ef4444', color: '#ffffff' } : {}}>
+            {toast.type === 'error' ? '❌' : '✅'} {toast.message || toast.msg || toast}
+          </div>
+        )}
 
         {/* ── Pending Approvals Banner ── */}
         {pendingEmps.length > 0 && (
@@ -1107,6 +1140,12 @@ function AdminDashboard({ onLogout }) {
           </div>
         </div>
       )}
+
+      {/* ── Google Sheets Sync Modal ── */}
+      <GoogleSheetsSyncModal
+        isOpen={isSheetsModalOpen}
+        onClose={() => setIsSheetsModalOpen(false)}
+      />
     </div>
   )
 }

@@ -1,504 +1,92 @@
 {
+  "batchIndex": 5,
   "nodes": [
     {
-      "id": "file:packages/shared/components/ErrorBoundary.jsx",
+      "id": "config:apps/admin/.oxlintrc.json",
+      "name": ".oxlintrc.json",
+      "type": "config",
+      "filePath": "apps/admin/.oxlintrc.json",
+      "summary": "Admin management portal component (.oxlintrc.json)",
+      "tags": [
+        "portal",
+        "management",
+        "json",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:apps/admin/README.md",
+      "name": "README.md",
+      "type": "document",
+      "filePath": "apps/admin/README.md",
+      "summary": "Admin management portal component (README.md)",
+      "tags": [
+        "markdown",
+        "portal",
+        "management",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/admin/index.html",
+      "name": "index.html",
       "type": "file",
-      "name": "ErrorBoundary.jsx",
-      "filePath": "packages/shared/components/ErrorBoundary.jsx",
-      "summary": "Javascript code file (74 lines)",
+      "filePath": "apps/admin/index.html",
+      "summary": "Admin management portal component (index.html)",
       "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "class:packages/shared/components/ErrorBoundary.jsx:ErrorBoundary",
-      "type": "class",
-      "name": "ErrorBoundary",
-      "filePath": "packages/shared/components/ErrorBoundary.jsx",
-      "summary": "Class ErrorBoundary in packages/shared/components/ErrorBoundary.jsx",
-      "tags": [
-        "class",
-        "javascript"
+        "portal",
+        "management",
+        "frontend",
+        "admin",
+        "html"
       ],
       "complexity": "moderate"
     },
     {
-      "id": "file:packages/shared/hooks/useEmployees.js",
-      "type": "file",
-      "name": "useEmployees.js",
-      "filePath": "packages/shared/hooks/useEmployees.js",
-      "summary": "Javascript code file (125 lines)",
+      "id": "config:apps/admin/package.json",
+      "name": "package.json",
+      "type": "config",
+      "filePath": "apps/admin/package.json",
+      "summary": "Admin management portal component (package.json)",
       "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "function:packages/shared/hooks/useEmployees.js:useEmployees",
-      "type": "function",
-      "name": "useEmployees",
-      "filePath": "packages/shared/hooks/useEmployees.js",
-      "summary": "Function useEmployees in packages/shared/hooks/useEmployees.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useEmployees.js:useEmployee",
-      "type": "function",
-      "name": "useEmployee",
-      "filePath": "packages/shared/hooks/useEmployees.js",
-      "summary": "Function useEmployee in packages/shared/hooks/useEmployees.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
-      "type": "function",
-      "name": "useUpdateAttendance",
-      "filePath": "packages/shared/hooks/useEmployees.js",
-      "summary": "Function useUpdateAttendance in packages/shared/hooks/useEmployees.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
-      "type": "function",
-      "name": "useAddEmployee",
-      "filePath": "packages/shared/hooks/useEmployees.js",
-      "summary": "Function useAddEmployee in packages/shared/hooks/useEmployees.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
-      "type": "function",
-      "name": "useUpdateEmployee",
-      "filePath": "packages/shared/hooks/useEmployees.js",
-      "summary": "Function useUpdateEmployee in packages/shared/hooks/useEmployees.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:packages/shared/hooks/useVehicles.js",
-      "type": "file",
-      "name": "useVehicles.js",
-      "filePath": "packages/shared/hooks/useVehicles.js",
-      "summary": "Javascript code file (56 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useVehicles.js:useVehicles",
-      "type": "function",
-      "name": "useVehicles",
-      "filePath": "packages/shared/hooks/useVehicles.js",
-      "summary": "Function useVehicles in packages/shared/hooks/useVehicles.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useVehicles.js:useVehicle",
-      "type": "function",
-      "name": "useVehicle",
-      "filePath": "packages/shared/hooks/useVehicles.js",
-      "summary": "Function useVehicle in packages/shared/hooks/useVehicles.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
-      "type": "function",
-      "name": "useUpdateVehicleStatus",
-      "filePath": "packages/shared/hooks/useVehicles.js",
-      "summary": "Function useUpdateVehicleStatus in packages/shared/hooks/useVehicles.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
-      "type": "function",
-      "name": "useAddVehicle",
-      "filePath": "packages/shared/hooks/useVehicles.js",
-      "summary": "Function useAddVehicle in packages/shared/hooks/useVehicles.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
-      "type": "function",
-      "name": "useUpdateVehicle",
-      "filePath": "packages/shared/hooks/useVehicles.js",
-      "summary": "Function useUpdateVehicle in packages/shared/hooks/useVehicles.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:packages/shared/services/authService.js",
-      "type": "file",
-      "name": "authService.js",
-      "filePath": "packages/shared/services/authService.js",
-      "summary": "Javascript code file (117 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/authService.js:AuthService",
-      "type": "class",
-      "name": "AuthService",
-      "filePath": "packages/shared/services/authService.js",
-      "summary": "Class AuthService in packages/shared/services/authService.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/shared/services/backendApi.js",
-      "type": "file",
-      "name": "backendApi.js",
-      "filePath": "packages/shared/services/backendApi.js",
-      "summary": "Javascript code file (188 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/backendApi.js:NetworkError",
-      "type": "class",
-      "name": "NetworkError",
-      "filePath": "packages/shared/services/backendApi.js",
-      "summary": "Class NetworkError in packages/shared/services/backendApi.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/backendApi.js:AuthError",
-      "type": "class",
-      "name": "AuthError",
-      "filePath": "packages/shared/services/backendApi.js",
-      "summary": "Class AuthError in packages/shared/services/backendApi.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/backendApi.js:ValidationError",
-      "type": "class",
-      "name": "ValidationError",
-      "filePath": "packages/shared/services/backendApi.js",
-      "summary": "Class ValidationError in packages/shared/services/backendApi.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/backendApi.js:BackendApiClient",
-      "type": "class",
-      "name": "BackendApiClient",
-      "filePath": "packages/shared/services/backendApi.js",
-      "summary": "Class BackendApiClient in packages/shared/services/backendApi.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/shared/services/restAssignmentService.js",
-      "type": "file",
-      "name": "restAssignmentService.js",
-      "filePath": "packages/shared/services/restAssignmentService.js",
-      "summary": "Javascript code file (98 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "class:packages/shared/services/restAssignmentService.js:RestAssignmentService",
-      "type": "class",
-      "name": "RestAssignmentService",
-      "filePath": "packages/shared/services/restAssignmentService.js",
-      "summary": "Class RestAssignmentService in packages/shared/services/restAssignmentService.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/shared/services/restEmployeeService.js",
-      "type": "file",
-      "name": "restEmployeeService.js",
-      "filePath": "packages/shared/services/restEmployeeService.js",
-      "summary": "Javascript code file (186 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/restEmployeeService.js:RestEmployeeService",
-      "type": "class",
-      "name": "RestEmployeeService",
-      "filePath": "packages/shared/services/restEmployeeService.js",
-      "summary": "Class RestEmployeeService in packages/shared/services/restEmployeeService.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/shared/services/restSessionService.js",
-      "type": "file",
-      "name": "restSessionService.js",
-      "filePath": "packages/shared/services/restSessionService.js",
-      "summary": "Javascript code file (217 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/restSessionService.js:RestSessionService",
-      "type": "class",
-      "name": "RestSessionService",
-      "filePath": "packages/shared/services/restSessionService.js",
-      "summary": "Class RestSessionService in packages/shared/services/restSessionService.js",
-      "tags": [
-        "class",
-        "javascript"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:packages/shared/services/restVehicleService.js",
-      "type": "file",
-      "name": "restVehicleService.js",
-      "filePath": "packages/shared/services/restVehicleService.js",
-      "summary": "Javascript code file (160 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "class:packages/shared/services/restVehicleService.js:RestVehicleService",
-      "type": "class",
-      "name": "RestVehicleService",
-      "filePath": "packages/shared/services/restVehicleService.js",
-      "summary": "Class RestVehicleService in packages/shared/services/restVehicleService.js",
-      "tags": [
-        "class",
-        "javascript"
+        "portal",
+        "management",
+        "json",
+        "frontend",
+        "admin"
       ],
       "complexity": "moderate"
     }
   ],
-  "edges": [
+  "edges": [],
+  "batchFiles": [
     {
-      "source": "file:packages/shared/components/ErrorBoundary.jsx",
-      "target": "file:packages/shared/services/backendApi.js",
-      "type": "imports"
+      "path": "apps/admin/.oxlintrc.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
     },
     {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "file:packages/shared/services/authService.js",
-      "type": "imports"
+      "path": "apps/admin/README.md",
+      "language": "markdown",
+      "sizeLines": 88,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "file:packages/shared/services/restEmployeeService.js",
-      "type": "imports"
+      "path": "apps/admin/index.html",
+      "language": "html",
+      "sizeLines": 13,
+      "fileCategory": "markup"
     },
     {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "file:packages/shared/services/authService.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "file:packages/shared/services/restVehicleService.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/services/authService.js",
-      "target": "file:packages/shared/services/backendApi.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/services/restAssignmentService.js",
-      "target": "file:packages/shared/services/backendApi.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/services/restEmployeeService.js",
-      "target": "file:packages/shared/services/backendApi.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/services/restSessionService.js",
-      "target": "file:packages/shared/services/backendApi.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/services/restVehicleService.js",
-      "target": "file:packages/shared/services/backendApi.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:packages/shared/components/ErrorBoundary.jsx",
-      "target": "class:packages/shared/components/ErrorBoundary.jsx:ErrorBoundary",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "function:packages/shared/hooks/useEmployees.js:useEmployees",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "function:packages/shared/hooks/useEmployees.js:useEmployee",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useEmployees.js",
-      "target": "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "function:packages/shared/hooks/useVehicles.js:useVehicles",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "function:packages/shared/hooks/useVehicles.js:useVehicle",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/hooks/useVehicles.js",
-      "target": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/authService.js",
-      "target": "class:packages/shared/services/authService.js:AuthService",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/backendApi.js",
-      "target": "class:packages/shared/services/backendApi.js:NetworkError",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/backendApi.js",
-      "target": "class:packages/shared/services/backendApi.js:AuthError",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/backendApi.js",
-      "target": "class:packages/shared/services/backendApi.js:ValidationError",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/backendApi.js",
-      "target": "class:packages/shared/services/backendApi.js:BackendApiClient",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/restAssignmentService.js",
-      "target": "class:packages/shared/services/restAssignmentService.js:RestAssignmentService",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/restEmployeeService.js",
-      "target": "class:packages/shared/services/restEmployeeService.js:RestEmployeeService",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/restSessionService.js",
-      "target": "class:packages/shared/services/restSessionService.js:RestSessionService",
-      "type": "contains"
-    },
-    {
-      "source": "file:packages/shared/services/restVehicleService.js",
-      "target": "class:packages/shared/services/restVehicleService.js:RestVehicleService",
-      "type": "contains"
+      "path": "apps/admin/package.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
     }
   ]
 }

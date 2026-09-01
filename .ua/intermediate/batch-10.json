@@ -1,101 +1,636 @@
 {
+  "batchIndex": 10,
   "nodes": [
     {
-      "id": "document:ARCHITECTURE.md",
-      "type": "document",
-      "name": "ARCHITECTURE.md",
-      "filePath": "ARCHITECTURE.md",
-      "summary": "Markdown docs file (58 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:DOCKER_DEPLOYMENT.md",
-      "type": "document",
-      "name": "DOCKER_DEPLOYMENT.md",
-      "filePath": "DOCKER_DEPLOYMENT.md",
-      "summary": "Markdown docs file (93 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:GOALS.md",
-      "type": "document",
-      "name": "GOALS.md",
-      "filePath": "GOALS.md",
-      "summary": "Markdown docs file (70 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:MASTER INSTRUCTIONS.md",
-      "type": "document",
-      "name": "MASTER INSTRUCTIONS.md",
-      "filePath": "MASTER INSTRUCTIONS.md",
-      "summary": "Markdown docs file (68 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:TODO.md",
-      "type": "document",
-      "name": "TODO.md",
-      "filePath": "TODO.md",
-      "summary": "Markdown docs file (94 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:TYPE_SYNC_GUIDE.md",
-      "type": "document",
-      "name": "TYPE_SYNC_GUIDE.md",
-      "filePath": "TYPE_SYNC_GUIDE.md",
-      "summary": "Markdown docs file (106 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "document:WORKFLOW_PLAN.md",
-      "type": "document",
-      "name": "WORKFLOW_PLAN.md",
-      "filePath": "WORKFLOW_PLAN.md",
-      "summary": "Markdown docs file (207 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "moderate"
-    },
-    {
-      "id": "file:docker-compose.yml",
+      "id": "file:apps/admin/src/App.jsx",
+      "name": "App.jsx",
       "type": "file",
-      "name": "docker-compose.yml",
-      "filePath": "docker-compose.yml",
-      "summary": "Yaml infra file (79 lines)",
+      "filePath": "apps/admin/src/App.jsx",
+      "summary": "Admin management portal component (App.jsx)",
       "tags": [
-        "yaml",
-        "infra"
+        "javascript",
+        "portal",
+        "management",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/admin/src/QueryClient.jsx",
+      "name": "QueryClient.jsx",
+      "type": "file",
+      "filePath": "apps/admin/src/QueryClient.jsx",
+      "summary": "Admin management portal component (QueryClient.jsx)",
+      "tags": [
+        "javascript",
+        "portal",
+        "management",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/admin/src/components/AdminDashboard.jsx",
+      "name": "AdminDashboard.jsx",
+      "type": "file",
+      "filePath": "apps/admin/src/components/AdminDashboard.jsx",
+      "summary": "Admin management portal component (AdminDashboard.jsx)",
+      "tags": [
+        "javascript",
+        "portal",
+        "management",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/admin/src/components/OdooSyncModal.jsx",
+      "name": "OdooSyncModal.jsx",
+      "type": "file",
+      "filePath": "apps/admin/src/components/OdooSyncModal.jsx",
+      "summary": "Odoo 18 ERP integration component for OdooSyncModal.jsx",
+      "tags": [
+        "odoo",
+        "backend",
+        "javascript",
+        "database",
+        "erp"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/admin/src/components/OdooSyncModal.jsx:OdooSyncModal",
+      "name": "OdooSyncModal",
+      "type": "class",
+      "filePath": "apps/admin/src/components/OdooSyncModal.jsx",
+      "summary": "Exported component OdooSyncModal in OdooSyncModal.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/index.css",
+      "name": "index.css",
+      "type": "file",
+      "filePath": "apps/admin/src/index.css",
+      "summary": "Admin management portal component (index.css)",
+      "tags": [
+        "portal",
+        "management",
+        "css",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/admin/src/main.jsx",
+      "name": "main.jsx",
+      "type": "file",
+      "filePath": "apps/admin/src/main.jsx",
+      "summary": "Admin management portal component (main.jsx)",
+      "tags": [
+        "javascript",
+        "portal",
+        "management",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/admin/vite.config.js",
+      "name": "vite.config.js",
+      "type": "file",
+      "filePath": "apps/admin/vite.config.js",
+      "summary": "Admin management portal component (vite.config.js)",
+      "tags": [
+        "javascript",
+        "portal",
+        "management",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/postcss.config.js",
+      "name": "postcss.config.js",
+      "type": "file",
+      "filePath": "apps/supervisor/postcss.config.js",
+      "summary": "Supervisor tablet attendance tracking component (postcss.config.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/App.css",
+      "name": "App.css",
+      "type": "file",
+      "filePath": "apps/supervisor/src/App.css",
+      "summary": "Supervisor tablet attendance tracking component (App.css)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "kiosk",
+        "css",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/App.jsx",
+      "name": "App.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/App.jsx",
+      "summary": "Supervisor tablet attendance tracking component (App.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/QueryClient.jsx",
+      "name": "QueryClient.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/QueryClient.jsx",
+      "summary": "Supervisor tablet attendance tracking component (QueryClient.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "name": "AttendanceControl.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/AttendanceControl.jsx",
+      "summary": "Supervisor tablet attendance tracking component (AttendanceControl.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "name": "CapacityConflictModal.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "summary": "Supervisor tablet attendance tracking component (CapacityConflictModal.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CapacityReportModal.jsx",
+      "name": "CapacityReportModal.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "summary": "Supervisor tablet attendance tracking component (CapacityReportModal.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/CategoryTabs.jsx",
+      "name": "CategoryTabs.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "summary": "Supervisor tablet attendance tracking component (CategoryTabs.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "name": "EmployeeAvatar.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "summary": "Supervisor tablet attendance tracking component (EmployeeAvatar.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/EmployeeRow.jsx",
+      "name": "EmployeeRow.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/EmployeeRow.jsx",
+      "summary": "Supervisor tablet attendance tracking component (EmployeeRow.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/EmployeeTable.jsx",
+      "name": "EmployeeTable.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/EmployeeTable.jsx",
+      "summary": "Supervisor tablet attendance tracking component (EmployeeTable.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/FilterChips.jsx",
+      "name": "FilterChips.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/FilterChips.jsx",
+      "summary": "Supervisor tablet attendance tracking component (FilterChips.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "name": "LeftColumn.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "summary": "Supervisor tablet attendance tracking component (LeftColumn.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+      "name": "LeftColumn",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/LeftColumn.jsx",
+      "summary": "Exported component LeftColumn in LeftColumn.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "name": "LoginModal.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "summary": "Supervisor tablet attendance tracking component (LoginModal.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+      "name": "LoginModal",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/LoginModal.jsx",
+      "summary": "Exported component LoginModal in LoginModal.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/RequestEmployeeModal.jsx",
+      "name": "RequestEmployeeModal.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/RequestEmployeeModal.jsx",
+      "summary": "Supervisor tablet attendance tracking component (RequestEmployeeModal.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/RequestEmployeeModal.jsx:RequestEmployeeModal",
+      "name": "RequestEmployeeModal",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/RequestEmployeeModal.jsx",
+      "summary": "Exported component RequestEmployeeModal in RequestEmployeeModal.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/RightColumn.jsx",
+      "name": "RightColumn.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/RightColumn.jsx",
+      "summary": "Supervisor tablet attendance tracking component (RightColumn.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "name": "SyncStatus.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "summary": "Supervisor tablet attendance tracking component (SyncStatus.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+      "name": "SyncStatus",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/SyncStatus.jsx",
+      "summary": "Exported component SyncStatus in SyncStatus.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/TripTrackerModal.jsx",
+      "name": "TripTrackerModal.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/TripTrackerModal.jsx",
+      "summary": "Supervisor tablet attendance tracking component (TripTrackerModal.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/TripTrackerModal.jsx:TripTrackerModal",
+      "name": "TripTrackerModal",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/TripTrackerModal.jsx",
+      "summary": "Exported component TripTrackerModal in TripTrackerModal.jsx",
+      "tags": [
+        "component",
+        "frontend"
       ],
       "complexity": "simple"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:apps/admin/src/components/OdooSyncModal.jsx",
+      "target": "component:apps/admin/src/components/OdooSyncModal.jsx:OdooSyncModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/LeftColumn.jsx",
+      "target": "component:apps/supervisor/src/components/LeftColumn.jsx:LeftColumn",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/LoginModal.jsx",
+      "target": "component:apps/supervisor/src/components/LoginModal.jsx:LoginModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/RequestEmployeeModal.jsx",
+      "target": "component:apps/supervisor/src/components/RequestEmployeeModal.jsx:RequestEmployeeModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/SyncStatus.jsx",
+      "target": "component:apps/supervisor/src/components/SyncStatus.jsx:SyncStatus",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/TripTrackerModal.jsx",
+      "target": "component:apps/supervisor/src/components/TripTrackerModal.jsx:TripTrackerModal",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": "apps/admin/src/App.jsx",
+      "language": "javascript",
+      "sizeLines": 1146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/src/QueryClient.jsx",
+      "language": "javascript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/src/components/AdminDashboard.jsx",
+      "language": "javascript",
+      "sizeLines": 705,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/src/components/OdooSyncModal.jsx",
+      "language": "javascript",
+      "sizeLines": 185,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/src/index.css",
+      "language": "css",
+      "sizeLines": 111,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/admin/src/main.jsx",
+      "language": "javascript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/vite.config.js",
+      "language": "javascript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/postcss.config.js",
+      "language": "javascript",
+      "sizeLines": 6,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/App.css",
+      "language": "css",
+      "sizeLines": 197,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/supervisor/src/App.jsx",
+      "language": "javascript",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/QueryClient.jsx",
+      "language": "javascript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/AttendanceControl.jsx",
+      "language": "javascript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+      "language": "javascript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/CapacityReportModal.jsx",
+      "language": "javascript",
+      "sizeLines": 198,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/CategoryTabs.jsx",
+      "language": "javascript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+      "language": "javascript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/EmployeeRow.jsx",
+      "language": "javascript",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/EmployeeTable.jsx",
+      "language": "javascript",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/FilterChips.jsx",
+      "language": "javascript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/LeftColumn.jsx",
+      "language": "javascript",
+      "sizeLines": 298,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/LoginModal.jsx",
+      "language": "javascript",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/RequestEmployeeModal.jsx",
+      "language": "javascript",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/RightColumn.jsx",
+      "language": "javascript",
+      "sizeLines": 281,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/SyncStatus.jsx",
+      "language": "javascript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/TripTrackerModal.jsx",
+      "language": "javascript",
+      "sizeLines": 391,
+      "fileCategory": "code"
+    }
+  ]
 }

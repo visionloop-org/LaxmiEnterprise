@@ -1,53 +1,2098 @@
 {
+  "batchIndex": 13,
   "nodes": [
     {
-      "id": "config:apps/supervisor/.oxlintrc.json",
-      "type": "config",
-      "name": ".oxlintrc.json",
-      "filePath": "apps/supervisor/.oxlintrc.json",
-      "summary": "Json config file (8 lines)",
+      "id": "file:packages/shared/check-types.js",
+      "name": "check-types.js",
+      "type": "file",
+      "filePath": "packages/shared/check-types.js",
+      "summary": "Shared enterprise SDK and API client module (check-types.js)",
       "tags": [
-        "json",
-        "config"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:apps/supervisor/MASTER INSTRUCTIONS.md",
-      "type": "document",
-      "name": "MASTER INSTRUCTIONS.md",
-      "filePath": "apps/supervisor/MASTER INSTRUCTIONS.md",
-      "summary": "Markdown docs file (77 lines)",
-      "tags": [
-        "markdown",
-        "docs"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "document:apps/supervisor/README.md",
-      "type": "document",
-      "name": "README.md",
-      "filePath": "apps/supervisor/README.md",
-      "summary": "Markdown docs file (127 lines)",
-      "tags": [
-        "markdown",
-        "docs"
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
       ],
       "complexity": "moderate"
     },
     {
-      "id": "config:apps/supervisor/package.json",
-      "type": "config",
-      "name": "package.json",
-      "filePath": "apps/supervisor/package.json",
-      "summary": "Json config file (29 lines)",
+      "id": "file:packages/shared/components/ArrivedTimeModal.jsx",
+      "name": "ArrivedTimeModal.jsx",
+      "type": "file",
+      "filePath": "packages/shared/components/ArrivedTimeModal.jsx",
+      "summary": "Shared enterprise SDK and API client module (ArrivedTimeModal.jsx)",
       "tags": [
-        "json",
-        "config"
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/components/ArrivedTimeModal.jsx:ArrivedTimeModal",
+      "name": "ArrivedTimeModal",
+      "type": "class",
+      "filePath": "packages/shared/components/ArrivedTimeModal.jsx",
+      "summary": "Exported component ArrivedTimeModal in ArrivedTimeModal.jsx",
+      "tags": [
+        "component",
+        "frontend"
       ],
       "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/components/ErrorBoundary.jsx",
+      "name": "ErrorBoundary.jsx",
+      "type": "file",
+      "filePath": "packages/shared/components/ErrorBoundary.jsx",
+      "summary": "Shared enterprise SDK and API client module (ErrorBoundary.jsx)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/components/LoadingSpinner.jsx",
+      "name": "LoadingSpinner.jsx",
+      "type": "file",
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "summary": "Shared enterprise SDK and API client module (LoadingSpinner.jsx)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+      "name": "LoadingSpinner",
+      "type": "class",
+      "filePath": "packages/shared/components/LoadingSpinner.jsx",
+      "summary": "Exported component LoadingSpinner in LoadingSpinner.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/hooks/useEmployees.js",
+      "name": "useEmployees.js",
+      "type": "file",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Shared enterprise SDK and API client module (useEmployees.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useEmployees",
+      "name": "useEmployees",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useEmployees in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useEmployee",
+      "name": "useEmployee",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useEmployee in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
+      "name": "useUpdateAttendance",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useUpdateAttendance in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
+      "name": "useAddEmployee",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useAddEmployee in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
+      "name": "useUpdateEmployee",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useUpdateEmployee in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useBulkUpdateCompensation",
+      "name": "useBulkUpdateCompensation",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useBulkUpdateCompensation in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useApproveEmployee",
+      "name": "useApproveEmployee",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useApproveEmployee in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useRejectEmployee",
+      "name": "useRejectEmployee",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useRejectEmployee in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useDeleteEmployee",
+      "name": "useDeleteEmployee",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useDeleteEmployee in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useEmployees.js:useSyncEmployeesFromOdoo",
+      "name": "useSyncEmployeesFromOdoo",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useEmployees.js",
+      "summary": "Exported function useSyncEmployeesFromOdoo in useEmployees.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/hooks/usePerformanceMonitor.js",
+      "name": "usePerformanceMonitor.js",
+      "type": "file",
+      "filePath": "packages/shared/hooks/usePerformanceMonitor.js",
+      "summary": "Shared enterprise SDK and API client module (usePerformanceMonitor.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/hooks/usePerformanceMonitor.js:usePerformanceMonitor",
+      "name": "usePerformanceMonitor",
+      "type": "function",
+      "filePath": "packages/shared/hooks/usePerformanceMonitor.js",
+      "summary": "Exported function usePerformanceMonitor in usePerformanceMonitor.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/hooks/useTrips.js",
+      "name": "useTrips.js",
+      "type": "file",
+      "filePath": "packages/shared/hooks/useTrips.js",
+      "summary": "Shared enterprise SDK and API client module (useTrips.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/hooks/useTrips.js:useTrips",
+      "name": "useTrips",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useTrips.js",
+      "summary": "Exported function useTrips in useTrips.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useTrips.js:useTrip",
+      "name": "useTrip",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useTrips.js",
+      "summary": "Exported function useTrip in useTrips.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useTrips.js:useCreateTrip",
+      "name": "useCreateTrip",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useTrips.js",
+      "summary": "Exported function useCreateTrip in useTrips.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useTrips.js:useUpdateTripStatus",
+      "name": "useUpdateTripStatus",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useTrips.js",
+      "summary": "Exported function useUpdateTripStatus in useTrips.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/hooks/useVehicles.js",
+      "name": "useVehicles.js",
+      "type": "file",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Shared enterprise SDK and API client module (useVehicles.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useVehicles",
+      "name": "useVehicles",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Exported function useVehicles in useVehicles.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useVehicle",
+      "name": "useVehicle",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Exported function useVehicle in useVehicles.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
+      "name": "useUpdateVehicleStatus",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Exported function useUpdateVehicleStatus in useVehicles.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
+      "name": "useAddVehicle",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Exported function useAddVehicle in useVehicles.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
+      "name": "useUpdateVehicle",
+      "type": "function",
+      "filePath": "packages/shared/hooks/useVehicles.js",
+      "summary": "Exported function useUpdateVehicle in useVehicles.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/index.js",
+      "name": "index.js",
+      "type": "file",
+      "filePath": "packages/shared/index.js",
+      "summary": "Shared enterprise SDK and API client module (index.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/index.js:authService",
+      "name": "authService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function authService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:AuthService",
+      "name": "AuthService",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component AuthService in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:backendApiClient",
+      "name": "backendApiClient",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function backendApiClient in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:BackendApiClient",
+      "name": "BackendApiClient",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component BackendApiClient in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:APIError",
+      "name": "APIError",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component APIError in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:NetworkError",
+      "name": "NetworkError",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component NetworkError in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:AuthError",
+      "name": "AuthError",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component AuthError in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:ValidationError",
+      "name": "ValidationError",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component ValidationError in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:ConflictError",
+      "name": "ConflictError",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component ConflictError in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:NotFoundError",
+      "name": "NotFoundError",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component NotFoundError in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:restEmployeeService",
+      "name": "restEmployeeService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function restEmployeeService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:RestEmployeeService",
+      "name": "RestEmployeeService",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component RestEmployeeService in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:restVehicleService",
+      "name": "restVehicleService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function restVehicleService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:RestVehicleService",
+      "name": "RestVehicleService",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component RestVehicleService in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:restAssignmentService",
+      "name": "restAssignmentService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function restAssignmentService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:RestAssignmentService",
+      "name": "RestAssignmentService",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component RestAssignmentService in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:restSessionService",
+      "name": "restSessionService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function restSessionService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:RestSessionService",
+      "name": "RestSessionService",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component RestSessionService in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:restTripService",
+      "name": "restTripService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function restTripService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:restAccountingService",
+      "name": "restAccountingService",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function restAccountingService in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:ErrorBoundary",
+      "name": "ErrorBoundary",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component ErrorBoundary in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:LoadingSpinner",
+      "name": "LoadingSpinner",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component LoadingSpinner in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.js:ArrivedTimeModal",
+      "name": "ArrivedTimeModal",
+      "type": "class",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported component ArrivedTimeModal in index.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.js:logger",
+      "name": "logger",
+      "type": "function",
+      "filePath": "packages/shared/index.js",
+      "summary": "Exported function logger in index.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/index.mjs",
+      "name": "index.mjs",
+      "type": "file",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Shared enterprise SDK and API client module (index.mjs)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:authService",
+      "name": "authService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function authService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:AuthService",
+      "name": "AuthService",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component AuthService in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:backendApiClient",
+      "name": "backendApiClient",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function backendApiClient in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:BackendApiClient",
+      "name": "BackendApiClient",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component BackendApiClient in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:APIError",
+      "name": "APIError",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component APIError in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:NetworkError",
+      "name": "NetworkError",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component NetworkError in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:AuthError",
+      "name": "AuthError",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component AuthError in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:ValidationError",
+      "name": "ValidationError",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component ValidationError in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:ConflictError",
+      "name": "ConflictError",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component ConflictError in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:NotFoundError",
+      "name": "NotFoundError",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component NotFoundError in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:restEmployeeService",
+      "name": "restEmployeeService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function restEmployeeService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:RestEmployeeService",
+      "name": "RestEmployeeService",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component RestEmployeeService in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:restVehicleService",
+      "name": "restVehicleService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function restVehicleService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:RestVehicleService",
+      "name": "RestVehicleService",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component RestVehicleService in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:restAssignmentService",
+      "name": "restAssignmentService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function restAssignmentService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:RestAssignmentService",
+      "name": "RestAssignmentService",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component RestAssignmentService in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:restSessionService",
+      "name": "restSessionService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function restSessionService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:RestSessionService",
+      "name": "RestSessionService",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component RestSessionService in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:restTripService",
+      "name": "restTripService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function restTripService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:restAccountingService",
+      "name": "restAccountingService",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function restAccountingService in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:ErrorBoundary",
+      "name": "ErrorBoundary",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component ErrorBoundary in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:LoadingSpinner",
+      "name": "LoadingSpinner",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component LoadingSpinner in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/index.mjs:ArrivedTimeModal",
+      "name": "ArrivedTimeModal",
+      "type": "class",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported component ArrivedTimeModal in index.mjs",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/index.mjs:logger",
+      "name": "logger",
+      "type": "function",
+      "filePath": "packages/shared/index.mjs",
+      "summary": "Exported function logger in index.mjs",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/mocha.config.cjs",
+      "name": "mocha.config.cjs",
+      "type": "file",
+      "filePath": "packages/shared/mocha.config.cjs",
+      "summary": "Shared enterprise SDK and API client module (mocha.config.cjs)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/services/authService.js",
+      "name": "authService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/authService.js",
+      "summary": "Shared enterprise SDK and API client module (authService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/authService.js:AuthService",
+      "name": "AuthService",
+      "type": "class",
+      "filePath": "packages/shared/services/authService.js",
+      "summary": "Exported component AuthService in authService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/authService.js:authService",
+      "name": "authService",
+      "type": "function",
+      "filePath": "packages/shared/services/authService.js",
+      "summary": "Exported function authService in authService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/backendApi.js",
+      "name": "backendApi.js",
+      "type": "file",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Shared enterprise SDK and API client module (backendApi.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:APIError",
+      "name": "APIError",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component APIError in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:NetworkError",
+      "name": "NetworkError",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component NetworkError in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:AuthError",
+      "name": "AuthError",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component AuthError in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:ValidationError",
+      "name": "ValidationError",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component ValidationError in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:ConflictError",
+      "name": "ConflictError",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component ConflictError in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:NotFoundError",
+      "name": "NotFoundError",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component NotFoundError in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:packages/shared/services/backendApi.js:BackendApiClient",
+      "name": "BackendApiClient",
+      "type": "class",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported component BackendApiClient in backendApi.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/backendApi.js:backendApiClient",
+      "name": "backendApiClient",
+      "type": "function",
+      "filePath": "packages/shared/services/backendApi.js",
+      "summary": "Exported function backendApiClient in backendApi.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/restAccountingService.js",
+      "name": "restAccountingService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/restAccountingService.js",
+      "summary": "Shared enterprise SDK and API client module (restAccountingService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/restAccountingService.js:RestAccountingService",
+      "name": "RestAccountingService",
+      "type": "class",
+      "filePath": "packages/shared/services/restAccountingService.js",
+      "summary": "Exported component RestAccountingService in restAccountingService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/restAccountingService.js:restAccountingService",
+      "name": "restAccountingService",
+      "type": "function",
+      "filePath": "packages/shared/services/restAccountingService.js",
+      "summary": "Exported function restAccountingService in restAccountingService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/restAssignmentService.js",
+      "name": "restAssignmentService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/restAssignmentService.js",
+      "summary": "Shared enterprise SDK and API client module (restAssignmentService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/restAssignmentService.js:RestAssignmentService",
+      "name": "RestAssignmentService",
+      "type": "class",
+      "filePath": "packages/shared/services/restAssignmentService.js",
+      "summary": "Exported component RestAssignmentService in restAssignmentService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/restAssignmentService.js:restAssignmentService",
+      "name": "restAssignmentService",
+      "type": "function",
+      "filePath": "packages/shared/services/restAssignmentService.js",
+      "summary": "Exported function restAssignmentService in restAssignmentService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/restEmployeeService.js",
+      "name": "restEmployeeService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/restEmployeeService.js",
+      "summary": "Shared enterprise SDK and API client module (restEmployeeService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/restEmployeeService.js:RestEmployeeService",
+      "name": "RestEmployeeService",
+      "type": "class",
+      "filePath": "packages/shared/services/restEmployeeService.js",
+      "summary": "Exported component RestEmployeeService in restEmployeeService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/restEmployeeService.js:restEmployeeService",
+      "name": "restEmployeeService",
+      "type": "function",
+      "filePath": "packages/shared/services/restEmployeeService.js",
+      "summary": "Exported function restEmployeeService in restEmployeeService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/restSessionService.js",
+      "name": "restSessionService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/restSessionService.js",
+      "summary": "Shared enterprise SDK and API client module (restSessionService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/restSessionService.js:RestSessionService",
+      "name": "RestSessionService",
+      "type": "class",
+      "filePath": "packages/shared/services/restSessionService.js",
+      "summary": "Exported component RestSessionService in restSessionService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/restSessionService.js:restSessionService",
+      "name": "restSessionService",
+      "type": "function",
+      "filePath": "packages/shared/services/restSessionService.js",
+      "summary": "Exported function restSessionService in restSessionService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/restTripService.js",
+      "name": "restTripService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/restTripService.js",
+      "summary": "Shared enterprise SDK and API client module (restTripService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/restTripService.js:RestTripService",
+      "name": "RestTripService",
+      "type": "class",
+      "filePath": "packages/shared/services/restTripService.js",
+      "summary": "Exported component RestTripService in restTripService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/restTripService.js:restTripService",
+      "name": "restTripService",
+      "type": "function",
+      "filePath": "packages/shared/services/restTripService.js",
+      "summary": "Exported function restTripService in restTripService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/services/restVehicleService.js",
+      "name": "restVehicleService.js",
+      "type": "file",
+      "filePath": "packages/shared/services/restVehicleService.js",
+      "summary": "Shared enterprise SDK and API client module (restVehicleService.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:packages/shared/services/restVehicleService.js:RestVehicleService",
+      "name": "RestVehicleService",
+      "type": "class",
+      "filePath": "packages/shared/services/restVehicleService.js",
+      "summary": "Exported component RestVehicleService in restVehicleService.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/services/restVehicleService.js:restVehicleService",
+      "name": "restVehicleService",
+      "type": "function",
+      "filePath": "packages/shared/services/restVehicleService.js",
+      "summary": "Exported function restVehicleService in restVehicleService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/tests/components/ArrivedTimeModal.test.jsx",
+      "name": "ArrivedTimeModal.test.jsx",
+      "type": "file",
+      "filePath": "packages/shared/tests/components/ArrivedTimeModal.test.jsx",
+      "summary": "Shared enterprise SDK and API client module (ArrivedTimeModal.test.jsx)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/components/ErrorBoundary.test.jsx",
+      "name": "ErrorBoundary.test.jsx",
+      "type": "file",
+      "filePath": "packages/shared/tests/components/ErrorBoundary.test.jsx",
+      "summary": "Shared enterprise SDK and API client module (ErrorBoundary.test.jsx)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/components/LoadingSpinner.test.jsx",
+      "name": "LoadingSpinner.test.jsx",
+      "type": "file",
+      "filePath": "packages/shared/tests/components/LoadingSpinner.test.jsx",
+      "summary": "Shared enterprise SDK and API client module (LoadingSpinner.test.jsx)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/hooks/useEmployees.test.js",
+      "name": "useEmployees.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/hooks/useEmployees.test.js",
+      "summary": "Shared enterprise SDK and API client module (useEmployees.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/hooks/usePerformanceMonitor.test.js",
+      "name": "usePerformanceMonitor.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/hooks/usePerformanceMonitor.test.js",
+      "summary": "Shared enterprise SDK and API client module (usePerformanceMonitor.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/hooks/useStatistics.test.js",
+      "name": "useStatistics.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/hooks/useStatistics.test.js",
+      "summary": "Shared enterprise SDK and API client module (useStatistics.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:packages/shared/components/ArrivedTimeModal.jsx",
+      "target": "component:packages/shared/components/ArrivedTimeModal.jsx:ArrivedTimeModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/components/LoadingSpinner.jsx",
+      "target": "component:packages/shared/components/LoadingSpinner.jsx:LoadingSpinner",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useEmployees",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useEmployee",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useUpdateAttendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useAddEmployee",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useUpdateEmployee",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useBulkUpdateCompensation",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useApproveEmployee",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useRejectEmployee",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useDeleteEmployee",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useEmployees.js",
+      "target": "function:packages/shared/hooks/useEmployees.js:useSyncEmployeesFromOdoo",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/usePerformanceMonitor.js",
+      "target": "function:packages/shared/hooks/usePerformanceMonitor.js:usePerformanceMonitor",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useTrips.js",
+      "target": "function:packages/shared/hooks/useTrips.js:useTrips",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useTrips.js",
+      "target": "function:packages/shared/hooks/useTrips.js:useTrip",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useTrips.js",
+      "target": "function:packages/shared/hooks/useTrips.js:useCreateTrip",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useTrips.js",
+      "target": "function:packages/shared/hooks/useTrips.js:useUpdateTripStatus",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useVehicles",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useVehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicleStatus",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useAddVehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/hooks/useVehicles.js",
+      "target": "function:packages/shared/hooks/useVehicles.js:useUpdateVehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:authService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:AuthService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:backendApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:BackendApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:APIError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:NetworkError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:AuthError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:ValidationError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:ConflictError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:NotFoundError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:restEmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:RestEmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:restVehicleService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:RestVehicleService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:restAssignmentService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:RestAssignmentService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:restSessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:RestSessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:restTripService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:restAccountingService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:ErrorBoundary",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:LoadingSpinner",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "component:packages/shared/index.js:ArrivedTimeModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.js",
+      "target": "function:packages/shared/index.js:logger",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:authService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:AuthService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:backendApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:BackendApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:APIError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:NetworkError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:AuthError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:ValidationError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:ConflictError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:NotFoundError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:restEmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:RestEmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:restVehicleService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:RestVehicleService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:restAssignmentService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:RestAssignmentService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:restSessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:RestSessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:restTripService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:restAccountingService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:ErrorBoundary",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:LoadingSpinner",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "component:packages/shared/index.mjs:ArrivedTimeModal",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/index.mjs",
+      "target": "function:packages/shared/index.mjs:logger",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/authService.js",
+      "target": "component:packages/shared/services/authService.js:AuthService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/authService.js",
+      "target": "function:packages/shared/services/authService.js:authService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:APIError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:NetworkError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:AuthError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:ValidationError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:ConflictError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:NotFoundError",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "component:packages/shared/services/backendApi.js:BackendApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/backendApi.js",
+      "target": "function:packages/shared/services/backendApi.js:backendApiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restAccountingService.js",
+      "target": "component:packages/shared/services/restAccountingService.js:RestAccountingService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restAccountingService.js",
+      "target": "function:packages/shared/services/restAccountingService.js:restAccountingService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restAssignmentService.js",
+      "target": "component:packages/shared/services/restAssignmentService.js:RestAssignmentService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restAssignmentService.js",
+      "target": "function:packages/shared/services/restAssignmentService.js:restAssignmentService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restEmployeeService.js",
+      "target": "component:packages/shared/services/restEmployeeService.js:RestEmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restEmployeeService.js",
+      "target": "function:packages/shared/services/restEmployeeService.js:restEmployeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restSessionService.js",
+      "target": "component:packages/shared/services/restSessionService.js:RestSessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restSessionService.js",
+      "target": "function:packages/shared/services/restSessionService.js:restSessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restTripService.js",
+      "target": "component:packages/shared/services/restTripService.js:RestTripService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restTripService.js",
+      "target": "function:packages/shared/services/restTripService.js:restTripService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restVehicleService.js",
+      "target": "component:packages/shared/services/restVehicleService.js:RestVehicleService",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/services/restVehicleService.js",
+      "target": "function:packages/shared/services/restVehicleService.js:restVehicleService",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": "packages/shared/check-types.js",
+      "language": "javascript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/components/ArrivedTimeModal.jsx",
+      "language": "javascript",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/components/ErrorBoundary.jsx",
+      "language": "javascript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/components/LoadingSpinner.jsx",
+      "language": "javascript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/hooks/useEmployees.js",
+      "language": "javascript",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/hooks/usePerformanceMonitor.js",
+      "language": "javascript",
+      "sizeLines": 155,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/hooks/useTrips.js",
+      "language": "javascript",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/hooks/useVehicles.js",
+      "language": "javascript",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/index.js",
+      "language": "javascript",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/index.mjs",
+      "language": "javascript",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/mocha.config.cjs",
+      "language": "javascript",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/authService.js",
+      "language": "javascript",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/backendApi.js",
+      "language": "javascript",
+      "sizeLines": 275,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restAccountingService.js",
+      "language": "javascript",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restAssignmentService.js",
+      "language": "javascript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restEmployeeService.js",
+      "language": "javascript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restSessionService.js",
+      "language": "javascript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restTripService.js",
+      "language": "javascript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/services/restVehicleService.js",
+      "language": "javascript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/components/ArrivedTimeModal.test.jsx",
+      "language": "javascript",
+      "sizeLines": 267,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/components/ErrorBoundary.test.jsx",
+      "language": "javascript",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/components/LoadingSpinner.test.jsx",
+      "language": "javascript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/hooks/useEmployees.test.js",
+      "language": "javascript",
+      "sizeLines": 268,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/hooks/usePerformanceMonitor.test.js",
+      "language": "javascript",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/hooks/useStatistics.test.js",
+      "language": "javascript",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    }
+  ]
 }

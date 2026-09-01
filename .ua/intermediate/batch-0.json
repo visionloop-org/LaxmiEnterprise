@@ -1,0 +1,29 @@
+{
+  "batchIndex": 0,
+  "nodes": [
+    {
+      "id": "file:ServerSide/Dockerfile",
+      "name": "Dockerfile",
+      "type": "file",
+      "filePath": "ServerSide/Dockerfile",
+      "summary": "FastAPI backend gateway component for Dockerfile",
+      "tags": [
+        "api",
+        "backend",
+        "dockerfile",
+        "python",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [],
+  "batchFiles": [
+    {
+      "path": "ServerSide/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 33,
+      "fileCategory": "infra"
+    }
+  ]
+}

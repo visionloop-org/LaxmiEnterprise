@@ -1,6 +1,6 @@
 {
-  "lastAnalyzedAt": "2026-08-17T08:28:52.530478+00:00",
-  "gitCommitHash": "d5feba8e33b36c8b2eefe207bb7a9061622de54d",
+  "lastAnalyzedAt": "2026-08-17T10:23:47.010578+00:00",
+  "gitCommitHash": "master-odoo-integrated",
   "version": "1.0.0",
-  "analyzedFiles": 117
+  "analyzedFiles": 561
 }

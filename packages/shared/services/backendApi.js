@@ -2,12 +2,12 @@ const API_BASE_URL = (typeof process !== 'undefined' && process.env && process.e
 const DEFAULT_TIMEOUT = 30000 // 30 seconds
 const MAX_RETRIES = 3
 const RETRY_DELAY = 1000 // 1 second
-const { generateRequestId } = require('../utils/requestId')
-const logger = require('../utils/logger')
-const { config } = require('../utils/config')
+import { generateRequestId } from '../utils/requestId.js'
+import logger from '../utils/logger.js'
+import { config } from '../utils/config.js'
 
 // Custom error classes
-class APIError extends Error {
+export class APIError extends Error {
   constructor(message, status, code = 'API_ERROR', details = null, requestId = null) {
     super(message)
     this.name = 'APIError'
@@ -30,7 +30,7 @@ class APIError extends Error {
   }
 }
 
-class NetworkError extends APIError {
+export class NetworkError extends APIError {
   constructor(message, status = 503, requestId = null) {
     super(message, status, 'NETWORK_ERROR', null, requestId)
     this.name = 'NetworkError'
@@ -41,7 +41,7 @@ class NetworkError extends APIError {
   }
 }
 
-class AuthError extends APIError {
+export class AuthError extends APIError {
   constructor(message, requestId = null) {
     super(message, 401, 'UNAUTHORIZED', null, requestId)
     this.name = 'AuthError'
@@ -52,90 +52,82 @@ class AuthError extends APIError {
   }
 }
 
-class ValidationError extends APIError {
+export class ValidationError extends APIError {
   constructor(message, details = null, requestId = null) {
     super(message, 422, 'VALIDATION_ERROR', details, requestId)
     this.name = 'ValidationError'
   }
 
   getUserFriendlyMessage() {
-    if (this.details && Array.isArray(this.details)) {
-      const errors = this.details.map(err => 
-        typeof err === 'string' ? err : err.msg || JSON.stringify(err)
-      ).join(', ')
-      return `Please correct the following errors: ${errors}`
-    }
-    return 'Please check your input and try again.'
+    return 'Please check your input. Some fields are invalid.'
   }
 }
 
-class ConflictError extends APIError {
+export class ConflictError extends APIError {
   constructor(message, details = null, requestId = null) {
     super(message, 409, 'CONFLICT', details, requestId)
     this.name = 'ConflictError'
   }
 
   getUserFriendlyMessage() {
-    return 'This record was modified by another user. Please refresh and try again.'
+    return 'This record was modified by someone else. Please refresh and try again.'
   }
 }
 
-class NotFoundError extends APIError {
+export class NotFoundError extends APIError {
   constructor(message, details = null, requestId = null) {
     super(message, 404, 'NOT_FOUND', details, requestId)
     this.name = 'NotFoundError'
   }
 
   getUserFriendlyMessage() {
-    return 'The requested resource was not found.'
+    return 'The requested record was not found.'
   }
 }
 
-class BackendApiClient {
-  constructor(baseURL = API_BASE_URL) {
-    this.baseURL = baseURL
-    this.token = this.getStoredToken()
-  }
-
-  getStoredToken() {
-    if (typeof localStorage === 'undefined') return null
-    return localStorage.getItem(config.auth.storageKey)
+export class BackendApiClient {
+  constructor(baseUrl = API_BASE_URL) {
+    this.baseUrl = baseUrl
+    this.token = null
   }
 
   setToken(token) {
     this.token = token
+  }
+
+  clearToken() {
+    this.token = null
+  }
+
+  getToken() {
+    if (this.token) return this.token
     if (typeof localStorage !== 'undefined') {
-      if (token) {
-        localStorage.setItem(config.auth.storageKey, token)
-      } else {
-        localStorage.removeItem(config.auth.storageKey)
-      }
+      return localStorage.getItem('auth_token')
     }
+    return null
   }
 
   async request(endpoint, options = {}) {
-    const requestId = generateRequestId()
+    const url = `${this.baseUrl}${endpoint}`
+    const requestId = options.requestId || generateRequestId()
     const startTime = Date.now()
-    
-    // Log API request
-    logger.apiRequest(options.method || 'GET', endpoint, requestId, {
-      hasAuth: !!this.token,
-      timeout: options.timeout || DEFAULT_TIMEOUT
-    })
+    const timeout = options.timeout || DEFAULT_TIMEOUT
+    const token = options.token || this.getToken()
 
-    const url = `${this.baseURL}${endpoint}`
     const headers = {
       'Content-Type': 'application/json',
       'X-Request-ID': requestId,
       ...options.headers,
     }
 
-    if (this.token) {
-      headers['Authorization'] = `Bearer ${this.token}`
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`
     }
 
     const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), options.timeout || DEFAULT_TIMEOUT)
+    const timeoutId = setTimeout(() => controller.abort(), timeout)
+
+    logger.apiRequest(options.method || 'GET', endpoint, requestId, !!token, timeout)
 
     try {
       const response = await fetch(url, {
@@ -146,26 +138,28 @@ class BackendApiClient {
 
       clearTimeout(timeoutId)
       const duration = Date.now() - startTime
+      logger.apiResponse(options.method || 'GET', endpoint, requestId, duration)
 
-      // Log API response
-      logger.apiResponse(options.method || 'GET', endpoint, requestId, response.status, duration)
+      if (response.status === 204) {
+        return null
+      }
+
+      const contentType = response.headers.get('content-type')
+      let data = null
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json()
+      } else {
+        const text = await response.text()
+        data = text ? { message: text } : null
+      }
 
       if (!response.ok) {
-        let errorData = {}
-        try {
-          errorData = await response.json()
-        } catch (e) {
-          // If response is not JSON, use text
-          errorData = { message: await response.text() }
-        }
+        const errorMessage = data?.error?.message || data?.detail || data?.message || `HTTP ${response.status}: ${response.statusText}`
+        const errorCode = data?.error?.code || 'API_ERROR'
+        const errorDetails = data?.error?.details || null
 
-        const errorMessage = errorData.detail || errorData.message || `HTTP error ${response.status}`
-        const errorDetails = errorData.details || null
-
-        // Throw specific error types based on status code
         switch (response.status) {
           case 401:
-            this.setToken(null) // Clear invalid token
             const authError = new AuthError(errorMessage, requestId)
             logger.apiError(options.method || 'GET', endpoint, requestId, authError)
             throw authError
@@ -182,65 +176,58 @@ class BackendApiClient {
             logger.apiError(options.method || 'GET', endpoint, requestId, validationError)
             throw validationError
           default:
-            const apiError = new APIError(errorMessage, response.status, 'API_ERROR', errorDetails, requestId)
+            const apiError = new APIError(errorMessage, response.status, errorCode, errorDetails, requestId)
             logger.apiError(options.method || 'GET', endpoint, requestId, apiError)
             throw apiError
         }
       }
 
-      // Handle 204 No Content
-      if (response.status === 204) {
-        return null
-      }
-
-      return await response.json()
+      return data
     } catch (error) {
       clearTimeout(timeoutId)
       const duration = Date.now() - startTime
-
-      if (error.name === 'AbortError') {
-        const timeoutError = new NetworkError(`Request timeout after ${options.timeout || DEFAULT_TIMEOUT}ms`, 408, requestId)
-        logger.apiError(options.method || 'GET', endpoint, requestId, timeoutError, { duration })
-        throw timeoutError
-      }
 
       if (error instanceof APIError) {
         throw error
       }
 
-      // Network or other fetch errors
-      const networkError = new NetworkError(error.message || 'Network request failed', 503, requestId)
-      logger.apiError(options.method || 'GET', endpoint, requestId, networkError, { duration })
+      if (error.name === 'AbortError') {
+        const timeoutError = new NetworkError(`Request timeout after ${timeout}ms`, 504, requestId)
+        logger.apiError(options.method || 'GET', endpoint, requestId, timeoutError)
+        throw timeoutError
+      }
+
+      const networkError = new NetworkError(error.message || 'Network error occurred', 503, requestId)
+      logger.apiError(options.method || 'GET', endpoint, requestId, networkError)
       throw networkError
     }
   }
 
   async retryRequest(endpoint, options = {}, retries = MAX_RETRIES) {
-    let lastError
+    let lastError = null
 
-    for (let attempt = 0; attempt <= retries; attempt++) {
+    for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         return await this.request(endpoint, options)
       } catch (error) {
         lastError = error
 
-        // Don't retry client errors (4xx except 408/429)
-        if (error.status && error.status >= 400 && error.status < 500 && error.status !== 408 && error.status !== 429) {
+        if (error instanceof ValidationError || error instanceof AuthError || error instanceof NotFoundError) {
           throw error
         }
 
-        // Don't wait on the last attempt
-        if (attempt < retries) {
-          const delay = RETRY_DELAY * Math.pow(2, attempt) // Exponential backoff
-          await new Promise(resolve => setTimeout(resolve, delay))
+        if (attempt === retries) {
+          throw error
         }
+
+        const delay = RETRY_DELAY * Math.pow(2, attempt - 1)
+        await new Promise((resolve) => setTimeout(resolve, delay))
       }
     }
 
     throw lastError
   }
 
-  // Convenience methods
   get(endpoint, options = {}) {
     return this.retryRequest(endpoint, { ...options, method: 'GET' })
   }
@@ -274,9 +261,9 @@ class BackendApiClient {
   }
 }
 
-const backendApiClient = new BackendApiClient()
+export const backendApiClient = new BackendApiClient()
 
-module.exports = {
+export default {
   backendApiClient,
   BackendApiClient,
   APIError,

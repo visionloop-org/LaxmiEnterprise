@@ -36,6 +36,23 @@ export default function LeftColumn({
       <div className="mb-4">
         <h1 className="text-xl font-bold text-gray-900 mb-1">Supervisor Attendance</h1>
         
+        {/* Odoo 18 Backend Status Badge */}
+        <div className="mb-2 px-2.5 py-1.5 bg-purple-50 border border-purple-200 rounded-lg flex items-center justify-between text-[11px]">
+          <div className="flex items-center gap-1.5 font-semibold text-purple-900">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Odoo 18 ERP Backend</span>
+          </div>
+          <a
+            href="http://localhost:8069"
+            target="_blank"
+            rel="noreferrer"
+            className="text-[10px] text-purple-700 hover:text-purple-900 font-bold underline"
+            title="Open Odoo ERP Kiosk & HR Attendance"
+          >
+            Kiosk Mode ↗
+          </a>
+        </div>
+
         {/* Date Selector for Date-wise Tracking */}
         <div className="mb-3 bg-gray-50 p-2.5 rounded-lg border border-gray-200 shadow-sm">
           <label className="block text-xs font-semibold text-gray-700 mb-1">Select Date:</label>

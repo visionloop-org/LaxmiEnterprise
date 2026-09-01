@@ -1,29 +1,1265 @@
 {
+  "batchIndex": 11,
   "nodes": [
     {
-      "id": "document:ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
-      "type": "document",
-      "name": "MASTER INSTRUCTIONS SERVER SIDE.md",
-      "filePath": "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
-      "summary": "Markdown docs file (114 lines)",
+      "id": "file:apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "name": "VehicleAssignmentHistory.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "summary": "Supervisor tablet attendance tracking component (VehicleAssignmentHistory.jsx)",
       "tags": [
-        "markdown",
-        "docs"
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
       ],
       "complexity": "moderate"
     },
     {
-      "id": "config:ServerSide/openapi.json",
-      "type": "config",
-      "name": "openapi.json",
-      "filePath": "ServerSide/openapi.json",
-      "summary": "Json config file (2011 lines)",
+      "id": "file:apps/supervisor/src/components/VehicleTable.jsx",
+      "name": "VehicleTable.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/VehicleTable.jsx",
+      "summary": "Supervisor tablet attendance tracking component (VehicleTable.jsx)",
       "tags": [
-        "json",
-        "config"
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
       ],
-      "complexity": "complex"
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "name": "ArrivedBadge.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "summary": "Supervisor tablet attendance tracking component (ArrivedBadge.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "name": "AttendanceBadge.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "summary": "Supervisor tablet attendance tracking component (AttendanceBadge.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "name": "AttendanceButtons.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "summary": "Supervisor tablet attendance tracking component (AttendanceButtons.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "name": "LockedAttendance.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "summary": "Supervisor tablet attendance tracking component (LockedAttendance.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/attendance.config.js",
+      "name": "attendance.config.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "summary": "Supervisor tablet attendance tracking component (attendance.config.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/attendance/attendance.config.js:ATTENDANCE_STATUS",
+      "name": "ATTENDANCE_STATUS",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "summary": "Exported component ATTENDANCE_STATUS in attendance.config.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/attendance/attendance.config.js:ATTENDANCE_COLORS",
+      "name": "ATTENDANCE_COLORS",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "summary": "Exported component ATTENDANCE_COLORS in attendance.config.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "name": "attendance.utils.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Supervisor tablet attendance tracking component (attendance.utils.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
+      "name": "getArrivalTime",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Exported function getArrivalTime in attendance.utils.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
+      "name": "getStatusConfig",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Exported function getStatusConfig in attendance.utils.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
+      "name": "getButtonColorClass",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "summary": "Exported function getButtonColorClass in attendance.utils.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "name": "PDFRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (PDFRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+      "name": "PDFRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "summary": "Exported component PDFRenderer in PDFRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "name": "LayoutManager.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "summary": "Supervisor tablet attendance tracking component (LayoutManager.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+      "name": "LayoutManager",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "summary": "Exported component LayoutManager in LayoutManager.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "name": "pdfLayoutConstants.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Supervisor tablet attendance tracking component (pdfLayoutConstants.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_WIDTH",
+      "name": "PAGE_WIDTH",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component PAGE_WIDTH in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_HEIGHT",
+      "name": "PAGE_HEIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component PAGE_HEIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_TOP",
+      "name": "PAGE_MARGIN_TOP",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component PAGE_MARGIN_TOP in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_BOTTOM",
+      "name": "PAGE_MARGIN_BOTTOM",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component PAGE_MARGIN_BOTTOM in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_LEFT",
+      "name": "PAGE_MARGIN_LEFT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component PAGE_MARGIN_LEFT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_RIGHT",
+      "name": "PAGE_MARGIN_RIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component PAGE_MARGIN_RIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:HEADER_HEIGHT",
+      "name": "HEADER_HEIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component HEADER_HEIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:FOOTER_HEIGHT",
+      "name": "FOOTER_HEIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component FOOTER_HEIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CONTENT_TOP",
+      "name": "CONTENT_TOP",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component CONTENT_TOP in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CONTENT_BOTTOM",
+      "name": "CONTENT_BOTTOM",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component CONTENT_BOTTOM in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SECTION_MARGIN",
+      "name": "SECTION_MARGIN",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component SECTION_MARGIN in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:BLOCK_MARGIN",
+      "name": "BLOCK_MARGIN",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component BLOCK_MARGIN in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:ROW_HEIGHT",
+      "name": "ROW_HEIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component ROW_HEIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TABLE_HEADER_HEIGHT",
+      "name": "TABLE_HEADER_HEIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component TABLE_HEADER_HEIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TITLE_MARGIN",
+      "name": "TITLE_MARGIN",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component TITLE_MARGIN in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TABLE_COL_WIDTHS",
+      "name": "TABLE_COL_WIDTHS",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component TABLE_COL_WIDTHS in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TABLE_COL_STARTS",
+      "name": "TABLE_COL_STARTS",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component TABLE_COL_STARTS in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SUMMARY_BOX_WIDTH",
+      "name": "SUMMARY_BOX_WIDTH",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component SUMMARY_BOX_WIDTH in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SUMMARY_BOX_HEIGHT",
+      "name": "SUMMARY_BOX_HEIGHT",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component SUMMARY_BOX_HEIGHT in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SUMMARY_BOX_GAP",
+      "name": "SUMMARY_BOX_GAP",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component SUMMARY_BOX_GAP in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CATEGORY_TABLE_COL_WIDTHS",
+      "name": "CATEGORY_TABLE_COL_WIDTHS",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component CATEGORY_TABLE_COL_WIDTHS in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CATEGORY_TABLE_COL_STARTS",
+      "name": "CATEGORY_TABLE_COL_STARTS",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "summary": "Exported component CATEGORY_TABLE_COL_STARTS in pdfLayoutConstants.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "name": "pdfHandler.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "summary": "Supervisor tablet attendance tracking component (pdfHandler.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+      "name": "generateAttendanceReport",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "summary": "Exported function generateAttendanceReport in pdfHandler.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "name": "pdfHeaderFooter.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Supervisor tablet attendance tracking component (pdfHeaderFooter.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+      "name": "addHeader",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Exported function addHeader in pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+      "name": "addFooter",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Exported function addFooter in pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+      "name": "addHeadersAndFooters",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "summary": "Exported function addHeadersAndFooters in pdfHeaderFooter.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "name": "pdfPendingException.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "summary": "Supervisor tablet attendance tracking component (pdfPendingException.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+      "name": "generatePendingExceptionPage",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "summary": "Exported function generatePendingExceptionPage in pdfPendingException.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+      "name": "pdfSummary.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "summary": "Supervisor tablet attendance tracking component (pdfSummary.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+      "name": "generateSummaryPage",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "summary": "Exported function generateSummaryPage in pdfSummary.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/pdfTables.js",
+      "name": "pdfTables.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "summary": "Supervisor tablet attendance tracking component (pdfTables.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+      "name": "generateTablePages",
+      "type": "function",
+      "filePath": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "summary": "Exported function generateTablePages in pdfTables.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "name": "CategorySummaryRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (CategorySummaryRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+      "name": "CategorySummaryRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "summary": "Exported component CategorySummaryRenderer in CategorySummaryRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "name": "EmployeeSectionRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (EmployeeSectionRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+      "name": "EmployeeSectionRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "summary": "Exported component EmployeeSectionRenderer in EmployeeSectionRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "name": "ExceptionReportRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (ExceptionReportRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+      "name": "ExceptionReportRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "summary": "Exported component ExceptionReportRenderer in ExceptionReportRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "name": "ReportHeaderRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (ReportHeaderRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+      "name": "ReportHeaderRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "summary": "Exported component ReportHeaderRenderer in ReportHeaderRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "name": "SummaryRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (SummaryRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+      "name": "SummaryRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "summary": "Exported component SummaryRenderer in SummaryRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "name": "VehicleSectionRenderer.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "summary": "Supervisor tablet attendance tracking component (VehicleSectionRenderer.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+      "name": "VehicleSectionRenderer",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "summary": "Exported component VehicleSectionRenderer in VehicleSectionRenderer.js",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "name": "ButtonGroup.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "summary": "Supervisor tablet attendance tracking component (ButtonGroup.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/ui/ConfirmModal.jsx",
+      "name": "ConfirmModal.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/ui/ConfirmModal.jsx",
+      "summary": "Supervisor tablet attendance tracking component (ConfirmModal.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/ui/ConfirmModal.jsx:ConfirmModal",
+      "name": "ConfirmModal",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/ui/ConfirmModal.jsx",
+      "summary": "Exported component ConfirmModal in ConfirmModal.jsx",
+      "tags": [
+        "component",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "name": "LabourRequestButtons.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "summary": "Supervisor tablet attendance tracking component (LabourRequestButtons.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.config.js",
+      "target": "component:apps/supervisor/src/components/attendance/attendance.config.js:ATTENDANCE_STATUS",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.config.js",
+      "target": "component:apps/supervisor/src/components/attendance/attendance.config.js:ATTENDANCE_COLORS",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
+      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/PDFRenderer.js:PDFRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/LayoutManager.js:LayoutManager",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_WIDTH",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_HEIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_TOP",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_BOTTOM",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_LEFT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:PAGE_MARGIN_RIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:HEADER_HEIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:FOOTER_HEIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CONTENT_TOP",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CONTENT_BOTTOM",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SECTION_MARGIN",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:BLOCK_MARGIN",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:ROW_HEIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TABLE_HEADER_HEIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TITLE_MARGIN",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TABLE_COL_WIDTHS",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:TABLE_COL_STARTS",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SUMMARY_BOX_WIDTH",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SUMMARY_BOX_HEIGHT",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:SUMMARY_BOX_GAP",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CATEGORY_TABLE_COL_WIDTHS",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "target": "component:apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js:CATEGORY_TABLE_COL_STARTS",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHandler.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHandler.js:generateAttendanceReport",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeader",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addFooter",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfHeaderFooter.js:addHeadersAndFooters",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfPendingException.js:generatePendingExceptionPage",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfSummary.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfSummary.js:generateSummaryPage",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/pdfTables.js",
+      "target": "function:apps/supervisor/src/components/pdf/pdfTables.js:generateTablePages",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js:CategorySummaryRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js:EmployeeSectionRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js:ExceptionReportRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js:ReportHeaderRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js:SummaryRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "target": "component:apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js:VehicleSectionRenderer",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/components/ui/ConfirmModal.jsx",
+      "target": "component:apps/supervisor/src/components/ui/ConfirmModal.jsx:ConfirmModal",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+      "language": "javascript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/VehicleTable.jsx",
+      "language": "javascript",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "language": "javascript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+      "language": "javascript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+      "language": "javascript",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+      "language": "javascript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/attendance.config.js",
+      "language": "javascript",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/attendance/attendance.utils.js",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+      "language": "javascript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+      "language": "javascript",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+      "language": "javascript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfHandler.js",
+      "language": "javascript",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
+      "language": "javascript",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfPendingException.js",
+      "language": "javascript",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfSummary.js",
+      "language": "javascript",
+      "sizeLines": 138,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/pdfTables.js",
+      "language": "javascript",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+      "language": "javascript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+      "language": "javascript",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+      "language": "javascript",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+      "language": "javascript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+      "language": "javascript",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+      "language": "javascript",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/ConfirmModal.jsx",
+      "language": "javascript",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+      "language": "javascript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    }
+  ]
 }

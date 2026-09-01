@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Shared code for Laxmi Enterprise attendance systems",
   "main": "index.js",
-  "type": "commonjs",
+  "module": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "type": "module",
   "scripts": {
     "build": "echo 'No build step needed for JS modules'",
     "dev": "echo 'No dev script needed'",

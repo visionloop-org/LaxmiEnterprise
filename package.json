@@ -1,6 +1,13 @@
 {
   "name": "laxmi-enterprise-monorepo",
   "private": true,
+  "type": "module",
+  "homepage": "https://jaiswal-ruhil.github.io/LaxmiEnterprise/",
+  "author": "Ruhil Jaiswal <Ruhiljaiswal1993@gmail.com> (https://github.com/Jaiswal-ruhil)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jaiswal-ruhil/LaxmiEnterprise.git"
+  },
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -12,6 +19,7 @@
     "build:shared": "npm run build --workspace=packages/shared",
     "build:supervisor": "npm run build --workspace=apps/supervisor",
     "build:admin": "npm run build --workspace=apps/admin",
+    "build:pages": "node scripts/build-gh-pages.js",
     "build": "npm run build --workspaces --if-present",
     "check-types": "npm run check-types --workspace=packages/shared",
     "lint": "npx oxlint packages/shared/hooks packages/shared/services apps/supervisor/src apps/admin/src",

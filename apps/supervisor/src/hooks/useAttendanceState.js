@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { useQueryClient } from '@tanstack/react-query'
-import { useEmployees, useVehicles, authService } from '@laxmi/shared'
+import { useQueryClient, useEmployees, useVehicles, authService } from '@laxmi/shared'
 
 const EMPLOYEES_QUERY_KEY = ['employees']
 const VEHICLES_QUERY_KEY = ['vehicles']

@@ -1,42 +1,35 @@
-function generateRequestId() {
-  const timestamp = Date.now()
-  const random = Math.random().toString(36).substring(2, 8)
-  return `REQ-${timestamp}-${random}`
+let currentRequestId = null
+
+export const generateRequestId = () => {
+  return `REQ-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`
 }
 
-function extractRequestId(headers) {
-  if (!headers) return null
-  const requestId = headers.get ? (headers.get('X-Request-ID') || headers.get('x-request-id') || headers.get('request-id')) : null
-  return requestId || null
+export const getRequestId = () => {
+  return currentRequestId
 }
 
-function createRequestTracker(requestId) {
-  return {
-    requestId,
-    startTime: Date.now(),
-    duration: null,
-    success: null,
-    error: null,
-    complete() {
-      this.duration = Date.now() - this.startTime
-      return this
-    },
-    markSuccess() {
-      this.success = true
-      this.complete()
-      return this
-    },
-    markError(error) {
-      this.success = false
-      this.error = error
-      this.complete()
-      return this
-    }
+export const setRequestId = (requestId) => {
+  currentRequestId = requestId
+}
+
+export const clearRequestId = () => {
+  currentRequestId = null
+}
+
+export const withRequestId = (fn, requestId = null) => {
+  const previousId = currentRequestId
+  try {
+    currentRequestId = requestId || generateRequestId()
+    return fn(currentRequestId)
+  } finally {
+    currentRequestId = previousId
   }
 }
 
-module.exports = {
+export default {
   generateRequestId,
-  extractRequestId,
-  createRequestTracker
+  getRequestId,
+  setRequestId,
+  clearRequestId,
+  withRequestId
 }

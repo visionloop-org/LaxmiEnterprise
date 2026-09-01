@@ -1,34 +1,22 @@
-const { backendApiClient } = require('./backendApi')
+import { googleSheetsService } from './googleSheetsService.js'
 
-const restTripService = {
-  async fetchTrips(filters = {}) {
-    const params = new URLSearchParams()
-    if (filters.sessionId) params.append('session_id', filters.sessionId)
-    if (filters.vehicleId) params.append('vehicle_id', filters.vehicleId)
-    if (filters.status) params.append('status', filters.status)
+export class RestTripService {
+  constructor(sheetsService = googleSheetsService) {
+    this.sheets = sheetsService
+  }
 
-    const queryStr = params.toString() ? `?${params.toString()}` : ''
-    return backendApiClient.request(`/trips/${queryStr}`)
-  },
-
-  async fetchTrip(tripId) {
-    return backendApiClient.request(`/trips/${tripId}`)
-  },
+  async listTrips(sessionId) {
+    return await this.sheets.listTrips(sessionId)
+  }
 
   async createTrip(tripData) {
-    return backendApiClient.request('/trips/', {
-      method: 'POST',
-      body: JSON.stringify(tripData)
-    })
-  },
+    return await this.sheets.createTrip(tripData)
+  }
 
-  async updateTripStatus(tripId, { status, locationName, receiverName, remarks }) {
-    return backendApiClient.request(`/trips/${tripId}/status`, {
-      method: 'PUT',
-      body: JSON.stringify({ status, locationName, receiverName, remarks })
-    })
+  async updateTripStatus(tripId, payload) {
+    return await this.sheets.updateTripStatus(tripId, payload)
   }
 }
 
-module.exports = restTripService
-module.exports.restTripService = restTripService
+export const restTripService = new RestTripService()
+export default restTripService

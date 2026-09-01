@@ -1,480 +1,212 @@
 {
+  "batchIndex": 3,
   "nodes": [
     {
-      "id": "file:apps/supervisor/src/components/AttendanceControl.jsx",
+      "id": "file:.dockerignore",
+      "name": ".dockerignore",
       "type": "file",
-      "name": "AttendanceControl.jsx",
-      "filePath": "apps/supervisor/src/components/AttendanceControl.jsx",
-      "summary": "Javascript code file (69 lines)",
+      "filePath": ".dockerignore",
+      "summary": "Source file .dockerignore",
       "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/AttendanceControl.jsx:AttendanceControl",
-      "type": "function",
-      "name": "AttendanceControl",
-      "filePath": "apps/supervisor/src/components/AttendanceControl.jsx",
-      "summary": "Function AttendanceControl in apps/supervisor/src/components/AttendanceControl.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
-      "type": "file",
-      "name": "EmployeeAvatar.jsx",
-      "filePath": "apps/supervisor/src/components/EmployeeAvatar.jsx",
-      "summary": "Javascript code file (15 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/EmployeeAvatar.jsx:EmployeeAvatar",
-      "type": "function",
-      "name": "EmployeeAvatar",
-      "filePath": "apps/supervisor/src/components/EmployeeAvatar.jsx",
-      "summary": "Function EmployeeAvatar in apps/supervisor/src/components/EmployeeAvatar.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "type": "file",
-      "name": "EmployeeRow.jsx",
-      "filePath": "apps/supervisor/src/components/EmployeeRow.jsx",
-      "summary": "Javascript code file (112 lines)",
-      "tags": [
-        "javascript",
-        "code"
+        "unknown"
       ],
       "complexity": "moderate"
     },
     {
-      "id": "function:apps/supervisor/src/components/EmployeeRow.jsx:EmployeeRow",
-      "type": "function",
-      "name": "EmployeeRow",
-      "filePath": "apps/supervisor/src/components/EmployeeRow.jsx",
-      "summary": "Function EmployeeRow in apps/supervisor/src/components/EmployeeRow.jsx",
+      "id": "config:.lintstagedrc.json",
+      "name": ".lintstagedrc.json",
+      "type": "config",
+      "filePath": ".lintstagedrc.json",
+      "summary": "Source file .lintstagedrc.json",
       "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/EmployeeTable.jsx",
-      "type": "file",
-      "name": "EmployeeTable.jsx",
-      "filePath": "apps/supervisor/src/components/EmployeeTable.jsx",
-      "summary": "Javascript code file (155 lines)",
-      "tags": [
-        "javascript",
-        "code"
+        "json"
       ],
       "complexity": "moderate"
     },
     {
-      "id": "function:apps/supervisor/src/components/EmployeeTable.jsx:EmployeeTable",
-      "type": "function",
-      "name": "EmployeeTable",
-      "filePath": "apps/supervisor/src/components/EmployeeTable.jsx",
-      "summary": "Function EmployeeTable in apps/supervisor/src/components/EmployeeTable.jsx",
+      "id": "document:ARCHITECTURE.md",
+      "name": "ARCHITECTURE.md",
+      "type": "document",
+      "filePath": "ARCHITECTURE.md",
+      "summary": "Source file ARCHITECTURE.md",
       "tags": [
-        "function",
-        "javascript"
+        "markdown"
       ],
-      "complexity": "simple"
+      "complexity": "moderate"
     },
     {
-      "id": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "id": "document:DOCKER_DEPLOYMENT.md",
+      "name": "DOCKER_DEPLOYMENT.md",
+      "type": "document",
+      "filePath": "DOCKER_DEPLOYMENT.md",
+      "summary": "Source file DOCKER_DEPLOYMENT.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:GOALS.md",
+      "name": "GOALS.md",
+      "type": "document",
+      "filePath": "GOALS.md",
+      "summary": "Source file GOALS.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:MASTER INSTRUCTIONS.md",
+      "name": "MASTER INSTRUCTIONS.md",
+      "type": "document",
+      "filePath": "MASTER INSTRUCTIONS.md",
+      "summary": "Source file MASTER INSTRUCTIONS.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:TODO.md",
+      "name": "TODO.md",
+      "type": "document",
+      "filePath": "TODO.md",
+      "summary": "Source file TODO.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:TYPE_SYNC_GUIDE.md",
+      "name": "TYPE_SYNC_GUIDE.md",
+      "type": "document",
+      "filePath": "TYPE_SYNC_GUIDE.md",
+      "summary": "Source file TYPE_SYNC_GUIDE.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:WORKFLOW_PLAN.md",
+      "name": "WORKFLOW_PLAN.md",
+      "type": "document",
+      "filePath": "WORKFLOW_PLAN.md",
+      "summary": "Source file WORKFLOW_PLAN.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:docker-compose.yml",
+      "name": "docker-compose.yml",
+      "type": "config",
+      "filePath": "docker-compose.yml",
+      "summary": "Source file docker-compose.yml",
+      "tags": [
+        "yaml"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:launch-containers.bat",
+      "name": "launch-containers.bat",
       "type": "file",
-      "name": "ArrivedBadge.jsx",
-      "filePath": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
-      "summary": "Javascript code file (25 lines)",
+      "filePath": "launch-containers.bat",
+      "summary": "Source file launch-containers.bat",
       "tags": [
-        "javascript",
-        "code"
+        "batch"
       ],
-      "complexity": "simple"
+      "complexity": "moderate"
     },
     {
-      "id": "function:apps/supervisor/src/components/attendance/ArrivedBadge.jsx:ArrivedBadge",
-      "type": "function",
-      "name": "ArrivedBadge",
-      "filePath": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
-      "summary": "Function ArrivedBadge in apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+      "id": "config:package.json",
+      "name": "package.json",
+      "type": "config",
+      "filePath": "package.json",
+      "summary": "Source file package.json",
       "tags": [
-        "function",
-        "javascript"
+        "json"
       ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "type": "file",
-      "name": "AttendanceBadge.jsx",
-      "filePath": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "summary": "Javascript code file (20 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/attendance/AttendanceBadge.jsx:AttendanceBadge",
-      "type": "function",
-      "name": "AttendanceBadge",
-      "filePath": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "summary": "Function AttendanceBadge in apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "type": "file",
-      "name": "AttendanceButtons.jsx",
-      "filePath": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "summary": "Javascript code file (57 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/attendance/AttendanceButtons.jsx:AttendanceButtons",
-      "type": "function",
-      "name": "AttendanceButtons",
-      "filePath": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "summary": "Function AttendanceButtons in apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "type": "file",
-      "name": "LockedAttendance.jsx",
-      "filePath": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "summary": "Javascript code file (24 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/attendance/LockedAttendance.jsx:LockedAttendance",
-      "type": "function",
-      "name": "LockedAttendance",
-      "filePath": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "summary": "Function LockedAttendance in apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/attendance/attendance.config.js",
-      "type": "file",
-      "name": "attendance.config.js",
-      "filePath": "apps/supervisor/src/components/attendance/attendance.config.js",
-      "summary": "Javascript code file (54 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "type": "file",
-      "name": "attendance.utils.js",
-      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
-      "summary": "Javascript code file (16 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
-      "type": "function",
-      "name": "getArrivalTime",
-      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
-      "summary": "Function getArrivalTime in apps/supervisor/src/components/attendance/attendance.utils.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
-      "type": "function",
-      "name": "getStatusConfig",
-      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
-      "summary": "Function getStatusConfig in apps/supervisor/src/components/attendance/attendance.utils.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
-      "type": "function",
-      "name": "getButtonColorClass",
-      "filePath": "apps/supervisor/src/components/attendance/attendance.utils.js",
-      "summary": "Function getButtonColorClass in apps/supervisor/src/components/attendance/attendance.utils.js",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "type": "file",
-      "name": "ButtonGroup.jsx",
-      "filePath": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "summary": "Javascript code file (11 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/ui/ButtonGroup.jsx:ButtonGroup",
-      "type": "function",
-      "name": "ButtonGroup",
-      "filePath": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "summary": "Function ButtonGroup in apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "type": "file",
-      "name": "LabourRequestButtons.jsx",
-      "filePath": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "summary": "Javascript code file (33 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/ui/LabourRequestButtons.jsx:LabourRequestButtons",
-      "type": "function",
-      "name": "LabourRequestButtons",
-      "filePath": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "summary": "Function LabourRequestButtons in apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "type": "file",
-      "name": "VehicleSelect.jsx",
-      "filePath": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "summary": "Javascript code file (80 lines)",
-      "tags": [
-        "javascript",
-        "code"
-      ],
-      "complexity": "simple"
-    },
-    {
-      "id": "function:apps/supervisor/src/components/ui/VehicleSelect.jsx:VehicleSelect",
-      "type": "function",
-      "name": "VehicleSelect",
-      "filePath": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "summary": "Function VehicleSelect in apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "tags": [
-        "function",
-        "javascript"
-      ],
-      "complexity": "simple"
+      "complexity": "moderate"
     }
   ],
-  "edges": [
+  "edges": [],
+  "batchFiles": [
     {
-      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
-      "type": "imports"
+      "path": ".dockerignore",
+      "language": "unknown",
+      "sizeLines": 23,
+      "fileCategory": "infra"
     },
     {
-      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "type": "imports"
+      "path": ".lintstagedrc.json",
+      "language": "json",
+      "sizeLines": 8,
+      "fileCategory": "config"
     },
     {
-      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "type": "imports"
+      "path": "ARCHITECTURE.md",
+      "language": "markdown",
+      "sizeLines": 188,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "type": "imports"
+      "path": "DOCKER_DEPLOYMENT.md",
+      "language": "markdown",
+      "sizeLines": 93,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "type": "imports"
+      "path": "GOALS.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "target": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "type": "imports"
+      "path": "MASTER INSTRUCTIONS.md",
+      "language": "markdown",
+      "sizeLines": 96,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "target": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
-      "type": "imports"
+      "path": "TODO.md",
+      "language": "markdown",
+      "sizeLines": 133,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "target": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "type": "imports"
+      "path": "TYPE_SYNC_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 106,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "target": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "type": "imports"
+      "path": "WORKFLOW_PLAN.md",
+      "language": "markdown",
+      "sizeLines": 131,
+      "fileCategory": "docs"
     },
     {
-      "source": "file:apps/supervisor/src/components/EmployeeTable.jsx",
-      "target": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "type": "imports"
+      "path": "docker-compose.yml",
+      "language": "yaml",
+      "sizeLines": 130,
+      "fileCategory": "infra"
     },
     {
-      "source": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "type": "imports"
+      "path": "launch-containers.bat",
+      "language": "batch",
+      "sizeLines": 19,
+      "fileCategory": "script"
     },
     {
-      "source": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "target": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "type": "imports"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "target": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "type": "imports"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "target": "file:apps/supervisor/src/components/attendance/attendance.config.js",
-      "type": "imports"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "target": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "type": "imports"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "target": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "type": "imports"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/AttendanceControl.jsx",
-      "target": "function:apps/supervisor/src/components/AttendanceControl.jsx:AttendanceControl",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/EmployeeAvatar.jsx",
-      "target": "function:apps/supervisor/src/components/EmployeeAvatar.jsx:EmployeeAvatar",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/EmployeeRow.jsx",
-      "target": "function:apps/supervisor/src/components/EmployeeRow.jsx:EmployeeRow",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/EmployeeTable.jsx",
-      "target": "function:apps/supervisor/src/components/EmployeeTable.jsx:EmployeeTable",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
-      "target": "function:apps/supervisor/src/components/attendance/ArrivedBadge.jsx:ArrivedBadge",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-      "target": "function:apps/supervisor/src/components/attendance/AttendanceBadge.jsx:AttendanceBadge",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-      "target": "function:apps/supervisor/src/components/attendance/AttendanceButtons.jsx:AttendanceButtons",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-      "target": "function:apps/supervisor/src/components/attendance/LockedAttendance.jsx:LockedAttendance",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getArrivalTime",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getStatusConfig",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/attendance/attendance.utils.js",
-      "target": "function:apps/supervisor/src/components/attendance/attendance.utils.js:getButtonColorClass",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/ui/ButtonGroup.jsx",
-      "target": "function:apps/supervisor/src/components/ui/ButtonGroup.jsx:ButtonGroup",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-      "target": "function:apps/supervisor/src/components/ui/LabourRequestButtons.jsx:LabourRequestButtons",
-      "type": "contains"
-    },
-    {
-      "source": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
-      "target": "function:apps/supervisor/src/components/ui/VehicleSelect.jsx:VehicleSelect",
-      "type": "contains"
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
     }
   ]
 }

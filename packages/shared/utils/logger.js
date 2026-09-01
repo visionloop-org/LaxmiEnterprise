@@ -1,122 +1,101 @@
-const env = (typeof process !== 'undefined' && process.env) ? process.env : {}
+import { config } from './config.js'
 
 const LOG_LEVELS = {
   DEBUG: 0,
   INFO: 1,
   WARN: 2,
-  ERROR: 3,
-  SILENT: 4
+  ERROR: 3
 }
 
-const currentLogLevel = env.NODE_ENV === 'production' ? LOG_LEVELS.INFO : LOG_LEVELS.DEBUG
-
-function formatLogEntry(level, action, data = {}) {
-  return {
-    timestamp: new Date().toISOString(),
-    level,
-    action,
-    ...data,
-    requestId: data.requestId || 'N/A',
-    environment: env.NODE_ENV || 'development',
+class Logger {
+  constructor(options = {}) {
+    this.level = options.level || config.monitoring?.logLevel || 'INFO'
+    this.enabled = options.enabled !== undefined ? options.enabled : (config.monitoring?.enabled !== false)
   }
-}
 
-function log(level, action, data = {}) {
-  if (LOG_LEVELS[level] < currentLogLevel) return
+  log(level, action, data = {}, requestId = null) {
+    if (!this.enabled || LOG_LEVELS[level] < LOG_LEVELS[this.level]) {
+      return
+    }
 
-  const logEntry = formatLogEntry(level, action, data)
-  
-  switch (level) {
-    case 'DEBUG':
-      console.debug(JSON.stringify(logEntry))
-      break
-    case 'INFO':
-      console.info(JSON.stringify(logEntry))
-      break
-    case 'WARN':
-      console.warn(JSON.stringify(logEntry))
-      break
-    case 'ERROR':
-      console.error(JSON.stringify(logEntry))
-      break
-    default:
-      console.log(JSON.stringify(logEntry))
+    const timestamp = new Date().toISOString()
+    const logEntry = {
+      timestamp,
+      level,
+      action,
+      ...data,
+      environment: typeof process !== 'undefined' && process.env ? process.env.NODE_ENV : 'development'
+    }
+
+    if (requestId) {
+      logEntry.requestId = requestId
+    }
+
+    const message = JSON.stringify(logEntry)
+
+    switch (level) {
+      case 'DEBUG':
+        console.debug(message)
+        break
+      case 'INFO':
+        console.info(message)
+        break
+      case 'WARN':
+        console.warn(message)
+        break
+      case 'ERROR':
+        console.error(message)
+        break
+      default:
+        console.log(message)
+    }
   }
-}
 
-const logger = {
-  debug(action, data) {
-    log('DEBUG', action, data)
-  },
-  
-  info(action, data) {
-    log('INFO', action, data)
-  },
-  
-  warn(action, data) {
-    log('WARN', action, data)
-  },
-  
-  error(action, data) {
-    log('ERROR', action, data)
-  },
-  
-  apiRequest(method, endpoint, requestId, data = {}) {
+  debug(action, data, requestId) {
+    this.log('DEBUG', action, data, requestId)
+  }
+
+  info(action, data, requestId) {
+    this.log('INFO', action, data, requestId)
+  }
+
+  warn(action, data, requestId) {
+    this.log('WARN', action, data, requestId)
+  }
+
+  error(action, data, requestId) {
+    this.log('ERROR', action, data, requestId)
+  }
+
+  apiRequest(method, endpoint, requestId, hasAuth = false, timeout = 30000) {
     this.info('API_REQUEST', {
       method,
       endpoint,
-      requestId,
-      ...data
-    })
-  },
-  
-  apiResponse(method, endpoint, requestId, status, duration, data = {}) {
-    const logLevel = status >= 400 ? 'warn' : 'debug'
-    this[logLevel]('API_RESPONSE', {
+      hasAuth,
+      timeout
+    }, requestId)
+  }
+
+  apiResponse(method, endpoint, requestId, duration) {
+    this.debug('API_RESPONSE', {
       method,
       endpoint,
-      requestId,
-      status,
-      duration,
-      ...data
-    })
-  },
-  
-  apiError(method, endpoint, requestId, error, data = {}) {
+      duration
+    }, requestId)
+  }
+
+  apiError(method, endpoint, requestId, error, attempt = 1) {
     this.error('API_ERROR', {
       method,
       endpoint,
-      requestId,
-      error: error.message,
-      stack: error.stack,
-      ...data
-    })
-  },
-  
-  userAction(action, data = {}) {
-    this.info('USER_ACTION', {
-      action,
-      ...data
-    })
-  },
-  
-  authEvent(event, data = {}) {
-    this.info('AUTH_EVENT', {
-      event,
-      ...data
-    })
-  },
-  
-  performance(metric, value, data = {}) {
-    this.debug('PERFORMANCE', {
-      metric,
-      value,
-      unit: data.unit || 'ms',
-      ...data
-    })
+      errorCode: error.code || 'UNKNOWN_ERROR',
+      statusCode: error.status || 500,
+      errorMessage: error.message,
+      attempt,
+      details: error.details
+    }, requestId)
   }
 }
 
-module.exports = logger
-module.exports.logger = logger
-module.exports.default = logger
+export const logger = new Logger()
+export default logger

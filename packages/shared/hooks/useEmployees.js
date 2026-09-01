@@ -220,3 +220,19 @@ export function useDeleteEmployee() {
     },
   })
 }
+
+/**
+ * Mutation to explicitly synchronize all employees live from Odoo ERP hr.employee
+ *
+ * @returns {import('@tanstack/react-query').UseMutationResult<Object, Error, void>}
+ */
+export function useSyncEmployeesFromOdoo() {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: () => restEmployeeService.syncEmployeesFromOdoo(),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: EMPLOYEES_QUERY_KEY })
+    },
+  })
+}
+

@@ -1,41 +1,549 @@
 {
+  "batchIndex": 14,
   "nodes": [
     {
-      "id": "file:packages/shared/check-types.sh",
+      "id": "file:packages/shared/tests/hooks/useTrips.test.js",
+      "name": "useTrips.test.js",
       "type": "file",
-      "name": "check-types.sh",
-      "filePath": "packages/shared/check-types.sh",
-      "summary": "Shell script file (23 lines)",
+      "filePath": "packages/shared/tests/hooks/useTrips.test.js",
+      "summary": "Shared enterprise SDK and API client module (useTrips.test.js)",
       "tags": [
-        "shell",
-        "script"
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/hooks/useVehicles.test.js",
+      "name": "useVehicles.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/hooks/useVehicles.test.js",
+      "summary": "Shared enterprise SDK and API client module (useVehicles.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/authService.edgeCases.test.js",
+      "name": "authService.edgeCases.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/authService.edgeCases.test.js",
+      "summary": "Shared enterprise SDK and API client module (authService.edgeCases.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/authService.test.js",
+      "name": "authService.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/authService.test.js",
+      "summary": "Shared enterprise SDK and API client module (authService.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/backendApi.edgeCases.test.js",
+      "name": "backendApi.edgeCases.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/backendApi.edgeCases.test.js",
+      "summary": "Shared enterprise SDK and API client module (backendApi.edgeCases.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/backendApi.test.js",
+      "name": "backendApi.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/backendApi.test.js",
+      "summary": "Shared enterprise SDK and API client module (backendApi.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/healthCheck.test.js",
+      "name": "healthCheck.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/healthCheck.test.js",
+      "summary": "Shared enterprise SDK and API client module (healthCheck.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/restAssignmentService.test.js",
+      "name": "restAssignmentService.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/restAssignmentService.test.js",
+      "summary": "Shared enterprise SDK and API client module (restAssignmentService.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/restEmployeeService.test.js",
+      "name": "restEmployeeService.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/restEmployeeService.test.js",
+      "summary": "Shared enterprise SDK and API client module (restEmployeeService.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/services/restVehicleService.test.js",
+      "name": "restVehicleService.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/services/restVehicleService.test.js",
+      "summary": "Shared enterprise SDK and API client module (restVehicleService.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/tests/utils/requestId.test.js",
+      "name": "requestId.test.js",
+      "type": "file",
+      "filePath": "packages/shared/tests/utils/requestId.test.js",
+      "summary": "Shared enterprise SDK and API client module (requestId.test.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/types/api.ts",
+      "name": "api.ts",
+      "type": "file",
+      "filePath": "packages/shared/types/api.ts",
+      "summary": "Shared enterprise SDK and API client module (api.ts)",
+      "tags": [
+        "typescript",
+        "shared",
+        "modules",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/utils/config.js",
+      "name": "config.js",
+      "type": "file",
+      "filePath": "packages/shared/utils/config.js",
+      "summary": "Shared enterprise SDK and API client module (config.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/utils/config.js:config",
+      "name": "config",
+      "type": "function",
+      "filePath": "packages/shared/utils/config.js",
+      "summary": "Exported function config in config.js",
+      "tags": [
+        "function",
+        "frontend"
       ],
       "complexity": "simple"
     },
     {
-      "id": "config:packages/shared/package.json",
-      "type": "config",
-      "name": "package.json",
-      "filePath": "packages/shared/package.json",
-      "summary": "Json config file (31 lines)",
+      "id": "file:packages/shared/utils/logger.js",
+      "name": "logger.js",
+      "type": "file",
+      "filePath": "packages/shared/utils/logger.js",
+      "summary": "Shared enterprise SDK and API client module (logger.js)",
       "tags": [
-        "json",
-        "config"
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/utils/logger.js:logger",
+      "name": "logger",
+      "type": "function",
+      "filePath": "packages/shared/utils/logger.js",
+      "summary": "Exported function logger in logger.js",
+      "tags": [
+        "function",
+        "frontend"
       ],
       "complexity": "simple"
     },
     {
-      "id": "config:packages/shared/tsconfig.json",
-      "type": "config",
-      "name": "tsconfig.json",
-      "filePath": "packages/shared/tsconfig.json",
-      "summary": "Json config file (17 lines)",
+      "id": "file:packages/shared/utils/requestId.js",
+      "name": "requestId.js",
+      "type": "file",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Shared enterprise SDK and API client module (requestId.js)",
       "tags": [
-        "json",
-        "config"
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/utils/requestId.js:generateRequestId",
+      "name": "generateRequestId",
+      "type": "function",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Exported function generateRequestId in requestId.js",
+      "tags": [
+        "function",
+        "frontend"
       ],
       "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/utils/requestId.js:getRequestId",
+      "name": "getRequestId",
+      "type": "function",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Exported function getRequestId in requestId.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/utils/requestId.js:setRequestId",
+      "name": "setRequestId",
+      "type": "function",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Exported function setRequestId in requestId.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/utils/requestId.js:clearRequestId",
+      "name": "clearRequestId",
+      "type": "function",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Exported function clearRequestId in requestId.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/utils/requestId.js:withRequestId",
+      "name": "withRequestId",
+      "type": "function",
+      "filePath": "packages/shared/utils/requestId.js",
+      "summary": "Exported function withRequestId in requestId.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:packages/shared/utils/security.js",
+      "name": "security.js",
+      "type": "file",
+      "filePath": "packages/shared/utils/security.js",
+      "summary": "Shared enterprise SDK and API client module (security.js)",
+      "tags": [
+        "shared",
+        "modules",
+        "javascript",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:packages/shared/utils/security.js:sanitizeInput",
+      "name": "sanitizeInput",
+      "type": "function",
+      "filePath": "packages/shared/utils/security.js",
+      "summary": "Exported function sanitizeInput in security.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/utils/security.js:validatePhoneNumber",
+      "name": "validatePhoneNumber",
+      "type": "function",
+      "filePath": "packages/shared/utils/security.js",
+      "summary": "Exported function validatePhoneNumber in security.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:packages/shared/utils/security.js:validateEmployeeId",
+      "name": "validateEmployeeId",
+      "type": "function",
+      "filePath": "packages/shared/utils/security.js",
+      "summary": "Exported function validateEmployeeId in security.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/pre-commit.bat",
+      "name": "pre-commit.bat",
+      "type": "file",
+      "filePath": "scripts/pre-commit.bat",
+      "summary": "Source file scripts/pre-commit.bat",
+      "tags": [
+        "batch"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/pre-commit.sh",
+      "name": "pre-commit.sh",
+      "type": "file",
+      "filePath": "scripts/pre-commit.sh",
+      "summary": "Source file scripts/pre-commit.sh",
+      "tags": [
+        "shell"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:packages/shared/utils/config.js",
+      "target": "function:packages/shared/utils/config.js:config",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/logger.js",
+      "target": "function:packages/shared/utils/logger.js:logger",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/requestId.js",
+      "target": "function:packages/shared/utils/requestId.js:generateRequestId",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/requestId.js",
+      "target": "function:packages/shared/utils/requestId.js:getRequestId",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/requestId.js",
+      "target": "function:packages/shared/utils/requestId.js:setRequestId",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/requestId.js",
+      "target": "function:packages/shared/utils/requestId.js:clearRequestId",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/requestId.js",
+      "target": "function:packages/shared/utils/requestId.js:withRequestId",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/security.js",
+      "target": "function:packages/shared/utils/security.js:sanitizeInput",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/security.js",
+      "target": "function:packages/shared/utils/security.js:validatePhoneNumber",
+      "type": "contains"
+    },
+    {
+      "source": "file:packages/shared/utils/security.js",
+      "target": "function:packages/shared/utils/security.js:validateEmployeeId",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": "packages/shared/tests/hooks/useTrips.test.js",
+      "language": "javascript",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/hooks/useVehicles.test.js",
+      "language": "javascript",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/authService.edgeCases.test.js",
+      "language": "javascript",
+      "sizeLines": 265,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/authService.test.js",
+      "language": "javascript",
+      "sizeLines": 309,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/backendApi.edgeCases.test.js",
+      "language": "javascript",
+      "sizeLines": 449,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/backendApi.test.js",
+      "language": "javascript",
+      "sizeLines": 484,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/healthCheck.test.js",
+      "language": "javascript",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/restAssignmentService.test.js",
+      "language": "javascript",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/restEmployeeService.test.js",
+      "language": "javascript",
+      "sizeLines": 399,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/services/restVehicleService.test.js",
+      "language": "javascript",
+      "sizeLines": 353,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/tests/utils/requestId.test.js",
+      "language": "javascript",
+      "sizeLines": 65,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/types/api.ts",
+      "language": "typescript",
+      "sizeLines": 2145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/utils/config.js",
+      "language": "javascript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/utils/logger.js",
+      "language": "javascript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/utils/requestId.js",
+      "language": "javascript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/utils/security.js",
+      "language": "javascript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/pre-commit.bat",
+      "language": "batch",
+      "sizeLines": 27,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/pre-commit.sh",
+      "language": "shell",
+      "sizeLines": 26,
+      "fileCategory": "script"
+    }
+  ]
 }

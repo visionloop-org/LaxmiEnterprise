@@ -1,124 +1,146 @@
-const { backendApiClient } = require('./backendApi')
+import { googleSheetsService } from './googleSheetsService.js'
 
-class RestEmployeeService {
+export class RestEmployeeService {
+  constructor(sheetsService = googleSheetsService) {
+    this.sheets = sheetsService
+  }
+
   async fetchEmployees(filters = {}) {
-    const params = new URLSearchParams()
-    if (filters.category) params.append('category', filters.category)
-    if (filters.status) params.append('status', filters.status)
-    if (filters.contractor) params.append('contractor', filters.contractor)
-    if (filters.active !== undefined) params.append('active', filters.active.toString())
-
-    const url = `/employees${params.toString() ? '?' + params.toString() : ''}`
-    const employees = await backendApiClient.get(url)
-
-    return employees.map((employee) => this.mapBackendToFrontend(employee))
+    const raw = await this.sheets.getEmployees(filters)
+    return raw.map(e => this.mapBackendToFrontend(e))
   }
 
   async fetchEmployee(employeeId) {
-    const employee = await backendApiClient.get(`/employees/${employeeId}`)
-    return this.mapBackendToFrontend(employee)
+    const raw = await this.sheets.getEmployees()
+    const found = raw.find(e => e.id === employeeId || e.employeeId === employeeId)
+    return found ? this.mapBackendToFrontend(found) : null
+  }
+
+  async syncEmployeesFromOdoo() {
+    return await this.sheets.fetchFromGoogleSheets()
+  }
+
+  async syncWithGoogleSheets() {
+    return await this.sheets.fetchFromGoogleSheets()
   }
 
   async addEmployee(employeeData) {
-    const backendData = this.mapFrontendToBackend(employeeData)
-    const result = await backendApiClient.post('/employees', backendData)
-    return this.mapBackendToFrontend(result)
+    const toSave = this.mapFrontendToBackend(employeeData)
+    const res = await this.sheets.addEmployee(toSave)
+    return this.mapBackendToFrontend(res)
   }
 
-  async updateEmployee(employeeId, employeeData) {
-    const backendData = this.mapFrontendToBackend(employeeData)
-    const result = await backendApiClient.put(`/employees/${employeeId}`, backendData)
-    return this.mapBackendToFrontend(result)
-  }
-
-  async bulkUpdateCompensation(items) {
-    const payload = items.map(item => ({
-      id: item.id,
-      baseRate: item.baseRate !== undefined ? item.baseRate : null,
-      extraHours: item.extraHours || 0,
-      incentive: item.incentive || 0,
-    }))
-    const result = await backendApiClient.post('/employees/bulk-compensation', payload)
-    return result
-  }
-
-  async approveEmployee(employeeId) {
-    const result = await backendApiClient.post(`/employees/${employeeId}/approve`)
-    return this.mapBackendToFrontend(result)
-  }
-
-  async rejectEmployee(employeeId) {
-    const result = await backendApiClient.post(`/employees/${employeeId}/reject`)
-    return this.mapBackendToFrontend(result)
+  async updateEmployee(employeeId, updateData) {
+    const toSave = this.mapFrontendToBackendForUpdate(updateData)
+    const res = await this.sheets.updateEmployee(employeeId, toSave)
+    return this.mapBackendToFrontend(res)
   }
 
   async deleteEmployee(employeeId) {
-    await backendApiClient.delete(`/employees/${employeeId}`)
-    return true
+    return await this.sheets.deleteEmployee(employeeId)
   }
 
-  mapBackendToFrontend(employee) {
+  async approveEmployee(employeeId) {
+    const res = await this.sheets.approveEmployee(employeeId)
+    return this.mapBackendToFrontend(res)
+  }
+
+  async rejectEmployee(employeeId) {
+    const res = await this.sheets.rejectEmployee(employeeId)
+    return this.mapBackendToFrontend(res)
+  }
+
+  async updateAttendance(sessionId, employeeId, status, arrivalTime = null, remarks = null) {
+    const mappedStatus = this.mapAttendanceStatus(status)
+    const res = await this.sheets.recordAttendance(sessionId, employeeId, mappedStatus, arrivalTime, remarks)
     return {
-      id: employee.employeeId,
-      name: employee.name,
-      category: employee.category,
-      photo: employee.photoUrl || null,
-      attendance: this.mapAttendanceStatusFromBackend(employee.attendanceStatus),
-      arrivalTime: employee.arrivalTime || null,
-      assignedVehicle: employee.assignedVehicleId || null,
-      labourRequest: null,
-      status: employee.status,
-      contractor: employee.contractor || null,
-      remarks: employee.remarks || null,
-      baseRate: employee.baseRate !== undefined ? employee.baseRate : null,
-      extraHours: employee.extraHours || 0,
-      incentive: employee.incentive || 0,
+      ...res,
+      id: employeeId,
+      employeeId: employeeId
     }
   }
 
-  mapFrontendToBackend(employee) {
-    const backendData = {}
-    if (employee.id !== undefined) backendData.employeeId = employee.id
-    if (employee.name !== undefined) backendData.name = employee.name
-    if (employee.category !== undefined) backendData.category = employee.category
-    if (employee.photo !== undefined) backendData.photoUrl = employee.photo
-    if (employee.attendance !== undefined) {
-      backendData.attendanceStatus = this.mapAttendanceStatus(employee.attendance)
+  async bulkUpdateCompensation(payload) {
+    const updates = Array.isArray(payload) ? payload : (payload.updates || [])
+    return await this.sheets.bulkUpdateCompensation(updates)
+  }
+
+  mapBackendToFrontend(backendEmp) {
+    if (!backendEmp) return null
+    return {
+      id: backendEmp.employeeId || backendEmp.id || backendEmp._id,
+      name: backendEmp.name,
+      category: backendEmp.category,
+      status: backendEmp.status || 'active',
+      phone: backendEmp.phone || '',
+      contractor: backendEmp.contractor || null,
+      baseRate: backendEmp.baseRate,
+      extraHours: backendEmp.extraHours || 0,
+      incentive: backendEmp.incentive || 0,
+      photo: backendEmp.photoPath || backendEmp.photo || null,
+      displayOrder: backendEmp.displayOrder || 999,
+      attendance: backendEmp.attendance || null,
+      arrivalTime: backendEmp.arrivalTime || null,
+      assignedVehicle: backendEmp.assignedVehicle || null,
+      labourRequest: backendEmp.labourRequest || null,
+      remarks: backendEmp.remarks || null,
+      requestedBy: backendEmp.requestedBy || null,
+      approvedBy: backendEmp.approvedBy || null
     }
-    if (employee.arrivalTime !== undefined) backendData.arrivalTime = employee.arrivalTime
-    if (employee.assignedVehicle !== undefined) backendData.assignedVehicleId = employee.assignedVehicle
-    if (employee.status !== undefined) backendData.status = employee.status
-    if (employee.contractor !== undefined) backendData.contractor = employee.contractor
-    if (employee.remarks !== undefined) backendData.remarks = employee.remarks
-    if (employee.baseRate !== undefined) backendData.baseRate = employee.baseRate
-    if (employee.extraHours !== undefined) backendData.extraHours = employee.extraHours
-    if (employee.incentive !== undefined) backendData.incentive = employee.incentive
-    return backendData
+  }
+
+  mapFrontendToBackend(frontendEmp) {
+    if (!frontendEmp) return null
+    return {
+      employeeId: frontendEmp.id || frontendEmp.employeeId,
+      name: frontendEmp.name,
+      category: frontendEmp.category,
+      status: frontendEmp.status || 'active',
+      phone: frontendEmp.phone,
+      contractor: frontendEmp.contractor || null,
+      baseRate: frontendEmp.baseRate,
+      extraHours: frontendEmp.extraHours,
+      incentive: frontendEmp.incentive,
+      photoPath: frontendEmp.photo,
+      displayOrder: frontendEmp.displayOrder,
+      remarks: frontendEmp.remarks
+    }
+  }
+
+  mapFrontendToBackendForUpdate(frontendEmp) {
+    if (!frontendEmp) return {}
+    const update = {}
+    if (frontendEmp.name !== undefined) update.name = frontendEmp.name
+    if (frontendEmp.category !== undefined) update.category = frontendEmp.category
+    if (frontendEmp.status !== undefined) update.status = frontendEmp.status
+    if (frontendEmp.phone !== undefined) update.phone = frontendEmp.phone
+    if (frontendEmp.contractor !== undefined) update.contractor = frontendEmp.contractor
+    if (frontendEmp.baseRate !== undefined) update.baseRate = frontendEmp.baseRate
+    if (frontendEmp.extraHours !== undefined) update.extraHours = frontendEmp.extraHours
+    if (frontendEmp.incentive !== undefined) update.incentive = frontendEmp.incentive
+    if (frontendEmp.photo !== undefined) update.photoPath = frontendEmp.photo
+    if (frontendEmp.remarks !== undefined) update.remarks = frontendEmp.remarks
+    return update
   }
 
   mapAttendanceStatus(status) {
-    const statusMap = {
+    const map = {
       'On Time': 'on_time',
       'Arrived': 'arrived',
-      'Absent': 'absent',
-      'on_time': 'on_time',
-      'arrived': 'arrived',
-      'absent': 'absent'
+      'Absent': 'absent'
     }
-    return statusMap[status] || status
+    return map[status] || status
   }
 
   mapAttendanceStatusFromBackend(status) {
-    const statusMap = {
+    const map = {
       'on_time': 'On Time',
       'arrived': 'Arrived',
       'absent': 'Absent'
     }
-    return statusMap[status] || status
+    return map[status] || status
   }
 }
-const restEmployeeService = new RestEmployeeService()
 
-module.exports = restEmployeeService
-module.exports.restEmployeeService = restEmployeeService
-module.exports.RestEmployeeService = RestEmployeeService
+export const restEmployeeService = new RestEmployeeService()
+export default restEmployeeService

@@ -1,10 +1,21 @@
 {
   "schemaVersion": 1,
   "algorithm": "louvain",
-  "totalFiles": 147,
-  "totalBatches": 16,
+  "totalFiles": 201,
+  "totalBatches": 15,
   "exportsByPath": {
-    ".ua/.understandignore": [],
+    ".husky/pre-commit": [],
+    "ServerSide/app/api/v1/accounting/routes.py": [
+      "SyncPayrollRequest",
+      "TripInvoiceRequest",
+      "SyncTimesheetRequest",
+      "get_odoo_status",
+      "get_odoo_stats",
+      "sync_employees_to_odoo",
+      "sync_timesheets_to_odoo",
+      "sync_payroll_to_odoo",
+      "create_odoo_invoice"
+    ],
     "ServerSide/app/api/v1/assignments/routes.py": [
       "get_vehicle_capacity",
       "validate_assignment_rules",
@@ -16,24 +27,45 @@
     "ServerSide/app/api/v1/attendance/routes.py": [
       "record_attendance",
       "get_session_attendance",
-      "get_employee_attendance"
+      "get_employee_attendance",
+      "get_live_odoo_attendances"
     ],
     "ServerSide/app/api/v1/auth.py": [
+      "LoginRequest",
       "login",
       "get_me"
     ],
     "ServerSide/app/api/v1/employees/routes.py": [
       "list_employees",
+      "sync_employees_from_odoo",
       "create_employee",
+      "bulk_update_compensation",
       "get_employee",
-      "update_employee"
+      "update_employee",
+      "approve_employee",
+      "reject_employee",
+      "delete_employee"
+    ],
+    "ServerSide/app/api/v1/pay/routes.py": [
+      "PayCalculationRequest",
+      "PayCalculationResponse",
+      "get_pay_rates",
+      "calculate_pay",
+      "get_pay_summary"
     ],
     "ServerSide/app/api/v1/sessions/routes.py": [
       "create_session",
       "list_sessions",
       "get_session",
       "get_active_session",
-      "finalize_session"
+      "finalize_session",
+      "unlock_session"
+    ],
+    "ServerSide/app/api/v1/trips/routes.py": [
+      "create_trip",
+      "list_trips",
+      "get_trip",
+      "update_trip_status"
     ],
     "ServerSide/app/api/v1/vehicles/routes.py": [
       "list_vehicles",
@@ -41,19 +73,48 @@
       "get_vehicle",
       "update_vehicle"
     ],
+    "ServerSide/app/core/exceptions.py": [
+      "AppException",
+      "NotFoundException",
+      "ConflictException",
+      "ValidationException",
+      "AuthenticationException",
+      "ForbiddenException",
+      "DatabaseException"
+    ],
+    "ServerSide/app/core/logging_config.py": [
+      "RequestIDFilter",
+      "setup_logging"
+    ],
+    "ServerSide/app/core/middleware.py": [
+      "get_request_id",
+      "RequestIDMiddleware"
+    ],
+    "ServerSide/app/db/__init__.py": [],
     "ServerSide/app/db/indexes.py": [
       "create_indexes"
     ],
-    "ServerSide/app/db/mongodb.py": [
-      "Database"
+    "ServerSide/app/db/odoo_db.py": [
+      "OdooCursor",
+      "OdooCollection",
+      "UpdateResult",
+      "InsertResult",
+      "OdooDatabaseAdapter",
+      "DatabaseWrapper"
     ],
     "ServerSide/app/main.py": [
       "lifespan",
+      "build_error_response",
+      "app_exception_handler",
+      "http_exception_handler",
+      "validation_exception_handler",
+      "pymongo_exception_handler",
       "general_exception_handler",
       "health_check",
       "readiness_check"
     ],
     "ServerSide/app/models/assignment.py": [
+      "utc_now",
       "VehicleAssignmentBase",
       "VehicleAssignmentCreate",
       "VehicleAssignmentUpdate",
@@ -61,6 +122,7 @@
       "VehicleAssignment"
     ],
     "ServerSide/app/models/attendance.py": [
+      "utc_now",
       "AttendanceRecordBase",
       "AttendanceRecordCreate",
       "AttendanceRecordUpdate",
@@ -68,36 +130,61 @@
       "AttendanceRecord"
     ],
     "ServerSide/app/models/audit_event.py": [
+      "utc_now",
       "AuditEventBase",
       "AuditEventCreate",
       "AuditEvent"
     ],
     "ServerSide/app/models/employee.py": [
+      "utc_now",
       "EmployeeBase",
       "EmployeeCreate",
       "EmployeeUpdate",
+      "BulkCompensationItem",
       "EmployeeResponse",
       "Employee"
     ],
     "ServerSide/app/models/session.py": [
+      "utc_now",
       "AttendanceSessionBase",
       "AttendanceSessionCreate",
       "AttendanceSessionUpdate",
       "AttendanceSessionResponse",
       "AttendanceSession"
     ],
+    "ServerSide/app/models/trip.py": [
+      "utc_now",
+      "TripTimelineEvent",
+      "VehicleTripBase",
+      "VehicleTripCreate",
+      "VehicleTripUpdateStatus",
+      "VehicleTripResponse"
+    ],
     "ServerSide/app/models/user.py": [
+      "utc_now",
       "UserBase",
       "UserCreate",
       "UserUpdate",
       "User"
     ],
     "ServerSide/app/models/vehicle.py": [
+      "utc_now",
       "VehicleBase",
       "VehicleCreate",
       "VehicleUpdate",
       "VehicleResponse",
       "Vehicle"
+    ],
+    "ServerSide/app/schemas/error.py": [
+      "ErrorDetail",
+      "APIErrorResponse"
+    ],
+    "ServerSide/app/services/__init__.py": [],
+    "ServerSide/app/services/odoo_service.py": [
+      "OdooAccountingService"
+    ],
+    "ServerSide/app/services/trip_service.py": [
+      "TripService"
     ],
     "ServerSide/core/auth.py": [
       "verify_password",
@@ -120,32 +207,77 @@
     ],
     "ServerSide/tests/__init__.py": [],
     "ServerSide/tests/conftest.py": [
+      "setup_mock_db",
       "client",
       "auth_token",
-      "auth_headers"
+      "auth_headers",
+      "seed_data"
+    ],
+    "ServerSide/tests/test_assignments.py": [
+      "test_assign_vehicle_success",
+      "test_assign_vehicle_absent_employee_fails",
+      "test_assign_vehicle_under_maintenance_fails",
+      "test_unassign_vehicle_success"
     ],
     "ServerSide/tests/test_attendance.py": [
-      "test_attendance_unauthorized"
+      "test_attendance_unauthorized",
+      "test_record_attendance_create_and_update",
+      "test_record_attendance_finalized_session_locked",
+      "test_record_attendance_session_not_found",
+      "test_record_attendance_employee_not_found"
     ],
     "ServerSide/tests/test_auth.py": [
       "test_login_success",
       "test_login_wrong_password",
+      "test_login_missing_credentials",
       "test_get_me_unauthorized",
+      "test_get_me_invalid_token",
       "test_get_me_authorized"
     ],
     "ServerSide/tests/test_employees.py": [
-      "test_list_employees_unauthorized",
-      "test_create_employee_unauthorized"
+      "test_list_employees",
+      "test_list_employees_filter_category",
+      "test_get_employee_by_id",
+      "test_get_employee_not_found",
+      "test_create_employee_success",
+      "test_create_employee_duplicate_conflict",
+      "test_update_employee"
+    ],
+    "ServerSide/tests/test_error_handling.py": [
+      "test_request_id_header_generated",
+      "test_custom_request_id_propagated",
+      "test_standard_404_error_schema",
+      "test_standard_401_error_schema",
+      "test_standard_422_validation_error_schema"
     ],
     "ServerSide/tests/test_sessions.py": [
-      "test_list_sessions_unauthorized",
-      "test_create_session_unauthorized"
+      "test_list_sessions",
+      "test_get_session_by_id",
+      "test_get_session_not_found",
+      "test_create_session_success",
+      "test_create_session_duplicate_conflict",
+      "test_finalize_session_success",
+      "test_finalize_session_idempotent",
+      "test_unlock_session_admin_success",
+      "test_unlock_session_by_date_success"
+    ],
+    "ServerSide/tests/test_trips.py": [
+      "test_create_and_update_trip_flow"
     ],
     "ServerSide/tests/test_vehicles.py": [
-      "test_list_vehicles_unauthorized",
-      "test_create_vehicle_unauthorized"
+      "test_list_vehicles",
+      "test_get_vehicle_by_number",
+      "test_get_vehicle_not_found",
+      "test_create_vehicle_success",
+      "test_create_vehicle_duplicate",
+      "test_update_vehicle_status"
     ],
     "apps/admin/src/App.jsx": [],
+    "apps/admin/src/QueryClient.jsx": [],
+    "apps/admin/src/components/AdminDashboard.jsx": [],
+    "apps/admin/src/components/OdooSyncModal.jsx": [
+      "OdooSyncModal"
+    ],
     "apps/admin/src/main.jsx": [],
     "apps/admin/vite.config.js": [],
     "apps/supervisor/postcss.config.js": [],
@@ -165,9 +297,15 @@
     "apps/supervisor/src/components/LoginModal.jsx": [
       "LoginModal"
     ],
+    "apps/supervisor/src/components/RequestEmployeeModal.jsx": [
+      "RequestEmployeeModal"
+    ],
     "apps/supervisor/src/components/RightColumn.jsx": [],
     "apps/supervisor/src/components/SyncStatus.jsx": [
       "SyncStatus"
+    ],
+    "apps/supervisor/src/components/TripTrackerModal.jsx": [
+      "TripTrackerModal"
     ],
     "apps/supervisor/src/components/VehicleAssignmentHistory.jsx": [],
     "apps/supervisor/src/components/VehicleTable.jsx": [],
@@ -250,7 +388,13 @@
       "VehicleSectionRenderer"
     ],
     "apps/supervisor/src/components/ui/ButtonGroup.jsx": [],
+    "apps/supervisor/src/components/ui/ConfirmModal.jsx": [
+      "ConfirmModal"
+    ],
     "apps/supervisor/src/components/ui/LabourRequestButtons.jsx": [],
+    "apps/supervisor/src/components/ui/Toast.jsx": [
+      "Toast"
+    ],
     "apps/supervisor/src/components/ui/VehicleSelect.jsx": [],
     "apps/supervisor/src/hooks/useAttendanceHandlers.js": [
       "useAttendanceHandlers"
@@ -315,7 +459,12 @@
     ],
     "apps/supervisor/tailwind.config.js": [],
     "apps/supervisor/vite.config.js": [],
+    "odoo/config/odoo.conf": [],
+    "packages/shared/.babelrc": [],
     "packages/shared/check-types.js": [],
+    "packages/shared/components/ArrivedTimeModal.jsx": [
+      "ArrivedTimeModal"
+    ],
     "packages/shared/components/ErrorBoundary.jsx": [],
     "packages/shared/components/LoadingSpinner.jsx": [
       "LoadingSpinner"
@@ -325,7 +474,21 @@
       "useEmployee",
       "useUpdateAttendance",
       "useAddEmployee",
-      "useUpdateEmployee"
+      "useUpdateEmployee",
+      "useBulkUpdateCompensation",
+      "useApproveEmployee",
+      "useRejectEmployee",
+      "useDeleteEmployee",
+      "useSyncEmployeesFromOdoo"
+    ],
+    "packages/shared/hooks/usePerformanceMonitor.js": [
+      "usePerformanceMonitor"
+    ],
+    "packages/shared/hooks/useTrips.js": [
+      "useTrips",
+      "useTrip",
+      "useCreateTrip",
+      "useUpdateTripStatus"
     ],
     "packages/shared/hooks/useVehicles.js": [
       "useVehicles",
@@ -336,777 +499,149 @@
     ],
     "packages/shared/index.js": [
       "authService",
+      "AuthService",
       "backendApiClient",
+      "BackendApiClient",
+      "APIError",
       "NetworkError",
       "AuthError",
       "ValidationError",
+      "ConflictError",
+      "NotFoundError",
       "restEmployeeService",
+      "RestEmployeeService",
       "restVehicleService",
+      "RestVehicleService",
       "restAssignmentService",
+      "RestAssignmentService",
       "restSessionService",
+      "RestSessionService",
+      "restTripService",
+      "restAccountingService",
       "ErrorBoundary",
       "LoadingSpinner",
-      "useEmployees",
-      "useVehicles"
+      "ArrivedTimeModal",
+      "{\n  useEmployees,\n  useAddEmployee,\n  useUpdateAttendance,\n  useApproveEmployee,\n  useRejectEmployee,\n  useUpdateEmployee,\n  useDeleteEmployee,\n  useBulkUpdateCompensation,\n  useSyncEmployeesFromOdoo\n}",
+      "{\n  useVehicles,\n  useAddVehicle,\n  useUpdateVehicle\n}",
+      "{\n  useTrips,\n  useCreateTrip,\n  useUpdateTripStatus\n}",
+      "{\n  usePerformanceMonitor\n}",
+      "{\n  generateRequestId,\n  getRequestId,\n  setRequestId,\n  clearRequestId,\n  withRequestId\n}",
+      "logger",
+      "{ config }",
+      "{ sanitizeInput, validatePhoneNumber, validateEmployeeId }"
     ],
+    "packages/shared/index.mjs": [
+      "authService",
+      "AuthService",
+      "backendApiClient",
+      "BackendApiClient",
+      "APIError",
+      "NetworkError",
+      "AuthError",
+      "ValidationError",
+      "ConflictError",
+      "NotFoundError",
+      "restEmployeeService",
+      "RestEmployeeService",
+      "restVehicleService",
+      "RestVehicleService",
+      "restAssignmentService",
+      "RestAssignmentService",
+      "restSessionService",
+      "RestSessionService",
+      "restTripService",
+      "restAccountingService",
+      "ErrorBoundary",
+      "LoadingSpinner",
+      "ArrivedTimeModal",
+      "{\n  useEmployees,\n  useAddEmployee,\n  useUpdateAttendance,\n  useApproveEmployee,\n  useRejectEmployee,\n  useUpdateEmployee,\n  useDeleteEmployee,\n  useBulkUpdateCompensation,\n  useSyncEmployeesFromOdoo\n}",
+      "{\n  useVehicles,\n  useAddVehicle,\n  useUpdateVehicle\n}",
+      "{\n  useTrips,\n  useCreateTrip,\n  useUpdateTripStatus\n}",
+      "{\n  usePerformanceMonitor\n}",
+      "{\n  generateRequestId,\n  getRequestId,\n  setRequestId,\n  clearRequestId,\n  withRequestId\n}",
+      "logger",
+      "{ config }",
+      "{ sanitizeInput, validatePhoneNumber, validateEmployeeId }"
+    ],
+    "packages/shared/mocha.config.cjs": [],
     "packages/shared/services/authService.js": [
+      "AuthService",
       "authService"
     ],
     "packages/shared/services/backendApi.js": [
-      "backendApiClient",
+      "APIError",
       "NetworkError",
       "AuthError",
-      "ValidationError"
+      "ValidationError",
+      "ConflictError",
+      "NotFoundError",
+      "BackendApiClient",
+      "backendApiClient"
+    ],
+    "packages/shared/services/restAccountingService.js": [
+      "RestAccountingService",
+      "restAccountingService"
     ],
     "packages/shared/services/restAssignmentService.js": [
+      "RestAssignmentService",
       "restAssignmentService"
     ],
     "packages/shared/services/restEmployeeService.js": [
+      "RestEmployeeService",
       "restEmployeeService"
     ],
     "packages/shared/services/restSessionService.js": [
+      "RestSessionService",
       "restSessionService"
     ],
+    "packages/shared/services/restTripService.js": [
+      "RestTripService",
+      "restTripService"
+    ],
     "packages/shared/services/restVehicleService.js": [
+      "RestVehicleService",
       "restVehicleService"
     ],
-    "packages/shared/types/api.ts": []
+    "packages/shared/tests/components/ArrivedTimeModal.test.jsx": [],
+    "packages/shared/tests/components/ErrorBoundary.test.jsx": [],
+    "packages/shared/tests/components/LoadingSpinner.test.jsx": [],
+    "packages/shared/tests/hooks/useEmployees.test.js": [],
+    "packages/shared/tests/hooks/usePerformanceMonitor.test.js": [],
+    "packages/shared/tests/hooks/useStatistics.test.js": [],
+    "packages/shared/tests/hooks/useTrips.test.js": [],
+    "packages/shared/tests/hooks/useVehicles.test.js": [],
+    "packages/shared/tests/services/authService.edgeCases.test.js": [],
+    "packages/shared/tests/services/authService.test.js": [],
+    "packages/shared/tests/services/backendApi.edgeCases.test.js": [],
+    "packages/shared/tests/services/backendApi.test.js": [],
+    "packages/shared/tests/services/healthCheck.test.js": [],
+    "packages/shared/tests/services/restAssignmentService.test.js": [],
+    "packages/shared/tests/services/restEmployeeService.test.js": [],
+    "packages/shared/tests/services/restVehicleService.test.js": [],
+    "packages/shared/tests/utils/requestId.test.js": [],
+    "packages/shared/types/api.ts": [],
+    "packages/shared/utils/config.js": [
+      "config"
+    ],
+    "packages/shared/utils/logger.js": [
+      "logger"
+    ],
+    "packages/shared/utils/requestId.js": [
+      "generateRequestId",
+      "getRequestId",
+      "setRequestId",
+      "clearRequestId",
+      "withRequestId"
+    ],
+    "packages/shared/utils/security.js": [
+      "sanitizeInput",
+      "validatePhoneNumber",
+      "validateEmployeeId"
+    ]
   },
   "batches": [
     {
       "batchIndex": 1,
-      "files": [
-        {
-          "path": "ServerSide/app/api/v1/assignments/routes.py",
-          "language": "python",
-          "sizeLines": 234,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/api/v1/attendance/routes.py",
-          "language": "python",
-          "sizeLines": 133,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/api/v1/auth.py",
-          "language": "python",
-          "sizeLines": 25,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/api/v1/employees/routes.py",
-          "language": "python",
-          "sizeLines": 69,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/api/v1/sessions/routes.py",
-          "language": "python",
-          "sizeLines": 133,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/api/v1/vehicles/routes.py",
-          "language": "python",
-          "sizeLines": 72,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/db/indexes.py",
-          "language": "python",
-          "sizeLines": 37,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/db/mongodb.py",
-          "language": "python",
-          "sizeLines": 32,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/main.py",
-          "language": "python",
-          "sizeLines": 62,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/models/assignment.py",
-          "language": "python",
-          "sizeLines": 30,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/models/attendance.py",
-          "language": "python",
-          "sizeLines": 32,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/models/employee.py",
-          "language": "python",
-          "sizeLines": 38,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/models/session.py",
-          "language": "python",
-          "sizeLines": 40,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/app/models/vehicle.py",
-          "language": "python",
-          "sizeLines": 29,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/core/auth.py",
-          "language": "python",
-          "sizeLines": 39,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/core/config.py",
-          "language": "python",
-          "sizeLines": 23,
-          "fileCategory": "code"
-        },
-        {
-          "path": "ServerSide/tests/conftest.py",
-          "language": "python",
-          "sizeLines": 20,
-          "fileCategory": "code"
-        }
-      ],
-      "batchImportData": {
-        "ServerSide/app/api/v1/assignments/routes.py": [
-          "ServerSide/app/db/mongodb.py",
-          "ServerSide/app/models/assignment.py",
-          "ServerSide/core/auth.py"
-        ],
-        "ServerSide/app/api/v1/attendance/routes.py": [
-          "ServerSide/app/db/mongodb.py",
-          "ServerSide/app/models/attendance.py",
-          "ServerSide/core/auth.py"
-        ],
-        "ServerSide/app/api/v1/auth.py": [
-          "ServerSide/core/auth.py"
-        ],
-        "ServerSide/app/api/v1/employees/routes.py": [
-          "ServerSide/app/db/mongodb.py",
-          "ServerSide/app/models/employee.py",
-          "ServerSide/core/auth.py"
-        ],
-        "ServerSide/app/api/v1/sessions/routes.py": [
-          "ServerSide/app/db/mongodb.py",
-          "ServerSide/app/models/session.py",
-          "ServerSide/core/auth.py"
-        ],
-        "ServerSide/app/api/v1/vehicles/routes.py": [
-          "ServerSide/app/db/mongodb.py",
-          "ServerSide/app/models/vehicle.py",
-          "ServerSide/core/auth.py"
-        ],
-        "ServerSide/app/db/indexes.py": [
-          "ServerSide/core/config.py"
-        ],
-        "ServerSide/app/db/mongodb.py": [
-          "ServerSide/app/db/indexes.py",
-          "ServerSide/core/config.py"
-        ],
-        "ServerSide/app/main.py": [
-          "ServerSide/app/api/v1/assignments/routes.py",
-          "ServerSide/app/api/v1/attendance/routes.py",
-          "ServerSide/app/api/v1/auth.py",
-          "ServerSide/app/api/v1/employees/routes.py",
-          "ServerSide/app/api/v1/sessions/routes.py",
-          "ServerSide/app/api/v1/vehicles/routes.py",
-          "ServerSide/app/db/mongodb.py",
-          "ServerSide/core/config.py"
-        ],
-        "ServerSide/app/models/assignment.py": [],
-        "ServerSide/app/models/attendance.py": [],
-        "ServerSide/app/models/employee.py": [],
-        "ServerSide/app/models/session.py": [],
-        "ServerSide/app/models/vehicle.py": [],
-        "ServerSide/core/auth.py": [
-          "ServerSide/core/config.py"
-        ],
-        "ServerSide/core/config.py": [],
-        "ServerSide/tests/conftest.py": [
-          "ServerSide/app/main.py"
-        ]
-      },
-      "neighborMap": {}
-    },
-    {
-      "batchIndex": 2,
-      "files": [
-        {
-          "path": "apps/supervisor/src/App.jsx",
-          "language": "javascript",
-          "sizeLines": 277,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/QueryClient.jsx",
-          "language": "javascript",
-          "sizeLines": 35,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/CapacityConflictModal.jsx",
-          "language": "javascript",
-          "sizeLines": 101,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/CapacityReportModal.jsx",
-          "language": "javascript",
-          "sizeLines": 198,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/CategoryTabs.jsx",
-          "language": "javascript",
-          "sizeLines": 25,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/FilterChips.jsx",
-          "language": "javascript",
-          "sizeLines": 100,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/LeftColumn.jsx",
-          "language": "javascript",
-          "sizeLines": 118,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/LoginModal.jsx",
-          "language": "javascript",
-          "sizeLines": 93,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/RightColumn.jsx",
-          "language": "javascript",
-          "sizeLines": 253,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
-          "language": "javascript",
-          "sizeLines": 105,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/VehicleTable.jsx",
-          "language": "javascript",
-          "sizeLines": 245,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
-          "language": "javascript",
-          "sizeLines": 407,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/hooks/useAttendanceState.js",
-          "language": "javascript",
-          "sizeLines": 156,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/hooks/useFilters.js",
-          "language": "javascript",
-          "sizeLines": 33,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/hooks/useStatistics.js",
-          "language": "javascript",
-          "sizeLines": 79,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/hooks/useTableSort.js",
-          "language": "javascript",
-          "sizeLines": 87,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/main.jsx",
-          "language": "javascript",
-          "sizeLines": 17,
-          "fileCategory": "code"
-        }
-      ],
-      "batchImportData": {
-        "apps/supervisor/src/App.jsx": [
-          "apps/supervisor/src/App.css",
-          "apps/supervisor/src/components/CapacityConflictModal.jsx",
-          "apps/supervisor/src/components/CapacityReportModal.jsx",
-          "apps/supervisor/src/components/CategoryTabs.jsx",
-          "apps/supervisor/src/components/EmployeeTable.jsx",
-          "apps/supervisor/src/components/FilterChips.jsx",
-          "apps/supervisor/src/components/LeftColumn.jsx",
-          "apps/supervisor/src/components/LoginModal.jsx",
-          "apps/supervisor/src/components/RightColumn.jsx",
-          "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
-          "apps/supervisor/src/components/VehicleTable.jsx",
-          "apps/supervisor/src/components/pdf/pdfHandler.js",
-          "apps/supervisor/src/hooks/useAttendanceHandlers.js",
-          "apps/supervisor/src/hooks/useAttendanceState.js",
-          "apps/supervisor/src/hooks/useFilters.js",
-          "apps/supervisor/src/hooks/useStatistics.js",
-          "apps/supervisor/src/hooks/useTableSort.js"
-        ],
-        "apps/supervisor/src/QueryClient.jsx": [],
-        "apps/supervisor/src/components/CapacityConflictModal.jsx": [],
-        "apps/supervisor/src/components/CapacityReportModal.jsx": [],
-        "apps/supervisor/src/components/CategoryTabs.jsx": [],
-        "apps/supervisor/src/components/FilterChips.jsx": [],
-        "apps/supervisor/src/components/LeftColumn.jsx": [],
-        "apps/supervisor/src/components/LoginModal.jsx": [],
-        "apps/supervisor/src/components/RightColumn.jsx": [],
-        "apps/supervisor/src/components/VehicleAssignmentHistory.jsx": [],
-        "apps/supervisor/src/components/VehicleTable.jsx": [],
-        "apps/supervisor/src/hooks/useAttendanceHandlers.js": [],
-        "apps/supervisor/src/hooks/useAttendanceState.js": [],
-        "apps/supervisor/src/hooks/useFilters.js": [],
-        "apps/supervisor/src/hooks/useStatistics.js": [],
-        "apps/supervisor/src/hooks/useTableSort.js": [],
-        "apps/supervisor/src/main.jsx": [
-          "apps/supervisor/src/App.jsx",
-          "apps/supervisor/src/QueryClient.jsx",
-          "apps/supervisor/src/index.css"
-        ]
-      },
-      "neighborMap": {
-        "apps/supervisor/src/App.jsx": [
-          {
-            "path": "apps/supervisor/src/App.css",
-            "batchIndex": 15,
-            "symbols": []
-          },
-          {
-            "path": "apps/supervisor/src/components/EmployeeTable.jsx",
-            "batchIndex": 3,
-            "symbols": []
-          },
-          {
-            "path": "apps/supervisor/src/components/pdf/pdfHandler.js",
-            "batchIndex": 4,
-            "symbols": [
-              "generateAttendanceReport"
-            ]
-          }
-        ],
-        "apps/supervisor/src/main.jsx": [
-          {
-            "path": "apps/supervisor/src/index.css",
-            "batchIndex": 16,
-            "symbols": []
-          }
-        ]
-      }
-    },
-    {
-      "batchIndex": 3,
-      "files": [
-        {
-          "path": "apps/supervisor/src/components/AttendanceControl.jsx",
-          "language": "javascript",
-          "sizeLines": 69,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/EmployeeAvatar.jsx",
-          "language": "javascript",
-          "sizeLines": 15,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/EmployeeRow.jsx",
-          "language": "javascript",
-          "sizeLines": 112,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/EmployeeTable.jsx",
-          "language": "javascript",
-          "sizeLines": 155,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
-          "language": "javascript",
-          "sizeLines": 25,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-          "language": "javascript",
-          "sizeLines": 20,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-          "language": "javascript",
-          "sizeLines": 57,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-          "language": "javascript",
-          "sizeLines": 24,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/attendance/attendance.config.js",
-          "language": "javascript",
-          "sizeLines": 54,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/attendance/attendance.utils.js",
-          "language": "javascript",
-          "sizeLines": 16,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
-          "language": "javascript",
-          "sizeLines": 11,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-          "language": "javascript",
-          "sizeLines": 33,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
-          "language": "javascript",
-          "sizeLines": 80,
-          "fileCategory": "code"
-        }
-      ],
-      "batchImportData": {
-        "apps/supervisor/src/components/AttendanceControl.jsx": [
-          "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
-          "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
-          "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
-          "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
-          "apps/supervisor/src/components/attendance/attendance.utils.js"
-        ],
-        "apps/supervisor/src/components/EmployeeAvatar.jsx": [],
-        "apps/supervisor/src/components/EmployeeRow.jsx": [
-          "apps/supervisor/src/components/AttendanceControl.jsx",
-          "apps/supervisor/src/components/EmployeeAvatar.jsx",
-          "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
-          "apps/supervisor/src/components/ui/VehicleSelect.jsx"
-        ],
-        "apps/supervisor/src/components/EmployeeTable.jsx": [
-          "apps/supervisor/src/components/EmployeeRow.jsx"
-        ],
-        "apps/supervisor/src/components/attendance/ArrivedBadge.jsx": [],
-        "apps/supervisor/src/components/attendance/AttendanceBadge.jsx": [
-          "apps/supervisor/src/components/attendance/attendance.utils.js"
-        ],
-        "apps/supervisor/src/components/attendance/AttendanceButtons.jsx": [
-          "apps/supervisor/src/components/ui/ButtonGroup.jsx"
-        ],
-        "apps/supervisor/src/components/attendance/LockedAttendance.jsx": [
-          "apps/supervisor/src/components/attendance/AttendanceBadge.jsx"
-        ],
-        "apps/supervisor/src/components/attendance/attendance.config.js": [],
-        "apps/supervisor/src/components/attendance/attendance.utils.js": [
-          "apps/supervisor/src/components/attendance/attendance.config.js"
-        ],
-        "apps/supervisor/src/components/ui/ButtonGroup.jsx": [],
-        "apps/supervisor/src/components/ui/LabourRequestButtons.jsx": [
-          "apps/supervisor/src/components/ui/ButtonGroup.jsx"
-        ],
-        "apps/supervisor/src/components/ui/VehicleSelect.jsx": [
-          "apps/supervisor/src/components/ui/ButtonGroup.jsx"
-        ]
-      },
-      "neighborMap": {
-        "apps/supervisor/src/components/EmployeeTable.jsx": [
-          {
-            "path": "apps/supervisor/src/App.jsx",
-            "batchIndex": 2,
-            "symbols": []
-          }
-        ]
-      }
-    },
-    {
-      "batchIndex": 4,
-      "files": [
-        {
-          "path": "apps/supervisor/src/components/pdf/PDFRenderer.js",
-          "language": "javascript",
-          "sizeLines": 59,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
-          "language": "javascript",
-          "sizeLines": 134,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
-          "language": "javascript",
-          "sizeLines": 45,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/pdfHandler.js",
-          "language": "javascript",
-          "sizeLines": 55,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
-          "language": "javascript",
-          "sizeLines": 80,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
-          "language": "javascript",
-          "sizeLines": 135,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
-          "language": "javascript",
-          "sizeLines": 105,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
-          "language": "javascript",
-          "sizeLines": 35,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
-          "language": "javascript",
-          "sizeLines": 86,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
-          "language": "javascript",
-          "sizeLines": 109,
-          "fileCategory": "code"
-        }
-      ],
-      "batchImportData": {
-        "apps/supervisor/src/components/pdf/PDFRenderer.js": [
-          "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
-          "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
-          "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
-          "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
-          "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
-          "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
-          "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js"
-        ],
-        "apps/supervisor/src/components/pdf/layout/LayoutManager.js": [
-          "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
-        ],
-        "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js": [],
-        "apps/supervisor/src/components/pdf/pdfHandler.js": [
-          "apps/supervisor/src/components/pdf/PDFRenderer.js"
-        ],
-        "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js": [
-          "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
-        ],
-        "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js": [
-          "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
-        ],
-        "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js": [
-          "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
-        ],
-        "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js": [
-          "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
-        ],
-        "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js": [
-          "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js"
-        ],
-        "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js": []
-      },
-      "neighborMap": {
-        "apps/supervisor/src/components/pdf/pdfHandler.js": [
-          {
-            "path": "apps/supervisor/src/App.jsx",
-            "batchIndex": 2,
-            "symbols": []
-          }
-        ]
-      }
-    },
-    {
-      "batchIndex": 5,
-      "files": [
-        {
-          "path": "packages/shared/components/ErrorBoundary.jsx",
-          "language": "javascript",
-          "sizeLines": 74,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/hooks/useEmployees.js",
-          "language": "javascript",
-          "sizeLines": 125,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/hooks/useVehicles.js",
-          "language": "javascript",
-          "sizeLines": 56,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/services/authService.js",
-          "language": "javascript",
-          "sizeLines": 117,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/services/backendApi.js",
-          "language": "javascript",
-          "sizeLines": 188,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/services/restAssignmentService.js",
-          "language": "javascript",
-          "sizeLines": 98,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/services/restEmployeeService.js",
-          "language": "javascript",
-          "sizeLines": 186,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/services/restSessionService.js",
-          "language": "javascript",
-          "sizeLines": 217,
-          "fileCategory": "code"
-        },
-        {
-          "path": "packages/shared/services/restVehicleService.js",
-          "language": "javascript",
-          "sizeLines": 160,
-          "fileCategory": "code"
-        }
-      ],
-      "batchImportData": {
-        "packages/shared/components/ErrorBoundary.jsx": [
-          "packages/shared/services/backendApi.js"
-        ],
-        "packages/shared/hooks/useEmployees.js": [
-          "packages/shared/services/authService.js",
-          "packages/shared/services/restEmployeeService.js"
-        ],
-        "packages/shared/hooks/useVehicles.js": [
-          "packages/shared/services/authService.js",
-          "packages/shared/services/restVehicleService.js"
-        ],
-        "packages/shared/services/authService.js": [
-          "packages/shared/services/backendApi.js"
-        ],
-        "packages/shared/services/backendApi.js": [],
-        "packages/shared/services/restAssignmentService.js": [
-          "packages/shared/services/backendApi.js"
-        ],
-        "packages/shared/services/restEmployeeService.js": [
-          "packages/shared/services/backendApi.js"
-        ],
-        "packages/shared/services/restSessionService.js": [
-          "packages/shared/services/backendApi.js"
-        ],
-        "packages/shared/services/restVehicleService.js": [
-          "packages/shared/services/backendApi.js"
-        ]
-      },
-      "neighborMap": {}
-    },
-    {
-      "batchIndex": 6,
-      "files": [
-        {
-          "path": "apps/supervisor/src/services/agentClient.js",
-          "language": "javascript",
-          "sizeLines": 129,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/services/api.js",
-          "language": "javascript",
-          "sizeLines": 71,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/services/employeeService.js",
-          "language": "javascript",
-          "sizeLines": 107,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/services/reportService.js",
-          "language": "javascript",
-          "sizeLines": 122,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/services/sessionService.js",
-          "language": "javascript",
-          "sizeLines": 122,
-          "fileCategory": "code"
-        },
-        {
-          "path": "apps/supervisor/src/services/vehicleService.js",
-          "language": "javascript",
-          "sizeLines": 101,
-          "fileCategory": "code"
-        }
-      ],
-      "batchImportData": {
-        "apps/supervisor/src/services/agentClient.js": [
-          "apps/supervisor/src/services/api.js"
-        ],
-        "apps/supervisor/src/services/api.js": [],
-        "apps/supervisor/src/services/employeeService.js": [
-          "apps/supervisor/src/services/agentClient.js"
-        ],
-        "apps/supervisor/src/services/reportService.js": [
-          "apps/supervisor/src/services/agentClient.js"
-        ],
-        "apps/supervisor/src/services/sessionService.js": [
-          "apps/supervisor/src/services/agentClient.js"
-        ],
-        "apps/supervisor/src/services/vehicleService.js": [
-          "apps/supervisor/src/services/agentClient.js"
-        ]
-      },
-      "neighborMap": {}
-    },
-    {
-      "batchIndex": 7,
       "files": [
         {
           "path": "ServerSide/Dockerfile",
@@ -1121,12 +656,12 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 8,
+      "batchIndex": 2,
       "files": [
         {
           "path": "apps/admin/Dockerfile",
           "language": "dockerfile",
-          "sizeLines": 18,
+          "sizeLines": 21,
           "fileCategory": "infra"
         }
       ],
@@ -1136,7 +671,7 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 9,
+      "batchIndex": 3,
       "files": [
         {
           "path": "apps/supervisor/.dockerignore",
@@ -1147,7 +682,7 @@
         {
           "path": "apps/supervisor/Dockerfile",
           "language": "dockerfile",
-          "sizeLines": 18,
+          "sizeLines": 21,
           "fileCategory": "infra"
         }
       ],
@@ -1158,7 +693,7 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 10,
+      "batchIndex": 4,
       "files": [
         {
           "path": ".dockerignore",
@@ -1167,9 +702,15 @@
           "fileCategory": "infra"
         },
         {
+          "path": ".lintstagedrc.json",
+          "language": "json",
+          "sizeLines": 8,
+          "fileCategory": "config"
+        },
+        {
           "path": "ARCHITECTURE.md",
           "language": "markdown",
-          "sizeLines": 58,
+          "sizeLines": 188,
           "fileCategory": "docs"
         },
         {
@@ -1181,19 +722,19 @@
         {
           "path": "GOALS.md",
           "language": "markdown",
-          "sizeLines": 70,
+          "sizeLines": 118,
           "fileCategory": "docs"
         },
         {
           "path": "MASTER INSTRUCTIONS.md",
           "language": "markdown",
-          "sizeLines": 68,
+          "sizeLines": 96,
           "fileCategory": "docs"
         },
         {
           "path": "TODO.md",
           "language": "markdown",
-          "sizeLines": 93,
+          "sizeLines": 133,
           "fileCategory": "docs"
         },
         {
@@ -1205,13 +746,13 @@
         {
           "path": "WORKFLOW_PLAN.md",
           "language": "markdown",
-          "sizeLines": 207,
+          "sizeLines": 131,
           "fileCategory": "docs"
         },
         {
           "path": "docker-compose.yml",
           "language": "yaml",
-          "sizeLines": 79,
+          "sizeLines": 130,
           "fileCategory": "infra"
         },
         {
@@ -1219,10 +760,17 @@
           "language": "batch",
           "sizeLines": 19,
           "fileCategory": "script"
+        },
+        {
+          "path": "package.json",
+          "language": "json",
+          "sizeLines": 26,
+          "fileCategory": "config"
         }
       ],
       "batchImportData": {
         ".dockerignore": [],
+        ".lintstagedrc.json": [],
         "ARCHITECTURE.md": [],
         "DOCKER_DEPLOYMENT.md": [],
         "GOALS.md": [],
@@ -1231,17 +779,18 @@
         "TYPE_SYNC_GUIDE.md": [],
         "WORKFLOW_PLAN.md": [],
         "docker-compose.yml": [],
-        "launch-containers.bat": []
+        "launch-containers.bat": [],
+        "package.json": []
       },
       "neighborMap": {}
     },
     {
-      "batchIndex": 11,
+      "batchIndex": 5,
       "files": [
         {
           "path": "ServerSide/MASTER INSTRUCTIONS SERVER SIDE.md",
           "language": "markdown",
-          "sizeLines": 114,
+          "sizeLines": 116,
           "fileCategory": "docs"
         },
         {
@@ -1253,7 +802,7 @@
         {
           "path": "ServerSide/openapi.json",
           "language": "json",
-          "sizeLines": 2010,
+          "sizeLines": 3454,
           "fileCategory": "config"
         },
         {
@@ -1272,7 +821,7 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 12,
+      "batchIndex": 6,
       "files": [
         {
           "path": "apps/admin/.oxlintrc.json",
@@ -1283,7 +832,7 @@
         {
           "path": "apps/admin/README.md",
           "language": "markdown",
-          "sizeLines": 16,
+          "sizeLines": 88,
           "fileCategory": "docs"
         },
         {
@@ -1308,7 +857,7 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 13,
+      "batchIndex": 7,
       "files": [
         {
           "path": "apps/supervisor/.oxlintrc.json",
@@ -1319,13 +868,13 @@
         {
           "path": "apps/supervisor/MASTER INSTRUCTIONS.md",
           "language": "markdown",
-          "sizeLines": 77,
+          "sizeLines": 70,
           "fileCategory": "docs"
         },
         {
           "path": "apps/supervisor/README.md",
           "language": "markdown",
-          "sizeLines": 127,
+          "sizeLines": 120,
           "fileCategory": "docs"
         },
         {
@@ -1351,7 +900,7 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 14,
+      "batchIndex": 8,
       "files": [
         {
           "path": "packages/shared/check-types.bat",
@@ -1368,7 +917,7 @@
         {
           "path": "packages/shared/package.json",
           "language": "json",
-          "sizeLines": 31,
+          "sizeLines": 55,
           "fileCategory": "config"
         },
         {
@@ -1387,7 +936,7 @@
       "neighborMap": {}
     },
     {
-      "batchIndex": 15,
+      "batchIndex": 9,
       "files": [
         {
           "path": ".devin/workflows/grillme.md",
@@ -1398,13 +947,13 @@
         {
           "path": ".devin/workflows/underdatnd.md",
           "language": "markdown",
-          "sizeLines": 83,
+          "sizeLines": 57,
           "fileCategory": "docs"
         },
         {
-          "path": ".ua/.understandignore",
+          "path": ".husky/pre-commit",
           "language": "unknown",
-          "sizeLines": 91,
+          "sizeLines": 12,
           "fileCategory": "code"
         },
         {
@@ -1414,15 +963,216 @@
           "fileCategory": "docs"
         },
         {
+          "path": "ServerSide/app/api/v1/accounting/routes.py",
+          "language": "python",
+          "sizeLines": 125,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/assignments/routes.py",
+          "language": "python",
+          "sizeLines": 221,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/attendance/routes.py",
+          "language": "python",
+          "sizeLines": 167,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/auth.py",
+          "language": "python",
+          "sizeLines": 62,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/employees/routes.py",
+          "language": "python",
+          "sizeLines": 160,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/pay/routes.py",
+          "language": "python",
+          "sizeLines": 99,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/sessions/routes.py",
+          "language": "python",
+          "sizeLines": 254,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/trips/routes.py",
+          "language": "python",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/api/v1/vehicles/routes.py",
+          "language": "python",
+          "sizeLines": 70,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/core/exceptions.py",
+          "language": "python",
+          "sizeLines": 41,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/core/logging_config.py",
+          "language": "python",
+          "sizeLines": 27,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/core/middleware.py",
+          "language": "python",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/db/__init__.py",
+          "language": "python",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/db/indexes.py",
+          "language": "python",
+          "sizeLines": 7,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/db/odoo_db.py",
+          "language": "python",
+          "sizeLines": 324,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/main.py",
+          "language": "python",
+          "sizeLines": 230,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/models/assignment.py",
+          "language": "python",
+          "sizeLines": 38,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/models/attendance.py",
+          "language": "python",
+          "sizeLines": 50,
+          "fileCategory": "code"
+        },
+        {
           "path": "ServerSide/app/models/audit_event.py",
           "language": "python",
-          "sizeLines": 22,
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/models/employee.py",
+          "language": "python",
+          "sizeLines": 61,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/models/session.py",
+          "language": "python",
+          "sizeLines": 40,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        ".devin/workflows/grillme.md": [],
+        ".devin/workflows/underdatnd.md": [],
+        ".husky/pre-commit": [],
+        "AttandaceTraker Acvanced/master intructions.md": [],
+        "ServerSide/app/api/v1/accounting/routes.py": [],
+        "ServerSide/app/api/v1/assignments/routes.py": [],
+        "ServerSide/app/api/v1/attendance/routes.py": [],
+        "ServerSide/app/api/v1/auth.py": [],
+        "ServerSide/app/api/v1/employees/routes.py": [],
+        "ServerSide/app/api/v1/pay/routes.py": [],
+        "ServerSide/app/api/v1/sessions/routes.py": [],
+        "ServerSide/app/api/v1/trips/routes.py": [],
+        "ServerSide/app/api/v1/vehicles/routes.py": [],
+        "ServerSide/app/core/exceptions.py": [],
+        "ServerSide/app/core/logging_config.py": [],
+        "ServerSide/app/core/middleware.py": [],
+        "ServerSide/app/db/__init__.py": [],
+        "ServerSide/app/db/indexes.py": [],
+        "ServerSide/app/db/odoo_db.py": [],
+        "ServerSide/app/main.py": [],
+        "ServerSide/app/models/assignment.py": [],
+        "ServerSide/app/models/attendance.py": [],
+        "ServerSide/app/models/audit_event.py": [],
+        "ServerSide/app/models/employee.py": [],
+        "ServerSide/app/models/session.py": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 10,
+      "files": [
+        {
+          "path": "ServerSide/app/models/trip.py",
+          "language": "python",
+          "sizeLines": 55,
           "fileCategory": "code"
         },
         {
           "path": "ServerSide/app/models/user.py",
           "language": "python",
-          "sizeLines": 26,
+          "sizeLines": 28,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/models/vehicle.py",
+          "language": "python",
+          "sizeLines": 42,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/schemas/error.py",
+          "language": "python",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/services/__init__.py",
+          "language": "python",
+          "sizeLines": 1,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/services/odoo_service.py",
+          "language": "python",
+          "sizeLines": 553,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/app/services/trip_service.py",
+          "language": "python",
+          "sizeLines": 148,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/core/auth.py",
+          "language": "python",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/core/config.py",
+          "language": "python",
+          "sizeLines": 20,
           "fileCategory": "code"
         },
         {
@@ -1462,45 +1212,120 @@
           "fileCategory": "code"
         },
         {
+          "path": "ServerSide/tests/conftest.py",
+          "language": "python",
+          "sizeLines": 108,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/tests/test_assignments.py",
+          "language": "python",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
           "path": "ServerSide/tests/test_attendance.py",
           "language": "python",
-          "sizeLines": 3,
+          "sizeLines": 54,
           "fileCategory": "code"
         },
         {
           "path": "ServerSide/tests/test_auth.py",
           "language": "python",
-          "sizeLines": 27,
+          "sizeLines": 47,
           "fileCategory": "code"
         },
         {
           "path": "ServerSide/tests/test_employees.py",
           "language": "python",
-          "sizeLines": 12,
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/tests/test_error_handling.py",
+          "language": "python",
+          "sizeLines": 45,
           "fileCategory": "code"
         },
         {
           "path": "ServerSide/tests/test_sessions.py",
           "language": "python",
-          "sizeLines": 12,
+          "sizeLines": 73,
+          "fileCategory": "code"
+        },
+        {
+          "path": "ServerSide/tests/test_trips.py",
+          "language": "python",
+          "sizeLines": 53,
           "fileCategory": "code"
         },
         {
           "path": "ServerSide/tests/test_vehicles.py",
           "language": "python",
-          "sizeLines": 11,
+          "sizeLines": 47,
           "fileCategory": "code"
         },
         {
           "path": "apps/admin/src/App.css",
           "language": "css",
-          "sizeLines": 215,
+          "sizeLines": 836,
           "fileCategory": "markup"
-        },
+        }
+      ],
+      "batchImportData": {
+        "ServerSide/app/models/trip.py": [],
+        "ServerSide/app/models/user.py": [],
+        "ServerSide/app/models/vehicle.py": [],
+        "ServerSide/app/schemas/error.py": [],
+        "ServerSide/app/services/__init__.py": [],
+        "ServerSide/app/services/odoo_service.py": [],
+        "ServerSide/app/services/trip_service.py": [],
+        "ServerSide/core/auth.py": [],
+        "ServerSide/core/config.py": [],
+        "ServerSide/scripts/export_openapi.py": [],
+        "ServerSide/scripts/seed_data.py": [],
+        "ServerSide/scripts/sync.bat": [],
+        "ServerSide/scripts/sync.py": [],
+        "ServerSide/scripts/sync.sh": [],
+        "ServerSide/tests/__init__.py": [],
+        "ServerSide/tests/conftest.py": [],
+        "ServerSide/tests/test_assignments.py": [],
+        "ServerSide/tests/test_attendance.py": [],
+        "ServerSide/tests/test_auth.py": [],
+        "ServerSide/tests/test_employees.py": [],
+        "ServerSide/tests/test_error_handling.py": [],
+        "ServerSide/tests/test_sessions.py": [],
+        "ServerSide/tests/test_trips.py": [],
+        "ServerSide/tests/test_vehicles.py": [],
+        "apps/admin/src/App.css": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 11,
+      "files": [
         {
           "path": "apps/admin/src/App.jsx",
           "language": "javascript",
-          "sizeLines": 243,
+          "sizeLines": 1146,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/admin/src/QueryClient.jsx",
+          "language": "javascript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/admin/src/components/AdminDashboard.jsx",
+          "language": "javascript",
+          "sizeLines": 705,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/admin/src/components/OdooSyncModal.jsx",
+          "language": "javascript",
+          "sizeLines": 185,
           "fileCategory": "code"
         },
         {
@@ -1512,13 +1337,13 @@
         {
           "path": "apps/admin/src/main.jsx",
           "language": "javascript",
-          "sizeLines": 10,
+          "sizeLines": 17,
           "fileCategory": "code"
         },
         {
           "path": "apps/admin/vite.config.js",
           "language": "javascript",
-          "sizeLines": 11,
+          "sizeLines": 34,
           "fileCategory": "code"
         },
         {
@@ -1530,72 +1355,210 @@
         {
           "path": "apps/supervisor/src/App.css",
           "language": "css",
-          "sizeLines": 184,
+          "sizeLines": 197,
           "fileCategory": "markup"
+        },
+        {
+          "path": "apps/supervisor/src/App.jsx",
+          "language": "javascript",
+          "sizeLines": 387,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/QueryClient.jsx",
+          "language": "javascript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/AttendanceControl.jsx",
+          "language": "javascript",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/CapacityConflictModal.jsx",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/CapacityReportModal.jsx",
+          "language": "javascript",
+          "sizeLines": 198,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/CategoryTabs.jsx",
+          "language": "javascript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/EmployeeAvatar.jsx",
+          "language": "javascript",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/EmployeeRow.jsx",
+          "language": "javascript",
+          "sizeLines": 117,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/EmployeeTable.jsx",
+          "language": "javascript",
+          "sizeLines": 159,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/FilterChips.jsx",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/LeftColumn.jsx",
+          "language": "javascript",
+          "sizeLines": 298,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/LoginModal.jsx",
+          "language": "javascript",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/RequestEmployeeModal.jsx",
+          "language": "javascript",
+          "sizeLines": 149,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/RightColumn.jsx",
+          "language": "javascript",
+          "sizeLines": 281,
+          "fileCategory": "code"
         },
         {
           "path": "apps/supervisor/src/components/SyncStatus.jsx",
           "language": "javascript",
           "sizeLines": 55,
           "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/TripTrackerModal.jsx",
+          "language": "javascript",
+          "sizeLines": 391,
+          "fileCategory": "code"
         }
       ],
       "batchImportData": {
-        ".devin/workflows/grillme.md": [],
-        ".devin/workflows/underdatnd.md": [],
-        ".ua/.understandignore": [],
-        "AttandaceTraker Acvanced/master intructions.md": [],
-        "ServerSide/app/models/audit_event.py": [],
-        "ServerSide/app/models/user.py": [],
-        "ServerSide/scripts/export_openapi.py": [],
-        "ServerSide/scripts/seed_data.py": [],
-        "ServerSide/scripts/sync.bat": [],
-        "ServerSide/scripts/sync.py": [],
-        "ServerSide/scripts/sync.sh": [],
-        "ServerSide/tests/__init__.py": [],
-        "ServerSide/tests/test_attendance.py": [],
-        "ServerSide/tests/test_auth.py": [],
-        "ServerSide/tests/test_employees.py": [],
-        "ServerSide/tests/test_sessions.py": [],
-        "ServerSide/tests/test_vehicles.py": [],
-        "apps/admin/src/App.css": [],
-        "apps/admin/src/App.jsx": [
-          "apps/admin/src/App.css"
-        ],
+        "apps/admin/src/App.jsx": [],
+        "apps/admin/src/QueryClient.jsx": [],
+        "apps/admin/src/components/AdminDashboard.jsx": [],
+        "apps/admin/src/components/OdooSyncModal.jsx": [],
         "apps/admin/src/index.css": [],
-        "apps/admin/src/main.jsx": [
-          "apps/admin/src/App.jsx",
-          "apps/admin/src/index.css"
-        ],
+        "apps/admin/src/main.jsx": [],
         "apps/admin/vite.config.js": [],
         "apps/supervisor/postcss.config.js": [],
         "apps/supervisor/src/App.css": [],
-        "apps/supervisor/src/components/SyncStatus.jsx": [
-          "apps/supervisor/src/services/offlineQueue.js"
-        ]
+        "apps/supervisor/src/App.jsx": [],
+        "apps/supervisor/src/QueryClient.jsx": [],
+        "apps/supervisor/src/components/AttendanceControl.jsx": [],
+        "apps/supervisor/src/components/CapacityConflictModal.jsx": [],
+        "apps/supervisor/src/components/CapacityReportModal.jsx": [],
+        "apps/supervisor/src/components/CategoryTabs.jsx": [],
+        "apps/supervisor/src/components/EmployeeAvatar.jsx": [],
+        "apps/supervisor/src/components/EmployeeRow.jsx": [],
+        "apps/supervisor/src/components/EmployeeTable.jsx": [],
+        "apps/supervisor/src/components/FilterChips.jsx": [],
+        "apps/supervisor/src/components/LeftColumn.jsx": [],
+        "apps/supervisor/src/components/LoginModal.jsx": [],
+        "apps/supervisor/src/components/RequestEmployeeModal.jsx": [],
+        "apps/supervisor/src/components/RightColumn.jsx": [],
+        "apps/supervisor/src/components/SyncStatus.jsx": [],
+        "apps/supervisor/src/components/TripTrackerModal.jsx": []
       },
-      "neighborMap": {
-        "apps/supervisor/src/App.css": [
-          {
-            "path": "apps/supervisor/src/App.jsx",
-            "batchIndex": 2,
-            "symbols": []
-          }
-        ],
-        "apps/supervisor/src/components/SyncStatus.jsx": [
-          {
-            "path": "apps/supervisor/src/services/offlineQueue.js",
-            "batchIndex": 16,
-            "symbols": [
-              "offlineQueue"
-            ]
-          }
-        ]
-      }
+      "neighborMap": {}
     },
     {
-      "batchIndex": 16,
+      "batchIndex": 12,
       "files": [
+        {
+          "path": "apps/supervisor/src/components/VehicleAssignmentHistory.jsx",
+          "language": "javascript",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/VehicleTable.jsx",
+          "language": "javascript",
+          "sizeLines": 245,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/attendance/ArrivedBadge.jsx",
+          "language": "javascript",
+          "sizeLines": 25,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/attendance/AttendanceBadge.jsx",
+          "language": "javascript",
+          "sizeLines": 20,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/attendance/AttendanceButtons.jsx",
+          "language": "javascript",
+          "sizeLines": 57,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/attendance/LockedAttendance.jsx",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/attendance/attendance.config.js",
+          "language": "javascript",
+          "sizeLines": 54,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/attendance/attendance.utils.js",
+          "language": "javascript",
+          "sizeLines": 16,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/PDFRenderer.js",
+          "language": "javascript",
+          "sizeLines": 59,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/layout/LayoutManager.js",
+          "language": "javascript",
+          "sizeLines": 134,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/pdfHandler.js",
+          "language": "javascript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
         {
           "path": "apps/supervisor/src/components/pdf/pdfHeaderFooter.js",
           "language": "javascript",
@@ -1621,10 +1584,163 @@
           "fileCategory": "code"
         },
         {
+          "path": "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js",
+          "language": "javascript",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js",
+          "language": "javascript",
+          "sizeLines": 135,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js",
+          "language": "javascript",
+          "sizeLines": 105,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js",
+          "language": "javascript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js",
+          "language": "javascript",
+          "sizeLines": 86,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js",
+          "language": "javascript",
+          "sizeLines": 109,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/ui/ButtonGroup.jsx",
+          "language": "javascript",
+          "sizeLines": 11,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/ui/ConfirmModal.jsx",
+          "language": "javascript",
+          "sizeLines": 53,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/ui/LabourRequestButtons.jsx",
+          "language": "javascript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "apps/supervisor/src/components/VehicleAssignmentHistory.jsx": [],
+        "apps/supervisor/src/components/VehicleTable.jsx": [],
+        "apps/supervisor/src/components/attendance/ArrivedBadge.jsx": [],
+        "apps/supervisor/src/components/attendance/AttendanceBadge.jsx": [],
+        "apps/supervisor/src/components/attendance/AttendanceButtons.jsx": [],
+        "apps/supervisor/src/components/attendance/LockedAttendance.jsx": [],
+        "apps/supervisor/src/components/attendance/attendance.config.js": [],
+        "apps/supervisor/src/components/attendance/attendance.utils.js": [],
+        "apps/supervisor/src/components/pdf/PDFRenderer.js": [],
+        "apps/supervisor/src/components/pdf/layout/LayoutManager.js": [],
+        "apps/supervisor/src/components/pdf/layout/pdfLayoutConstants.js": [],
+        "apps/supervisor/src/components/pdf/pdfHandler.js": [],
+        "apps/supervisor/src/components/pdf/pdfHeaderFooter.js": [],
+        "apps/supervisor/src/components/pdf/pdfPendingException.js": [],
+        "apps/supervisor/src/components/pdf/pdfSummary.js": [],
+        "apps/supervisor/src/components/pdf/pdfTables.js": [],
+        "apps/supervisor/src/components/pdf/renderers/CategorySummaryRenderer.js": [],
+        "apps/supervisor/src/components/pdf/renderers/EmployeeSectionRenderer.js": [],
+        "apps/supervisor/src/components/pdf/renderers/ExceptionReportRenderer.js": [],
+        "apps/supervisor/src/components/pdf/renderers/ReportHeaderRenderer.js": [],
+        "apps/supervisor/src/components/pdf/renderers/SummaryRenderer.js": [],
+        "apps/supervisor/src/components/pdf/renderers/VehicleSectionRenderer.js": [],
+        "apps/supervisor/src/components/ui/ButtonGroup.jsx": [],
+        "apps/supervisor/src/components/ui/ConfirmModal.jsx": [],
+        "apps/supervisor/src/components/ui/LabourRequestButtons.jsx": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 13,
+      "files": [
+        {
+          "path": "apps/supervisor/src/components/ui/Toast.jsx",
+          "language": "javascript",
+          "sizeLines": 68,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+          "language": "javascript",
+          "sizeLines": 80,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+          "language": "javascript",
+          "sizeLines": 384,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/hooks/useAttendanceState.js",
+          "language": "javascript",
+          "sizeLines": 177,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/hooks/useFilters.js",
+          "language": "javascript",
+          "sizeLines": 49,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/hooks/useStatistics.js",
+          "language": "javascript",
+          "sizeLines": 104,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/hooks/useTableSort.js",
+          "language": "javascript",
+          "sizeLines": 87,
+          "fileCategory": "code"
+        },
+        {
           "path": "apps/supervisor/src/index.css",
           "language": "css",
           "sizeLines": 22,
           "fileCategory": "markup"
+        },
+        {
+          "path": "apps/supervisor/src/main.jsx",
+          "language": "javascript",
+          "sizeLines": 17,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/services/agentClient.js",
+          "language": "javascript",
+          "sizeLines": 129,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/services/api.js",
+          "language": "javascript",
+          "sizeLines": 71,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/services/employeeService.js",
+          "language": "javascript",
+          "sizeLines": 107,
+          "fileCategory": "code"
         },
         {
           "path": "apps/supervisor/src/services/index.js",
@@ -1636,6 +1752,12 @@
           "path": "apps/supervisor/src/services/offlineQueue.js",
           "language": "javascript",
           "sizeLines": 154,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/services/reportService.js",
+          "language": "javascript",
+          "sizeLines": 122,
           "fileCategory": "code"
         },
         {
@@ -1663,6 +1785,18 @@
           "fileCategory": "code"
         },
         {
+          "path": "apps/supervisor/src/services/sessionService.js",
+          "language": "javascript",
+          "sizeLines": 122,
+          "fileCategory": "code"
+        },
+        {
+          "path": "apps/supervisor/src/services/vehicleService.js",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
           "path": "apps/supervisor/tailwind.config.js",
           "language": "javascript",
           "sizeLines": 11,
@@ -1671,13 +1805,70 @@
         {
           "path": "apps/supervisor/vite.config.js",
           "language": "javascript",
-          "sizeLines": 11,
+          "sizeLines": 34,
           "fileCategory": "code"
         },
         {
+          "path": "odoo/config/odoo.conf",
+          "language": "conf",
+          "sizeLines": 13,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/.babelrc",
+          "language": "unknown",
+          "sizeLines": 15,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "apps/supervisor/src/components/ui/Toast.jsx": [],
+        "apps/supervisor/src/components/ui/VehicleSelect.jsx": [],
+        "apps/supervisor/src/hooks/useAttendanceHandlers.js": [],
+        "apps/supervisor/src/hooks/useAttendanceState.js": [],
+        "apps/supervisor/src/hooks/useFilters.js": [],
+        "apps/supervisor/src/hooks/useStatistics.js": [],
+        "apps/supervisor/src/hooks/useTableSort.js": [],
+        "apps/supervisor/src/index.css": [],
+        "apps/supervisor/src/main.jsx": [],
+        "apps/supervisor/src/services/agentClient.js": [],
+        "apps/supervisor/src/services/api.js": [],
+        "apps/supervisor/src/services/employeeService.js": [],
+        "apps/supervisor/src/services/index.js": [],
+        "apps/supervisor/src/services/offlineQueue.js": [],
+        "apps/supervisor/src/services/reportService.js": [],
+        "apps/supervisor/src/services/restAssignmentService.js": [],
+        "apps/supervisor/src/services/restEmployeeService.js": [],
+        "apps/supervisor/src/services/restSessionService.js": [],
+        "apps/supervisor/src/services/restVehicleService.js": [],
+        "apps/supervisor/src/services/sessionService.js": [],
+        "apps/supervisor/src/services/vehicleService.js": [],
+        "apps/supervisor/tailwind.config.js": [],
+        "apps/supervisor/vite.config.js": [],
+        "odoo/config/odoo.conf": [],
+        "packages/shared/.babelrc": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 14,
+      "files": [
+        {
           "path": "packages/shared/check-types.js",
           "language": "javascript",
-          "sizeLines": 42,
+          "sizeLines": 40,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/components/ArrivedTimeModal.jsx",
+          "language": "javascript",
+          "sizeLines": 123,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/components/ErrorBoundary.jsx",
+          "language": "javascript",
+          "sizeLines": 105,
           "fileCategory": "code"
         },
         {
@@ -1687,15 +1878,258 @@
           "fileCategory": "code"
         },
         {
+          "path": "packages/shared/hooks/useEmployees.js",
+          "language": "javascript",
+          "sizeLines": 238,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/hooks/usePerformanceMonitor.js",
+          "language": "javascript",
+          "sizeLines": 155,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/hooks/useTrips.js",
+          "language": "javascript",
+          "sizeLines": 85,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/hooks/useVehicles.js",
+          "language": "javascript",
+          "sizeLines": 97,
+          "fileCategory": "code"
+        },
+        {
           "path": "packages/shared/index.js",
           "language": "javascript",
-          "sizeLines": 17,
+          "sizeLines": 144,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/index.mjs",
+          "language": "javascript",
+          "sizeLines": 144,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/mocha.config.cjs",
+          "language": "javascript",
+          "sizeLines": 36,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/authService.js",
+          "language": "javascript",
+          "sizeLines": 75,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/backendApi.js",
+          "language": "javascript",
+          "sizeLines": 275,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/restAccountingService.js",
+          "language": "javascript",
+          "sizeLines": 31,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/restAssignmentService.js",
+          "language": "javascript",
+          "sizeLines": 19,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/restEmployeeService.js",
+          "language": "javascript",
+          "sizeLines": 111,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/restSessionService.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/restTripService.js",
+          "language": "javascript",
+          "sizeLines": 24,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/services/restVehicleService.js",
+          "language": "javascript",
+          "sizeLines": 55,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/components/ArrivedTimeModal.test.jsx",
+          "language": "javascript",
+          "sizeLines": 267,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/components/ErrorBoundary.test.jsx",
+          "language": "javascript",
+          "sizeLines": 173,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/components/LoadingSpinner.test.jsx",
+          "language": "javascript",
+          "sizeLines": 65,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/hooks/useEmployees.test.js",
+          "language": "javascript",
+          "sizeLines": 268,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/hooks/usePerformanceMonitor.test.js",
+          "language": "javascript",
+          "sizeLines": 74,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/hooks/useStatistics.test.js",
+          "language": "javascript",
+          "sizeLines": 60,
+          "fileCategory": "code"
+        }
+      ],
+      "batchImportData": {
+        "packages/shared/check-types.js": [],
+        "packages/shared/components/ArrivedTimeModal.jsx": [],
+        "packages/shared/components/ErrorBoundary.jsx": [],
+        "packages/shared/components/LoadingSpinner.jsx": [],
+        "packages/shared/hooks/useEmployees.js": [],
+        "packages/shared/hooks/usePerformanceMonitor.js": [],
+        "packages/shared/hooks/useTrips.js": [],
+        "packages/shared/hooks/useVehicles.js": [],
+        "packages/shared/index.js": [],
+        "packages/shared/index.mjs": [],
+        "packages/shared/mocha.config.cjs": [],
+        "packages/shared/services/authService.js": [],
+        "packages/shared/services/backendApi.js": [],
+        "packages/shared/services/restAccountingService.js": [],
+        "packages/shared/services/restAssignmentService.js": [],
+        "packages/shared/services/restEmployeeService.js": [],
+        "packages/shared/services/restSessionService.js": [],
+        "packages/shared/services/restTripService.js": [],
+        "packages/shared/services/restVehicleService.js": [],
+        "packages/shared/tests/components/ArrivedTimeModal.test.jsx": [],
+        "packages/shared/tests/components/ErrorBoundary.test.jsx": [],
+        "packages/shared/tests/components/LoadingSpinner.test.jsx": [],
+        "packages/shared/tests/hooks/useEmployees.test.js": [],
+        "packages/shared/tests/hooks/usePerformanceMonitor.test.js": [],
+        "packages/shared/tests/hooks/useStatistics.test.js": []
+      },
+      "neighborMap": {}
+    },
+    {
+      "batchIndex": 15,
+      "files": [
+        {
+          "path": "packages/shared/tests/hooks/useTrips.test.js",
+          "language": "javascript",
+          "sizeLines": 177,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/hooks/useVehicles.test.js",
+          "language": "javascript",
+          "sizeLines": 199,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/authService.edgeCases.test.js",
+          "language": "javascript",
+          "sizeLines": 265,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/authService.test.js",
+          "language": "javascript",
+          "sizeLines": 309,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/backendApi.edgeCases.test.js",
+          "language": "javascript",
+          "sizeLines": 449,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/backendApi.test.js",
+          "language": "javascript",
+          "sizeLines": 484,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/healthCheck.test.js",
+          "language": "javascript",
+          "sizeLines": 45,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/restAssignmentService.test.js",
+          "language": "javascript",
+          "sizeLines": 218,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/restEmployeeService.test.js",
+          "language": "javascript",
+          "sizeLines": 399,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/services/restVehicleService.test.js",
+          "language": "javascript",
+          "sizeLines": 353,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/tests/utils/requestId.test.js",
+          "language": "javascript",
+          "sizeLines": 65,
           "fileCategory": "code"
         },
         {
           "path": "packages/shared/types/api.ts",
           "language": "typescript",
-          "sizeLines": 1342,
+          "sizeLines": 2145,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/utils/config.js",
+          "language": "javascript",
+          "sizeLines": 14,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/utils/logger.js",
+          "language": "javascript",
+          "sizeLines": 101,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/utils/requestId.js",
+          "language": "javascript",
+          "sizeLines": 35,
+          "fileCategory": "code"
+        },
+        {
+          "path": "packages/shared/utils/security.js",
+          "language": "javascript",
+          "sizeLines": 24,
           "fileCategory": "code"
         },
         {
@@ -1712,44 +2146,26 @@
         }
       ],
       "batchImportData": {
-        "apps/supervisor/src/components/pdf/pdfHeaderFooter.js": [],
-        "apps/supervisor/src/components/pdf/pdfPendingException.js": [],
-        "apps/supervisor/src/components/pdf/pdfSummary.js": [],
-        "apps/supervisor/src/components/pdf/pdfTables.js": [],
-        "apps/supervisor/src/index.css": [],
-        "apps/supervisor/src/services/index.js": [],
-        "apps/supervisor/src/services/offlineQueue.js": [],
-        "apps/supervisor/src/services/restAssignmentService.js": [],
-        "apps/supervisor/src/services/restEmployeeService.js": [],
-        "apps/supervisor/src/services/restSessionService.js": [],
-        "apps/supervisor/src/services/restVehicleService.js": [],
-        "apps/supervisor/tailwind.config.js": [],
-        "apps/supervisor/vite.config.js": [],
-        "packages/shared/check-types.js": [],
-        "packages/shared/components/LoadingSpinner.jsx": [],
-        "packages/shared/index.js": [],
+        "packages/shared/tests/hooks/useTrips.test.js": [],
+        "packages/shared/tests/hooks/useVehicles.test.js": [],
+        "packages/shared/tests/services/authService.edgeCases.test.js": [],
+        "packages/shared/tests/services/authService.test.js": [],
+        "packages/shared/tests/services/backendApi.edgeCases.test.js": [],
+        "packages/shared/tests/services/backendApi.test.js": [],
+        "packages/shared/tests/services/healthCheck.test.js": [],
+        "packages/shared/tests/services/restAssignmentService.test.js": [],
+        "packages/shared/tests/services/restEmployeeService.test.js": [],
+        "packages/shared/tests/services/restVehicleService.test.js": [],
+        "packages/shared/tests/utils/requestId.test.js": [],
         "packages/shared/types/api.ts": [],
+        "packages/shared/utils/config.js": [],
+        "packages/shared/utils/logger.js": [],
+        "packages/shared/utils/requestId.js": [],
+        "packages/shared/utils/security.js": [],
         "scripts/pre-commit.bat": [],
         "scripts/pre-commit.sh": []
       },
-      "neighborMap": {
-        "apps/supervisor/src/index.css": [
-          {
-            "path": "apps/supervisor/src/main.jsx",
-            "batchIndex": 2,
-            "symbols": []
-          }
-        ],
-        "apps/supervisor/src/services/offlineQueue.js": [
-          {
-            "path": "apps/supervisor/src/components/SyncStatus.jsx",
-            "batchIndex": 15,
-            "symbols": [
-              "SyncStatus"
-            ]
-          }
-        ]
-      }
+      "neighborMap": {}
     }
   ]
 }

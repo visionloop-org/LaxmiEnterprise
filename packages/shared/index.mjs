@@ -1,4 +1,4 @@
-// CommonJS & ESM entry point for @laxmi/shared
+// ESM entry point for @laxmi/shared
 import backendApi from './services/backendApi.js'
 import authServiceModule from './services/authService.js'
 import googleSheetsServiceModule from './services/googleSheetsService.js'

@@ -1,41 +1,755 @@
 {
+  "batchIndex": 12,
   "nodes": [
     {
-      "id": "config:apps/admin/.oxlintrc.json",
-      "type": "config",
-      "name": ".oxlintrc.json",
-      "filePath": "apps/admin/.oxlintrc.json",
-      "summary": "Json config file (8 lines)",
+      "id": "file:apps/supervisor/src/components/ui/Toast.jsx",
+      "name": "Toast.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/ui/Toast.jsx",
+      "summary": "Supervisor tablet attendance tracking component (Toast.jsx)",
       "tags": [
-        "json",
-        "config"
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "component:apps/supervisor/src/components/ui/Toast.jsx:Toast",
+      "name": "Toast",
+      "type": "class",
+      "filePath": "apps/supervisor/src/components/ui/Toast.jsx",
+      "summary": "Exported component Toast in Toast.jsx",
+      "tags": [
+        "component",
+        "frontend"
       ],
       "complexity": "simple"
     },
     {
-      "id": "document:apps/admin/README.md",
-      "type": "document",
-      "name": "README.md",
-      "filePath": "apps/admin/README.md",
-      "summary": "Markdown docs file (16 lines)",
+      "id": "file:apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "name": "VehicleSelect.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "summary": "Supervisor tablet attendance tracking component (VehicleSelect.jsx)",
       "tags": [
-        "markdown",
-        "docs"
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "name": "useAttendanceHandlers.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "summary": "Supervisor tablet attendance tracking component (useAttendanceHandlers.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+      "name": "useAttendanceHandlers",
+      "type": "function",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "summary": "Exported function useAttendanceHandlers in useAttendanceHandlers.js",
+      "tags": [
+        "function",
+        "frontend"
       ],
       "complexity": "simple"
     },
     {
-      "id": "config:apps/admin/package.json",
-      "type": "config",
-      "name": "package.json",
-      "filePath": "apps/admin/package.json",
-      "summary": "Json config file (26 lines)",
+      "id": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "name": "useAttendanceState.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "summary": "Supervisor tablet attendance tracking component (useAttendanceState.js)",
       "tags": [
-        "json",
-        "config"
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+      "name": "useAttendanceState",
+      "type": "function",
+      "filePath": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "summary": "Exported function useAttendanceState in useAttendanceState.js",
+      "tags": [
+        "function",
+        "frontend"
       ],
       "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useFilters.js",
+      "name": "useFilters.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "summary": "Supervisor tablet attendance tracking component (useFilters.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+      "name": "useFilters",
+      "type": "function",
+      "filePath": "apps/supervisor/src/hooks/useFilters.js",
+      "summary": "Exported function useFilters in useFilters.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "name": "useStatistics.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "summary": "Supervisor tablet attendance tracking component (useStatistics.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+      "name": "useStatistics",
+      "type": "function",
+      "filePath": "apps/supervisor/src/hooks/useStatistics.js",
+      "summary": "Exported function useStatistics in useStatistics.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "name": "useTableSort.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "summary": "Supervisor tablet attendance tracking component (useTableSort.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+      "name": "useTableSort",
+      "type": "function",
+      "filePath": "apps/supervisor/src/hooks/useTableSort.js",
+      "summary": "Exported function useTableSort in useTableSort.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/index.css",
+      "name": "index.css",
+      "type": "file",
+      "filePath": "apps/supervisor/src/index.css",
+      "summary": "Supervisor tablet attendance tracking component (index.css)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "kiosk",
+        "css",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/main.jsx",
+      "name": "main.jsx",
+      "type": "file",
+      "filePath": "apps/supervisor/src/main.jsx",
+      "summary": "Supervisor tablet attendance tracking component (main.jsx)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/agentClient.js",
+      "name": "agentClient.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "summary": "Supervisor tablet attendance tracking component (agentClient.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/agentClient.js:agentClient",
+      "name": "agentClient",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/agentClient.js",
+      "summary": "Exported function agentClient in agentClient.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/api.js",
+      "name": "api.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/api.js",
+      "summary": "Supervisor tablet attendance tracking component (api.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/api.js:apiClient",
+      "name": "apiClient",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/api.js",
+      "summary": "Exported function apiClient in api.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/employeeService.js",
+      "name": "employeeService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "summary": "Supervisor tablet attendance tracking component (employeeService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/employeeService.js:employeeService",
+      "name": "employeeService",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/employeeService.js",
+      "summary": "Exported function employeeService in employeeService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/index.js",
+      "name": "index.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/index.js",
+      "summary": "Supervisor tablet attendance tracking component (index.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/offlineQueue.js",
+      "name": "offlineQueue.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "summary": "Supervisor tablet attendance tracking component (offlineQueue.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/offlineQueue.js:offlineQueue",
+      "name": "offlineQueue",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/offlineQueue.js",
+      "summary": "Exported function offlineQueue in offlineQueue.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/reportService.js",
+      "name": "reportService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "summary": "Supervisor tablet attendance tracking component (reportService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/reportService.js:reportService",
+      "name": "reportService",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/reportService.js",
+      "summary": "Exported function reportService in reportService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restAssignmentService.js",
+      "name": "restAssignmentService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/restAssignmentService.js",
+      "summary": "Supervisor tablet attendance tracking component (restAssignmentService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restEmployeeService.js",
+      "name": "restEmployeeService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/restEmployeeService.js",
+      "summary": "Supervisor tablet attendance tracking component (restEmployeeService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restSessionService.js",
+      "name": "restSessionService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/restSessionService.js",
+      "summary": "Supervisor tablet attendance tracking component (restSessionService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/restVehicleService.js",
+      "name": "restVehicleService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/restVehicleService.js",
+      "summary": "Supervisor tablet attendance tracking component (restVehicleService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/sessionService.js",
+      "name": "sessionService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "summary": "Supervisor tablet attendance tracking component (sessionService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/sessionService.js:sessionService",
+      "name": "sessionService",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/sessionService.js",
+      "summary": "Exported function sessionService in sessionService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/src/services/vehicleService.js",
+      "name": "vehicleService.js",
+      "type": "file",
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "summary": "Supervisor tablet attendance tracking component (vehicleService.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:apps/supervisor/src/services/vehicleService.js:vehicleService",
+      "name": "vehicleService",
+      "type": "function",
+      "filePath": "apps/supervisor/src/services/vehicleService.js",
+      "summary": "Exported function vehicleService in vehicleService.js",
+      "tags": [
+        "function",
+        "frontend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/supervisor/tailwind.config.js",
+      "name": "tailwind.config.js",
+      "type": "file",
+      "filePath": "apps/supervisor/tailwind.config.js",
+      "summary": "Supervisor tablet attendance tracking component (tailwind.config.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apps/supervisor/vite.config.js",
+      "name": "vite.config.js",
+      "type": "file",
+      "filePath": "apps/supervisor/vite.config.js",
+      "summary": "Supervisor tablet attendance tracking component (vite.config.js)",
+      "tags": [
+        "supervisor",
+        "tablet",
+        "javascript",
+        "kiosk",
+        "frontend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:odoo/config/odoo.conf",
+      "name": "odoo.conf",
+      "type": "file",
+      "filePath": "odoo/config/odoo.conf",
+      "summary": "Odoo 18 ERP integration component for odoo.conf",
+      "tags": [
+        "odoo",
+        "conf",
+        "backend",
+        "database",
+        "erp"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/.babelrc",
+      "name": ".babelrc",
+      "type": "file",
+      "filePath": "packages/shared/.babelrc",
+      "summary": "Shared enterprise SDK and API client module (.babelrc)",
+      "tags": [
+        "shared",
+        "modules",
+        "unknown",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:apps/supervisor/src/components/ui/Toast.jsx",
+      "target": "component:apps/supervisor/src/components/ui/Toast.jsx:Toast",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "target": "function:apps/supervisor/src/hooks/useAttendanceHandlers.js:useAttendanceHandlers",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useAttendanceState.js",
+      "target": "function:apps/supervisor/src/hooks/useAttendanceState.js:useAttendanceState",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useFilters.js",
+      "target": "function:apps/supervisor/src/hooks/useFilters.js:useFilters",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useStatistics.js",
+      "target": "function:apps/supervisor/src/hooks/useStatistics.js:useStatistics",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/hooks/useTableSort.js",
+      "target": "function:apps/supervisor/src/hooks/useTableSort.js:useTableSort",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/agentClient.js",
+      "target": "function:apps/supervisor/src/services/agentClient.js:agentClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/api.js",
+      "target": "function:apps/supervisor/src/services/api.js:apiClient",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/employeeService.js",
+      "target": "function:apps/supervisor/src/services/employeeService.js:employeeService",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/offlineQueue.js",
+      "target": "function:apps/supervisor/src/services/offlineQueue.js:offlineQueue",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/reportService.js",
+      "target": "function:apps/supervisor/src/services/reportService.js:reportService",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/sessionService.js",
+      "target": "function:apps/supervisor/src/services/sessionService.js:sessionService",
+      "type": "contains"
+    },
+    {
+      "source": "file:apps/supervisor/src/services/vehicleService.js",
+      "target": "function:apps/supervisor/src/services/vehicleService.js:vehicleService",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": "apps/supervisor/src/components/ui/Toast.jsx",
+      "language": "javascript",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/components/ui/VehicleSelect.jsx",
+      "language": "javascript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useAttendanceHandlers.js",
+      "language": "javascript",
+      "sizeLines": 384,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useAttendanceState.js",
+      "language": "javascript",
+      "sizeLines": 177,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useFilters.js",
+      "language": "javascript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useStatistics.js",
+      "language": "javascript",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/hooks/useTableSort.js",
+      "language": "javascript",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/index.css",
+      "language": "css",
+      "sizeLines": 22,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "apps/supervisor/src/main.jsx",
+      "language": "javascript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/agentClient.js",
+      "language": "javascript",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/api.js",
+      "language": "javascript",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/employeeService.js",
+      "language": "javascript",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/index.js",
+      "language": "javascript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/offlineQueue.js",
+      "language": "javascript",
+      "sizeLines": 154,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/reportService.js",
+      "language": "javascript",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restAssignmentService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restEmployeeService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restSessionService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/restVehicleService.js",
+      "language": "javascript",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/sessionService.js",
+      "language": "javascript",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/src/services/vehicleService.js",
+      "language": "javascript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/tailwind.config.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/supervisor/vite.config.js",
+      "language": "javascript",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "odoo/config/odoo.conf",
+      "language": "conf",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "packages/shared/.babelrc",
+      "language": "unknown",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    }
+  ]
 }

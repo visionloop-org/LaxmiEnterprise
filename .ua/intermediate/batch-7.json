@@ -1,17 +1,92 @@
 {
+  "batchIndex": 7,
   "nodes": [
     {
-      "id": "file:ServerSide/Dockerfile",
+      "id": "file:packages/shared/check-types.bat",
+      "name": "check-types.bat",
       "type": "file",
-      "name": "Dockerfile",
-      "filePath": "ServerSide/Dockerfile",
-      "summary": "Dockerfile infra file (33 lines)",
+      "filePath": "packages/shared/check-types.bat",
+      "summary": "Shared enterprise SDK and API client module (check-types.bat)",
       "tags": [
-        "dockerfile",
-        "infra"
+        "shared",
+        "modules",
+        "sdk",
+        "react-query",
+        "batch"
       ],
-      "complexity": "simple"
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:packages/shared/check-types.sh",
+      "name": "check-types.sh",
+      "type": "file",
+      "filePath": "packages/shared/check-types.sh",
+      "summary": "Shared enterprise SDK and API client module (check-types.sh)",
+      "tags": [
+        "shell",
+        "shared",
+        "modules",
+        "sdk",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/shared/package.json",
+      "name": "package.json",
+      "type": "config",
+      "filePath": "packages/shared/package.json",
+      "summary": "Shared enterprise SDK and API client module (package.json)",
+      "tags": [
+        "shared",
+        "modules",
+        "sdk",
+        "json",
+        "react-query"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:packages/shared/tsconfig.json",
+      "name": "tsconfig.json",
+      "type": "config",
+      "filePath": "packages/shared/tsconfig.json",
+      "summary": "Shared enterprise SDK and API client module (tsconfig.json)",
+      "tags": [
+        "shared",
+        "modules",
+        "sdk",
+        "json",
+        "react-query"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [],
+  "batchFiles": [
+    {
+      "path": "packages/shared/check-types.bat",
+      "language": "batch",
+      "sizeLines": 22,
+      "fileCategory": "script"
+    },
+    {
+      "path": "packages/shared/check-types.sh",
+      "language": "shell",
+      "sizeLines": 23,
+      "fileCategory": "script"
+    },
+    {
+      "path": "packages/shared/package.json",
+      "language": "json",
+      "sizeLines": 55,
+      "fileCategory": "config"
+    },
+    {
+      "path": "packages/shared/tsconfig.json",
+      "language": "json",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    }
+  ]
 }

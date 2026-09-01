@@ -1,17 +1,2300 @@
 {
+  "batchIndex": 8,
   "nodes": [
     {
-      "id": "file:apps/admin/Dockerfile",
-      "type": "file",
-      "name": "Dockerfile",
-      "filePath": "apps/admin/Dockerfile",
-      "summary": "Dockerfile infra file (18 lines)",
+      "id": "document:.devin/workflows/grillme.md",
+      "name": "grillme.md",
+      "type": "document",
+      "filePath": ".devin/workflows/grillme.md",
+      "summary": "Source file .devin/workflows/grillme.md",
       "tags": [
-        "dockerfile",
-        "infra"
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:.devin/workflows/underdatnd.md",
+      "name": "underdatnd.md",
+      "type": "document",
+      "filePath": ".devin/workflows/underdatnd.md",
+      "summary": "Source file .devin/workflows/underdatnd.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.husky/pre-commit",
+      "name": "pre-commit",
+      "type": "file",
+      "filePath": ".husky/pre-commit",
+      "summary": "Source file .husky/pre-commit",
+      "tags": [
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:AttandaceTraker Acvanced/master intructions.md",
+      "name": "master intructions.md",
+      "type": "document",
+      "filePath": "AttandaceTraker Acvanced/master intructions.md",
+      "summary": "Source file AttandaceTraker Acvanced/master intructions.md",
+      "tags": [
+        "markdown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/accounting/routes.py:get_odoo_status",
+      "name": "get_odoo_status",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python function get_odoo_status in routes.py",
+      "tags": [
+        "function",
+        "backend"
       ],
       "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/accounting/routes.py:get_odoo_stats",
+      "name": "get_odoo_stats",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python function get_odoo_stats in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/accounting/routes.py:sync_employees_to_odoo",
+      "name": "sync_employees_to_odoo",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python function sync_employees_to_odoo in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/accounting/routes.py:sync_timesheets_to_odoo",
+      "name": "sync_timesheets_to_odoo",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python function sync_timesheets_to_odoo in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/accounting/routes.py:sync_payroll_to_odoo",
+      "name": "sync_payroll_to_odoo",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python function sync_payroll_to_odoo in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/accounting/routes.py:create_odoo_invoice",
+      "name": "create_odoo_invoice",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python function create_odoo_invoice in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/api/v1/accounting/routes.py:SyncPayrollRequest",
+      "name": "SyncPayrollRequest",
+      "type": "class",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python class SyncPayrollRequest in routes.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/api/v1/accounting/routes.py:TripInvoiceRequest",
+      "name": "TripInvoiceRequest",
+      "type": "class",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python class TripInvoiceRequest in routes.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/api/v1/accounting/routes.py:SyncTimesheetRequest",
+      "name": "SyncTimesheetRequest",
+      "type": "class",
+      "filePath": "ServerSide/app/api/v1/accounting/routes.py",
+      "summary": "Python class SyncTimesheetRequest in routes.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+      "name": "get_vehicle_capacity",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python function get_vehicle_capacity in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+      "name": "validate_assignment_rules",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python function validate_assignment_rules in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+      "name": "assign_vehicle",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python function assign_vehicle in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+      "name": "unassign_vehicle",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python function unassign_vehicle in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+      "name": "get_vehicle_assignments",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python function get_vehicle_assignments in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+      "name": "get_employee_assignment",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/assignments/routes.py",
+      "summary": "Python function get_employee_assignment in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+      "name": "record_attendance",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Python function record_attendance in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+      "name": "get_session_attendance",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Python function get_session_attendance in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+      "name": "get_employee_attendance",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Python function get_employee_attendance in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/attendance/routes.py:get_live_odoo_attendances",
+      "name": "get_live_odoo_attendances",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/attendance/routes.py",
+      "summary": "Python function get_live_odoo_attendances in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/auth.py",
+      "name": "auth.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "FastAPI backend gateway component for auth.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/auth.py:login",
+      "name": "login",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Python function login in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/auth.py:get_me",
+      "name": "get_me",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Python function get_me in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/api/v1/auth.py:LoginRequest",
+      "name": "LoginRequest",
+      "type": "class",
+      "filePath": "ServerSide/app/api/v1/auth.py",
+      "summary": "Python class LoginRequest in auth.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/employees/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+      "name": "list_employees",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function list_employees in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:sync_employees_from_odoo",
+      "name": "sync_employees_from_odoo",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function sync_employees_from_odoo in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+      "name": "create_employee",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function create_employee in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:bulk_update_compensation",
+      "name": "bulk_update_compensation",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function bulk_update_compensation in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+      "name": "get_employee",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function get_employee in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+      "name": "update_employee",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function update_employee in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:approve_employee",
+      "name": "approve_employee",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function approve_employee in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:reject_employee",
+      "name": "reject_employee",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function reject_employee in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/employees/routes.py:delete_employee",
+      "name": "delete_employee",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/employees/routes.py",
+      "summary": "Python function delete_employee in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/pay/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/pay/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/pay/routes.py:get_pay_rates",
+      "name": "get_pay_rates",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/pay/routes.py",
+      "summary": "Python function get_pay_rates in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/pay/routes.py:calculate_pay",
+      "name": "calculate_pay",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/pay/routes.py",
+      "summary": "Python function calculate_pay in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/pay/routes.py:get_pay_summary",
+      "name": "get_pay_summary",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/pay/routes.py",
+      "summary": "Python function get_pay_summary in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/api/v1/pay/routes.py:PayCalculationRequest",
+      "name": "PayCalculationRequest",
+      "type": "class",
+      "filePath": "ServerSide/app/api/v1/pay/routes.py",
+      "summary": "Python class PayCalculationRequest in routes.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/api/v1/pay/routes.py:PayCalculationResponse",
+      "name": "PayCalculationResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/api/v1/pay/routes.py",
+      "summary": "Python class PayCalculationResponse in routes.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+      "name": "create_session",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python function create_session in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+      "name": "list_sessions",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python function list_sessions in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+      "name": "get_session",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python function get_session in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+      "name": "get_active_session",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python function get_active_session in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+      "name": "finalize_session",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python function finalize_session in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/sessions/routes.py:unlock_session",
+      "name": "unlock_session",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/sessions/routes.py",
+      "summary": "Python function unlock_session in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/trips/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/trips/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/trips/routes.py:create_trip",
+      "name": "create_trip",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/trips/routes.py",
+      "summary": "Python function create_trip in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/trips/routes.py:list_trips",
+      "name": "list_trips",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/trips/routes.py",
+      "summary": "Python function list_trips in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/trips/routes.py:get_trip",
+      "name": "get_trip",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/trips/routes.py",
+      "summary": "Python function get_trip in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/trips/routes.py:update_trip_status",
+      "name": "update_trip_status",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/trips/routes.py",
+      "summary": "Python function update_trip_status in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "name": "routes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "FastAPI backend gateway component for routes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+      "name": "list_vehicles",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Python function list_vehicles in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+      "name": "create_vehicle",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Python function create_vehicle in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+      "name": "get_vehicle",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Python function get_vehicle in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+      "name": "update_vehicle",
+      "type": "function",
+      "filePath": "ServerSide/app/api/v1/vehicles/routes.py",
+      "summary": "Python function update_vehicle in routes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/core/exceptions.py",
+      "name": "exceptions.py",
+      "type": "file",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "FastAPI backend gateway component for exceptions.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:AppException",
+      "name": "AppException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class AppException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:NotFoundException",
+      "name": "NotFoundException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class NotFoundException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:ConflictException",
+      "name": "ConflictException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class ConflictException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:ValidationException",
+      "name": "ValidationException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class ValidationException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:AuthenticationException",
+      "name": "AuthenticationException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class AuthenticationException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:ForbiddenException",
+      "name": "ForbiddenException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class ForbiddenException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/core/exceptions.py:DatabaseException",
+      "name": "DatabaseException",
+      "type": "class",
+      "filePath": "ServerSide/app/core/exceptions.py",
+      "summary": "Python class DatabaseException in exceptions.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/core/logging_config.py",
+      "name": "logging_config.py",
+      "type": "file",
+      "filePath": "ServerSide/app/core/logging_config.py",
+      "summary": "FastAPI backend gateway component for logging_config.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/core/logging_config.py:setup_logging",
+      "name": "setup_logging",
+      "type": "function",
+      "filePath": "ServerSide/app/core/logging_config.py",
+      "summary": "Python function setup_logging in logging_config.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/core/logging_config.py:RequestIDFilter",
+      "name": "RequestIDFilter",
+      "type": "class",
+      "filePath": "ServerSide/app/core/logging_config.py",
+      "summary": "Python class RequestIDFilter in logging_config.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/core/middleware.py",
+      "name": "middleware.py",
+      "type": "file",
+      "filePath": "ServerSide/app/core/middleware.py",
+      "summary": "FastAPI backend gateway component for middleware.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/core/middleware.py:get_request_id",
+      "name": "get_request_id",
+      "type": "function",
+      "filePath": "ServerSide/app/core/middleware.py",
+      "summary": "Python function get_request_id in middleware.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/core/middleware.py:RequestIDMiddleware",
+      "name": "RequestIDMiddleware",
+      "type": "class",
+      "filePath": "ServerSide/app/core/middleware.py",
+      "summary": "Python class RequestIDMiddleware in middleware.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/db/__init__.py",
+      "name": "__init__.py",
+      "type": "file",
+      "filePath": "ServerSide/app/db/__init__.py",
+      "summary": "FastAPI backend gateway component for __init__.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/db/indexes.py",
+      "name": "indexes.py",
+      "type": "file",
+      "filePath": "ServerSide/app/db/indexes.py",
+      "summary": "FastAPI backend gateway component for indexes.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/db/indexes.py:create_indexes",
+      "name": "create_indexes",
+      "type": "function",
+      "filePath": "ServerSide/app/db/indexes.py",
+      "summary": "Python function create_indexes in indexes.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/db/odoo_db.py",
+      "name": "odoo_db.py",
+      "type": "file",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Odoo 18 ERP integration component for odoo_db.py",
+      "tags": [
+        "odoo",
+        "backend",
+        "database",
+        "python",
+        "erp"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/db/odoo_db.py:OdooCursor",
+      "name": "OdooCursor",
+      "type": "class",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Python class OdooCursor in odoo_db.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/db/odoo_db.py:OdooCollection",
+      "name": "OdooCollection",
+      "type": "class",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Python class OdooCollection in odoo_db.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/db/odoo_db.py:UpdateResult",
+      "name": "UpdateResult",
+      "type": "class",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Python class UpdateResult in odoo_db.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/db/odoo_db.py:InsertResult",
+      "name": "InsertResult",
+      "type": "class",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Python class InsertResult in odoo_db.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/db/odoo_db.py:OdooDatabaseAdapter",
+      "name": "OdooDatabaseAdapter",
+      "type": "class",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Python class OdooDatabaseAdapter in odoo_db.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/db/odoo_db.py:DatabaseWrapper",
+      "name": "DatabaseWrapper",
+      "type": "class",
+      "filePath": "ServerSide/app/db/odoo_db.py",
+      "summary": "Python class DatabaseWrapper in odoo_db.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/main.py",
+      "name": "main.py",
+      "type": "file",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "FastAPI backend gateway component for main.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:lifespan",
+      "name": "lifespan",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function lifespan in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:build_error_response",
+      "name": "build_error_response",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function build_error_response in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:app_exception_handler",
+      "name": "app_exception_handler",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function app_exception_handler in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:http_exception_handler",
+      "name": "http_exception_handler",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function http_exception_handler in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:validation_exception_handler",
+      "name": "validation_exception_handler",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function validation_exception_handler in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:pymongo_exception_handler",
+      "name": "pymongo_exception_handler",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function pymongo_exception_handler in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:general_exception_handler",
+      "name": "general_exception_handler",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function general_exception_handler in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:health_check",
+      "name": "health_check",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function health_check in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/app/main.py:readiness_check",
+      "name": "readiness_check",
+      "type": "function",
+      "filePath": "ServerSide/app/main.py",
+      "summary": "Python function readiness_check in main.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/app/models/assignment.py",
+      "name": "assignment.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "FastAPI backend gateway component for assignment.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/assignment.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python function utc_now in assignment.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+      "name": "VehicleAssignmentBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python class VehicleAssignmentBase in assignment.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+      "name": "VehicleAssignmentCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python class VehicleAssignmentCreate in assignment.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+      "name": "VehicleAssignmentUpdate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python class VehicleAssignmentUpdate in assignment.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+      "name": "VehicleAssignmentResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python class VehicleAssignmentResponse in assignment.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+      "name": "VehicleAssignment",
+      "type": "class",
+      "filePath": "ServerSide/app/models/assignment.py",
+      "summary": "Python class VehicleAssignment in assignment.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/attendance.py",
+      "name": "attendance.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "FastAPI backend gateway component for attendance.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/attendance.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python function utc_now in attendance.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+      "name": "AttendanceRecordBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python class AttendanceRecordBase in attendance.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+      "name": "AttendanceRecordCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python class AttendanceRecordCreate in attendance.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+      "name": "AttendanceRecordUpdate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python class AttendanceRecordUpdate in attendance.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+      "name": "AttendanceRecordResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python class AttendanceRecordResponse in attendance.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+      "name": "AttendanceRecord",
+      "type": "class",
+      "filePath": "ServerSide/app/models/attendance.py",
+      "summary": "Python class AttendanceRecord in attendance.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/audit_event.py",
+      "name": "audit_event.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "FastAPI backend gateway component for audit_event.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/audit_event.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Python function utc_now in audit_event.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+      "name": "AuditEventBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Python class AuditEventBase in audit_event.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+      "name": "AuditEventCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Python class AuditEventCreate in audit_event.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/audit_event.py:AuditEvent",
+      "name": "AuditEvent",
+      "type": "class",
+      "filePath": "ServerSide/app/models/audit_event.py",
+      "summary": "Python class AuditEvent in audit_event.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/employee.py",
+      "name": "employee.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "FastAPI backend gateway component for employee.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/employee.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python function utc_now in employee.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeBase",
+      "name": "EmployeeBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python class EmployeeBase in employee.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeCreate",
+      "name": "EmployeeCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python class EmployeeCreate in employee.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+      "name": "EmployeeUpdate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python class EmployeeUpdate in employee.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:BulkCompensationItem",
+      "name": "BulkCompensationItem",
+      "type": "class",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python class BulkCompensationItem in employee.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:EmployeeResponse",
+      "name": "EmployeeResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python class EmployeeResponse in employee.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/employee.py:Employee",
+      "name": "Employee",
+      "type": "class",
+      "filePath": "ServerSide/app/models/employee.py",
+      "summary": "Python class Employee in employee.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/session.py",
+      "name": "session.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "FastAPI backend gateway component for session.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/session.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python function utc_now in session.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+      "name": "AttendanceSessionBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python class AttendanceSessionBase in session.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+      "name": "AttendanceSessionCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python class AttendanceSessionCreate in session.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+      "name": "AttendanceSessionUpdate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python class AttendanceSessionUpdate in session.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+      "name": "AttendanceSessionResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python class AttendanceSessionResponse in session.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/session.py:AttendanceSession",
+      "name": "AttendanceSession",
+      "type": "class",
+      "filePath": "ServerSide/app/models/session.py",
+      "summary": "Python class AttendanceSession in session.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "function:ServerSide/app/api/v1/accounting/routes.py:get_odoo_status",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "function:ServerSide/app/api/v1/accounting/routes.py:get_odoo_stats",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "function:ServerSide/app/api/v1/accounting/routes.py:sync_employees_to_odoo",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "function:ServerSide/app/api/v1/accounting/routes.py:sync_timesheets_to_odoo",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "function:ServerSide/app/api/v1/accounting/routes.py:sync_payroll_to_odoo",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "function:ServerSide/app/api/v1/accounting/routes.py:create_odoo_invoice",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "class:ServerSide/app/api/v1/accounting/routes.py:SyncPayrollRequest",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "class:ServerSide/app/api/v1/accounting/routes.py:TripInvoiceRequest",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/accounting/routes.py",
+      "target": "class:ServerSide/app/api/v1/accounting/routes.py:SyncTimesheetRequest",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_capacity",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:validate_assignment_rules",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:assign_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:unassign_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_vehicle_assignments",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/assignments/routes.py",
+      "target": "function:ServerSide/app/api/v1/assignments/routes.py:get_employee_assignment",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:record_attendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_session_attendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_employee_attendance",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/attendance/routes.py",
+      "target": "function:ServerSide/app/api/v1/attendance/routes.py:get_live_odoo_attendances",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "function:ServerSide/app/api/v1/auth.py:login",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "function:ServerSide/app/api/v1/auth.py:get_me",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/auth.py",
+      "target": "class:ServerSide/app/api/v1/auth.py:LoginRequest",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:list_employees",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:sync_employees_from_odoo",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:create_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:bulk_update_compensation",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:get_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:update_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:approve_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:reject_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/employees/routes.py",
+      "target": "function:ServerSide/app/api/v1/employees/routes.py:delete_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/pay/routes.py",
+      "target": "function:ServerSide/app/api/v1/pay/routes.py:get_pay_rates",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/pay/routes.py",
+      "target": "function:ServerSide/app/api/v1/pay/routes.py:calculate_pay",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/pay/routes.py",
+      "target": "function:ServerSide/app/api/v1/pay/routes.py:get_pay_summary",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/pay/routes.py",
+      "target": "class:ServerSide/app/api/v1/pay/routes.py:PayCalculationRequest",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/pay/routes.py",
+      "target": "class:ServerSide/app/api/v1/pay/routes.py:PayCalculationResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:create_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:list_sessions",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:get_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:get_active_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:finalize_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/sessions/routes.py",
+      "target": "function:ServerSide/app/api/v1/sessions/routes.py:unlock_session",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/trips/routes.py",
+      "target": "function:ServerSide/app/api/v1/trips/routes.py:create_trip",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/trips/routes.py",
+      "target": "function:ServerSide/app/api/v1/trips/routes.py:list_trips",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/trips/routes.py",
+      "target": "function:ServerSide/app/api/v1/trips/routes.py:get_trip",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/trips/routes.py",
+      "target": "function:ServerSide/app/api/v1/trips/routes.py:update_trip_status",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:list_vehicles",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:create_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:get_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/api/v1/vehicles/routes.py",
+      "target": "function:ServerSide/app/api/v1/vehicles/routes.py:update_vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:AppException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:NotFoundException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:ConflictException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:ValidationException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:AuthenticationException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:ForbiddenException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/exceptions.py",
+      "target": "class:ServerSide/app/core/exceptions.py:DatabaseException",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/logging_config.py",
+      "target": "function:ServerSide/app/core/logging_config.py:setup_logging",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/logging_config.py",
+      "target": "class:ServerSide/app/core/logging_config.py:RequestIDFilter",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/middleware.py",
+      "target": "function:ServerSide/app/core/middleware.py:get_request_id",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/core/middleware.py",
+      "target": "class:ServerSide/app/core/middleware.py:RequestIDMiddleware",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/indexes.py",
+      "target": "function:ServerSide/app/db/indexes.py:create_indexes",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/odoo_db.py",
+      "target": "class:ServerSide/app/db/odoo_db.py:OdooCursor",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/odoo_db.py",
+      "target": "class:ServerSide/app/db/odoo_db.py:OdooCollection",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/odoo_db.py",
+      "target": "class:ServerSide/app/db/odoo_db.py:UpdateResult",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/odoo_db.py",
+      "target": "class:ServerSide/app/db/odoo_db.py:InsertResult",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/odoo_db.py",
+      "target": "class:ServerSide/app/db/odoo_db.py:OdooDatabaseAdapter",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/db/odoo_db.py",
+      "target": "class:ServerSide/app/db/odoo_db.py:DatabaseWrapper",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:lifespan",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:build_error_response",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:app_exception_handler",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:http_exception_handler",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:validation_exception_handler",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:pymongo_exception_handler",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:general_exception_handler",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:health_check",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/main.py",
+      "target": "function:ServerSide/app/main.py:readiness_check",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "function:ServerSide/app/models/assignment.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignmentResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/assignment.py",
+      "target": "class:ServerSide/app/models/assignment.py:VehicleAssignment",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "function:ServerSide/app/models/attendance.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecordResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/attendance.py",
+      "target": "class:ServerSide/app/models/attendance.py:AttendanceRecord",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "function:ServerSide/app/models/audit_event.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEventBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEventCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/audit_event.py",
+      "target": "class:ServerSide/app/models/audit_event.py:AuditEvent",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "function:ServerSide/app/models/employee.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:BulkCompensationItem",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:EmployeeResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/employee.py",
+      "target": "class:ServerSide/app/models/employee.py:Employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "function:ServerSide/app/models/session.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSessionResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/session.py",
+      "target": "class:ServerSide/app/models/session.py:AttendanceSession",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": ".devin/workflows/grillme.md",
+      "language": "markdown",
+      "sizeLines": 323,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".devin/workflows/underdatnd.md",
+      "language": "markdown",
+      "sizeLines": 57,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".husky/pre-commit",
+      "language": "unknown",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "AttandaceTraker Acvanced/master intructions.md",
+      "language": "markdown",
+      "sizeLines": 1066,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "ServerSide/app/api/v1/accounting/routes.py",
+      "language": "python",
+      "sizeLines": 125,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/assignments/routes.py",
+      "language": "python",
+      "sizeLines": 221,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/attendance/routes.py",
+      "language": "python",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/auth.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/employees/routes.py",
+      "language": "python",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/pay/routes.py",
+      "language": "python",
+      "sizeLines": 99,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/sessions/routes.py",
+      "language": "python",
+      "sizeLines": 254,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/trips/routes.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/api/v1/vehicles/routes.py",
+      "language": "python",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/core/exceptions.py",
+      "language": "python",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/core/logging_config.py",
+      "language": "python",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/core/middleware.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/db/__init__.py",
+      "language": "python",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/db/indexes.py",
+      "language": "python",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/db/odoo_db.py",
+      "language": "python",
+      "sizeLines": 324,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/main.py",
+      "language": "python",
+      "sizeLines": 230,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/assignment.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/attendance.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/audit_event.py",
+      "language": "python",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/employee.py",
+      "language": "python",
+      "sizeLines": 61,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/session.py",
+      "language": "python",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    }
+  ]
 }

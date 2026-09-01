@@ -1,101 +1,79 @@
-const { backendApiClient } = require('./backendApi')
+import { googleSheetsService } from './googleSheetsService.js'
 
-class RestVehicleService {
+export class RestVehicleService {
+  constructor(sheetsService = googleSheetsService) {
+    this.sheets = sheetsService
+  }
+
   async fetchVehicles(filters = {}) {
-    const params = new URLSearchParams()
-    if (filters.vehicle_type) params.append('vehicle_type', filters.vehicle_type)
-    if (filters.status) params.append('status', filters.status)
-    if (filters.active !== undefined) params.append('active', filters.active.toString())
-
-    const url = `/vehicles${params.toString() ? '?' + params.toString() : ''}`
-    const vehicles = await backendApiClient.get(url)
-
-    return vehicles.map((vehicle) => this.mapBackendToFrontend(vehicle))
+    const raw = await this.sheets.getVehicles(filters)
+    return raw.map(v => this.mapBackendToFrontend(v))
   }
 
   async fetchVehicle(vehicleNumber) {
-    const vehicle = await backendApiClient.get(`/vehicles/${vehicleNumber}`)
-    return this.mapBackendToFrontend(vehicle)
+    const raw = await this.sheets.getVehicles()
+    const found = raw.find(v => v.number === vehicleNumber || v.id === vehicleNumber || v.vehicleNumber === vehicleNumber)
+    return found ? this.mapBackendToFrontend(found) : null
   }
 
   async addVehicle(vehicleData) {
-    const backendData = this.mapFrontendToBackend(vehicleData)
-    const result = await backendApiClient.post('/vehicles', backendData)
-    return this.mapBackendToFrontend(result)
+    const toSave = this.mapFrontendToBackend(vehicleData)
+    const res = await this.sheets.addVehicle(toSave)
+    return this.mapBackendToFrontend(res)
   }
 
-  async updateVehicle(vehicleNumber, vehicleData) {
-    const backendData = this.mapFrontendToBackend(vehicleData)
-    const result = await backendApiClient.put(`/vehicles/${vehicleNumber}`, backendData)
-    return this.mapBackendToFrontend(result)
+  async updateVehicle(vehicleNumber, updateData) {
+    const toSave = this.mapFrontendToBackendForUpdate(updateData)
+    const res = await this.sheets.updateVehicle(vehicleNumber, toSave)
+    return this.mapBackendToFrontend(res)
   }
 
-  async updateVehicleStatus(vehicleNumber, status) {
-    const result = await backendApiClient.patch(`/vehicles/${vehicleNumber}/status`, { status })
-    return this.mapBackendToFrontend(result)
-  }
-
-  async assignDriver(vehicleNumber, driverId) {
-    const result = await backendApiClient.post(`/vehicles/${vehicleNumber}/driver/${driverId}`)
-    return this.mapBackendToFrontend(result)
-  }
-
-  async unassignDriver(vehicleNumber) {
-    const result = await backendApiClient.delete(`/vehicles/${vehicleNumber}/driver`)
-    return this.mapBackendToFrontend(result)
-  }
-
-  async deleteVehicle(vehicleNumber) {
-    await backendApiClient.delete(`/vehicles/${vehicleNumber}`)
-    return true
-  }
-
-  mapBackendToFrontend(vehicle) {
+  mapBackendToFrontend(backendVeh) {
+    if (!backendVeh) return null
     return {
-      id: vehicle.vehicleNumber,
-      name: vehicle.vehicleNumber,
+      id: backendVeh.vehicleNumber || backendVeh.number || backendVeh.id || backendVeh._id,
+      number: backendVeh.vehicleNumber || backendVeh.number || backendVeh.id,
+      name: backendVeh.name || backendVeh.vehicleNumber || backendVeh.number || backendVeh.id,
       category: 'Vehicles',
-      vehicleType: vehicle.vehicleType,
-      capacity: vehicle.capacity,
-      status: vehicle.status,
-      active: vehicle.active,
-      perRoleCapacity: vehicle.perRoleCapacity || {},
-      assignedDriver: vehicle.assignedDriver || null
+      type: backendVeh.vehicleType || backendVeh.type || 'Truck',
+      capacity: backendVeh.capacity !== undefined ? backendVeh.capacity : 8,
+      status: backendVeh.status || 'available',
+      active: backendVeh.active !== false,
+      perRoleCapacity: backendVeh.perRoleCapacity || {},
+      assignedDriver: backendVeh.assignedDriver || null
     }
   }
 
-  mapFrontendToBackend(vehicle) {
-    const backendData = {
-      vehicleNumber: vehicle.id || vehicle.name,
-      vehicleType: vehicle.category || vehicle.vehicleType || 'Truck',
-      capacity: vehicle.capacity !== undefined ? vehicle.capacity : 10,
-      status: vehicle.status || 'Available',
-      active: vehicle.active !== undefined ? vehicle.active : true,
-      perRoleCapacity: vehicle.perRoleCapacity || {},
-      assignedDriver: vehicle.assignedDriver || null
+  mapFrontendToBackend(frontendVeh) {
+    if (!frontendVeh) return null
+    return {
+      vehicleNumber: frontendVeh.id || frontendVeh.number || frontendVeh.name,
+      vehicleType: frontendVeh.category || frontendVeh.type || 'Truck',
+      name: frontendVeh.name || frontendVeh.id || frontendVeh.number,
+      capacity: frontendVeh.capacity !== undefined ? frontendVeh.capacity : 8,
+      status: frontendVeh.status || 'available',
+      active: frontendVeh.active !== false,
+      perRoleCapacity: frontendVeh.perRoleCapacity || {},
+      assignedDriver: frontendVeh.assignedDriver || null
     }
-    return backendData
   }
 
-  mapUpdateData(vehicle) {
-    const updateData = {}
-    if (vehicle.id !== undefined) updateData.vehicleNumber = vehicle.id
-    if (vehicle.category !== undefined) updateData.vehicleType = vehicle.category
-    if (vehicle.status !== undefined) updateData.status = vehicle.status
-    if (vehicle.active !== undefined) updateData.active = vehicle.active
-    if (vehicle.capacity !== undefined) updateData.capacity = vehicle.capacity
-    if (vehicle.perRoleCapacity !== undefined) updateData.perRoleCapacity = vehicle.perRoleCapacity
-    if (vehicle.assignedDriver !== undefined) updateData.assignedDriver = vehicle.assignedDriver
-    return updateData
-  }
-
-  mapFrontendToBackendForUpdate(vehicle) {
-    return this.mapUpdateData(vehicle)
+  mapFrontendToBackendForUpdate(frontendVeh) {
+    if (!frontendVeh) return {}
+    const update = {}
+    if (frontendVeh.id !== undefined) update.vehicleNumber = frontendVeh.id
+    if (frontendVeh.number !== undefined) update.vehicleNumber = frontendVeh.number
+    if (frontendVeh.category !== undefined) update.vehicleType = frontendVeh.category
+    if (frontendVeh.type !== undefined) update.vehicleType = frontendVeh.type
+    if (frontendVeh.name !== undefined) update.name = frontendVeh.name
+    if (frontendVeh.capacity !== undefined) update.capacity = frontendVeh.capacity
+    if (frontendVeh.status !== undefined) update.status = frontendVeh.status
+    if (frontendVeh.active !== undefined) update.active = frontendVeh.active
+    if (frontendVeh.perRoleCapacity !== undefined) update.perRoleCapacity = frontendVeh.perRoleCapacity
+    if (frontendVeh.assignedDriver !== undefined) update.assignedDriver = frontendVeh.assignedDriver
+    return update
   }
 }
 
-const restVehicleService = new RestVehicleService()
-
-module.exports = restVehicleService
-module.exports.restVehicleService = restVehicleService
-module.exports.RestVehicleService = RestVehicleService
+export const restVehicleService = new RestVehicleService()
+export default restVehicleService

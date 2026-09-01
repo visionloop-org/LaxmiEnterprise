@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { NetworkError, AuthError, ValidationError, ConflictError, APIError } from '../services/backendApi'
+import { NetworkError, AuthError, ValidationError, ConflictError, APIError } from '../services/backendApi.js'
 
 class ErrorBoundary extends Component {
   constructor(props) {

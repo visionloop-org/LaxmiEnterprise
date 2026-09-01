@@ -1,17 +1,1856 @@
 {
+  "batchIndex": 9,
   "nodes": [
     {
-      "id": "file:apps/supervisor/Dockerfile",
+      "id": "file:ServerSide/app/models/trip.py",
+      "name": "trip.py",
       "type": "file",
-      "name": "Dockerfile",
-      "filePath": "apps/supervisor/Dockerfile",
-      "summary": "Dockerfile infra file (18 lines)",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "FastAPI backend gateway component for trip.py",
       "tags": [
-        "dockerfile",
-        "infra"
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/trip.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "Python function utc_now in trip.py",
+      "tags": [
+        "function",
+        "backend"
       ],
       "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/trip.py:TripTimelineEvent",
+      "name": "TripTimelineEvent",
+      "type": "class",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "Python class TripTimelineEvent in trip.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/trip.py:VehicleTripBase",
+      "name": "VehicleTripBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "Python class VehicleTripBase in trip.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/trip.py:VehicleTripCreate",
+      "name": "VehicleTripCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "Python class VehicleTripCreate in trip.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/trip.py:VehicleTripUpdateStatus",
+      "name": "VehicleTripUpdateStatus",
+      "type": "class",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "Python class VehicleTripUpdateStatus in trip.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/trip.py:VehicleTripResponse",
+      "name": "VehicleTripResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/models/trip.py",
+      "summary": "Python class VehicleTripResponse in trip.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/user.py",
+      "name": "user.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "FastAPI backend gateway component for user.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/user.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python function utc_now in user.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserBase",
+      "name": "UserBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python class UserBase in user.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserCreate",
+      "name": "UserCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python class UserCreate in user.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:UserUpdate",
+      "name": "UserUpdate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python class UserUpdate in user.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/user.py:User",
+      "name": "User",
+      "type": "class",
+      "filePath": "ServerSide/app/models/user.py",
+      "summary": "Python class User in user.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/models/vehicle.py",
+      "name": "vehicle.py",
+      "type": "file",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "FastAPI backend gateway component for vehicle.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/app/models/vehicle.py:utc_now",
+      "name": "utc_now",
+      "type": "function",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python function utc_now in vehicle.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleBase",
+      "name": "VehicleBase",
+      "type": "class",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python class VehicleBase in vehicle.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+      "name": "VehicleCreate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python class VehicleCreate in vehicle.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+      "name": "VehicleUpdate",
+      "type": "class",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python class VehicleUpdate in vehicle.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+      "name": "VehicleResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python class VehicleResponse in vehicle.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/models/vehicle.py:Vehicle",
+      "name": "Vehicle",
+      "type": "class",
+      "filePath": "ServerSide/app/models/vehicle.py",
+      "summary": "Python class Vehicle in vehicle.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/schemas/error.py",
+      "name": "error.py",
+      "type": "file",
+      "filePath": "ServerSide/app/schemas/error.py",
+      "summary": "FastAPI backend gateway component for error.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/schemas/error.py:ErrorDetail",
+      "name": "ErrorDetail",
+      "type": "class",
+      "filePath": "ServerSide/app/schemas/error.py",
+      "summary": "Python class ErrorDetail in error.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/schemas/error.py:APIErrorResponse",
+      "name": "APIErrorResponse",
+      "type": "class",
+      "filePath": "ServerSide/app/schemas/error.py",
+      "summary": "Python class APIErrorResponse in error.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/services/__init__.py",
+      "name": "__init__.py",
+      "type": "file",
+      "filePath": "ServerSide/app/services/__init__.py",
+      "summary": "FastAPI backend gateway component for __init__.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/services/odoo_service.py",
+      "name": "odoo_service.py",
+      "type": "file",
+      "filePath": "ServerSide/app/services/odoo_service.py",
+      "summary": "Odoo 18 ERP integration component for odoo_service.py",
+      "tags": [
+        "odoo",
+        "backend",
+        "database",
+        "python",
+        "erp"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/services/odoo_service.py:OdooAccountingService",
+      "name": "OdooAccountingService",
+      "type": "class",
+      "filePath": "ServerSide/app/services/odoo_service.py",
+      "summary": "Python class OdooAccountingService in odoo_service.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/app/services/trip_service.py",
+      "name": "trip_service.py",
+      "type": "file",
+      "filePath": "ServerSide/app/services/trip_service.py",
+      "summary": "FastAPI backend gateway component for trip_service.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/app/services/trip_service.py:TripService",
+      "name": "TripService",
+      "type": "class",
+      "filePath": "ServerSide/app/services/trip_service.py",
+      "summary": "Python class TripService in trip_service.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/core/auth.py",
+      "name": "auth.py",
+      "type": "file",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "FastAPI backend gateway component for auth.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:verify_password",
+      "name": "verify_password",
+      "type": "function",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python function verify_password in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_password_hash",
+      "name": "get_password_hash",
+      "type": "function",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python function get_password_hash in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:create_access_token",
+      "name": "create_access_token",
+      "type": "function",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python function create_access_token in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_current_user",
+      "name": "get_current_user",
+      "type": "function",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python function get_current_user in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/core/auth.py:get_current_active_user",
+      "name": "get_current_active_user",
+      "type": "function",
+      "filePath": "ServerSide/core/auth.py",
+      "summary": "Python function get_current_active_user in auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/core/config.py",
+      "name": "config.py",
+      "type": "file",
+      "filePath": "ServerSide/core/config.py",
+      "summary": "FastAPI backend gateway component for config.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:ServerSide/core/config.py:Settings",
+      "name": "Settings",
+      "type": "class",
+      "filePath": "ServerSide/core/config.py",
+      "summary": "Python class Settings in config.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/export_openapi.py",
+      "name": "export_openapi.py",
+      "type": "file",
+      "filePath": "ServerSide/scripts/export_openapi.py",
+      "summary": "FastAPI backend gateway component for export_openapi.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/seed_data.py",
+      "name": "seed_data.py",
+      "type": "file",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "FastAPI backend gateway component for seed_data.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/scripts/seed_data.py:main",
+      "name": "main",
+      "type": "function",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Python function main in seed_data.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:ServerSide/scripts/seed_data.py:DataSeeder",
+      "name": "DataSeeder",
+      "type": "class",
+      "filePath": "ServerSide/scripts/seed_data.py",
+      "summary": "Python class DataSeeder in seed_data.py",
+      "tags": [
+        "class",
+        "backend"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.bat",
+      "name": "sync.bat",
+      "type": "file",
+      "filePath": "ServerSide/scripts/sync.bat",
+      "summary": "FastAPI backend gateway component for sync.bat",
+      "tags": [
+        "api",
+        "backend",
+        "python",
+        "batch",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.py",
+      "name": "sync.py",
+      "type": "file",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "FastAPI backend gateway component for sync.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/scripts/sync.py:run_command",
+      "name": "run_command",
+      "type": "function",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Python function run_command in sync.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/scripts/sync.py:main",
+      "name": "main",
+      "type": "function",
+      "filePath": "ServerSide/scripts/sync.py",
+      "summary": "Python function main in sync.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/scripts/sync.sh",
+      "name": "sync.sh",
+      "type": "file",
+      "filePath": "ServerSide/scripts/sync.sh",
+      "summary": "FastAPI backend gateway component for sync.sh",
+      "tags": [
+        "shell",
+        "api",
+        "backend",
+        "python",
+        "fastapi"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/tests/__init__.py",
+      "name": "__init__.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/__init__.py",
+      "summary": "FastAPI backend gateway component for __init__.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:ServerSide/tests/conftest.py",
+      "name": "conftest.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "FastAPI backend gateway component for conftest.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:setup_mock_db",
+      "name": "setup_mock_db",
+      "type": "function",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python function setup_mock_db in conftest.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:client",
+      "name": "client",
+      "type": "function",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python function client in conftest.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:auth_token",
+      "name": "auth_token",
+      "type": "function",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python function auth_token in conftest.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:auth_headers",
+      "name": "auth_headers",
+      "type": "function",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python function auth_headers in conftest.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/conftest.py:seed_data",
+      "name": "seed_data",
+      "type": "function",
+      "filePath": "ServerSide/tests/conftest.py",
+      "summary": "Python function seed_data in conftest.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_assignments.py",
+      "name": "test_assignments.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_assignments.py",
+      "summary": "FastAPI backend gateway component for test_assignments.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_assignments.py:test_assign_vehicle_success",
+      "name": "test_assign_vehicle_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_assignments.py",
+      "summary": "Python function test_assign_vehicle_success in test_assignments.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_assignments.py:test_assign_vehicle_absent_employee_fails",
+      "name": "test_assign_vehicle_absent_employee_fails",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_assignments.py",
+      "summary": "Python function test_assign_vehicle_absent_employee_fails in test_assignments.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_assignments.py:test_assign_vehicle_under_maintenance_fails",
+      "name": "test_assign_vehicle_under_maintenance_fails",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_assignments.py",
+      "summary": "Python function test_assign_vehicle_under_maintenance_fails in test_assignments.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_assignments.py:test_unassign_vehicle_success",
+      "name": "test_unassign_vehicle_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_assignments.py",
+      "summary": "Python function test_unassign_vehicle_success in test_assignments.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_attendance.py",
+      "name": "test_attendance.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "FastAPI backend gateway component for test_attendance.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+      "name": "test_attendance_unauthorized",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python function test_attendance_unauthorized in test_attendance.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_record_attendance_create_and_update",
+      "name": "test_record_attendance_create_and_update",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python function test_record_attendance_create_and_update in test_attendance.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_record_attendance_finalized_session_locked",
+      "name": "test_record_attendance_finalized_session_locked",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python function test_record_attendance_finalized_session_locked in test_attendance.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_record_attendance_session_not_found",
+      "name": "test_record_attendance_session_not_found",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python function test_record_attendance_session_not_found in test_attendance.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_attendance.py:test_record_attendance_employee_not_found",
+      "name": "test_record_attendance_employee_not_found",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_attendance.py",
+      "summary": "Python function test_record_attendance_employee_not_found in test_attendance.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_auth.py",
+      "name": "test_auth.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "FastAPI backend gateway component for test_auth.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_success",
+      "name": "test_login_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python function test_login_success in test_auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+      "name": "test_login_wrong_password",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python function test_login_wrong_password in test_auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_login_missing_credentials",
+      "name": "test_login_missing_credentials",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python function test_login_missing_credentials in test_auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+      "name": "test_get_me_unauthorized",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python function test_get_me_unauthorized in test_auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_invalid_token",
+      "name": "test_get_me_invalid_token",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python function test_get_me_invalid_token in test_auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+      "name": "test_get_me_authorized",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_auth.py",
+      "summary": "Python function test_get_me_authorized in test_auth.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_employees.py",
+      "name": "test_employees.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "FastAPI backend gateway component for test_employees.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_list_employees",
+      "name": "test_list_employees",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_list_employees in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_list_employees_filter_category",
+      "name": "test_list_employees_filter_category",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_list_employees_filter_category in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_get_employee_by_id",
+      "name": "test_get_employee_by_id",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_get_employee_by_id in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_get_employee_not_found",
+      "name": "test_get_employee_not_found",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_get_employee_not_found in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_create_employee_success",
+      "name": "test_create_employee_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_create_employee_success in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_create_employee_duplicate_conflict",
+      "name": "test_create_employee_duplicate_conflict",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_create_employee_duplicate_conflict in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_employees.py:test_update_employee",
+      "name": "test_update_employee",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_employees.py",
+      "summary": "Python function test_update_employee in test_employees.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_error_handling.py",
+      "name": "test_error_handling.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_error_handling.py",
+      "summary": "FastAPI backend gateway component for test_error_handling.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_error_handling.py:test_request_id_header_generated",
+      "name": "test_request_id_header_generated",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_error_handling.py",
+      "summary": "Python function test_request_id_header_generated in test_error_handling.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_error_handling.py:test_custom_request_id_propagated",
+      "name": "test_custom_request_id_propagated",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_error_handling.py",
+      "summary": "Python function test_custom_request_id_propagated in test_error_handling.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_error_handling.py:test_standard_404_error_schema",
+      "name": "test_standard_404_error_schema",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_error_handling.py",
+      "summary": "Python function test_standard_404_error_schema in test_error_handling.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_error_handling.py:test_standard_401_error_schema",
+      "name": "test_standard_401_error_schema",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_error_handling.py",
+      "summary": "Python function test_standard_401_error_schema in test_error_handling.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_error_handling.py:test_standard_422_validation_error_schema",
+      "name": "test_standard_422_validation_error_schema",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_error_handling.py",
+      "summary": "Python function test_standard_422_validation_error_schema in test_error_handling.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_sessions.py",
+      "name": "test_sessions.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "FastAPI backend gateway component for test_sessions.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_list_sessions",
+      "name": "test_list_sessions",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_list_sessions in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_get_session_by_id",
+      "name": "test_get_session_by_id",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_get_session_by_id in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_get_session_not_found",
+      "name": "test_get_session_not_found",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_get_session_not_found in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_create_session_success",
+      "name": "test_create_session_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_create_session_success in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_create_session_duplicate_conflict",
+      "name": "test_create_session_duplicate_conflict",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_create_session_duplicate_conflict in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_finalize_session_success",
+      "name": "test_finalize_session_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_finalize_session_success in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_finalize_session_idempotent",
+      "name": "test_finalize_session_idempotent",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_finalize_session_idempotent in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_unlock_session_admin_success",
+      "name": "test_unlock_session_admin_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_unlock_session_admin_success in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_sessions.py:test_unlock_session_by_date_success",
+      "name": "test_unlock_session_by_date_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_sessions.py",
+      "summary": "Python function test_unlock_session_by_date_success in test_sessions.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_trips.py",
+      "name": "test_trips.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_trips.py",
+      "summary": "FastAPI backend gateway component for test_trips.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_trips.py:test_create_and_update_trip_flow",
+      "name": "test_create_and_update_trip_flow",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_trips.py",
+      "summary": "Python function test_create_and_update_trip_flow in test_trips.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ServerSide/tests/test_vehicles.py",
+      "name": "test_vehicles.py",
+      "type": "file",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "FastAPI backend gateway component for test_vehicles.py",
+      "tags": [
+        "api",
+        "backend",
+        "fastapi",
+        "python"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_list_vehicles",
+      "name": "test_list_vehicles",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python function test_list_vehicles in test_vehicles.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_get_vehicle_by_number",
+      "name": "test_get_vehicle_by_number",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python function test_get_vehicle_by_number in test_vehicles.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_get_vehicle_not_found",
+      "name": "test_get_vehicle_not_found",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python function test_get_vehicle_not_found in test_vehicles.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_success",
+      "name": "test_create_vehicle_success",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python function test_create_vehicle_success in test_vehicles.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_duplicate",
+      "name": "test_create_vehicle_duplicate",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python function test_create_vehicle_duplicate in test_vehicles.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:ServerSide/tests/test_vehicles.py:test_update_vehicle_status",
+      "name": "test_update_vehicle_status",
+      "type": "function",
+      "filePath": "ServerSide/tests/test_vehicles.py",
+      "summary": "Python function test_update_vehicle_status in test_vehicles.py",
+      "tags": [
+        "function",
+        "backend"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apps/admin/src/App.css",
+      "name": "App.css",
+      "type": "file",
+      "filePath": "apps/admin/src/App.css",
+      "summary": "Admin management portal component (App.css)",
+      "tags": [
+        "portal",
+        "management",
+        "css",
+        "frontend",
+        "admin"
+      ],
+      "complexity": "moderate"
     }
   ],
-  "edges": []
+  "edges": [
+    {
+      "source": "file:ServerSide/app/models/trip.py",
+      "target": "function:ServerSide/app/models/trip.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/trip.py",
+      "target": "class:ServerSide/app/models/trip.py:TripTimelineEvent",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/trip.py",
+      "target": "class:ServerSide/app/models/trip.py:VehicleTripBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/trip.py",
+      "target": "class:ServerSide/app/models/trip.py:VehicleTripCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/trip.py",
+      "target": "class:ServerSide/app/models/trip.py:VehicleTripUpdateStatus",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/trip.py",
+      "target": "class:ServerSide/app/models/trip.py:VehicleTripResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "function:ServerSide/app/models/user.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:UserUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/user.py",
+      "target": "class:ServerSide/app/models/user.py:User",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "function:ServerSide/app/models/vehicle.py:utc_now",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleBase",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleCreate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleUpdate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:VehicleResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/models/vehicle.py",
+      "target": "class:ServerSide/app/models/vehicle.py:Vehicle",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/schemas/error.py",
+      "target": "class:ServerSide/app/schemas/error.py:ErrorDetail",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/schemas/error.py",
+      "target": "class:ServerSide/app/schemas/error.py:APIErrorResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/services/odoo_service.py",
+      "target": "class:ServerSide/app/services/odoo_service.py:OdooAccountingService",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/app/services/trip_service.py",
+      "target": "class:ServerSide/app/services/trip_service.py:TripService",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:verify_password",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_password_hash",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:create_access_token",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_current_user",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/auth.py",
+      "target": "function:ServerSide/core/auth.py:get_current_active_user",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/core/config.py",
+      "target": "class:ServerSide/core/config.py:Settings",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/seed_data.py",
+      "target": "function:ServerSide/scripts/seed_data.py:main",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/seed_data.py",
+      "target": "class:ServerSide/scripts/seed_data.py:DataSeeder",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/sync.py",
+      "target": "function:ServerSide/scripts/sync.py:run_command",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/scripts/sync.py",
+      "target": "function:ServerSide/scripts/sync.py:main",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:setup_mock_db",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:client",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:auth_token",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:auth_headers",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/conftest.py",
+      "target": "function:ServerSide/tests/conftest.py:seed_data",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_assignments.py",
+      "target": "function:ServerSide/tests/test_assignments.py:test_assign_vehicle_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_assignments.py",
+      "target": "function:ServerSide/tests/test_assignments.py:test_assign_vehicle_absent_employee_fails",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_assignments.py",
+      "target": "function:ServerSide/tests/test_assignments.py:test_assign_vehicle_under_maintenance_fails",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_assignments.py",
+      "target": "function:ServerSide/tests/test_assignments.py:test_unassign_vehicle_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_attendance_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_record_attendance_create_and_update",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_record_attendance_finalized_session_locked",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_record_attendance_session_not_found",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_attendance.py",
+      "target": "function:ServerSide/tests/test_attendance.py:test_record_attendance_employee_not_found",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_wrong_password",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_login_missing_credentials",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_unauthorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_invalid_token",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_auth.py",
+      "target": "function:ServerSide/tests/test_auth.py:test_get_me_authorized",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_list_employees",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_list_employees_filter_category",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_get_employee_by_id",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_get_employee_not_found",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_create_employee_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_create_employee_duplicate_conflict",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_employees.py",
+      "target": "function:ServerSide/tests/test_employees.py:test_update_employee",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_error_handling.py",
+      "target": "function:ServerSide/tests/test_error_handling.py:test_request_id_header_generated",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_error_handling.py",
+      "target": "function:ServerSide/tests/test_error_handling.py:test_custom_request_id_propagated",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_error_handling.py",
+      "target": "function:ServerSide/tests/test_error_handling.py:test_standard_404_error_schema",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_error_handling.py",
+      "target": "function:ServerSide/tests/test_error_handling.py:test_standard_401_error_schema",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_error_handling.py",
+      "target": "function:ServerSide/tests/test_error_handling.py:test_standard_422_validation_error_schema",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_list_sessions",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_get_session_by_id",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_get_session_not_found",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_create_session_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_create_session_duplicate_conflict",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_finalize_session_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_finalize_session_idempotent",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_unlock_session_admin_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_sessions.py",
+      "target": "function:ServerSide/tests/test_sessions.py:test_unlock_session_by_date_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_trips.py",
+      "target": "function:ServerSide/tests/test_trips.py:test_create_and_update_trip_flow",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_list_vehicles",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_get_vehicle_by_number",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_get_vehicle_not_found",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_success",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_create_vehicle_duplicate",
+      "type": "contains"
+    },
+    {
+      "source": "file:ServerSide/tests/test_vehicles.py",
+      "target": "function:ServerSide/tests/test_vehicles.py:test_update_vehicle_status",
+      "type": "contains"
+    }
+  ],
+  "batchFiles": [
+    {
+      "path": "ServerSide/app/models/trip.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/user.py",
+      "language": "python",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/models/vehicle.py",
+      "language": "python",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/schemas/error.py",
+      "language": "python",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/services/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/services/odoo_service.py",
+      "language": "python",
+      "sizeLines": 553,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/app/services/trip_service.py",
+      "language": "python",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/core/auth.py",
+      "language": "python",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/core/config.py",
+      "language": "python",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/export_openapi.py",
+      "language": "python",
+      "sizeLines": 32,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/seed_data.py",
+      "language": "python",
+      "sizeLines": 285,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/sync.bat",
+      "language": "batch",
+      "sizeLines": 15,
+      "fileCategory": "script"
+    },
+    {
+      "path": "ServerSide/scripts/sync.py",
+      "language": "python",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/scripts/sync.sh",
+      "language": "shell",
+      "sizeLines": 15,
+      "fileCategory": "script"
+    },
+    {
+      "path": "ServerSide/tests/__init__.py",
+      "language": "python",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/conftest.py",
+      "language": "python",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_assignments.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_attendance.py",
+      "language": "python",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_auth.py",
+      "language": "python",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_employees.py",
+      "language": "python",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_error_handling.py",
+      "language": "python",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_sessions.py",
+      "language": "python",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_trips.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ServerSide/tests/test_vehicles.py",
+      "language": "python",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apps/admin/src/App.css",
+      "language": "css",
+      "sizeLines": 836,
+      "fileCategory": "markup"
+    }
+  ]
 }
