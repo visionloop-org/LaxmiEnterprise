@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+# Husky pre-push hook for Laxmi Enterprise
+# Enforces full compilation & test suites before any git push
+
+echo "🚀 Running pre-push compilation & build checks..."
+
+# 1. Compile supervisor app
+echo "📦 Testing Supervisor build..."
+npm run build --workspace=apps/supervisor || {
+  echo "❌ Supervisor compilation failed! Aborting push."
+  exit 1
+}
+
+# 2. Compile admin app
+echo "📦 Testing Admin build..."
+npm run build --workspace=apps/admin || {
+  echo "❌ Admin compilation failed! Aborting push."
+  exit 1
+}
+
+# 3. Test unified bundle assembly
+echo "📦 Testing GitHub Pages unified distribution build..."
+node scripts/build-gh-pages.js || {
+  echo "❌ GitHub Pages assembly failed! Aborting push."
+  exit 1
+}
+
+# 4. Run test suites
+echo "🧪 Running shared test suite..."
+npm run test --workspace=packages/shared || {
+  echo "❌ Shared test suite failed! Aborting push."
+  exit 1
+}
+
+echo "✅ All compilation, assembly, and test checks passed! Proceeding with git push."
