@@ -106,6 +106,40 @@ var SHEETS_CONFIG = {
     ],
     columnWidths: [110, 180, 110, 120, 120, 120, 130, 100, 110, 200, 160]
   },
+  Contractor_Settlements: {
+    tabColor: '#a855f7', // Violet
+    headers: [
+      'id', 'settlementDate', 'contractorId', 'contractorName', 'workersCount', 
+      'totalDays', 'dailyRate', 'grossAmount', 'commissionPercent', 'commissionAmount', 
+      'netPayable', 'paymentStatus', 'transactionRef', 'approvedBy', 'notes', 'createdAt'
+    ],
+    columnWidths: [140, 110, 110, 180, 100, 90, 100, 110, 120, 120, 120, 110, 150, 120, 180, 160]
+  },
+  Extra_Labour_Requests: {
+    tabColor: '#ef4444', // Red
+    headers: [
+      'id', 'requestId', 'requestDate', 'shift', 'supervisorId', 'contractorName', 
+      'workersRequested', 'purpose', 'status', 'approvedCount', 'approvedBy', 'approvedAt', 'notes'
+    ],
+    columnWidths: [140, 140, 110, 100, 110, 160, 120, 180, 110, 110, 120, 160, 180]
+  },
+  Vehicle_Maintenance: {
+    tabColor: '#eab308', // Yellow
+    headers: [
+      'id', 'vehicleId', 'vehicleNumber', 'entryDate', 'serviceType', 'odometerKm', 
+      'fuelLiters', 'costInr', 'vendorName', 'nextServiceDueKm', 'nextServiceDueDate', 'remarks', 'createdAt'
+    ],
+    columnWidths: [120, 110, 120, 110, 140, 110, 100, 100, 160, 130, 130, 180, 160]
+  },
+  Monthly_Summary: {
+    tabColor: '#059669', // Dark Emerald
+    headers: [
+      'monthYear', 'totalOperatingDays', 'totalActiveEmployees', 'totalManDays', 
+      'totalBasePayroll', 'totalOvertimePayroll', 'totalIncentives', 'totalContractorPayout', 
+      'grandTotalExpense', 'finalizedBy', 'finalizedAt', 'notes'
+    ],
+    columnWidths: [110, 130, 140, 120, 130, 140, 120, 140, 140, 120, 160, 200]
+  },
 
   // ── Audit & Reports ──
   Audit_Logs: {
@@ -174,6 +208,60 @@ function setupLaxmiEnterpriseSystem() {
   Logger.log('Drive Root Folder ID: ' + driveFolders.rootId);
 }
 
+/**
+ * Multi-Spreadsheet File Generator (Optional)
+ * Creates 3 distinct Google Spreadsheet files inside "Vision Loop - Laxmi Enterprise/01_Live_Database/":
+ * 1. 01_Laxmi_HR_Master (Employees, Contractors, Rates_Config, Users_Roles)
+ * 2. 02_Laxmi_Attendance_Fleet (Attendance_Sessions, Attendance_Records, Vehicle_Assignments, Vehicle_Trips, Extra_Labour_Requests, Vehicle_Maintenance)
+ * 3. 03_Laxmi_Payroll_Accounting (Daily_Payroll, Contractor_Settlements, Monthly_Summary, Audit_Logs)
+ */
+function setupMultiSpreadsheetArchitecture() {
+  var hierarchy = setupGoogleDriveHierarchy();
+  var dbFolder = DriveApp.getFolderById(hierarchy.LIVE_DB);
+
+  var files = [
+    {
+      name: '01_Laxmi_HR_Master',
+      sheets: ['Employees', 'Contractors', 'Rates_Config', 'Users_Roles']
+    },
+    {
+      name: '02_Laxmi_Attendance_Fleet',
+      sheets: ['Attendance_Sessions', 'Attendance_Records', 'Vehicle_Assignments', 'Vehicle_Trips', 'Extra_Labour_Requests', 'Vehicle_Maintenance']
+    },
+    {
+      name: '03_Laxmi_Payroll_Accounting',
+      sheets: ['Daily_Payroll', 'Contractor_Settlements', 'Monthly_Summary', 'Audit_Logs']
+    }
+  ];
+
+  var created = [];
+  for (var f = 0; f < files.length; f++) {
+    var spec = files[f];
+    var newSs = SpreadsheetApp.create(spec.name);
+    var driveFile = DriveApp.getFileById(newSs.getId());
+    driveFile.moveTo(dbFolder);
+
+    for (var s = 0; s < spec.sheets.length; s++) {
+      var sName = spec.sheets[s];
+      var conf = SHEETS_CONFIG[sName];
+      var sh = newSs.getSheetByName(sName) || newSs.insertSheet(sName);
+      try { sh.setTabColor(conf.tabColor); } catch(e) {}
+      sh.getRange(1, 1, 1, conf.headers.length).setValues([conf.headers])
+        .setFontWeight('bold').setBackground('#0f172a').setFontColor('#f8fafc');
+      sh.setFrozenRows(1);
+    }
+    var defSh = newSs.getSheetByName('Sheet1');
+    if (defSh && newSs.getSheets().length > 1) {
+      try { newSs.deleteSheet(defSh); } catch(e) {}
+    }
+    created.push({ name: spec.name, url: newSs.getUrl(), id: newSs.getId() });
+  }
+
+  Logger.log('🎉 Created Multi-Spreadsheet Architecture in Google Drive:');
+  Logger.log(JSON.stringify(created, null, 2));
+  return created;
+}
+
 /** Populates default master data (Employees, Vehicles, Rates, Contractors) */
 function seedMasterData(ss) {
   var now = new Date().toISOString();
@@ -236,6 +324,33 @@ function seedMasterData(ss) {
       ['VEH-103', 'VEH-103', 'Van', 'Crew Van 103', 8, 'available', true, '', now]
     ];
     vehSheet.getRange(2, 1, sampleVehicles.length, sampleVehicles[0].length).setValues(sampleVehicles);
+  }
+
+  // Contractor Settlements
+  var settleSheet = ss.getSheetByName('Contractor_Settlements');
+  if (settleSheet && settleSheet.getLastRow() <= 1) {
+    var sampleSettlements = [
+      ['SET-2026-001', now.split('T')[0], 'CONT-01', 'Shree Ram Labours', 12, 1, 500, 6000, '10%', 600, 6600, 'Pending', '', 'Admin', 'Daily site loading billing', now]
+    ];
+    settleSheet.getRange(2, 1, sampleSettlements.length, sampleSettlements[0].length).setValues(sampleSettlements);
+  }
+
+  // Extra Labour Requests
+  var reqSheet = ss.getSheetByName('Extra_Labour_Requests');
+  if (reqSheet && reqSheet.getLastRow() <= 1) {
+    var sampleReqs = [
+      ['REQ-001', 'REQ-001', now.split('T')[0], 'Morning Shift', 'supervisor1@gmail.com', 'Shree Ram Labours', 4, 'Emergency quarry aggregate unloading', 'Approved', 4, 'admin@gmail.com', now, 'Approved on priority']
+    ];
+    reqSheet.getRange(2, 1, sampleReqs.length, sampleReqs[0].length).setValues(sampleReqs);
+  }
+
+  // Vehicle Maintenance
+  var maintSheet = ss.getSheetByName('Vehicle_Maintenance');
+  if (maintSheet && maintSheet.getLastRow() <= 1) {
+    var sampleMaint = [
+      ['MNT-101', 'VEH-101', 'Dumper 101', now.split('T')[0], 'Scheduled Oil & Filter Service', 24500, 0, 4500, 'Apex Auto Care', 29500, '2026-10-01', 'Routine periodic servicing completed', now]
+    ];
+    maintSheet.getRange(2, 1, sampleMaint.length, sampleMaint[0].length).setValues(sampleMaint);
   }
 }
 
@@ -337,7 +452,11 @@ function doGet(e) {
         attendance_records: readSheetData(ss, 'Attendance_Records'),
         vehicle_assignments: readSheetData(ss, 'Vehicle_Assignments'),
         vehicle_trips: readSheetData(ss, 'Vehicle_Trips'),
-        daily_payroll: readSheetData(ss, 'Daily_Payroll')
+        daily_payroll: readSheetData(ss, 'Daily_Payroll'),
+        contractor_settlements: readSheetData(ss, 'Contractor_Settlements'),
+        extra_labour_requests: readSheetData(ss, 'Extra_Labour_Requests'),
+        vehicle_maintenance: readSheetData(ss, 'Vehicle_Maintenance'),
+        monthly_summary: readSheetData(ss, 'Monthly_Summary')
       };
       return respondJson({ status: 'success', data: result });
     }
