@@ -210,13 +210,78 @@ export class GoogleSheetsService {
   }
 
   // ─── API / Google Apps Script Communication ─────────────────────────
+  async fetchWithRetry(url, options = {}, maxRetries = 3) {
+    let delay = 600
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        const response = await fetch(url, options)
+        if (response.ok) return response
+        if (attempt === maxRetries) return response
+      } catch (err) {
+        if (attempt === maxRetries) throw err
+      }
+      const jitter = Math.floor(Math.random() * 200)
+      await new Promise(resolve => setTimeout(resolve, delay + jitter))
+      delay *= 2
+    }
+    return fetch(url, options)
+  }
+
+  enqueueOfflineMutation(action, payload) {
+    if (typeof localStorage === 'undefined') return
+    try {
+      const queueKey = 'laxmi_offline_queue'
+      const raw = localStorage.getItem(queueKey)
+      const queue = raw ? JSON.parse(raw) : []
+      queue.push({
+        id: `${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+        action,
+        payload,
+        enqueuedAt: new Date().toISOString()
+      })
+      localStorage.setItem(queueKey, JSON.stringify(queue))
+    } catch (err) {
+      console.warn('[GoogleSheetsService] Error enqueuing offline mutation:', err.message)
+    }
+  }
+
+  async flushOfflineQueue() {
+    if (typeof localStorage === 'undefined' || !this.config.scriptUrl) return
+    const queueKey = 'laxmi_offline_queue'
+    try {
+      const raw = localStorage.getItem(queueKey)
+      if (!raw) return
+      const queue = JSON.parse(raw)
+      if (!Array.isArray(queue) || queue.length === 0) return
+
+      const remaining = []
+      for (const item of queue) {
+        try {
+          const response = await fetch(this.config.scriptUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: item.action, ...item.payload })
+          })
+          if (!response.ok) {
+            remaining.push(item)
+          }
+        } catch {
+          remaining.push(item)
+        }
+      }
+      localStorage.setItem(queueKey, JSON.stringify(remaining))
+    } catch (err) {
+      console.warn('[GoogleSheetsService] Error flushing offline queue:', err.message)
+    }
+  }
+
   async fetchFromGoogleSheets() {
     if (!this.config.scriptUrl) {
       return { success: false, message: 'Google Apps Script Web App URL not configured.' }
     }
 
     try {
-      const response = await fetch(`${this.config.scriptUrl}?action=getAll`, {
+      const response = await this.fetchWithRetry(`${this.config.scriptUrl}?action=getAll`, {
         method: 'GET',
         headers: { 'Accept': 'application/json' }
       })
@@ -231,6 +296,8 @@ export class GoogleSheetsService {
           }
         }
         this.saveConfig({ lastSyncTime: new Date().toISOString() })
+        // Attempt to flush any offline mutations that were queued
+        this.flushOfflineQueue().catch(() => {})
         return { success: true, message: 'Successfully synced data from Google Sheets!', data: data.data }
       }
       throw new Error(data.message || 'Invalid format returned by Google Sheets')
@@ -246,11 +313,12 @@ export class GoogleSheetsService {
     }
 
     try {
-      const response = await fetch(this.config.scriptUrl, {
+      const response = await this.fetchWithRetry(this.config.scriptUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Apps Script CORS friendly
         body: JSON.stringify({ action, ...payload })
-      })
+      }, 2)
+
       if (!response.ok) {
         throw new Error(`HTTP error ${response.status}`)
       }
@@ -260,8 +328,9 @@ export class GoogleSheetsService {
       }
       return res
     } catch (err) {
-      console.warn(`[GoogleSheetsService] syncToGoogleSheets (${action}) warning:`, err.message)
-      return { success: false, message: err.message }
+      console.warn(`[GoogleSheetsService] syncToGoogleSheets (${action}) enqueued for offline sync:`, err.message)
+      this.enqueueOfflineMutation(action, payload)
+      return { success: false, queued: true, message: 'Saved locally; will sync when connection restores.' }
     }
   }
 

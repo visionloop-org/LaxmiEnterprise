@@ -392,7 +392,14 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
     // Acquire script lock with 20 second timeout to prevent concurrency race conditions
-    lock.waitLock(20000);
+    var hasLock = lock.tryLock(20000);
+    if (!hasLock) {
+      return respondJson({ 
+        status: 'error', 
+        code: 'LOCK_TIMEOUT', 
+        message: 'Database is temporarily busy with a concurrent operation. Please retry.' 
+      });
+    }
 
     var postData = {};
     if (e && e.postData && e.postData.contents) {
@@ -571,7 +578,7 @@ function upsertRecord(ss, sheetName, keyField, record) {
     var val = record[header];
     if (val === undefined || val === null) val = '';
     if (header === 'updatedAt' && !val) val = new Date().toISOString();
-    rowValues.push(val);
+    rowValues.push(sanitizeCellValue(val));
   }
 
   if (foundRow > 0) {
@@ -579,6 +586,17 @@ function upsertRecord(ss, sheetName, keyField, record) {
   } else {
     sheet.appendRow(rowValues);
   }
+}
+
+function sanitizeCellValue(val) {
+  if (typeof val === 'string' && val.length > 0) {
+    var firstChar = val.charAt(0);
+    // Neutralize formula injection in Google Sheets (=, +, -, @)
+    if (firstChar === '=' || firstChar === '+' || firstChar === '-' || firstChar === '@') {
+      return "'" + val;
+    }
+  }
+  return val;
 }
 
 function deleteRecord(ss, sheetName, keyField, keyValue) {
