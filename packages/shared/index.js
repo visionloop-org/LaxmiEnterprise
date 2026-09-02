@@ -13,6 +13,14 @@ import ErrorBoundaryComponent from './components/ErrorBoundary.jsx'
 import LoadingSpinnerComponent from './components/LoadingSpinner.jsx'
 import ArrivedTimeModalComponent from './components/ArrivedTimeModal.jsx'
 import GoogleSheetsSyncModalComponent from './components/GoogleSheetsSyncModal.jsx'
+import StatusBadgeComponent from './components/StatusBadge.jsx'
+
+// Extract Components
+export const ErrorBoundary = ErrorBoundaryComponent.default || ErrorBoundaryComponent
+export const LoadingSpinner = LoadingSpinnerComponent.default || LoadingSpinnerComponent
+export const ArrivedTimeModal = ArrivedTimeModalComponent.default || ArrivedTimeModalComponent
+export const GoogleSheetsSyncModal = GoogleSheetsSyncModalComponent.default || GoogleSheetsSyncModalComponent
+export const StatusBadge = StatusBadgeComponent.default || StatusBadgeComponent
 
 import * as useEmployeesHooks from './hooks/useEmployees.js'
 import * as useVehiclesHooks from './hooks/useVehicles.js'
@@ -61,12 +69,6 @@ export const restSessionService = restSessionServiceModule.restSessionService ||
 export const RestSessionService = restSessionServiceModule.RestSessionService
 export const restTripService = restTripServiceModule.restTripService || restTripServiceModule.default || restTripServiceModule
 export const restAccountingService = restAccountingServiceModule.restAccountingService || restAccountingServiceModule.default || restAccountingServiceModule
-
-// Extract Components
-export const ErrorBoundary = ErrorBoundaryComponent.default || ErrorBoundaryComponent
-export const LoadingSpinner = LoadingSpinnerComponent.default || LoadingSpinnerComponent
-export const ArrivedTimeModal = ArrivedTimeModalComponent.default || ArrivedTimeModalComponent
-export const GoogleSheetsSyncModal = GoogleSheetsSyncModalComponent.default || GoogleSheetsSyncModalComponent
 
 // Extract Hooks
 export const {
