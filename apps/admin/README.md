@@ -22,7 +22,11 @@ The Admin Portal is an administrative dashboard for Laxmi Enterprise management.
   - **Extra Labour**: ₹450/day
 - Calculates 1.5x overtime rates for extra hours recorded during field shifts.
 
-### 3. Supervisor Request Approval Center
+### 3. Contractor Agency Settlements
+- Aggregates daily wages, overtime, and incentive bonuses grouped by labour contractor agency.
+- Instant CSV export for contractor bank settlement and NEFT payouts.
+
+### 4. Supervisor Request Approval Center
 - Review on-the-fly employee and extra labour addition requests submitted by field supervisors.
 - Admin governance actions:
   - **Approve**: Activates the employee record for full assignment and payroll eligibility.
@@ -30,26 +34,39 @@ The Admin Portal is an administrative dashboard for Laxmi Enterprise management.
   - **Edit**: Corrects name, category, or contractor details inline.
   - **Delete**: Permanently removes obsolete or invalid employee entries.
 
-### 4. Emergency Session Unlock (Admin Exclusive)
+### 5. Emergency Session Unlock (Admin Exclusive)
 - Allows administrators to reset a finalized session back to `in_progress` if corrections are required after a supervisor has finalized the daily sheet.
-- Emits an append-only audit event (`audit_events`) logging the unlocking administrator and timestamp.
 
-### 5. Fleet Utilization & Trip Monitoring
+### 6. Fleet Utilization & Trip Monitoring
 - Real-time vehicle status indicators (`Available`, `In Use`, `Maintenance`).
 - Integrated trip monitoring displaying vehicle dispatch and delivery stages.
 
-### 6. One-Click CSV Exports
-- **Payroll & Attendance CSV**: Comprehensive employee export including base pay, extra duty hours, arrival times, and total compensation.
-- **Vehicle Status CSV**: Fleet allocation, status, and assignment data for logistics reporting.
+### 7. Google Sheets Cloud Database Sync
+- Interactive Google Sheets Sync Modal ([`GoogleSheetsSyncModal`](../../packages/shared/components/GoogleSheetsSyncModal.jsx)) with live health checks and manual push/pull overrides.
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## 🛠️ Architecture & Modular Components
 
-- **Framework**: React 19 with Vite
-- **Data Layer**: `@laxmi/shared` React Query hooks (`useEmployees`, `useVehicles`, `useTrips`, `useApproveEmployee`, `useRejectEmployee`, `useUpdateEmployee`, `useDeleteEmployee`)
-- **Authentication**: JWT token management via `authService`
-- **Styling**: Vanilla CSS (`App.css`, `index.css`) with responsive design
+The Admin application follows a strict single-responsibility design where all UI files are kept under 150 lines:
+
+```
+apps/admin/src/
+├── components/
+│   ├── AdminHeader.jsx             # Top bar with user role badge and Google Sheets sync modal trigger
+│   ├── LoginPage.jsx               # Dedicated sign-in view for Gmail and admin credentials
+│   ├── StatsOverview.jsx           # KPI metrics & fleet utilization cards
+│   ├── PendingApprovalsBanner.jsx  # Supervisor worker addition approval alert
+│   ├── ContractorPayrollPanel.jsx  # Agency settlement breakdown & CSV export
+│   ├── EmployeeManagementTable.jsx # Searchable, filterable, paginated employee master table
+│   ├── FleetManagementTable.jsx    # Vehicle fleet status & live trip dispatch tracker
+│   ├── SessionUnlockPanel.jsx      # Admin session unlock/reset tool
+│   ├── BulkCompensationModal.jsx   # Batch rate editor with presets & CSV upload/download
+│   ├── EditEmployeeModal.jsx       # Individual worker compensation & contractor editor
+│   └── AdminDashboard.jsx          # Clean composition layer
+├── App.jsx                         # Concise 20-line authentication shell
+└── App.css                         # Dark/light responsive theme styling
+```
 
 ---
 
@@ -65,7 +82,7 @@ cd apps/admin
 npm install
 npm run dev
 ```
-The application runs on `http://localhost:5174`.
+The application runs on `http://localhost:5174` (or `http://localhost:5173/admin/` via unified dev runner).
 
 ### Production Build & Linting
 ```bash
@@ -73,16 +90,10 @@ npm run build
 npm run lint
 ```
 
-### Docker Container
-```bash
-# Build and run standalone container
-docker build -t laxmi-admin .
-docker run -p 5174:5174 -e VITE_API_BASE_URL=http://localhost:8000/api/v1 laxmi-admin
-```
-
 ---
 
-## 🔐 Default Credentials (Demo)
+## 🔐 Authentication & Access Governance
 
-- **Username**: `admin`
-- **Password**: `password123`
+- **Google Identity Services (GIS)**: Sign in with your verified Gmail account.
+- **Role Governance**: Permissions are managed directly inside the `Users_Roles` worksheet in Google Sheets (`Admin`, `Supervisor`, `Viewer`).
+- **Demo Fallback (Offline)**: `admin` / `password123`

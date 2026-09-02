@@ -86,8 +86,9 @@ gantt
     Milestone 1 - API & Monorepo Foundation      :done,    m1, 2026-08-01, 2026-08-11
     Milestone 2 - Core Attendance & Session Lock :done,    m2, 2026-08-11, 2026-08-14
     Milestone 3 - Vehicle Capacity & Assignment  :done,    m3, 2026-08-14, 2026-08-16
-    Milestone 4 - Trips, Admin Portal & Testing  :active,  m4, 2026-08-16, 2026-08-25
-    Milestone 5 - Reports, Background Workers    :         m5, 2026-08-25, 2026-09-05
+    Milestone 4 - Trips, Admin Portal & Testing  :done,    m4, 2026-08-16, 2026-08-25
+    Milestone 5 - Serverless Google Sheets & CI  :done,    m5, 2026-08-25, 2026-09-02
+    Milestone 5.1 - Modular UI, GIS Auth & Gates :done,    m51, 2026-09-02, 2026-09-03
     Milestone 6 - LWAS Biometric & Hardware      :         m6, 2026-09-05, 2026-09-20
 ```
 
@@ -113,6 +114,12 @@ gantt
 - Automated deployment to GitHub Pages via `.github/workflows/deploy-pages.yml`.
 - Resolved React Hook ordering in `TripTrackerModal.jsx` achieving 0 lint errors across the monorepo.
 - Wired supervisor tablet mutations directly into Google Sheets persistence layer.
+
+### Milestone 5.1 — Component Modularization, Serverless Auth & Pre-Push Gate ✅
+- **Modular Component Decomposition**: Decomposed monolithic 1,166-line `App.jsx` into 10 single-responsibility subcomponents (<150 lines each).
+- **Centralized Cross-App UI**: Re-exported `StatusBadge` and `GoogleSheetsSyncModal` from `@laxmi/shared`, eliminating duplicate code across applications.
+- **Serverless Google Authentication**: Designed and integrated Google Identity Services (GIS) OIDC JWT sign-in with `Users_Roles` spreadsheet governance.
+- **Mandatory Pre-Push Compilation Gate**: Automated `.husky/pre-push` running Vite builds, Pages distribution assembly, and Mocha test suite (with `--exit`) before any push.
 
 ### Milestone 6 — Hardware & Biometric Turnstile Integration (LWAS) 🔮 (Roadmapped)
 - USB QR scanner listener for worker ID gate entry.
