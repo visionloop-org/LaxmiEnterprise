@@ -21,7 +21,7 @@
 // ─── 1. STRUCTURE DEFINITIONS ─────────────────────────────────────────────
 
 var DRIVE_FOLDERS = {
-  ROOT: 'Laxmi Enterprise Workspace',
+  ROOT: 'Vision Loop - Laxmi Enterprise',
   LIVE_DB: '01_Live_Database',
   DAILY_BACKUPS: '02_Daily_Attendance_Backups',
   MONTHLY_PAYROLL: '03_Monthly_Payroll_Reports',
@@ -205,7 +205,7 @@ function seedMasterData(ss) {
   var userSheet = ss.getSheetByName('Users_Roles');
   if (userSheet.getLastRow() <= 1) {
     var sampleUsers = [
-      ['Ruhiljaiswal1993@gmail.com', 'Ruhil Jaiswal (Developer)', 'Developer', 'Active', 'All', 'Developer role with full Admin access across all portals, database & APIs', now],
+      ['visionloop.in@gmail.com', 'Vision Loop (Developer)', 'Developer', 'Active', 'All', 'Developer role with full Admin access across all portals, database & APIs', now],
       ['admin@gmail.com', 'System Owner / Admin', 'Admin', 'Active', 'All', 'Full access to payroll, rates, settings & master records', now],
       ['supervisor1@gmail.com', 'Morning Shift Supervisor', 'Supervisor', 'Active', 'Morning Shift', 'Attendance marking, vehicle dispatch & PDF reports', now],
       ['supervisor2@gmail.com', 'Evening Shift Supervisor', 'Supervisor', 'Active', 'Evening Shift', 'Attendance marking, vehicle dispatch & PDF reports', now],

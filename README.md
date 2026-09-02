@@ -1,7 +1,7 @@
 # 🏢 Laxmi Enterprise — Workforce Attendance, Fleet & Payroll System
 
-> **Live GitHub Pages URL:** [https://jaiswal-ruhil.github.io/LaxmiEnterprise/](https://jaiswal-ruhil.github.io/LaxmiEnterprise/)  
-> **Author & Developer:** [Ruhil Jaiswal](https://github.com/Jaiswal-ruhil) (`Ruhiljaiswal1993@gmail.com`)  
+> **Live GitHub Pages URL:** [https://visionloop-org.github.io/LaxmiEnterprise/](https://visionloop-org.github.io/LaxmiEnterprise/)  
+> **Author & Developer:** [Vision Loop](https://github.com/visionloop-org) (`visionloop.in@gmail.com`)  
 > **Architecture:** 100% Serverless • Google Sheets Database • Google Drive Storage • GitHub Pages Hosted
 
 ---
@@ -33,7 +33,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Jaiswal-ruhil/LaxmiEnterprise.git
+git clone https://github.com/visionloop-org/LaxmiEnterprise.git
 cd LaxmiEnterprise
 
 # 2. Install dependencies
@@ -58,7 +58,7 @@ npm run build:pages
 3. Copy & paste the contents of [`google-sheets/Code.gs`](./google-sheets/Code.gs).
 4. Run the function **`setupLaxmiEnterpriseSystem`** once to create all sheets, format headers, and generate Google Drive folders.
 5. Click **Deploy** > **New deployment** > **Web app** > Access: **Anyone** > Copy the **Web App URL**.
-6. Open the Admin portal at [https://jaiswal-ruhil.github.io/LaxmiEnterprise/admin/](https://jaiswal-ruhil.github.io/LaxmiEnterprise/admin/) -> Click **📊 Google Sheets Sync** -> Paste URL & Save!
+6. Open the Admin portal at [https://visionloop-org.github.io/LaxmiEnterprise/admin/](https://visionloop-org.github.io/LaxmiEnterprise/admin/) -> Click **📊 Google Sheets Sync** -> Paste URL & Save!
 
 Detailed sheet documentation: [SHEET_STRUCTURE.md](./google-sheets/SHEET_STRUCTURE.md)  
 Best practices guide: [BEST_PRACTICES.md](./google-sheets/BEST_PRACTICES.md)
@@ -67,7 +67,7 @@ Best practices guide: [BEST_PRACTICES.md](./google-sheets/BEST_PRACTICES.md)
 
 ## 🚢 Continuous Deployment to GitHub Pages
 
-Every commit pushed to `main` automatically triggers the GitHub Actions workflow [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml), building the unified static bundle and publishing it live to **`https://jaiswal-ruhil.github.io/LaxmiEnterprise/`**.
+Every commit pushed to `main` automatically triggers the GitHub Actions workflow [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml), building the unified static bundle and publishing it live to **`https://visionloop-org.github.io/LaxmiEnterprise/`**.
 
 ---
 
@@ -75,6 +75,6 @@ Every commit pushed to `main` automatically triggers the GitHub Actions workflow
 
 | User | Gmail / GitHub ID | Role | Access Level |
 |---|---|---|---|
-| **Ruhil Jaiswal** | `Ruhiljaiswal1993@gmail.com` • [Jaiswal-ruhil](https://github.com/Jaiswal-ruhil) | **Developer** | **Admin (Full Unrestricted Access)** |
+| **Vision Loop** | `visionloop.in@gmail.com` • [visionloop-org](https://github.com/visionloop-org) | **Developer** | **Admin (Full Unrestricted Access)** |
 | **System Admin** | `admin@gmail.com` | **Admin** | **Admin** |
 | **Shift Supervisors** | `supervisor1@gmail.com` | **Supervisor** | **Supervisor (Attendance/Trips)** |

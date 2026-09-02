@@ -1,7 +1,7 @@
 # Laxmi Enterprise — Master Workspace Instructions
 
-**Version:** 3.0  
-**Last Updated:** August 16, 2026
+**Version:** 4.0  
+**Last Updated:** September 2, 2026
 
 ---
 
@@ -11,8 +11,8 @@ This document governs the active projects in this monorepo workspace:
 
 1. **`apps/supervisor`** — Supervisor-facing touch tablet web application.
 2. **`apps/admin`** — Administrative analytics, payroll, and governance portal.
-3. **`packages/shared`** — Centralized React Query hooks, API transports, UI components, and TypeScript contracts.
-4. **`ServerSide`** — Central FastAPI and MongoDB backend service.
+3. **`packages/shared`** — Centralized React Query hooks, Google Sheets services, UI components, and TypeScript contracts.
+4. **`google-sheets`** — Google Apps Script Web App API and database schema.
 5. **`Marker-CS-Extractor`** — Python document data extraction utility.
 
 Each project maintains its own specific instruction document. This master document establishes core boundaries, contracts, and interaction protocols.
@@ -21,7 +21,7 @@ Each project maintains its own specific instruction document. This master docume
 
 ## 2. Source of Truth
 
-The **FastAPI backend (`ServerSide`) and MongoDB replica set** are the absolute and single source of truth for:
+The **Google Sheets database and Google Drive storage** are the absolute and single source of truth for:
 - Employees and category configuration
 - Attendance sessions and attendance records
 - Vehicle assignments and capacity constraints
@@ -30,21 +30,21 @@ The **FastAPI backend (`ServerSide`) and MongoDB replica set** are the absolute 
 - Immutable audit trail events
 - Official report generation and payroll calculations
 
-**Frontend Rule:** Frontend applications are strictly presentation and user-intent collection layers. Frontends must never connect directly to MongoDB, bypass backend capacity checks, perform local session finalizations, or treat local browser state as authoritative.
+**Frontend Rule:** Frontend applications are strictly presentation and user-intent collection layers. Frontends must never bypass Google Sheets validation, treat local browser state as authoritative, or implement business logic that should reside in the Google Apps Script Web App.
 
 ---
 
 ## 3. Multi-App Integration Contract
 
-All client applications (React web applications, Python automation scripts, mobile clients, and kiosk scanners) communicate solely through the versioned REST API under `/api/v1`.
+All client applications (React web applications, Python automation scripts, mobile clients, and kiosk scanners) communicate solely through the Google Apps Script Web App API.
 
 ```
-Client Intent → REST API (/api/v1) → Server Validation → MongoDB Transaction → Audit Event → Response (200/409)
+Client Intent → Google Sheets API → Sheet Validation → Drive Storage → Audit Event → Response (200/400)
 ```
 
-- **OpenAPI Single Contract:** The backend defines and exports `ServerSide/openapi.json`.
-- **Generated Types:** `packages/shared/types/api.ts` must be kept in sync with the backend schema.
-- **Optimistic Concurrency:** State-changing requests must supply the current session version. Stale edits return `409 Conflict` with the latest server state to trigger safe client reconciliation.
+- **Google Sheets Single Contract:** The Google Apps Script Web App defines and exports the complete REST API contract.
+- **Type Safety:** `packages/shared/types/` must be kept in sync with the Google Sheets schema.
+- **Optimistic Concurrency:** State-changing requests must supply current session data. Conflicts return appropriate error responses to trigger safe client reconciliation.
 - **Idempotency:** Session finalization and status mutations must be idempotent. Duplicate requests must never produce duplicate audit events or corrupt session state.
 
 ---
@@ -58,7 +58,7 @@ Client Intent → REST API (/api/v1) → Server Validation → MongoDB Transacti
 - Track vehicle dispatch, site arrival, product delivery, and return via `TripTrackerModal`.
 - Submit employee addition requests (`RequestEmployeeModal`) for administrative approval.
 - Maintain an offline mutation queue for network interruptions.
-- Never finalize sessions locally or bypass server validation.
+- Never finalize sessions locally or bypass Google Sheets validation.
 
 ### 4.2. Admin Portal (`apps/admin/`)
 - Provide high-level organizational analytics across flexible date ranges.
@@ -67,30 +67,33 @@ Client Intent → REST API (/api/v1) → Server Validation → MongoDB Transacti
 - Execute audited session unlocks to reset finalized sessions when supervisor corrections are warranted.
 - Monitor active fleet utilization and vehicle trip lifecycles.
 - Export authoritative CSV reports for payroll, attendance, and fleet status.
+- Configure Google Sheets Web App URL and sync settings.
 
 ### 4.3. Shared Package (`packages/shared/`)
-- Encapsulate all REST API communication inside `backendApi.js` and dedicated services.
+- Encapsulate all Google Sheets API communication inside `googleSheetsService.js`.
 - Provide synchronized React Query hooks with automatic cache invalidation.
 - Share reusable UI components (`ArrivedTimeModal`, `ErrorBoundary`, `LoadingSpinner`).
 - Prevent code duplication across applications.
+- Implement localStorage fallback for offline operation with auto-sync on reconnection.
 
-### 4.4. Server Side (`ServerSide/`)
-- Authenticate users via JWT and enforce role-based access control (`admin`, `supervisor`).
-- Execute all multi-document mutations inside MongoDB transactions.
+### 4.4. Google Sheets Database (`google-sheets/`)
+- Authenticate users via Gmail and enforce role-based access control (`admin`, `supervisor`).
+- Execute all data mutations inside Google Sheets with audit logging.
 - Enforce strict vehicle capacity: max 1 Driver, max 1 Chalan Man, max 6 Workers, max 8 total employees.
-- Record append-only audit events in `audit_events` for every data change.
-- Provide clean OpenAPI documentation and health check endpoints.
+- Record append-only audit events in `Audit_Logs` for every data change.
+- Provide clean JSON REST API documentation and health check endpoints.
+- Automated daily backups to Google Drive `02_Daily_Attendance_Backups` folder.
 
 ---
 
 ## 5. Error and Versioning Policy
 
-- Backend errors must return standardized payloads containing:
-  - `code` (e.g. `CONFLICT`, `VALIDATION_ERROR`, `UNAUTHORIZED`, `NOT_FOUND`)
+- Google Sheets API errors must return standardized payloads containing:
+  - `status` (e.g. `success`, `error`)
   - `message` (Safe user-facing description)
-  - `details` / `current_state` (Server state required for client-side conflict resolution)
+  - `details` (Additional context for client-side error handling)
 - If an API breaking change is required:
-  1. Update backend models and routes.
-  2. Run type sync script (`ServerSide/scripts/sync.py` or `npm run sync:types`).
-  3. Update affected consumers in `packages/shared`, `apps/supervisor`, and `apps/admin`.
+  1. Update Google Apps Script Web App (`google-sheets/Code.gs`).
+  2. Update `packages/shared/services/googleSheetsService.js` to handle new responses.
+  3. Update affected consumers in `apps/supervisor` and `apps/admin`.
   4. Increment instruction versions accordingly.

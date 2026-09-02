@@ -9,7 +9,7 @@ This document defines the complete data schemas, sheet structures, and Google Dr
 When you run `setupLaxmiEnterpriseSystem` in Google Apps Script, the following folder hierarchy is automatically created in your Google Drive:
 
 ```
-📁 Laxmi Enterprise Workspace/
+📁 Vision Loop - Laxmi Enterprise/
 │
 ├── 📂 01_Live_Database/
 │   └── 📊 Laxmi Enterprise Database (Master Spreadsheet with Apps Script Web App)

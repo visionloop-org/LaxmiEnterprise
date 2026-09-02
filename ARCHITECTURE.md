@@ -1,8 +1,8 @@
 # Laxmi Enterprise — Monorepo Architecture
 
-**Last Updated:** August 16, 2026  
-**Architecture Version:** 3.0  
-**Compliance Score:** 100/100 (Single Source of Truth, API-First, Shared Workspace Packages)
+**Last Updated:** September 2, 2026  
+**Architecture Version:** 4.0 (Google Sheets-Only)  
+**Compliance Score:** 100/100 (Serverless, Google Sheets Database, Google Drive Storage, GitHub Pages Hosted)
 
 ---
 
@@ -10,7 +10,7 @@
 
 Laxmi Enterprise operates a unified monorepo for daily workforce attendance tracking, vehicle fleet capacity management, trip and delivery lifecycle tracking, and administrative payroll analytics. 
 
-The architecture enforces a strict **Single Source of Truth** pattern where the **FastAPI backend (`ServerSide`) and MongoDB** own all domain validation, transactions, audit logs, and data persistence. Frontend applications (`apps/supervisor` and `apps/admin`) operate as stateless presentation layers communicating solely via the versioned `/api/v1` REST contract. Common components, React Query hooks, and API services are centralized in `@laxmi/shared`.
+The architecture enforces a **100% Serverless, Google Sheets-First** pattern where **Google Sheets and Google Drive** serve as the single source of truth for all data storage, retrieval, and backup operations. Frontend applications (`apps/supervisor` and `apps/admin`) operate as stateless presentation layers communicating directly with Google Sheets via Google Apps Script Web App API. Common components, React Query hooks, and API services are centralized in `@laxmi/shared`.
 
 ---
 
@@ -39,28 +39,18 @@ LaxmiEnterprise/
 │   └── shared/                   # Core shared library (@laxmi/shared)
 │       ├── components/           # ArrivedTimeModal, ErrorBoundary, LoadingSpinner
 │       ├── hooks/                # useEmployees, useVehicles, useTrips, useAttendanceState
-│       ├── services/             # backendApi, authService, restSession, restTrip, restAssignment
-│       ├── types/                # api.ts (Auto-generated TypeScript types from OpenAPI)
+│       ├── services/             # googleSheetsService, authService, restSession, restTrip, restAssignment
+│       ├── types/                # TypeScript contracts
 │       ├── tests/                # Unit & edge case test suites (Mocha + Chai + Babel)
-│       ├── check-types.js        # Type drift validation script
 │       └── package.json
 │
-├── ServerSide/                   # Authoritative FastAPI backend service (Port 8000)
-│   ├── app/
-│   │   ├── api/v1/               # Routes: auth, employees, sessions, attendance, assignments, trips, pay
-│   │   ├── core/                 # Config, JWT auth, exceptions, logging, middleware
-│   │   ├── db/                   # MongoDB motor connection & index definitions
-│   │   ├── models/               # Pydantic schemas: Employee, Vehicle, Session, Attendance, Trip, User
-│   │   └── services/             # TripService, business domain rules
-│   ├── scripts/                  # seed_data.py, export_openapi.py, sync.py
-│   ├── tests/                    # Pytest test suite (assignments, attendance, auth, trips, sessions)
-│   ├── Dockerfile
-│   ├── openapi.json              # Published OpenAPI v3.1 specification
-│   └── requirements.txt
+├── google-sheets/                # Google Apps Script Web App & Database Schema
+│   ├── Code.gs                   # Complete Google Sheets API & Drive automation
+│   ├── SHEET_STRUCTURE.md        # Data schema documentation
+│   ├── BEST_PRACTICES.md         # Google Sheets usage guidelines
+│   └── README.md                 # Setup instructions
 │
 ├── Marker-CS-Extractor/          # Python PDF invoice and data extractor utility
-├── docker-compose.yml            # Multi-container orchestration (MongoDB, Backend, Supervisor, Admin)
-├── launch-containers.bat         # Single-click container launcher
 ├── TODO.md                       # Roadmap & task tracking
 ├── GOALS.md                      # Product & engineering milestones
 ├── MASTER INSTRUCTIONS.md        # Monorepo boundary rules
@@ -71,27 +61,26 @@ LaxmiEnterprise/
 
 ## 3. Core System Subsystems
 
-### 3.1. Authoritative Backend (`ServerSide/`)
-- **FastAPI 0.115+ with Async MongoDB (Motor)**:
-  - Atomic multi-document mutations using MongoDB transactions.
-  - Optimistic concurrency control via `attendance_sessions.version` (returns `409 Conflict` on race conditions).
-  - Role-based authorization (`admin`, `supervisor`).
-  - Immutable audit logs (`audit_events` collection) for every mutation.
-- **REST Endpoints (`/api/v1`)**:
-  - `/auth`: Login, current user verification (`me`), token management.
-  - `/sessions`: Session creation, loading, idempotent finalization (`finalize`), and admin unlock (`unlock`).
-  - `/attendance`: Per-employee attendance marking (`on_time`, `arrived`, `absent`).
-  - `/assignments`: Vehicle capacity validation and assignment mutations.
-  - `/trips`: Vehicle dispatch, site arrival, product delivery, and return tracking.
-  - `/employees`: Employee master CRUD, extra labour creation, and supervisor addition approvals.
-  - `/vehicles`: Fleet master status, capacity limits, and utilization metrics.
+### 3.1. Google Sheets Database Engine (`google-sheets/`)
+- **Google Apps Script Web App**:
+  - Complete JSON REST API (`doGet`/`doPost`) for frontend communication
+  - 9 structured worksheets: `Employees`, `Vehicles`, `Contractors`, `Rates_Config`, `Users_Roles`, `Attendance_Sessions`, `Attendance_Records`, `Vehicle_Assignments`, `Vehicle_Trips`, `Daily_Payroll`, `Audit_Logs`
+  - Automated Google Drive folder management (`Vision Loop - Laxmi Enterprise` root with subfolders)
+  - Daily automated backups to `02_Daily_Attendance_Backups`
+  - Role-based access control via Gmail authentication
+- **REST API Endpoints**:
+  - `GET ?action=ping` - Health check
+  - `GET ?action=getAll` - Fetch all tables
+  - `GET ?action=checkRole&email=...` - Role verification
+  - `GET ?action=getTable&table=...` - Fetch specific table
+  - `POST` actions: `saveEmployee`, `bulkSaveEmployees`, `deleteEmployee`, `saveUser`, `deleteUser`, `saveVehicle`, `saveSession`, `saveAttendanceRecord`, `saveAssignment`, `deleteAssignment`, `saveTrip`, `savePayroll`, `bulkUploadAll`, `uploadReportToDrive`
 
 ### 3.2. Shared Workspace Package (`packages/shared/`)
 - Exported under `@laxmi/shared` as a local workspace dependency with dual ESM/CommonJS module support.
 - **Services**:
-  - `backendApi`: Resilient HTTP client with automatic JWT token injection, unified error parsing, `X-Request-ID` propagation, and retry handling.
-  - `authService`: Token persistence and user session management with auto-refresh capability.
-  - `restSessionService`, `restEmployeeService`, `restVehicleService`, `restAssignmentService`, `restTripService`.
+  - `googleSheetsService`: Direct Google Sheets API communication with localStorage fallback and auto-sync
+  - `authService`: Gmail-based role verification and session management
+  - Local offline queue with background synchronization
 - **Custom React Query Hooks**:
   - Cached, synchronized queries (`useEmployees`, `useVehicles`, `useTrips`) with fine-tuned caching (`staleTime: 5m/3m/30s`, `gcTime: 10m/5m`).
   - Optimistic mutations (`useCreateTrip`, `useUpdateTripStatus`, `useApproveEmployee`, `useRejectEmployee`, `useUpdateEmployee`, `useDeleteEmployee`, `useBulkUpdateCompensation`).
@@ -103,7 +92,7 @@ LaxmiEnterprise/
 - **Core Utilities**:
   - `requestId`: Unique request ID generation (`REQ-<timestamp>-<rand>`) and lifecycle tracking.
   - `logger`: Structured JSON logging with configurable log levels (`DEBUG`, `INFO`, `WARN`, `ERROR`) and sensitive field scrubbing.
-  - `security`: JWT format validation, XSS escaping, CSRF token generation, and `RateLimiter` class.
+  - `security`: XSS escaping, CSRF token generation, and `RateLimiter` class.
   - `config`: Centralized configuration constants and environment management.
 
 ### 3.3. Supervisor Tablet App (`apps/supervisor/`)
@@ -140,49 +129,63 @@ sequenceDiagram
     actor Supervisor as Supervisor Tablet
     actor Admin as Admin Portal
     participant Shared as @laxmi/shared
-    participant Backend as FastAPI ServerSide
-    participant DB as MongoDB Replica Set
+    participant GSService as GoogleSheetsService
+    participant GSheets as Google Sheets Web App
+    participant GDrive as Google Drive
     
     Supervisor->>Shared: Mark Attendance / Assign Vehicle
-    Shared->>Backend: PUT /api/v1/sessions/{id}/attendance
-    Backend->>DB: Begin MongoDB Transaction
-    Backend->>DB: Validate Session Version & Capacity
-    Backend->>DB: Update Record & Write Audit Event
-    Backend->>DB: Commit Transaction
-    Backend-->>Shared: Return Updated Session (v2)
+    Shared->>GSService: Update localStorage
+    GSService->>GSheets: POST saveAttendanceRecord / saveAssignment
+    GSheets->>GSheets: Update Sheet & Write Audit Log
+    GSheets-->>GSService: Success Response
+    GSService-->>Shared: Update Complete
     Shared-->>Supervisor: Reconcile React Query State
     
     Admin->>Shared: Request Date Range Analytics
-    Shared->>Backend: GET /api/v1/employees & /api/v1/sessions
-    Backend->>DB: Query Indexed Records
-    Backend-->>Shared: Aggregated Dataset
+    Shared->>GSService: getEmployees / getSessions
+    GSService->>GSheets: GET ?action=getAll
+    GSheets-->>GSService: All Tables Data
+    GSService-->>Shared: Filtered Dataset
     Shared-->>Admin: Render Payroll & Attendance Metrics
+    
+    Note over GSheets,GDrive: Daily Automated Backup
+    GSheets->>GDrive: backupSpreadsheetToDrive()
+    GDrive-->>GSheets: Backup Created
 ```
 
 ---
 
-## 5. Type Synchronization Pipeline
+## 5. Google Sheets Setup & Deployment
 
-To guarantee complete type safety without manual duplication:
-1. Backend models in `ServerSide/app/models/*.py` define the source of truth.
-2. `ServerSide/scripts/export_openapi.py` exports `openapi.json` without requiring a running server.
-3. `packages/shared/types/api.ts` is auto-generated via `openapi-typescript`.
-4. Git pre-commit hooks verify that TypeScript types match OpenAPI specifications on every backend commit.
+### Google Sheets Initial Setup
+1. Open [sheets.new](https://sheets.new) and create a new spreadsheet
+2. Go to **Extensions** > **Apps Script**
+3. Copy & paste the contents of [`google-sheets/Code.gs`](./google-sheets/Code.gs)
+4. Run the function **`setupLaxmiEnterpriseSystem`** once to create all sheets, format headers, and generate Google Drive folders
+5. Click **Deploy** > **New deployment** > **Web app** > Access: **Anyone** > Copy the **Web App URL**
+6. Configure the Web App URL in the Admin portal's Google Sheets Sync Center
 
----
+### Google Drive Folder Structure
+The system automatically creates the following folder hierarchy in your Google Drive:
+- **Vision Loop - Laxmi Enterprise/** (Root)
+  - **01_Live_Database/** - Master spreadsheet with Apps Script Web App
+  - **02_Daily_Attendance_Backups/** - Daily timestamped spreadsheet backups
+  - **03_Monthly_Payroll_Reports/** - Monthly payroll summaries and reports
+  - **04_Supervisor_PDF_Exports/** - PDF attendance sheets and vehicle reports
+  - **05_Contractor_Settlements/** - Contractor billing and settlement documents
 
-## 6. Docker & Deployment
- 
- All services run inside isolated Docker containers connected via `laxmi-network`:
- - **MongoDB**: `localhost:27017` (data persisted in `mongodb_data` volume)
- - **FastAPI Backend**: `http://localhost:8000` (docs at `http://localhost:8000/docs`, health check at `/health` & `/ready`)
- - **Supervisor App**: `http://localhost:5173` (with live hot-reload volume mounts)
- - **Admin Portal**: `http://localhost:5174` (with live hot-reload volume mounts)
-
-Start all containers in development:
+### Local Development
 ```bash
-.\launch-containers.bat
-# or
-docker-compose up --build
+# Run Supervisor App (Port 5173)
+npm run dev:supervisor
+
+# Run Admin Portal (Port 5174)
+npm run dev:admin
+
+# Build for GitHub Pages
+npm run build:pages
 ```
+
+### GitHub Pages Deployment
+Every commit pushed to `master` automatically triggers the GitHub Actions workflow [`.github/workflows/deploy-pages.yml`](./.github/workflows/deploy-pages.yml), building the unified static bundle and publishing it live to **`https://visionloop-org.github.io/LaxmiEnterprise/`**.
 
