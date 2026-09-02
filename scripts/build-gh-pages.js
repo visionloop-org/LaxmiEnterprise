@@ -11,11 +11,21 @@ console.log('🚀 Building Laxmi Enterprise for GitHub Pages...')
 
 // 1. Build apps/supervisor
 console.log('📦 Building Supervisor App...')
-execSync('npm run build --workspace=apps/supervisor', { stdio: 'inherit', cwd: rootDir })
+try {
+  execSync('npm run build --workspace=apps/supervisor', { stdio: 'inherit', cwd: rootDir })
+} catch (err) {
+  console.error('❌ Failed to build Supervisor app:', err.message)
+  process.exit(1)
+}
 
 // 2. Build apps/admin
 console.log('📦 Building Admin App...')
-execSync('npm run build --workspace=apps/admin', { stdio: 'inherit', cwd: rootDir })
+try {
+  execSync('npm run build --workspace=apps/admin', { stdio: 'inherit', cwd: rootDir })
+} catch (err) {
+  console.error('❌ Failed to build Admin app:', err.message)
+  process.exit(1)
+}
 
 // 3. Prepare unified dist directory
 if (fs.existsSync(distDir)) {
