@@ -7,24 +7,30 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
 const distDir = path.resolve(rootDir, 'dist')
 
-console.log('🚀 Building Laxmi Enterprise for GitHub Pages...')
+console.log('🚀 Assembling Laxmi Enterprise for GitHub Pages...')
 
-// 1. Build apps/supervisor
-console.log('📦 Building Supervisor App...')
-try {
-  execSync('npm run build --workspace=apps/supervisor', { stdio: 'inherit', cwd: rootDir })
-} catch (err) {
-  console.error('❌ Failed to build Supervisor app:', err.message)
-  process.exit(1)
+// 1. Build apps/supervisor if not already built
+const supervisorDist = path.resolve(rootDir, 'apps/supervisor/dist')
+if (!fs.existsSync(supervisorDist)) {
+  console.log('📦 Building Supervisor App...')
+  try {
+    execSync('npm run build --workspace=apps/supervisor', { stdio: 'inherit', cwd: rootDir })
+  } catch (err) {
+    console.error('❌ Failed to build Supervisor app:', err.message)
+    process.exit(1)
+  }
 }
 
-// 2. Build apps/admin
-console.log('📦 Building Admin App...')
-try {
-  execSync('npm run build --workspace=apps/admin', { stdio: 'inherit', cwd: rootDir })
-} catch (err) {
-  console.error('❌ Failed to build Admin app:', err.message)
-  process.exit(1)
+// 2. Build apps/admin if not already built
+const adminDist = path.resolve(rootDir, 'apps/admin/dist')
+if (!fs.existsSync(adminDist)) {
+  console.log('📦 Building Admin App...')
+  try {
+    execSync('npm run build --workspace=apps/admin', { stdio: 'inherit', cwd: rootDir })
+  } catch (err) {
+    console.error('❌ Failed to build Admin app:', err.message)
+    process.exit(1)
+  }
 }
 
 // 3. Prepare unified dist directory
@@ -34,10 +40,10 @@ if (fs.existsSync(distDir)) {
 fs.mkdirSync(distDir, { recursive: true })
 
 // Copy supervisor build to dist/supervisor
-fs.cpSync(path.resolve(rootDir, 'apps/supervisor/dist'), path.resolve(distDir, 'supervisor'), { recursive: true })
+fs.cpSync(supervisorDist, path.resolve(distDir, 'supervisor'), { recursive: true })
 
 // Copy admin build to dist/admin
-fs.cpSync(path.resolve(rootDir, 'apps/admin/dist'), path.resolve(distDir, 'admin'), { recursive: true })
+fs.cpSync(adminDist, path.resolve(distDir, 'admin'), { recursive: true })
 
 // Copy default landing page to dist/index.html
 const landingHtml = `<!DOCTYPE html>
