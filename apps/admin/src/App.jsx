@@ -2,7 +2,6 @@ import { useState, useMemo, useRef } from 'react'
 import {
   authService,
   restSessionService,
-  ErrorBoundary,
   LoadingSpinner,
   useEmployees,
   useVehicles,

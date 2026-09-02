@@ -1,7 +1,7 @@
 # Laxmi Enterprise Goals & Milestones
 
-**Last Updated:** August 16, 2026  
-**Status:** Milestones 1–3 Complete, Milestone 4 In Progress, Milestone 5 Roadmapped
+**Last Updated:** September 3, 2026  
+**Status:** Milestones 1–5 Complete, Milestone 6 Roadmapped (v4.0 Serverless Google Sheets Architecture)
 
 ---
 
@@ -13,11 +13,11 @@ Deliver a resilient, high-speed attendance, fleet capacity, vehicle trip lifecyc
 
 ## 2. Architecture Goals
 
-1. **Single Source of Truth**: Centralize all business rules, transactions, capacity constraints, and audit trails in the FastAPI backend and MongoDB replica set.
-2. **API-First Monorepo**: Keep web apps (`apps/supervisor`, `apps/admin`), Python automation scripts, and future mobile/kiosk clients strictly decoupled consumers of the versioned `/api/v1` contract.
-3. **No Direct DB Access**: Frontend applications and external scripts must never connect directly to MongoDB.
-4. **Code Reuse via Workspace Packages**: Centralize common React Query hooks, API transports, UI utilities, and TypeScript types in `@laxmi/shared`.
-5. **Continuous Type Synchronization**: Automatically generate and validate frontend TypeScript contracts from the backend OpenAPI schema.
+1. **Serverless Single Source of Truth**: Centralize all business records, master data, capacity constraints, and audit logs in Google Sheets and automated Google Drive backups.
+2. **API-First Monorepo**: Keep web apps (`apps/supervisor`, `apps/admin`) decoupled client consumers of the Google Apps Script Web App JSON REST API.
+3. **Offline-First Resilience**: Provide instant responsive local mutations via localStorage with seamless background syncing upon network reconnection.
+4. **Code Reuse via Workspace Packages**: Centralize common React Query hooks, Google Sheets client services, UI components, and TypeScript types in `@laxmi/shared`.
+5. **Zero Infrastructure Burden**: Host frontends statically on GitHub Pages with 100% serverless data storage and automated Drive backups.
 
 ---
 
@@ -104,15 +104,19 @@ gantt
 - Vehicle trip dispatch and task completion lifecycle (`dispatched` → `reached_location` → `delivered` → `returned`).
 - Admin portal with date filtering, payroll computation, contractor settlements, bulk wage editor, supervisor request approvals, and session unlocking.
 - React Query v5 optimizations (`staleTime`, `gcTime`, error handlers), structured JSON logging, request tracing, and performance profiling.
-- Comprehensive backend (pytest) and frontend (45 passing unit/hook tests) quality test suites.
+- Comprehensive shared unit, component, and hook test suites with 100% passing tests.
 
-### Milestone 5 — Server Reports & Background Workers 🔮 (Upcoming)
-- Redis and Python background worker for asynchronous report generation.
-- Server-side ReportLab PDF generator from persisted MongoDB session data.
-- WebSocket / Server-Sent Events for real-time dashboard synchronization.
+### Milestone 5 — Serverless Google Sheets Architecture & GitHub Pages ✅
+- Complete 100% serverless migration using Google Sheets as operational database.
+- 10 structured worksheets and automated Google Drive folder hierarchy with timestamped daily backups.
+- Centralized `googleSheetsService.js` and `GoogleSheetsSyncModal` in `@laxmi/shared`.
+- Automated deployment to GitHub Pages via `.github/workflows/deploy-pages.yml`.
+- Resolved React Hook ordering in `TripTrackerModal.jsx` achieving 0 lint errors across the monorepo.
+- Wired supervisor tablet mutations directly into Google Sheets persistence layer.
 
 ### Milestone 6 — Hardware & Biometric Turnstile Integration (LWAS) 🔮 (Roadmapped)
 - USB QR scanner listener for worker ID gate entry.
 - Turnstile rotation sensor event processing and thermal token printing.
+- Mobile/PWA camera QR scanner support for field supervisors.
 - Future biometric (fingerprint/face recognition) evaluation.
 

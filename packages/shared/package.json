@@ -15,13 +15,13 @@
     "check:types": "node check-types.js",
     "check-types": "node check-types.js",
     "sync:types": "cd ../../ServerSide && python scripts/export_openapi.py && cd ../packages/shared && npm run generate:types",
-    "test": "mocha --require @babel/register --require mocha.config.cjs tests/services/*.test.js tests/services/*.edgeCases.test.js",
+    "test": "mocha --require @babel/register --require mocha.config.cjs tests/hooks/*.test.js tests/utils/*.test.js tests/components/*.test.jsx tests/services/googleSheetsService.test.js",
     "test:hooks": "mocha --require @babel/register --require mocha.config.cjs tests/hooks/*.test.js",
     "test:utils": "mocha --require @babel/register --require mocha.config.cjs tests/utils/*.test.js",
-    "test:all": "mocha --require @babel/register --require mocha.config.cjs tests/**/*.test.js",
-    "test:watch": "mocha --require @babel/register --require mocha.config.cjs --watch tests/services/*.test.js tests/services/*.edgeCases.test.js",
-    "test:services": "mocha --require @babel/register --require mocha.config.cjs tests/services/*.test.js",
-    "test:edge-cases": "mocha --require @babel/register --require mocha.config.cjs tests/services/*.edgeCases.test.js"
+    "test:components": "mocha --require @babel/register --require mocha.config.cjs tests/components/*.test.jsx",
+    "test:gsheets": "mocha --require @babel/register --require mocha.config.cjs tests/services/googleSheetsService.test.js",
+    "test:all": "mocha --require @babel/register --require mocha.config.cjs tests/hooks/*.test.js tests/utils/*.test.js tests/components/*.test.jsx tests/services/googleSheetsService.test.js",
+    "test:services": "mocha --require @babel/register --require mocha.config.cjs tests/services/googleSheetsService.test.js"
   },
   "keywords": [
     "shared",

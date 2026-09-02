@@ -1,7 +1,7 @@
 # Laxmi Enterprise TODO & Roadmap
 
-**Last Updated:** August 16, 2026  
-**Current System Status:** Production-Ready Monorepo with Shared Architecture, FastAPI Backend, Supervisor Tablet UI, Admin Analytics Portal, Trip Tracking Lifecycle, and Automated OpenAPI Type Sync.
+**Last Updated:** September 3, 2026  
+**Current System Status:** Production-Ready Serverless Monorepo (v4.0) with Google Sheets Database, Google Drive Storage, Supervisor Tablet UI, Admin Analytics Portal, Trip Tracking Lifecycle, and GitHub Pages Deployment.
 
 ---
 
@@ -103,32 +103,34 @@
 - ✅ **Performance Profiling Hook**: Created `usePerformanceMonitor.js` to track component render count, detect slow renders (>16ms), measure async execution duration (`measureAsync`), and set performance marks.
 - ✅ **Code Splitting & Bundle Optimization**: Code-split heavy supervisor modals (`TripTrackerModal`, `CapacityConflictModal`, `CapacityReportModal`, `VehicleAssignmentHistory`, `RequestEmployeeModal`) with scoped `<Suspense>` boundaries.
 - ✅ **Pre-Commit Quality Gate**: Integrated Husky (`.husky/pre-commit`) and `.lintstagedrc.json` with automated `oxlint` checks on staged files.
-- ✅ **Docker Container Hot-Reloading**: Configured live volume bind mounts for `packages/shared` and app `src/` directories in `docker-compose.yml` for instant Vite HMR.
-- ✅ **Backend Health Checks**: Implemented `/health` and `/ready` endpoints diagnosing database ping status, uptime, and system health.
 - ✅ **UI Category Count Bug Fix**: Corrected `useStatistics.js` category count calculation so the Vehicles tab renders accurate live fleet counts (`Vehicles (25)`).
+
+### 10. Google Sheets Serverless Architecture Migration (Completed)
+- ✅ **Serverless Single Source of Truth**: Replaced server infrastructure with Google Sheets & Apps Script Web App API (`google-sheets/Code.gs`).
+- ✅ **10 Structured Worksheets**: `Employees`, `Vehicles`, `Contractors`, `Rates_Config`, `Users_Roles`, `Attendance_Sessions`, `Attendance_Records`, `Vehicle_Assignments`, `Vehicle_Trips`, `Daily_Payroll`, `Audit_Logs`.
+- ✅ **Automated Google Drive Storage**: Created hierarchical folder structure under `Vision Loop - Laxmi Enterprise/` with automated daily attendance spreadsheet backups to `02_Daily_Attendance_Backups`.
+- ✅ **GoogleSheetsService Engine**: Built `@laxmi/shared/services/googleSheetsService.js` providing offline-first `localStorage` resilience with automatic background synchronization upon network reconnection.
+- ✅ **Shared Google Sheets Sync Center**: Re-exported `GoogleSheetsSyncModal` from `@laxmi/shared` accessible on both Admin portal and Supervisor tablet with connection testing, pull, and push utilities.
+- ✅ **React Hooks Rules Compliance**: Fixed conditional hook ordering in `TripTrackerModal.jsx`, ensuring 100% React Hooks rules adherence and zero oxlint errors.
+- ✅ **Direct Persistence Integration**: Wired supervisor attendance marking (`on_time`, `arrived`, `absent`), vehicle assignment transfers, and extra labour additions directly into `googleSheetsService`.
+- ✅ **GitHub Pages Continuous Deployment**: Configured automated GitHub Actions workflow (`.github/workflows/deploy-pages.yml`) publishing the unified frontend static bundle to `https://visionloop-org.github.io/LaxmiEnterprise/`.
 
 ---
 
 ## 🛠️ In Progress & Current Focus
 
-- [ ] **Automated CI/CD Pipeline**: Setup GitHub Actions workflow to run backend pytest and shared package tests on PRs.
-- [ ] **Server-Side PDF Generation**: Add Python `ReportLab` worker to generate official auditable PDF reports directly from persisted MongoDB session data.
-- [ ] **WebSocket / SSE Realtime Updates**: Broadcast live attendance and vehicle changes across supervisor and admin dashboards.
-- [ ] **E2E Integration Testing**: Playwright test suite validating end-to-end supervisor attendance marking, vehicle assignment, trip tracking, and admin approvals.
+- [ ] **PWA Offline Manifest & Service Worker**: Add Service Worker caching for complete offline operation in remote quarry/yard sites with spotty mobile networks.
+- [ ] **Google Drive PDF Archival Hook**: Automatically upload generated supervisor PDF attendance sheets directly into Google Drive `04_Supervisor_PDF_Exports`.
+- [ ] **Automated Monthly Payroll Run**: Add Apps Script scheduled trigger to compile and archive monthly payroll summaries into `03_Monthly_Payroll_Reports`.
+- [ ] **E2E Integration Testing**: End-to-end browser test flow validating supervisor attendance entry, vehicle dispatch, delivery completion, and admin sync.
 
 ---
 
 ## 🔮 Upcoming Roadmap
 
-### Phase 4: Production Infrastructure & Background Jobs
-- [ ] Add Redis container and Celery/RQ background worker for asynchronous report exports.
-- [ ] Add structured JSON logging and OpenTelemetry/Sentry error monitoring.
-- [ ] Implement automated MongoDB backup scripts and restore procedures.
-- [ ] Configure HTTPS/TLS reverse proxy (Nginx / Caddy) with Docker production profiles.
-
-### Phase 5: Hardware & Attendance Scanner Integrations (LWAS Prototype)
+### Phase 5: Hardware & Entry Scanner Integrations (LWAS Prototype)
+- [ ] Mobile/PWA camera QR scanner support for field supervisors.
 - [ ] USB QR Scanner keyboard-wedge listener for rapid worker ID scanning at entry gates.
 - [ ] Turnstile rotation sensor integration for physical gate access verification.
 - [ ] Thermal token printer integration for single-use physical entry tokens.
-- [ ] Mobile/PWA camera QR scanner support for field supervisors.
-- [ ] Long-term hardware evaluation: NFC/RFID badge readers and biometric/face recognition modules.
+- [ ] NFC / RFID badge readers and biometric face recognition evaluation.

@@ -1,3 +1,5 @@
+import { googleSheetsService } from '@laxmi/shared'
+
 export function useAttendanceHandlers({
   employees,
   setEmployees,
@@ -95,6 +97,14 @@ export function useAttendanceHandlers({
 
     if (previousVehicleId && previousVehicleId !== vehicleId) {
       handleVehicleStatusChange(previousVehicleId, 'available')
+      googleSheetsService.unassignVehicle('SES-CURRENT', previousVehicleId, empId).catch(() => {})
+    }
+
+    if (vehicleId && vehicleId !== previousVehicleId) {
+      const role = employee.category === 'Drivers' ? 'Driver' : (employee.category === 'Chalan Men' ? 'Chalan Man' : 'Passenger')
+      googleSheetsService.assignVehicle('SES-CURRENT', vehicleId, empId, role).catch(() => {})
+    } else if (!vehicleId && previousVehicleId) {
+      googleSheetsService.unassignVehicle('SES-CURRENT', previousVehicleId, empId).catch(() => {})
     }
 
     setEditedEmployees(prev => new Set([...prev, empId]))
@@ -146,6 +156,9 @@ export function useAttendanceHandlers({
       emp.id === empId ? { ...emp, attendance: status, arrivalTime: status === 'arrived' ? timeToUse : emp.arrivalTime } : emp
     ))
     setEditedEmployees(prev => new Set([...prev, empId]))
+
+    const arrivalVal = status === 'arrived' ? timeToUse : null
+    googleSheetsService.recordAttendance('SES-CURRENT', empId, status, arrivalVal).catch(() => {})
   }
 
   const handleToggleEditMode = (empId) => {
@@ -166,6 +179,7 @@ export function useAttendanceHandlers({
       newSet.delete(empId)
       return newSet
     })
+    googleSheetsService.recordAttendance('SES-CURRENT', empId, 'pending', null).catch(() => {})
   }
 
   const confirmArrival = (empId) => {
@@ -174,6 +188,8 @@ export function useAttendanceHandlers({
       emp.id === empId ? { ...emp, attendance: 'arrived', arrivalTime: time } : emp
     ))
     if (setExpandedRow) setExpandedRow(null)
+    setEditedEmployees(prev => new Set([...prev, empId]))
+    googleSheetsService.recordAttendance('SES-CURRENT', empId, 'arrived', time).catch(() => {})
   }
 
   const handleAddWorker = (newWorker) => {
@@ -190,6 +206,7 @@ export function useAttendanceHandlers({
       setEmployees(prev => [...prev, newEmp])
       setNewWorker({ name: '', contractor: '', remarks: '' })
       setShowAddWorker(false)
+      googleSheetsService.addEmployee(newEmp).catch(() => {})
     }
   }
 

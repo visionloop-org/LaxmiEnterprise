@@ -25,7 +25,8 @@ export default function LeftColumn({
   assignedVehiclesCount = 0,
   onLogout,
   onOpenAddEmployeeModal,
-  onOpenTripTracker
+  onOpenTripTracker,
+  onOpenSheetsSync
 }) {
   const attendanceDone = isAttendanceFinalized ?? isAttendanceLocked ?? false
   const sheetDone = isSheetFinalized ?? false
@@ -36,21 +37,20 @@ export default function LeftColumn({
       <div className="mb-4">
         <h1 className="text-xl font-bold text-gray-900 mb-1">Supervisor Attendance</h1>
         
-        {/* Odoo 18 Backend Status Badge */}
-        <div className="mb-2 px-2.5 py-1.5 bg-purple-50 border border-purple-200 rounded-lg flex items-center justify-between text-[11px]">
-          <div className="flex items-center gap-1.5 font-semibold text-purple-900">
+        {/* Google Sheets Cloud Database Status Badge */}
+        <div className="mb-2 px-2.5 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-[11px]">
+          <div className="flex items-center gap-1.5 font-semibold text-emerald-900">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Odoo 18 ERP Backend</span>
+            <span>Google Sheets Cloud</span>
           </div>
-          <a
-            href="http://localhost:8069"
-            target="_blank"
-            rel="noreferrer"
-            className="text-[10px] text-purple-700 hover:text-purple-900 font-bold underline"
-            title="Open Odoo ERP Kiosk & HR Attendance"
+          <button
+            type="button"
+            onClick={onOpenSheetsSync}
+            className="text-[10px] text-emerald-700 hover:text-emerald-900 font-bold underline bg-transparent border-0 cursor-pointer p-0"
+            title="Open Google Sheets Sync & Status Settings"
           >
-            Kiosk Mode ↗
-          </a>
+            Sync Config ⚙
+          </button>
         </div>
 
         {/* Date Selector for Date-wise Tracking */}

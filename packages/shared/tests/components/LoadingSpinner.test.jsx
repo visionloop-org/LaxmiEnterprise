@@ -50,9 +50,9 @@ describe('LoadingSpinner Component', () => {
     
     const spinner = container.querySelector('.animate-spin');
     expect(spinner).to.exist;
-    expect(spinner).to.have.class('border-2');
-    expect(spinner).to.have.class('border-gray-300');
-    expect(spinner).to.have.class('border-t-blue-600');
+    expect(spinner.className).to.include('border-2');
+    expect(spinner.className).to.include('border-gray-300');
+    expect(spinner.className).to.include('border-t-blue-600');
   });
 
   it('should be centered in flex container', () => {
@@ -60,7 +60,7 @@ describe('LoadingSpinner Component', () => {
     
     const containerDiv = container.querySelector('.flex');
     expect(containerDiv).to.exist;
-    expect(containerDiv).to.have.class('items-center');
-    expect(containerDiv).to.have.class('justify-center');
+    expect(containerDiv.className).to.include('items-center');
+    expect(containerDiv.className).to.include('justify-center');
   });
 });

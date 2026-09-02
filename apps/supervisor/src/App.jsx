@@ -26,7 +26,7 @@ import { useAttendanceHandlers } from './hooks/useAttendanceHandlers'
 import { useFilters } from './hooks/useFilters'
 import { useStatistics } from './hooks/useStatistics'
 import { useTableSort } from './hooks/useTableSort'
-import { authService, ArrivedTimeModal, LoadingSpinner } from '@laxmi/shared'
+import { authService, ArrivedTimeModal, LoadingSpinner, GoogleSheetsSyncModal } from '@laxmi/shared'
 
 function App() {
   // ─── Inline notification state (replaces alert()) ───────────────────────────
@@ -34,6 +34,7 @@ function App() {
   const [confirmModal, setConfirmModal] = useState(null)
   const [isAddEmployeeModalOpen, setIsAddEmployeeModalOpen] = useState(false)
   const [isTripTrackerOpen, setIsTripTrackerOpen] = useState(false)
+  const [isSheetsSyncOpen, setIsSheetsSyncOpen] = useState(false)
   const [arrivedEmployee, setArrivedEmployee] = useState(null)
   const [selectedDate, setSelectedDate] = useState(() => new Date().toISOString().split('T')[0])
 
@@ -199,6 +200,7 @@ function App() {
         onLogout={handleLogout}
         onOpenAddEmployeeModal={() => setIsAddEmployeeModalOpen(true)}
         onOpenTripTracker={() => setIsTripTrackerOpen(true)}
+        onOpenSheetsSync={() => setIsSheetsSyncOpen(true)}
       />
 
       <Suspense fallback={null}>
@@ -380,6 +382,11 @@ function App() {
           />
         </Suspense>
       )}
+
+      <GoogleSheetsSyncModal
+        isOpen={isSheetsSyncOpen}
+        onClose={() => setIsSheetsSyncOpen(false)}
+      />
     </div>
   )
 }

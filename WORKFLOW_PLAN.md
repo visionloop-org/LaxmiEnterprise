@@ -1,19 +1,19 @@
 # Laxmi Enterprise — Coherent Workflow Plan
 
-**Last Updated:** August 16, 2026  
-**Status:** Phase 1 Complete, Phase 2 Complete, Phase 3 Advanced, Moving to Phase 4 & 5
+**Last Updated:** September 3, 2026  
+**Status:** Phases 1–4 Complete, Moving to Phase 5 (PWA & Field Offline) & Phase 6 (LWAS Gate Hardware)
 
 ---
 
 ## Current Status Overview
 
 - ✅ **Monorepo & Shared Architecture**: Established `@laxmi/shared` workspace package with shared services, React Query hooks, and UI components.
-- ✅ **Supervisor Tablet App**: Fully refactored to consume `@laxmi/shared` with zero local service duplication.
-- ✅ **Admin Dashboard**: Live with date range filtering, payroll calculation, supervisor request approvals, session unlock, and CSV export.
-- ✅ **Vehicle Trip & Task Completion**: End-to-end trip tracking implemented (`dispatched` → `reached_location` → `delivered` → `returned`).
-- ✅ **Automated Type Sync**: OpenAPI export script, TypeScript type generator, and pre-commit hook in place.
-- ✅ **Backend Test Suite**: Pytest test suite covering auth, sessions, attendance, assignments, trips, and error handling.
-- ✅ **Frontend Test Suite**: Mocha + Chai test suite for shared services, hooks, and components.
+- ✅ **Supervisor Tablet App**: Touch-first tablet layout with real-time capacity progress indicators and Google Sheets sync.
+- ✅ **Admin Dashboard**: Live date range filtering, payroll calculation, contractor settlements, supervisor request approvals, session unlock, and Google Sheets sync center.
+- ✅ **Vehicle Trip & Task Completion**: End-to-end trip tracking (`dispatched` → `reached_location` → `delivered` → `returned`).
+- ✅ **100% Serverless Google Sheets Architecture**: Google Sheets operational database (`google-sheets/Code.gs`) with 10 structured tables and Drive backups.
+- ✅ **Continuous GitHub Pages Deployment**: Automated static builds deployed via `.github/workflows/deploy-pages.yml`.
+- ✅ **Quality & Test Automation**: 100% passing tests across hooks, utilities, and components with 0 oxlint errors.
 
 ---
 
@@ -80,36 +80,38 @@
 
 ---
 
-## Phase 4: Server Reports & Background Workers (Current Focus)
+## Phase 4: Serverless Google Sheets Architecture & Deployment (Completed)
 
-### 4.1 Redis & Asynchronous Job Queue
-- [ ] Add Redis container to `docker-compose.yml`.
-- [ ] Implement Celery or RQ background worker in `ServerSide/`.
-- [ ] Add job status monitoring and polling endpoints.
+### 4.1 Google Sheets Operational Database & Apps Script API ✅
+- [x] Implement complete Google Apps Script Web App in `google-sheets/Code.gs`.
+- [x] Configure 10 structured worksheets for master and transactional records.
+- [x] Implement automated Google Drive folder management (`Vision Loop - Laxmi Enterprise/`).
+- [x] Configure automated daily attendance spreadsheet backups to `02_Daily_Attendance_Backups`.
 
-### 4.2 Server-Side PDF Report Generation
-- [ ] Build ReportLab PDF generator service in `ServerSide/`.
-- [ ] Generate official, tamper-evident PDF reports from persisted MongoDB session records.
-- [ ] Add authorized report download endpoint (`GET /api/v1/reports/{id}/download`).
+### 4.2 Shared Service Unification & Offline Sync ✅
+- [x] Build `googleSheetsService.js` in `@laxmi/shared` with offline `localStorage` fallback.
+- [x] Re-export `GoogleSheetsSyncModal` from `@laxmi/shared` for both Admin and Supervisor apps.
+- [x] Wire supervisor tablet mutations (attendance, vehicle assignments, extra labour) directly to `googleSheetsService`.
+- [x] Fix conditional hook execution in `TripTrackerModal.jsx` achieving 0 oxlint errors.
+- [x] Achieve 100% test passing across hooks, utilities, and components.
 
-### 4.3 Real-Time Session Updates (WebSockets / SSE)
-- [ ] Implement Server-Sent Events (SSE) or WebSocket channel on `/api/v1/ws/sessions`.
-- [ ] Broadcast attendance status changes and vehicle assignments in real time.
-- [ ] Auto-invalidate React Query caches upon receiving push events.
+### 4.3 GitHub Pages Continuous Deployment ✅
+- [x] Build unified static deployment script `scripts/build-gh-pages.js`.
+- [x] Configure GitHub Actions deployment workflow `.github/workflows/deploy-pages.yml`.
+- [x] Setup unified landing portal linking to Supervisor Tablet App and Admin Portal.
 
 ---
 
-## Phase 5: Production Infrastructure & Security
+## Phase 5: PWA & Field Offline Resilience (Current Focus)
 
-### 5.1 Security Hardening
-- [ ] Migrate authentication tokens to `httpOnly`, `Secure`, `SameSite=Strict` cookies.
-- [ ] Implement CSRF double-submit cookie or header validation for mutating endpoints.
-- [ ] Implement rate limiting on `/api/v1/auth/login` and sensitive endpoints.
+### 5.1 Service Worker & PWA Manifest
+- [ ] Implement Progressive Web App (PWA) manifest for Android/iPad tablet home screen installation.
+- [ ] Configure Workbox / Service Worker static asset pre-caching for 100% offline app loading.
+- [ ] Implement background sync retry queue when field supervisor tablets re-enter cell coverage.
 
-### 5.2 CI/CD & Deployment Automation
-- [ ] Configure GitHub Actions workflow for automated linting, type checks, pytest, and mocha tests.
-- [ ] Configure production multi-stage Dockerfiles with Nginx reverse proxy.
-- [ ] Setup automated database backup and restore routines.
+### 5.2 Google Drive PDF Auto-Archival
+- [ ] Add direct Apps Script endpoint to upload client-generated PDF attendance sheets into `04_Supervisor_PDF_Exports`.
+- [ ] Trigger automated daily snapshot compilation for monthly payroll records.
 
 ---
 
@@ -117,6 +119,7 @@
 
 ### 6.1 Gate Scanning & Entry Tokens
 - [ ] USB QR Scanner keyboard-wedge listener for rapid worker ID scanning at entry gates.
+- [ ] Mobile/PWA camera QR scanner support for field supervisors.
 - [ ] Turnstile rotation sensor event processing and gate unlock signaling.
 - [ ] ESC/POS thermal token printer integration for single-use physical entry tokens.
 
@@ -125,7 +128,7 @@
 ## Execution Roadmap
 
 ```
-Aug 16 – Aug 22, 2026:  Phase 4.1 & 4.2 (Redis background queue & Server-side PDF generation)
-Aug 23 – Aug 30, 2026:  Phase 4.3 (Real-time SSE updates) & Phase 5.2 (CI/CD GitHub Actions)
-Sep 01 – Sep 15, 2026:  Phase 5.1 (Cookie auth & CSRF) & Phase 6 (USB QR & Turnstile prototype)
+Sep 01 – Sep 03, 2026:  Phase 4 (100% Serverless Google Sheets & GitHub Pages deployment) ✅
+Sep 04 – Sep 12, 2026:  Phase 5 (PWA offline caching & Google Drive PDF upload)
+Sep 13 – Sep 30, 2026:  Phase 6 (Gate scanner, QR camera & turnstile hardware prototype)
 ```

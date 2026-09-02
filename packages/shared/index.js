@@ -12,6 +12,7 @@ import restAccountingServiceModule from './services/restAccountingService.js'
 import ErrorBoundaryComponent from './components/ErrorBoundary.jsx'
 import LoadingSpinnerComponent from './components/LoadingSpinner.jsx'
 import ArrivedTimeModalComponent from './components/ArrivedTimeModal.jsx'
+import GoogleSheetsSyncModalComponent from './components/GoogleSheetsSyncModal.jsx'
 
 import * as useEmployeesHooks from './hooks/useEmployees.js'
 import * as useVehiclesHooks from './hooks/useVehicles.js'
@@ -65,6 +66,7 @@ export const restAccountingService = restAccountingServiceModule.restAccountingS
 export const ErrorBoundary = ErrorBoundaryComponent.default || ErrorBoundaryComponent
 export const LoadingSpinner = LoadingSpinnerComponent.default || LoadingSpinnerComponent
 export const ArrivedTimeModal = ArrivedTimeModalComponent.default || ArrivedTimeModalComponent
+export const GoogleSheetsSyncModal = GoogleSheetsSyncModalComponent.default || GoogleSheetsSyncModalComponent
 
 // Extract Hooks
 export const {

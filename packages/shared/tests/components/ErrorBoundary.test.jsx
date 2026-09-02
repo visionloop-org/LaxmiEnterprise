@@ -5,17 +5,6 @@ import ErrorBoundary from '../../components/ErrorBoundary.jsx';
 import { NetworkError, AuthError, ValidationError, ConflictError, APIError } from '../../services/backendApi.js';
 
 describe('ErrorBoundary Component', () => {
-  let originalReload;
-
-  beforeEach(() => {
-    originalReload = window.location.reload;
-    window.location.reload = () => {};
-  });
-
-  afterEach(() => {
-    window.location.reload = originalReload;
-  });
-
   const ThrowError = ({ error }) => {
     throw error;
   };
@@ -38,7 +27,7 @@ describe('ErrorBoundary Component', () => {
     );
 
     expect(screen.getByText('Application Error')).to.exist;
-    expect(screen.getByText('An unexpected error occurred.')).to.exist;
+    expect(screen.getByText('Test error')).to.exist;
   });
 
   it('should display NetworkError message correctly', () => {
@@ -104,21 +93,23 @@ describe('ErrorBoundary Component', () => {
   });
 
   it('should reset error state when retry button is clicked', () => {
-    const { rerender } = render(
+    let shouldThrow = true;
+    const BuggyComponent = () => {
+      if (shouldThrow) throw new Error('Test error');
+      return <div>Normal Content</div>;
+    };
+
+    render(
       <ErrorBoundary>
-        <ThrowError error={new Error('Test error')} />
+        <BuggyComponent />
       </ErrorBoundary>
     );
 
+    expect(screen.getByText('Application Error')).to.exist;
+
+    shouldThrow = false;
     const retryButton = screen.getByText('Retry Action');
     fireEvent.click(retryButton);
-
-    // After retry, error should be cleared and children should render
-    rerender(
-      <ErrorBoundary>
-        <div>Normal Content</div>
-      </ErrorBoundary>
-    );
 
     expect(screen.getByText('Normal Content')).to.exist;
   });

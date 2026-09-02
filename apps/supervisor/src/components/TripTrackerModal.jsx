@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useTrips, useCreateTrip, useUpdateTripStatus, useVehicles, useEmployees } from '@laxmi/shared';
 
 export default function TripTrackerModal({ isOpen, onClose, sessionId }) {
-  if (!isOpen) return null;
-
-  const { data: trips = [], isLoading } = useTrips({ sessionId });
+  const { data: trips = [], isLoading } = useTrips(isOpen ? { sessionId } : {}, { enabled: !!isOpen });
   const { data: vehicles = [] } = useVehicles();
   const { data: employees = [] } = useEmployees();
 
@@ -89,6 +87,8 @@ export default function TripTrackerModal({ isOpen, onClose, sessionId }) {
       remarks: `Status progressed to ${status.replace('_', ' ')}`
     });
   };
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-md animate-fade-in">
