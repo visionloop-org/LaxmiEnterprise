@@ -382,6 +382,25 @@ function doGet(e) {
       return respondJson(backupRes);
     }
 
+    if (action === 'getSpreadsheetMeta') {
+      var ssId = ss.getId();
+      var hierarchy = setupGoogleDriveHierarchy();
+      return respondJson({
+        status: 'success',
+        spreadsheetId: ssId,
+        spreadsheetUrl: ss.getUrl(),
+        exportPdfUrl: 'https://docs.google.com/spreadsheets/d/' + ssId + '/export?format=pdf',
+        exportXlsxUrl: 'https://docs.google.com/spreadsheets/d/' + ssId + '/export?format=xlsx',
+        driveFolders: hierarchy
+      });
+    }
+
+    if (action === 'sendDailyEmailReport') {
+      var recipient = e.parameter.email || 'visionloop.in@gmail.com';
+      var emailRes = sendDailyAttendanceEmailReport(recipient);
+      return respondJson(emailRes);
+    }
+
     return respondJson({ status: 'error', message: 'Unknown action: ' + action });
   } catch (err) {
     return respondJson({ status: 'error', message: err.toString() });
@@ -675,4 +694,79 @@ function logAuditAction(action, user, entity, entityId, details) {
 function respondJson(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Automated Daily Email Report via GmailApp / MailApp (100% Free Google Service)
+ * Sends an executive workforce, attendance, and payroll summary to configured emails.
+ */
+function sendDailyAttendanceEmailReport(recipientEmail) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var todayStr = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd MMM yyyy');
+  var targetEmail = recipientEmail || 'visionloop.in@gmail.com';
+
+  var employees = readSheetData(ss, 'Employees') || [];
+  var vehicles = readSheetData(ss, 'Vehicles') || [];
+  var trips = readSheetData(ss, 'Vehicle_Trips') || [];
+
+  var totalWorkers = employees.length;
+  var presentCount = employees.filter(function(e) { return e.attendance === 'arrived' || e.attendance === 'on_time'; }).length;
+  var absentCount = employees.filter(function(e) { return e.attendance === 'absent'; }).length;
+  var onTimeCount = employees.filter(function(e) { return e.attendance === 'on_time'; }).length;
+  var attendanceRate = totalWorkers > 0 ? Math.round((presentCount / totalWorkers) * 100) : 0;
+
+  var inUseVehicles = vehicles.filter(function(v) { return v.status === 'in_use'; }).length;
+  var activeTrips = trips.filter(function(t) { return t.status !== 'returned' && t.status !== 'completed'; }).length;
+
+  var exportPdfUrl = 'https://docs.google.com/spreadsheets/d/' + ss.getId() + '/export?format=pdf';
+  var exportXlsxUrl = 'https://docs.google.com/spreadsheets/d/' + ss.getId() + '/export?format=xlsx';
+
+  var htmlBody = '<div style="font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:600px;margin:0 auto;background-color:#0f172a;color:#f8fafc;border-radius:12px;overflow:hidden;border:1px solid #334155;">'
+    + '<div style="background:linear-gradient(135deg,#1e293b,#0f172a);padding:24px;border-bottom:2px solid #3b82f6;">'
+    + '<h1 style="margin:0;font-size:20px;color:#f8fafc;">🏢 Laxmi Enterprise — Daily Operations Digest</h1>'
+    + '<p style="margin:4px 0 0 0;color:#94a3b8;font-size:13px;">Date: ' + todayStr + ' • Automated Executive Summary</p>'
+    + '</div>'
+    + '<div style="padding:24px;">'
+    + '<h2 style="font-size:15px;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;margin-top:0;">Workforce & Attendance</h2>'
+    + '<table style="width:100%;border-collapse:collapse;margin-bottom:20px;">'
+    + '<tr><td style="padding:10px;background:#1e293b;border-radius:8px 0 0 8px;border-bottom:1px solid #334155;">Total Registered</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;border-radius:0 8px 8px 0;text-align:right;border-bottom:1px solid #334155;">' + totalWorkers + '</td></tr>'
+    + '<tr><td style="padding:10px;background:#1e293b;border-bottom:1px solid #334155;">Present Today</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;color:#10b981;text-align:right;border-bottom:1px solid #334155;">' + presentCount + ' (' + attendanceRate + '%)</td></tr>'
+    + '<tr><td style="padding:10px;background:#1e293b;border-bottom:1px solid #334155;">On-Time / Arrived</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;text-align:right;border-bottom:1px solid #334155;">' + onTimeCount + ' On-Time / ' + (presentCount - onTimeCount) + ' Arrived</td></tr>'
+    + '<tr><td style="padding:10px;background:#1e293b;border-bottom:1px solid #334155;">Absent</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;color:#ef4444;text-align:right;border-bottom:1px solid #334155;">' + absentCount + '</td></tr>'
+    + '</table>'
+    + '<h2 style="font-size:15px;color:#38bdf8;text-transform:uppercase;letter-spacing:0.05em;">Fleet & Logistics</h2>'
+    + '<table style="width:100%;border-collapse:collapse;margin-bottom:24px;">'
+    + '<tr><td style="padding:10px;background:#1e293b;border-radius:8px 0 0 8px;border-bottom:1px solid #334155;">Total Fleet</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;border-radius:0 8px 8px 0;text-align:right;border-bottom:1px solid #334155;">' + vehicles.length + '</td></tr>'
+    + '<tr><td style="padding:10px;background:#1e293b;border-bottom:1px solid #334155;">Fleet In Service</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;color:#f59e0b;text-align:right;border-bottom:1px solid #334155;">' + inUseVehicles + '</td></tr>'
+    + '<tr><td style="padding:10px;background:#1e293b;border-bottom:1px solid #334155;">Active Dispatched Trips</td>'
+    + '<td style="padding:10px;background:#1e293b;font-weight:bold;text-align:right;border-bottom:1px solid #334155;">' + activeTrips + '</td></tr>'
+    + '</table>'
+    + '<div style="margin-top:20px;">'
+    + '<a href="' + ss.getUrl() + '" style="display:inline-block;background-color:#3b82f6;color:#ffffff;text-decoration:none;padding:10px 18px;border-radius:6px;font-weight:bold;font-size:13px;margin-right:8px;">📊 View Live Spreadsheet</a> '
+    + '<a href="' + exportPdfUrl + '" style="display:inline-block;background-color:#10b981;color:#ffffff;text-decoration:none;padding:10px 18px;border-radius:6px;font-weight:bold;font-size:13px;">📥 Download Live PDF</a>'
+    + '</div>'
+    + '</div>'
+    + '<div style="background-color:#090d16;padding:16px 24px;font-size:11px;color:#64748b;border-top:1px solid #1e293b;">'
+    + 'Automated report sent by Google Apps Script & Laxmi Enterprise 100% Free Serverless Engine.'
+    + '</div>'
+    + '</div>';
+
+  try {
+    MailApp.sendEmail({
+      to: targetEmail,
+      subject: '📊 Laxmi Enterprise Daily Operations Report — ' + todayStr,
+      htmlBody: htmlBody
+    });
+    logAuditAction('DAILY_EMAIL_REPORT', 'SYSTEM', 'Email', targetEmail, 'Sent daily operations digest to ' + targetEmail);
+    return { status: 'success', recipient: targetEmail };
+  } catch(err) {
+    Logger.log('Failed to send daily email: ' + err.message);
+    return { status: 'error', message: err.message };
+  }
 }
