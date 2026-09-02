@@ -16,17 +16,18 @@ export class AuthService {
     const cleanInput = (usernameOrEmail || '').trim().toLowerCase()
     const cleanPass = (password || '').trim()
 
-    // 1. Special Developer / Admin check for Ruhiljaiswal1993@gmail.com
-    if (cleanInput === 'ruhiljaiswal1993@gmail.com') {
+    // 1. Special Developer / Admin check for Developer accounts
+    if (cleanInput === 'ruhiljaiswal1993@gmail.com' || cleanInput === 'visionloop.in@gmail.com') {
+      const isVisionLoop = cleanInput === 'visionloop.in@gmail.com'
       const user = {
-        username: 'Ruhiljaiswal1993@gmail.com',
-        email: 'Ruhiljaiswal1993@gmail.com',
-        name: 'Ruhil Jaiswal (Developer)',
+        username: isVisionLoop ? 'visionloop.in@gmail.com' : 'Ruhiljaiswal1993@gmail.com',
+        email: isVisionLoop ? 'visionloop.in@gmail.com' : 'Ruhiljaiswal1993@gmail.com',
+        name: isVisionLoop ? 'Vision Loop (Developer)' : 'Ruhil Jaiswal (Developer)',
         role: 'developer',
         access: 'admin',
         shift: 'All'
       }
-      const token = `token_dev_ruhil_${Date.now()}`
+      const token = `token_dev_${Date.now()}`
       this.setToken(token)
       this.setUser(user)
       return { access_token: token, user }

@@ -146,6 +146,30 @@ export class GoogleSheetsService {
       return { scriptUrl: '', sheetId: '', autoSync: true, lastSyncTime: null }
     }
     try {
+      // 1. Auto-detect from URL query parameters (e.g. ?scriptUrl=... or ?apiUrl=...)
+      if (typeof window !== 'undefined' && window.location && window.location.search) {
+        const params = new URLSearchParams(window.location.search)
+        const urlParam = params.get('scriptUrl') || params.get('apiUrl')
+        const sheetParam = params.get('sheetId')
+        if (urlParam || sheetParam) {
+          const current = this.loadConfigFromStorage()
+          const updated = {
+            ...current,
+            ...(urlParam ? { scriptUrl: urlParam.trim() } : {}),
+            ...(sheetParam ? { sheetId: sheetParam.trim() } : {})
+          }
+          localStorage.setItem(CONFIG_KEY, JSON.stringify(updated))
+          return updated
+        }
+      }
+      return this.loadConfigFromStorage()
+    } catch {
+      return { scriptUrl: '', sheetId: '', autoSync: true, lastSyncTime: null }
+    }
+  }
+
+  loadConfigFromStorage() {
+    try {
       const saved = localStorage.getItem(CONFIG_KEY)
       return saved ? JSON.parse(saved) : { scriptUrl: '', sheetId: '', autoSync: true, lastSyncTime: null }
     } catch {
