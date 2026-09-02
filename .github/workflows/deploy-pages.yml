@@ -33,10 +33,24 @@ jobs:
         run: npm install --include=dev
 
       - name: Build Supervisor App
-        run: npm run build --workspace=apps/supervisor
+        run: |
+          npm run build --workspace=apps/supervisor 2>&1 | tee supervisor.log || {
+            echo "### Supervisor Build Log" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            cat supervisor.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          }
 
       - name: Build Admin App
-        run: npm run build --workspace=apps/admin
+        run: |
+          npm run build --workspace=apps/admin 2>&1 | tee admin.log || {
+            echo "### Admin Build Log" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            cat admin.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          }
 
       - name: Assemble Unified GitHub Pages bundle
         run: node scripts/build-gh-pages.js
