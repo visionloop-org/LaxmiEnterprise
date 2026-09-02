@@ -123,7 +123,7 @@ class OfflineQueue {
   }
 
   async executeOperation(operation) {
-    const { type, service, method, args } = operation
+    const { service, method, args } = operation
     
     // Import services dynamically to avoid circular dependencies
     const services = await import('./index.js')
