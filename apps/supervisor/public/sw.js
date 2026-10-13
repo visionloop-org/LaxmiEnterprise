@@ -1,10 +1,10 @@
 /**
  * Laxmi Supervisor — Service Worker
- * Version: 1.0.0
+ * Version: 2.0.0 (Live Attendance Engine)
  * Provides offline caching for tablet workforce attendance in remote yards.
  */
 
-const CACHE_NAME = 'laxmi-supervisor-v1'
+const CACHE_NAME = 'laxmi-supervisor-v2-live'
 
 const PRECACHE_ASSETS = [
   './',
@@ -29,20 +29,23 @@ self.addEventListener('install', (event) => {
   self.skipWaiting()
 })
 
-// 2. Activate: Clear outdated caches and claim clients
+// 2. Activate: Clear ALL outdated caches and claim clients immediately
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
-          .filter((name) => name.startsWith('laxmi-supervisor-') && name !== CACHE_NAME)
-          .map((name) => caches.delete(name))
+          .filter((name) => name !== CACHE_NAME)
+          .map((name) => {
+            console.log('🧹 Purging obsolete service worker cache:', name)
+            return caches.delete(name)
+          })
       )
     }).then(() => self.clients.claim())
   )
 })
 
-// 3. Fetch: Cache-First for static assets, Network-First for HTML/APIs
+// 3. Fetch: Network-First for HTML/APIs, Cache-First for assets
 self.addEventListener('fetch', (event) => {
   const { request } = event
   const url = new URL(request.url)
@@ -81,20 +84,26 @@ self.addEventListener('fetch', (event) => {
     return
   }
 
-  // Static Assets (JS, CSS, Images, Fonts): Stale-While-Revalidate
+  // Static Assets (JS, CSS, Images, Fonts)
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
-      const fetchPromise = fetch(request)
-        .then((networkResponse) => {
+      if (cachedResponse) {
+        // Asynchronously revalidate in background
+        fetch(request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
-            const clone = networkResponse.clone()
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
+            caches.open(CACHE_NAME).then((cache) => cache.put(request, networkResponse))
           }
-          return networkResponse
-        })
-        .catch(() => cachedResponse)
+        }).catch(() => {})
+        return cachedResponse
+      }
 
-      return cachedResponse || fetchPromise
+      return fetch(request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const clone = networkResponse.clone()
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, clone))
+        }
+        return networkResponse
+      })
     })
   )
 })

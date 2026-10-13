@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Laxmi Supervisor — Attendance &amp; Fleet</title>
 
+    <!-- Auto-healing Cache Invalidator (Cleans stale PWA Service Worker caches) -->
+    <script>
+      (function() {
+        // If an old broken bundle or script failure occurs, auto-purge all caches & reload
+        window.addEventListener('error', function(e) {
+          var msg = (e && e.message) || '';
+          var file = (e && e.filename) || '';
+          if (msg.includes('ti is not a function') || file.includes('index-dYznsHD2') || msg.includes('Failed to fetch dynamically imported module')) {
+            console.warn('⚠️ Stale cache detected. Purging service worker caches and reloading...');
+            if ('caches' in window) {
+              caches.keys().then(function(names) {
+                return Promise.all(names.map(function(n) { return caches.delete(n); }));
+              }).then(function() {
+                if (navigator.serviceWorker) {
+                  navigator.serviceWorker.getRegistrations().then(function(regs) {
+                    return Promise.all(regs.map(function(r) { return r.unregister(); }));
+                  }).then(function() {
+                    window.location.reload(true);
+                  });
+                } else {
+                  window.location.reload(true);
+                }
+              });
+            }
+          }
+        });
+      })();
+    </script>
+
     <!-- PWA & Mobile Meta Tags -->
     <meta name="theme-color" content="#0f172a" />
     <meta name="description" content="Laxmi Enterprise Field Supervisor Attendance, Labour Demands &amp; Fleet Allocation System" />
@@ -25,12 +54,23 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      // Register Service Worker for PWA
+      // Register Service Worker with cache-busting and auto-reload on update
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js')
-            .then((reg) => console.log('✅ Supervisor PWA ServiceWorker registered:', reg.scope))
+          navigator.serviceWorker.register('./sw.js?v=20261013-live')
+            .then((reg) => {
+              console.log('✅ Supervisor PWA ServiceWorker registered:', reg.scope);
+              reg.update(); // Check for fresh worker immediately
+            })
             .catch((err) => console.warn('⚠️ Supervisor PWA ServiceWorker registration failed:', err));
+
+          let refreshing = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!refreshing) {
+              refreshing = true;
+              window.location.reload();
+            }
+          });
         });
       }
     </script>
