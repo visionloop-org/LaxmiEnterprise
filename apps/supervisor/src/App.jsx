@@ -382,6 +382,8 @@ function App() {
           }}
         />
       </Suspense>
+
+      <ConfirmModal confirmModal={confirmModal} />
     </div>
   )
 }

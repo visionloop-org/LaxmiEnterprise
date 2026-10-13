@@ -15,6 +15,33 @@ export class SheetsDomainOperations {
   // ─── Employee Operations ─────────────────────────────────────────────
   async getEmployees(filters = {}) {
     let employees = this.service.getTable('employees')
+    const records = this.service.getTable('attendance_records') || []
+
+    if (records.length > 0) {
+      const recordMap = new Map()
+      for (const r of records) {
+        const empId = r.employeeId || r.empId
+        if (!empId) continue
+        if (r.sessionId === 'SES-CURRENT' || !recordMap.has(empId)) {
+          recordMap.set(empId, r)
+        }
+      }
+
+      employees = employees.map(emp => {
+        const empId = emp.id || emp.employeeId
+        const att = recordMap.get(empId)
+        if (att) {
+          return {
+            ...emp,
+            attendance: att.status || emp.attendance,
+            arrivalTime: att.arrivalTime !== undefined ? att.arrivalTime : emp.arrivalTime,
+            remarks: att.remarks !== undefined ? att.remarks : emp.remarks
+          }
+        }
+        return emp
+      })
+    }
+
     if (filters.category && filters.category !== 'All') {
       employees = employees.filter(e => e.category === filters.category)
     }

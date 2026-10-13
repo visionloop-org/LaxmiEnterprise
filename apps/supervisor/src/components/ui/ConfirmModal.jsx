@@ -7,13 +7,19 @@ export default function ConfirmModal({ confirmModal }) {
   if (!confirmModal) return null
 
   const {
+    title,
     message,
     detail,
     onConfirm,
     onCancel,
-    confirmLabel = 'Confirm',
-    danger = false,
+    confirmText,
+    confirmLabel = confirmText || 'Confirm',
+    confirmVariant,
+    danger = confirmVariant === 'danger',
   } = confirmModal
+
+  const headingText = title || message
+  const bodyText = title ? message : detail
 
   return (
     <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/40">
@@ -25,8 +31,8 @@ export default function ConfirmModal({ confirmModal }) {
             </svg>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900">{message}</h3>
-            {detail && <p className="mt-1 text-xs text-gray-500">{detail}</p>}
+            <h3 className="text-sm font-bold text-gray-900">{headingText}</h3>
+            {bodyText && <p className="mt-1 text-xs text-gray-600">{bodyText}</p>}
           </div>
         </div>
         <div className="flex gap-3 justify-end">
