@@ -1,0 +1,33 @@
+# CODEOWNERS
+# GitHub automatically requests reviews from code owners on PRs
+# Format: <pattern> <@user-or-team>
+#
+# Last updated: 2026-09-03
+
+# Global fallback — everything requires visionloop-org review
+*                               @visionloop-org
+
+# Frontend apps
+apps/admin/                     @visionloop-org
+apps/supervisor/                @visionloop-org
+
+# Shared packages (core library)
+packages/shared/                @visionloop-org
+
+# Google Sheets / Backend
+google-sheets/                  @visionloop-org
+google-sheets/Code.gs           @visionloop-org
+
+# CI/CD and GitHub config (critical - always require owner review)
+.github/                        @visionloop-org
+.github/workflows/              @visionloop-org
+
+# Documentation
+*.md                            @visionloop-org
+docs/                           @visionloop-org
+
+# Build configuration
+package.json                    @visionloop-org
+package-lock.json               @visionloop-org
+vite.config.*                   @visionloop-org
+tailwind.config.*               @visionloop-org

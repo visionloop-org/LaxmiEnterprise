@@ -1,52 +1,56 @@
-# Attendance System
+# Attendance & Fleet Management System
 # Supervisor Web Application Instructions
 
-**Version:** 3.1  
-**Last Updated:** August 16, 2026
+**Version:** 5.0  
+**Last Updated:** September 6, 2026
 
 ---
 
 ## 1. Objective
 
-Provide a fast, touch-first landscape-tablet web application for on-site supervisors to record daily attendance, manage vehicle assignments, track trip/delivery tasks, and request extra labour.
+Provide a fast, touch-first installable Progressive Web App (PWA) optimized for Android tablets and smartphones for on-site field supervisors to record daily attendance, manage vehicle assignments, track trip/delivery tasks, and request extra labour.
 
-The application communicates solely via the versioned REST API at `/api/v1` through the `@laxmi/shared` workspace package. The server is authoritative for validation, capacity, locking, trips, audits, and official records.
+Authorized Supervisor Account: **`Maalaxmi.godown@gmail.com`**
+
+The application connects to the **100% serverless Google Sheets multi-spreadsheet database** through the `@laxmi/shared` workspace package and Google Apps Script Web App router (`Code.gs`).
 
 ---
 
 ## 2. Architecture & Shared Package Integration
 
-- **Presentation Layer Only**: React components emit user intent. State and network synchronization are managed by `@laxmi/shared` services and React Query hooks (`useEmployees`, `useVehicles`, `useTrips`).
-- **No Direct DB Access**: The supervisor app never communicates with MongoDB.
-- **Offline Support**: `services/offlineQueue.js` buffers mutations when offline and syncs them automatically upon network restoration.
-- **Optimistic Reconciliation**: Mutations update UI state optimistically and reconcile immediately with server responses. On `409 Conflict`, reload server state and display inline notifications.
+- **Installable PWA & Offline Support**: Installed directly on Android devices via Web App Manifest (`manifest.json`) and service worker caching (`sw.js`). In remote quarry/yard locations without connectivity, operations are buffered in `localStorage` and synchronized automatically upon reconnecting.
+- **Client-Centric Heavy Computation**: All real-time conflict checking, vehicle capacity enforcement (max 1 Driver, 1 Chalan Man, 6 Workers, 8 Total), and high-speed in-memory filtering are executed on the client device CPU via [`ClientComputationService`](../../packages/shared/services/clientComputationService.js), ensuring 0ms tactile feedback.
+- **Multi-Spreadsheet Domain Separation**: Operational data flows directly to:
+  - `01_Laxmi_HR_Master` (`Employees`, `Users_Roles`)
+  - `02_Laxmi_Attendance_Fleet` (`Vehicles`, `Attendance_Sessions`, `Attendance_Records`, `Vehicle_Assignments`, `Vehicle_Trips`, `Extra_Labour_Requests`)
+- **Optimistic Reconciliation**: Mutations update UI state optimistically and reconcile in the background. If a concurrency conflict occurs, the latest server state is reloaded safely.
 
 ---
 
 ## 3. Required API Flows via `@laxmi/shared`
 
-- `GET /api/v1/sessions/{sessionId}` — Load editable session.
-- `PUT /api/v1/sessions/{sessionId}/attendance/{employeeId}` — Record On Time, Arrived, or Absent.
-- `PUT /api/v1/sessions/{sessionId}/assignments/{employeeId}` — Assign present employee to vehicle.
-- `DELETE /api/v1/sessions/{sessionId}/assignments/{employeeId}` — Remove vehicle assignment.
-- `POST /api/v1/trips` & `PUT /api/v1/trips/{id}/status` — Dispatch vehicles and advance trip delivery stages.
-- `POST /api/v1/employees` — Request extra labour or new employee addition (status: `pending_approval`).
-- `POST /api/v1/sessions/{sessionId}/finalize` — Idempotently finalize and lock session.
+- `fetchInitialData()` / `fetchEmployees()` / `fetchVehicles()` — Load workforce roster and fleet from `01_Laxmi_HR_Master` and `02_Laxmi_Attendance_Fleet`.
+- `saveAttendanceRecord(record)` — Record On Time, Arrived (with time), or Absent.
+- `saveVehicleAssignment(assignment)` / `deleteVehicleAssignment(id)` — Assign or unassign present employees to vehicles.
+- `createTrip(trip)` / `updateTripStatus(tripId, status)` — Dispatch vehicles and advance trip delivery stages (`Dispatched` → `Reached Location` → `Delivered` → `Returned`).
+- `saveEmployee(worker)` — Request extra labour or new employee addition (status: `pending_approval`).
+- `finalizeSession(sessionId)` — Idempotently finalize and lock the daily shift session.
 
 ---
 
 ## 4. UI Layout & User Experience
 
-### 4.1. Layout
-- Fixed left sidebar and scrollable spreadsheet table optimized for touch interaction (48–56px row height).
-- Real-time search by Employee ID or Name.
-- Quick filter chips: Category tabs (All, Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles), Attendance status (Pending, Completed, All), and Alphabetical range chips.
+### 4.1. Layout & Responsive Adaptations
+- **Tablet Landscape Layout**: Fixed left sidebar and scrollable spreadsheet table optimized for touch interaction (48–56px row height).
+- **Mobile Phone Mode**: Compact header bar with hamburger button opening a slide-out drawer menu, allowing full operation on smaller Android screens.
+- **Live Counters**: Real-time present counter badge (e.g. `Present: 82 / 120`) updated on every check-in.
+- **Search & Filter Chips**: Instant search by Employee ID or Name, Category tabs (All, Workers, Drivers, Chalan Men, Extra Labour, Office, Vehicles), Attendance status (Pending, Completed, All), and Alphabetical range chips.
 
 ### 4.2. Attendance Marking
 - Segmented touch buttons: **On Time**, **Arrived**, **Absent**.
-- On Time and Absent submit immediately.
+- On Time and Absent submit immediately with zero lag.
 - Arrived opens `ArrivedTimeModal` allowing quick time presets (e.g. 08:15, 08:30, 09:00) or manual time selection.
-- Display server-confirmed status badge (e.g. `Arrived (08:30)`) upon successful mutation.
+- Status badge dynamically reflects server confirmation (e.g. `Arrived (08:30)`).
 
 ### 4.3. Vehicle Capacity & Conflict Management
 - Displays live vehicle capacity bars (max 1 Driver, 1 Chalan Man, 6 Workers, 8 Total).
@@ -65,6 +69,7 @@ The application communicates solely via the versioned REST API at `/api/v1` thro
 - Newly requested workers display `Pending Approval` badge until approved by an administrator.
 
 ### 4.6. Finalization & Reporting
-- Finalization submits to `POST /api/v1/sessions/{id}/finalize`.
-- Once confirmed by the server, editable controls lock and status changes to "Attendance Locked".
+- Finalization submits to Google Sheets.
+- Once confirmed, editable controls lock and status changes to "Attendance Locked".
 - Local PDF generation module produces clean formatted attendance sheets and vehicle utilization reports.
+

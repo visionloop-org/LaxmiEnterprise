@@ -1,0 +1,138 @@
+name: 🏷️ Auto Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. v4.1.0)'
+        required: true
+        default: 'v4.1.0'
+      prerelease:
+        description: 'Mark as pre-release?'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  release:
+    name: 🏷️ Create GitHub Release
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    env:
+      VITE_GOOGLE_SHEETS_WEBAPP_URL: ${{ secrets.VITE_GOOGLE_SHEETS_WEBAPP_URL }}
+      VITE_GOOGLE_SHEET_ID: ${{ secrets.VITE_GOOGLE_SHEET_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Configure .env files
+        run: |
+          WEBAPP_URL="${VITE_GOOGLE_SHEETS_WEBAPP_URL:-https://script.google.com/macros/s/AKfycbwVjlUPjX59Oy5G7nruqE_5iR5iKy0mevyHZuA0r_twa3UCx0Jc2QkYtMaWBjIwRNx4/exec}"
+          SHEET_ID="${VITE_GOOGLE_SHEET_ID:-1VHvHCOzwzMhkG5K4NfE8BHNF-KGzgG4IVedN-Jr4tCI}"
+          for app in apps/admin apps/supervisor; do
+            echo "VITE_GOOGLE_SHEETS_WEBAPP_URL=$WEBAPP_URL" > "$app/.env"
+            echo "VITE_GOOGLE_SHEET_ID=$SHEET_ID" >> "$app/.env"
+          done
+
+      - name: Run tests
+        run: |
+          npm run test:gsheets --workspace=packages/shared
+          npm run test:utils --workspace=packages/shared
+
+      - name: Build all apps
+        run: npm run build --workspaces
+
+      - name: Assemble Pages bundle
+        run: node scripts/build-gh-pages.js
+
+      - name: Create release archive
+        run: |
+          VERSION="${{ github.event.inputs.version || github.ref_name }}"
+          zip -r "laxmi-enterprise-${VERSION}-dist.zip" dist/
+          tar -czf "laxmi-enterprise-${VERSION}-dist.tar.gz" dist/
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          VERSION="${{ github.event.inputs.version || github.ref_name }}"
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD~1 2>/dev/null || echo "")
+          
+          if [ -n "$PREV_TAG" ]; then
+            COMMITS=$(git log ${PREV_TAG}..HEAD --pretty=format:"- %s (%h)" 2>/dev/null | head -30 || echo "")
+          else
+            COMMITS=$(git log HEAD --pretty=format:"- %s (%h)" --max-count=20 || echo "")
+          fi
+          
+          NOTES="## Laxmi Enterprise ${VERSION}
+          
+          **Release Date**: $(date '+%d %B %Y')
+          **Live URL**: [https://visionloop-org.github.io/LaxmiEnterprise/](https://visionloop-org.github.io/LaxmiEnterprise/)
+          **Admin Portal**: [https://visionloop-org.github.io/LaxmiEnterprise/admin/](https://visionloop-org.github.io/LaxmiEnterprise/admin/)
+          
+          ### 🗄️ Production Infrastructure
+          - **Database**: Google Sheets (15 specialized sheets under \`visionloop.in@gmail.com\`)
+          - **Hosting**: GitHub Pages (Free global CDN)
+          - **Backend**: Google Apps Script REST Web App
+          
+          ### 📝 Changes in this Release
+          ${COMMITS}
+          
+          ---
+          *100% Serverless • Free-Forever Stack • React 19 + Vite 8 + Google Sheets*"
+          
+          echo "NOTES<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const version = '${{ github.event.inputs.version || github.ref_name }}';
+            const isPrerelease = ${{ github.event.inputs.prerelease || 'false' }};
+            const notes = `${{ steps.changelog.outputs.NOTES }}`;
+            
+            const release = await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: version,
+              name: `🚀 Laxmi Enterprise ${version}`,
+              body: notes,
+              draft: false,
+              prerelease: isPrerelease
+            });
+            
+            const fs = require('fs');
+            const { execSync } = require('child_process');
+            
+            // Upload zip artifact
+            const zipData = fs.readFileSync(`laxmi-enterprise-${version}-dist.zip`);
+            await github.rest.repos.uploadReleaseAsset({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.data.id,
+              name: `laxmi-enterprise-${version}-dist.zip`,
+              data: zipData,
+              headers: { 'content-type': 'application/zip' }
+            });
+            
+            console.log(`Release created: ${release.data.html_url}`);

@@ -182,6 +182,43 @@ export function useAttendanceHandlers({
     googleSheetsService.recordAttendance('SES-CURRENT', empId, 'pending', null).catch(() => {})
   }
 
+  const handleMarkAllPendingAbsent = () => {
+    if (isAttendanceLocked) {
+      notify('warning', 'Attendance is finalized and locked.')
+      return
+    }
+
+    const pendingEmployees = employees.filter(e => !e.attendance || e.attendance === 'pending')
+    if (pendingEmployees.length === 0) {
+      notify('info', 'No pending workers left to mark absent.')
+      return
+    }
+
+    showConfirm({
+      title: 'Mark Remaining Workers Absent?',
+      message: `Are you sure you want to mark all ${pendingEmployees.length} pending workers as Absent? This will immediately sync to Google Sheets.`,
+      confirmText: `Yes, Mark ${pendingEmployees.length} Absent`,
+      confirmVariant: 'danger',
+      onConfirm: () => {
+        const pendingIds = new Set(pendingEmployees.map(e => e.id))
+        setEmployees(prev => prev.map(emp =>
+          pendingIds.has(emp.id) ? { ...emp, attendance: 'absent' } : emp
+        ))
+        setEditedEmployees(prev => new Set([...prev, ...pendingIds]))
+
+        const updates = pendingEmployees.map(e => ({
+          employeeId: e.id,
+          status: 'absent',
+          arrivalTime: null,
+          remarks: 'Marked absent at gate close'
+        }))
+
+        googleSheetsService.recordAttendanceBatch('SES-CURRENT', updates).catch(() => {})
+        notify('success', `✓ Marked ${pendingEmployees.length} remaining workers as Absent.`)
+      }
+    })
+  }
+
   const confirmArrival = (empId) => {
     const time = arrivalTimes[empId] || '08:00'
     setEmployees(prev => prev.map(emp =>
@@ -389,6 +426,7 @@ export function useAttendanceHandlers({
     handleLabourRequest,
     handleAttendance,
     handleToggleEditMode,
+    handleMarkAllPendingAbsent,
     confirmArrival,
     handleAddWorker,
     handleFinalizeAttendance,

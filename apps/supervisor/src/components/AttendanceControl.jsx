@@ -1,9 +1,7 @@
 import { memo, useCallback } from 'react'
-import { getArrivalTime } from './attendance/attendance.utils'
 import LockedAttendance from './attendance/LockedAttendance'
 import AttendanceBadge from './attendance/AttendanceBadge'
 import AttendanceButtons from './attendance/AttendanceButtons'
-import ArrivedBadge from './attendance/ArrivedBadge'
 
 function AttendanceControl({
   emp,
@@ -64,12 +62,9 @@ function AttendanceControl({
       )
     case 'arrived':
       return (
-        <ArrivedBadge
-          time={displayTime}
-          onTimeChange={handleTimeChange}
-          currentTime={currentTime}
-          onToggleEdit={handleReset}
-        />
+        <div onClick={handleReset} className="cursor-pointer inline-block" title="Click to edit status">
+          <AttendanceBadge status="arrived" />
+        </div>
       )
     case 'absent':
       return (

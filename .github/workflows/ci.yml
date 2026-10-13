@@ -1,0 +1,169 @@
+name: 🧪 CI — Build, Lint & Test
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: 🎨 Lint Check (OXLint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run OXLint
+        run: |
+          echo "## 🎨 Lint Results" >> $GITHUB_STEP_SUMMARY
+          npm run lint 2>&1 | tee lint-output.txt || LINT_FAILED=true
+          ERRORS=$(grep -c "error" lint-output.txt 2>/dev/null || echo "0")
+          WARNINGS=$(grep -c "warning" lint-output.txt 2>/dev/null || echo "0")
+          echo "| Type | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :---: |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔴 Errors | $ERRORS |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟡 Warnings | $WARNINGS |" >> $GITHUB_STEP_SUMMARY
+          if [ "$LINT_FAILED" = "true" ]; then exit 1; fi
+
+  test:
+    name: 🧪 Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run Google Sheets Service Tests
+        run: |
+          echo "## 🧪 Test Results" >> $GITHUB_STEP_SUMMARY
+          npm run test:gsheets --workspace=packages/shared 2>&1 | tee test-output.txt
+          PASSED=$(grep -c "passing" test-output.txt 2>/dev/null || echo "0")
+          FAILED=$(grep -c "failing" test-output.txt 2>/dev/null || echo "0")
+          echo "| Result | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :---: |" >> $GITHUB_STEP_SUMMARY
+          echo "| ✅ Passing | $PASSED |" >> $GITHUB_STEP_SUMMARY
+          echo "| ❌ Failing | $FAILED |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Run Utility Tests
+        run: npm run test:utils --workspace=packages/shared
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.sha }}
+          path: test-output.txt
+          retention-days: 14
+
+  build:
+    name: 🏗️ Build Verification
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    env:
+      VITE_GOOGLE_SHEETS_WEBAPP_URL: ${{ secrets.VITE_GOOGLE_SHEETS_WEBAPP_URL }}
+      VITE_GOOGLE_SHEET_ID: ${{ secrets.VITE_GOOGLE_SHEET_ID }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Build Admin App
+        working-directory: apps/admin
+        run: |
+          # Use secret if available, fallback to default
+          if [ -z "$VITE_GOOGLE_SHEETS_WEBAPP_URL" ]; then
+            cp .env.example .env 2>/dev/null || true
+          fi
+          npm run build
+
+      - name: Build Supervisor App
+        working-directory: apps/supervisor
+        run: |
+          if [ -z "$VITE_GOOGLE_SHEETS_WEBAPP_URL" ]; then
+            cp .env.example .env 2>/dev/null || true
+          fi
+          npm run build
+
+      - name: Report build sizes
+        run: |
+          echo "## 🏗️ Build Output Sizes" >> $GITHUB_STEP_SUMMARY
+          echo "| App | Bundle Size (gzipped) |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :--- |" >> $GITHUB_STEP_SUMMARY
+          ADMIN_SIZE=$(du -sh apps/admin/dist 2>/dev/null | cut -f1 || echo "N/A")
+          SUPERVISOR_SIZE=$(du -sh apps/supervisor/dist 2>/dev/null | cut -f1 || echo "N/A")
+          echo "| Admin Portal | $ADMIN_SIZE |" >> $GITHUB_STEP_SUMMARY
+          echo "| Supervisor App | $SUPERVISOR_SIZE |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+          path: |
+            apps/admin/dist
+            apps/supervisor/dist
+          retention-days: 7
+
+  api-health-check:
+    name: 🌐 Google Sheets API Health Check
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    env:
+      WEBAPP_URL: ${{ secrets.VITE_GOOGLE_SHEETS_WEBAPP_URL }}
+    steps:
+      - name: Ping Google Sheets Web App API
+        run: |
+          echo "## 🌐 Google Sheets API Status" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -z "$WEBAPP_URL" ]; then
+            WEBAPP_URL="https://script.google.com/macros/s/AKfycbwVjlUPjX59Oy5G7nruqE_5iR5iKy0mevyHZuA0r_twa3UCx0Jc2QkYtMaWBjIwRNx4/exec"
+          fi
+          
+          RESPONSE=$(curl -s -L --max-time 30 "${WEBAPP_URL}?action=ping" || echo '{"status":"error","message":"API unreachable"}')
+          STATUS=$(echo "$RESPONSE" | python3 -c "import json,sys; d=json.loads(sys.stdin.read()); print(d.get('status','unknown'))" 2>/dev/null || echo "unknown")
+          MSG=$(echo "$RESPONSE" | python3 -c "import json,sys; d=json.loads(sys.stdin.read()); print(d.get('message',''))" 2>/dev/null || echo "")
+          
+          if [ "$STATUS" = "success" ]; then
+            echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+            echo "| :--- | :--- |" >> $GITHUB_STEP_SUMMARY
+            echo "| Status | ✅ Online |" >> $GITHUB_STEP_SUMMARY
+            echo "| Message | $MSG |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Status | ❌ Offline or Error |" >> $GITHUB_STEP_SUMMARY
+            echo "| Response | \`$RESPONSE\` |" >> $GITHUB_STEP_SUMMARY
+          fi

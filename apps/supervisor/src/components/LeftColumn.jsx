@@ -1,3 +1,5 @@
+import { InstallAppButton, useGoogleSheetsLiveSync, authService } from '@laxmi/shared'
+
 export default function LeftColumn({
   currentDate,
   selectedDate,
@@ -5,7 +7,6 @@ export default function LeftColumn({
   onLoadDayValues,
   isAttendanceLocked,
   isAttendanceFinalized,
-  isSheetFinalized,
   searchQuery,
   setSearchQuery,
   attendanceFilter,
@@ -18,39 +19,88 @@ export default function LeftColumn({
   pendingCount,
   handleFinalizeAttendance,
   handleResetAttendanceFinalization,
-  handleFinalizeSheet,
-  minDemandCount = 0,
-  maxDemandCount = 0,
-  pendingDemandCount = 0,
-  assignedVehiclesCount = 0,
+  onMarkAllPendingAbsent,
   onLogout,
   onOpenAddEmployeeModal,
-  onOpenTripTracker,
-  onOpenSheetsSync
+  onOpenQrScanner,
+  onOpenSheetsSync,
+  onCloseMobile
 }) {
+  const currentUser = authService.getUser()
   const attendanceDone = isAttendanceFinalized ?? isAttendanceLocked ?? false
-  const sheetDone = isSheetFinalized ?? false
+
+  const { isSyncing, lastSyncTime, syncNow } = useGoogleSheetsLiveSync({
+    autoSync: true,
+    intervalMs: 20000
+  })
 
   return (
-    <div className="w-64 flex-shrink-0 border-r border-gray-200 p-4 flex flex-col overflow-y-auto max-h-screen scrollbar-thin">
+    <div className="w-72 md:w-64 flex-shrink-0 border-r border-gray-200 p-4 flex flex-col overflow-y-auto max-h-screen scrollbar-thin bg-white">
       {/* Session Header */}
       <div className="mb-4">
-        <h1 className="text-xl font-bold text-gray-900 mb-1">Supervisor Attendance</h1>
-        
-        {/* Google Sheets Cloud Database Status Badge */}
-        <div className="mb-2 px-2.5 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-[11px]">
-          <div className="flex items-center gap-1.5 font-semibold text-emerald-900">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Google Sheets Cloud</span>
+        <div className="flex items-center justify-between mb-1">
+          <h1 className="text-xl font-bold text-gray-900">Live Attendance</h1>
+          {onCloseMobile && (
+            <button
+              type="button"
+              onClick={onCloseMobile}
+              className="md:hidden p-1.5 text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-100 text-sm font-bold cursor-pointer"
+              title="Close menu"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
+        {/* Active Authorized User Profile Pill */}
+        <div className="flex items-center gap-2 mb-3 px-2.5 py-1.5 bg-slate-900 text-white rounded-lg text-xs shadow-sm">
+          <span className="text-sm">👤</span>
+          <div className="flex-1 min-w-0">
+            <div className="font-bold text-white truncate text-[11px]">
+              {currentUser?.name || 'Ruhil Jaiswal'}
+            </div>
+            <div className="text-[10px] text-sky-400 font-medium">Shift Supervisor</div>
           </div>
-          <button
-            type="button"
-            onClick={onOpenSheetsSync}
-            className="text-[10px] text-emerald-700 hover:text-emerald-900 font-bold underline bg-transparent border-0 cursor-pointer p-0"
-            title="Open Google Sheets Sync & Status Settings"
-          >
-            Sync Config ⚙
-          </button>
+          <span className="bg-emerald-500/20 text-emerald-400 font-bold text-[9px] px-1.5 py-0.5 rounded border border-emerald-500/40 uppercase">
+            Live
+          </span>
+        </div>
+        
+        {/* PWA Install Button & Google Sheets Cloud Status */}
+        <div className="mb-2 flex flex-col gap-1.5">
+          <InstallAppButton
+            label="Install Tablet App"
+            variant="slate"
+            className="w-full text-center"
+            style={{ width: '100%', justifyContent: 'center' }}
+          />
+
+          <div className="px-2.5 py-1.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-[11px]">
+            <div className="flex items-center gap-1.5 font-semibold text-emerald-900">
+              <span className={`w-2 h-2 rounded-full ${isSyncing ? 'bg-sky-500 animate-ping' : 'bg-emerald-500 animate-pulse'}`}></span>
+              <span>{isSyncing ? 'Syncing...' : 'Google Sheets'}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => syncNow()}
+                disabled={isSyncing}
+                className="text-[10px] text-emerald-800 hover:text-emerald-950 font-bold bg-emerald-100 hover:bg-emerald-200 px-1.5 py-0.5 rounded border border-emerald-300 cursor-pointer flex items-center gap-1"
+                title={`Pull latest updates directly from Google Sheets${lastSyncTime ? ` (Last: ${new Date(lastSyncTime).toLocaleTimeString()})` : ''}`}
+              >
+                <span className={isSyncing ? 'animate-spin inline-block' : ''}>🔄</span>
+                <span>{isSyncing ? 'Sync' : 'Refresh'}</span>
+              </button>
+              <button
+                type="button"
+                onClick={onOpenSheetsSync}
+                className="text-[10px] text-emerald-700 hover:text-emerald-900 font-bold underline bg-transparent border-0 cursor-pointer p-0"
+                title="Open Google Sheets Sync & Status Settings"
+              >
+                ⚙
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Date Selector for Date-wise Tracking */}
@@ -76,48 +126,49 @@ export default function LeftColumn({
           <span className="font-medium text-gray-700 bg-gray-100 px-2 py-0.5 rounded">Shift A</span>
         </div>
 
-        {/* Dual Status Card */}
-        <div className="space-y-1.5 bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-xs">
+        {/* Attendance Status Card */}
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-xs">
           <div className="flex items-center justify-between">
-            <span className="text-gray-600 font-medium">Attendance:</span>
+            <span className="text-gray-600 font-medium">Attendance Gate:</span>
             <span className={`px-2 py-0.5 rounded font-semibold text-[11px] ${
               attendanceDone
                 ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                 : 'bg-amber-100 text-amber-800'
             }`}>
-              {attendanceDone ? '✓ Finalized' : 'In Progress'}
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-gray-600 font-medium">Daily Sheet:</span>
-            <span className={`px-2 py-0.5 rounded font-semibold text-[11px] ${
-              sheetDone
-                ? 'bg-purple-100 text-purple-800 border border-purple-300'
-                : attendanceDone
-                ? 'bg-blue-100 text-blue-800'
-                : 'bg-gray-200 text-gray-700'
-            }`}>
-              {sheetDone ? '🔒 Finalized' : attendanceDone ? '📝 Open' : '⏳ Pending'}
+              {attendanceDone ? '✓ Finalized & Locked' : '● Live Gate Open'}
             </span>
           </div>
         </div>
-
       </div>
+
+      {/* Camera QR Scanner Gate Check-in */}
+      <button
+        onClick={onOpenQrScanner}
+        className="w-full px-3 py-2.5 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700 transition-colors mb-2 flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+        title="Scan worker ID badge using device camera"
+      >
+        <span>📷 Camera QR Gate Check-in</span>
+      </button>
+
+      {/* Quick Action: Mark All Remaining Pending as Absent */}
+      {pendingCount > 0 && !attendanceDone && (
+        <button
+          type="button"
+          onClick={onMarkAllPendingAbsent}
+          className="w-full px-3 py-2 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition-colors mb-2 flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+          title="Mark all unpunched workers as absent"
+        >
+          <span>🔴</span>
+          <span>Mark Remaining Absent ({pendingCount})</span>
+        </button>
+      )}
 
       {/* Add Employee Request Button (Supervisor Rights) */}
       <button
         onClick={onOpenAddEmployeeModal}
-        className="w-full px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition-colors mb-2 flex items-center justify-center gap-1 shadow-sm"
+        className="w-full px-3 py-2 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700 transition-colors mb-3 flex items-center justify-center gap-1 shadow-sm"
       >
         <span>➕ Request New Employee</span>
-      </button>
-
-      {/* Vehicle Trip Lifecycle Button */}
-      <button
-        onClick={onOpenTripTracker}
-        className="w-full px-3 py-2 bg-amber-600 text-white rounded-lg text-xs font-semibold hover:bg-amber-700 transition-colors mb-3 flex items-center justify-center gap-1 shadow-sm"
-      >
-        <span>🚚 Vehicle Trip Tracking</span>
       </button>
 
       <div className="border-t border-gray-200 my-2"></div>
@@ -132,7 +183,7 @@ export default function LeftColumn({
           </div>
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search workers..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
@@ -171,7 +222,7 @@ export default function LeftColumn({
       {/* Reset Filters */}
       <button
         onClick={resetFilters}
-        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors mb-4"
+        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors mb-2"
       >
         Reset Filters
       </button>
@@ -186,13 +237,12 @@ export default function LeftColumn({
 
       <div className="border-t border-gray-200 my-2"></div>
 
-      {/* ─── TWO-CATEGORY FINALIZATION CONTROLS ─── */}
-      <div className="space-y-3 mt-auto pt-2">
-        {/* Category 1: Attendance Finalization */}
+      {/* ─── ATTENDANCE FINALIZATION CONTROLS ─── */}
+      <div className="mt-auto pt-2">
         <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-slate-800 flex items-center gap-1">
-              <span>📋</span> 1. Attendance
+              <span>📋</span> Attendance Gate
             </span>
             {attendanceDone && (
               <span className="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded border border-emerald-300">
@@ -201,7 +251,7 @@ export default function LeftColumn({
             )}
           </div>
           <p className="text-[11px] text-slate-500 leading-tight">
-            Fixes attendance marks (Present/Arrived/Absent).
+            Fixes all attendance marks (Present/Arrived/Absent) for the shift.
           </p>
 
           {!attendanceDone ? (
@@ -221,7 +271,7 @@ export default function LeftColumn({
             </button>
           ) : (
             <div className="space-y-1.5">
-              <div className="text-center py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded border border-emerald-200">
+              <div className="text-center py-1.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded border border-emerald-200">
                 ✓ Attendance Finalized
               </div>
               {handleResetAttendanceFinalization && (
@@ -229,66 +279,11 @@ export default function LeftColumn({
                   type="button"
                   onClick={handleResetAttendanceFinalization}
                   className="w-full py-1.5 px-2 text-xs font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 border border-amber-300 rounded-lg transition-colors flex items-center justify-center gap-1 shadow-sm"
-                  title="Unlock and reset attendance finalization so supervisors can edit"
+                  title="Unlock attendance so supervisors can edit"
                 >
-                  <span>🔓</span> Reset / Unlock Finalization
+                  <span>🔓</span> Unlock Attendance
                 </button>
               )}
-            </div>
-          )}
-        </div>
-
-        {/* Category 2: Sheet Finalization */}
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-3 space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-800 flex items-center gap-1">
-              <span>📑</span> 2. Daily Sheet
-            </span>
-            {sheetDone && (
-              <span className="text-[10px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.5 rounded border border-purple-300">
-                Full Lock
-              </span>
-            )}
-          </div>
-          <p className="text-[11px] text-slate-500 leading-tight">
-            Locks Min/Max labour requests and vehicle assignments.
-          </p>
-
-          {/* Min/Max Status Summary Widget */}
-          <div className="bg-white rounded-lg p-2 border border-slate-200 text-[11px] space-y-1">
-            <div className="flex justify-between text-slate-600">
-              <span>Min / Max Demands:</span>
-              <span className="font-semibold text-slate-800">
-                Min: {minDemandCount} · Max: {maxDemandCount}
-              </span>
-            </div>
-            {pendingDemandCount > 0 && !sheetDone && (
-              <div className="text-[10px] text-amber-600 font-medium">
-                ⚠️ {pendingDemandCount} Chalan Men demand pending
-              </div>
-            )}
-            <div className="flex justify-between text-slate-600">
-              <span>Assigned Vehicles:</span>
-              <span className="font-semibold text-slate-800">{assignedVehiclesCount}</span>
-            </div>
-          </div>
-
-          {!sheetDone ? (
-            <button
-              onClick={handleFinalizeSheet}
-              disabled={!attendanceDone}
-              className={`w-full py-2.5 px-3 rounded-lg text-xs font-bold transition-all shadow-sm ${
-                attendanceDone
-                  ? 'bg-purple-600 text-white hover:bg-purple-700'
-                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
-              title={!attendanceDone ? 'Finalize attendance first' : 'Finalize full daily sheet'}
-            >
-              {attendanceDone ? 'Finalize Daily Sheet' : 'Finalize Attendance First'}
-            </button>
-          ) : (
-            <div className="text-center py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded border border-purple-200">
-              🔒 Sheet Finalized &amp; Locked
             </div>
           )}
         </div>

@@ -1,106 +1,78 @@
-# API Type Synchronization Guide
+# Data Schema & Type Synchronization Guide
 
-## Overview
-This setup ensures that your FastAPI backend and frontend TypeScript types stay synchronized automatically.
+**Version:** 5.0  
+**Architecture:** Serverless Google Sheets & TypeScript Contracts
 
-## How It Works
+---
 
-1. **Backend Changes**: When you modify Pydantic models or FastAPI routes
-2. **OpenAPI Export**: Run the sync script to export the OpenAPI spec
-3. **Type Generation**: TypeScript types are auto-generated from the spec
-4. **Type Safety**: Frontend mapping functions use these generated types
-5. **Validation**: Pre-commit hooks and CI checks ensure types stay current
+## 1. Overview
 
-## Manual Sync (After Backend Changes)
+In Laxmi Enterprise v5.0, the backend operates as a **100% serverless multi-spreadsheet database** in Google Sheets & Google Drive. TypeScript definitions and JSDoc annotations in `packages/shared/` provide compile-time safety and runtime contracts across the Admin and Supervisor applications.
 
-### Option 1: Using the sync script (Recommended)
-```bash
-# From ServerSide directory
-cd ServerSide
-python scripts/sync.py  # or sync.bat on Windows
+---
+
+## 2. Schema Source of Truth
+
+The canonical database definitions are documented in:
+- **Specification**: [`google-sheets/SHEET_STRUCTURE.md`](./google-sheets/SHEET_STRUCTURE.md) (Column definitions, types, and constraints across 15 worksheets)
+- **Apps Script Implementation**: [`google-sheets/Code.gs`](./google-sheets/Code.gs) (`setupMultiSpreadsheetArchitecture()` and `getTableSpreadsheet()`)
+
+The schemas partition across 3 Google Spreadsheets:
+1. **`01_Laxmi_HR_Master`**: `Employees`, `Contractors`, `Rates_Config`, `Users_Roles`
+2. **`02_Laxmi_Attendance_Fleet`**: `Vehicles`, `Attendance_Sessions`, `Attendance_Records`, `Vehicle_Assignments`, `Vehicle_Trips`, `Extra_Labour_Requests`, `Vehicle_Maintenance`
+3. **`03_Laxmi_Payroll_Accounting`**: `Daily_Payroll`, `Contractor_Settlements`, `Monthly_Summary`, `Audit_Logs`
+
+---
+
+## 3. TypeScript Contracts & Type Safety
+
+Frontend applications (`apps/admin`, `apps/supervisor`) consume type contracts defined in `@laxmi/shared`:
+
+```
+packages/shared/
+├── types/
+│   └── api.ts          # Core entity interfaces (Employee, Vehicle, Session, Trip, Payroll)
+├── services/
+│   ├── googleSheetsService.js      # JSDoc annotated API client & offline storage
+│   └── clientComputationService.js # High-speed client mathematical models & conflict assertions
+└── tsconfig.json       # TypeScript configuration with allowJs & checkJs
 ```
 
-### Option 2: Manual steps
-```bash
-# Export OpenAPI spec
-cd ServerSide
-python scripts/export_openapi.py
-
-# Generate TypeScript types
-cd ../packages/shared
-npm run generate:types
-```
-
-## Automatic Sync (Pre-commit Hook)
-
-### Install the pre-commit hook:
-```bash
-# Copy the pre-commit script to .git/hooks
-cp scripts/pre-commit.sh .git/hooks/pre-commit  # Linux/Mac
-cp scripts/pre-commit.bat .git/hooks/pre-commit  # Windows
-
-# Make it executable (Linux/Mac)
-chmod +x .git/hooks/pre-commit
-```
-
-### How it works:
-- When you commit changes to `ServerSide/` files
-- The hook automatically regenerates the OpenAPI spec and types
-- The generated files are staged with your commit
-- No manual sync needed!
-
-## Verify Types Are Current
+### Type Checking
+To run type validation across `@laxmi/shared`:
 
 ```bash
-cd packages/shared
-npm run check:types
-```
-
-This will fail if the generated types don't match the current OpenAPI spec.
-
-## Type Checking Mapping Functions
-
-```bash
+# From workspace root or packages/shared
 cd packages/shared
 npx tsc --noEmit
 ```
 
-This validates that your JSDoc annotations match the generated types.
+---
 
-## Files Modified
+## 4. Updating a Schema
 
-### Backend (ServerSide/)
-- `app/models/*.py` - Added separate Create/Update/Response models
-- `app/api/v1/*/routes.py` - Added operationIds and explicit response_model
-- `scripts/export_openapi.py` - Server-independent OpenAPI export
-- `scripts/sync.sh` / `sync.bat` - Convenience script for syncing
+When adding or modifying fields:
 
-### Frontend (packages/shared/)
-- `services/rest*.js` - Added JSDoc type annotations
-- `types/api.ts` - Auto-generated TypeScript types
-- `check-types.js` - Script to verify types are current
-- `tsconfig.json` - TypeScript config for checking .js files
+1. **Update Sheet Structure**: Document the new column in [`google-sheets/SHEET_STRUCTURE.md`](./google-sheets/SHEET_STRUCTURE.md).
+2. **Update Apps Script**:
+   - Add the column header to the appropriate sheet array in `google-sheets/Code.gs`.
+   - Update object mapping functions in `Code.gs` (`mapRowToEmployee`, `mapRowToRecord`, etc.).
+3. **Update Client Types & Services**:
+   - Update interfaces in `packages/shared/types/api.ts`.
+   - Update serialization in `packages/shared/services/googleSheetsService.js`.
+   - If calculations or constraints are affected, update `packages/shared/services/clientComputationService.js`.
+4. **Run Validation Gates**:
+   ```bash
+   npm run test:computation
+   npm run test:gsheets
+   npm run test:utils
+   npm run build:pages
+   ```
 
-## Benefits
+---
 
-- **Compile-time type safety** for mapping functions
-- **Automatic drift detection** between backend and frontend
-- **No server dependency** for type generation
-- **Improved generated type names** from operationIds
-- **Explicit API contracts** with separate Create/Update/Response models
+## 5. Historical Reference (v1.0 FastAPI Backend)
 
-## Troubleshooting
+> [!NOTE]
+> Early v1.0 prototypes of Laxmi Enterprise utilized a local FastAPI + MongoDB container backend (`ServerSide/`). In v5.0, all infrastructure was eliminated in favor of a 100% serverless, zero-maintenance architecture on Google Sheets, Google Drive, and GitHub Pages.
 
-### Types are out of sync
-```bash
-cd ServerSide && python scripts/sync.py
-```
-
-### Pre-commit hook not running
-- Ensure the hook is executable: `chmod +x .git/hooks/pre-commit`
-- Check that you're committing from the project root
-
-### Type checking errors
-- Verify your JSDoc annotations match the generated types
-- Run `npm run generate:types` to regenerate from current spec
-- Check that backend models have the correct Response variants

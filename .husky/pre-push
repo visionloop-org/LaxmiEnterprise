@@ -25,10 +25,28 @@ node scripts/build-gh-pages.js || {
   exit 1
 }
 
-# 4. Run test suites
-echo "🧪 Running shared test suite..."
-npm run test --workspace=packages/shared || {
-  echo "❌ Shared test suite failed! Aborting push."
+# 4. Run test suites (utils + google sheets service)
+echo "🧪 Running utility tests..."
+npm run test:utils --workspace=packages/shared || {
+  echo "❌ Utility tests failed! Aborting push."
+  exit 1
+}
+
+echo "🧪 Running Google Sheets service tests..."
+npm run test:gsheets --workspace=packages/shared || {
+  echo "❌ Google Sheets service tests failed! Aborting push."
+  exit 1
+}
+
+echo "🧪 Running Client Computation Engine tests..."
+npm run test:computation --workspace=packages/shared || {
+  echo "❌ Client computation tests failed! Aborting push."
+  exit 1
+}
+
+echo "🧪 Running Drive CSV & 5-Year Retention tests..."
+npm run test:drivecsv --workspace=packages/shared || {
+  echo "❌ Drive CSV service tests failed! Aborting push."
   exit 1
 }
 

@@ -51,3 +51,4 @@ graphify-out/
 # Temporary files
 *.tmp
 *.temp
+scripts/*.png

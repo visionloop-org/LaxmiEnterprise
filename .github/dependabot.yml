@@ -1,0 +1,156 @@
+version: 2
+
+updates:
+  # ─── Root monorepo (husky, oxlint, vite, tailwind, puppeteer-core, etc.) ───
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Asia/Kolkata"
+    open-pull-requests-limit: 5
+    assignees:
+      - "visionloop-org"
+    labels:
+      - "dependencies"
+      - "automated"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      dev-tools:
+        patterns:
+          - "vite"
+          - "@vitejs/*"
+          - "oxlint"
+          - "husky"
+          - "lint-staged"
+          - "tailwindcss"
+          - "autoprefixer"
+          - "postcss"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      # Don't auto-update major versions of core build tools
+      - dependency-name: "vite"
+        update-types: ["version-update:semver-major"]
+
+  # ─── Admin app (/apps/admin) ───
+  - package-ecosystem: "npm"
+    directory: "/apps/admin"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Asia/Kolkata"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "admin-app"
+      - "automated"
+    commit-message:
+      prefix: "chore(deps:admin)"
+    groups:
+      react-ecosystem:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+          - "@tanstack/*"
+          - "react-*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+
+  # ─── Supervisor app (/apps/supervisor) ───
+  - package-ecosystem: "npm"
+    directory: "/apps/supervisor"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Asia/Kolkata"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "supervisor-app"
+      - "automated"
+    commit-message:
+      prefix: "chore(deps:supervisor)"
+    groups:
+      react-ecosystem:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+          - "@tanstack/*"
+          - "react-*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+
+  # ─── Shared package (/packages/shared) ───
+  - package-ecosystem: "npm"
+    directory: "/packages/shared"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Asia/Kolkata"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "shared-package"
+      - "automated"
+    commit-message:
+      prefix: "chore(deps:shared)"
+    groups:
+      babel-ecosystem:
+        patterns:
+          - "@babel/*"
+        update-types:
+          - "minor"
+          - "patch"
+      testing:
+        patterns:
+          - "mocha"
+          - "chai"
+          - "@testing-library/*"
+          - "jsdom"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # ─── GitHub Actions versions ───
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "06:00"
+      timezone: "Asia/Kolkata"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ci/cd"
+      - "automated"
+    commit-message:
+      prefix: "chore(actions)"
+    groups:
+      actions-core:
+        patterns:
+          - "actions/*"
+      github-official:
+        patterns:
+          - "github/*"

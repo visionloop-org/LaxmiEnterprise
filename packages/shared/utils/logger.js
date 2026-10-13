@@ -1,101 +1,129 @@
-import { config } from './config.js'
+/**
+ * Structured Logger for Laxmi Enterprise
+ * Provides consistent logging with context, performance tracking, and monitoring integration
+ */
 
-const LOG_LEVELS = {
-  DEBUG: 0,
-  INFO: 1,
-  WARN: 2,
-  ERROR: 3
-}
-
-class Logger {
-  constructor(options = {}) {
-    this.level = options.level || config.monitoring?.logLevel || 'INFO'
-    this.enabled = options.enabled !== undefined ? options.enabled : (config.monitoring?.enabled !== false)
+class StructuredLogger {
+  constructor(context) {
+    this.context = context;
+    this.level = this.getLogLevel();
+    this.enableMonitoring = this.isMonitoringEnabled();
   }
 
-  log(level, action, data = {}, requestId = null) {
-    if (!this.enabled || LOG_LEVELS[level] < LOG_LEVELS[this.level]) {
-      return
+  getLogLevel() {
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env.LOG_LEVEL || 'INFO';
+    }
+    // Browser environment
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return window.localStorage.getItem('log_level') || 'INFO';
+    }
+    return 'INFO';
+  }
+
+  isMonitoringEnabled() {
+    if (typeof process !== 'undefined' && process.env) {
+      return process.env.NODE_ENV === 'production';
+    }
+    return false;
+  }
+
+  shouldLog(level) {
+    const levels = ['DEBUG', 'INFO', 'WARN', 'ERROR'];
+    const currentLevelIndex = levels.indexOf(this.level);
+    const messageLevelIndex = levels.indexOf(level);
+    return messageLevelIndex >= currentLevelIndex;
+  }
+
+  log(level, message, data = {}) {
+    if (!this.shouldLog(level)) {
+      return;
     }
 
-    const timestamp = new Date().toISOString()
-    const logEntry = {
-      timestamp,
+    const entry = {
+      timestamp: new Date().toISOString(),
       level,
-      action,
-      ...data,
-      environment: typeof process !== 'undefined' && process.env ? process.env.NODE_ENV : 'development'
+      context: this.context,
+      message,
+      ...data
+    };
+
+    // Output to console in development
+    if (typeof window !== 'undefined' || (typeof process !== 'undefined' && process.env.NODE_ENV === 'development')) {
+      const consoleMethod = level === 'ERROR' ? console.error : 
+                          level === 'WARN' ? console.warn : 
+                          level === 'DEBUG' ? console.debug : console.log;
+      consoleMethod(JSON.stringify(entry));
     }
 
-    if (requestId) {
-      logEntry.requestId = requestId
-    }
-
-    const message = JSON.stringify(logEntry)
-
-    switch (level) {
-      case 'DEBUG':
-        console.debug(message)
-        break
-      case 'INFO':
-        console.info(message)
-        break
-      case 'WARN':
-        console.warn(message)
-        break
-      case 'ERROR':
-        console.error(message)
-        break
-      default:
-        console.log(message)
+    // Send to monitoring service in production
+    if (this.enableMonitoring) {
+      this.sendToMonitoring(entry);
     }
   }
 
-  debug(action, data, requestId) {
-    this.log('DEBUG', action, data, requestId)
+  debug(message, data) {
+    this.log('DEBUG', message, data);
   }
 
-  info(action, data, requestId) {
-    this.log('INFO', action, data, requestId)
+  info(message, data) {
+    this.log('INFO', message, data);
   }
 
-  warn(action, data, requestId) {
-    this.log('WARN', action, data, requestId)
+  warn(message, data) {
+    this.log('WARN', message, data);
   }
 
-  error(action, data, requestId) {
-    this.log('ERROR', action, data, requestId)
+  error(message, data) {
+    this.log('ERROR', message, data);
   }
 
-  apiRequest(method, endpoint, requestId, hasAuth = false, timeout = 30000) {
-    this.info('API_REQUEST', {
+  // Performance logging
+  logPerformance(operation, duration, data = {}) {
+    this.info('Performance metric', {
+      operation,
+      duration,
+      unit: 'ms',
+      ...data
+    });
+  }
+
+  // API call logging
+  logApiCall(method, endpoint, duration, status, data = {}) {
+    this.info('API call', {
       method,
       endpoint,
-      hasAuth,
-      timeout
-    }, requestId)
+      duration,
+      status,
+      ...data
+    });
   }
 
-  apiResponse(method, endpoint, requestId, duration) {
-    this.debug('API_RESPONSE', {
-      method,
-      endpoint,
-      duration
-    }, requestId)
+  // Error logging with stack trace
+  logError(error, context = {}) {
+    this.error('Error occurred', {
+      message: error.message,
+      stack: error.stack,
+      name: error.name,
+      ...context
+    });
   }
 
-  apiError(method, endpoint, requestId, error, attempt = 1) {
-    this.error('API_ERROR', {
-      method,
-      endpoint,
-      errorCode: error.code || 'UNKNOWN_ERROR',
-      statusCode: error.status || 500,
-      errorMessage: error.message,
-      attempt,
-      details: error.details
-    }, requestId)
+  // Send to monitoring service (placeholder for actual implementation)
+  sendToMonitoring(entry) {
+    // TODO: Integrate with monitoring service (e.g., Sentry, LogRocket, custom endpoint)
+    // For now, this is a placeholder that can be extended
+    if (typeof window !== 'undefined' && window.navigator) {
+      // Browser environment - could send to analytics endpoint
+      navigator.sendBeacon('/api/logs', JSON.stringify(entry));
+    }
   }
 }
 
-export const logger = new Logger()
-export default logger
+// Factory function to create loggers with context
+function createLogger(context) {
+  return new StructuredLogger(context);
+}
+
+export { StructuredLogger, createLogger };
+export default createLogger;

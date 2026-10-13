@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="40%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Full Bleed Square for Safe Area Masking -->
+  <rect x="0" y="0" width="512" height="512" fill="url(#bgGrad)"/>
+  
+  <!-- Safe Zone Scale (80% scale centered) -->
+  <g transform="translate(51.2, 51.2) scale(0.8)">
+    <g filter="url(#glow)">
+      <!-- Main Bold 'L' Backbone -->
+      <path d="M152 110 C152 98 162 88 174 88 H204 C216 88 226 98 226 110 V314 H350 C362 314 372 324 372 336 V366 C372 378 362 388 350 388 H174 C162 388 152 378 152 366 Z" fill="url(#accentGrad)"/>
+      
+      <!-- Dynamic Attendance Check & Dispatch Arrow -->
+      <path d="M236 210 L288 262 L394 156" fill="none" stroke="#34d399" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <circle cx="394" cy="156" r="14" fill="#38bdf8"/>
+      <circle cx="174" cy="110" r="12" fill="#60a5fa"/>
+      <circle cx="350" cy="366" r="12" fill="#10b981"/>
+    </g>
+  </g>
+</svg>

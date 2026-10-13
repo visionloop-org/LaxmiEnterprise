@@ -15,7 +15,8 @@ import {
   useUpdateEmployee,
   useDeleteEmployee,
   useBulkUpdateCompensation,
-  useTrips
+  useTrips,
+  driveCsvService
 } from '@laxmi/shared'
 
 import AdminHeader from './AdminHeader.jsx'
@@ -27,6 +28,7 @@ import FleetManagementTable from './FleetManagementTable.jsx'
 import SessionUnlockPanel from './SessionUnlockPanel.jsx'
 import BulkCompensationModal from './BulkCompensationModal.jsx'
 import EditEmployeeModal from './EditEmployeeModal.jsx'
+import SalaryAdvanceModal from './SalaryAdvanceModal.jsx'
 
 const DEFAULT_RATES = {
   Drivers: 800, 'Chalan Men': 650, Workers: 500, Office: 750, 'Extra Labour': 450
@@ -95,6 +97,22 @@ export default function AdminDashboard({ onLogout }) {
   const [unlocking, setUnlocking] = useState(false)
   const [isSheetsModalOpen, setIsSheetsModalOpen] = useState(false)
   const [editingEmp, setEditingEmp] = useState(null)
+  const [isAdvanceModalOpen, setIsAdvanceModalOpen] = useState(false)
+  const [advances, setAdvances] = useState(() => driveCsvService.getTable('salary_advances') || [])
+
+  const handleSaveAdvance = (newAdvance) => {
+    const updated = [newAdvance, ...advances]
+    setAdvances(updated)
+    driveCsvService.setTable('salary_advances', updated)
+    showToast(`Recorded ₹${newAdvance.amount} advance for ${newAdvance.employeeName} ✓`)
+  }
+
+  const handleSettleAdvance = (advanceId) => {
+    const updated = advances.map(a => a.id === advanceId ? { ...a, status: 'deducted' } : a)
+    setAdvances(updated)
+    driveCsvService.setTable('salary_advances', updated)
+    showToast('Advance marked as settled/deducted ✓')
+  }
 
   // ── Bulk state ────────────────────────────────────────────────────────────
   const [bulkOpen, setBulkOpen] = useState(false)
@@ -362,6 +380,36 @@ export default function AdminDashboard({ onLogout }) {
     })), `contractor_${new Date().toISOString().split('T')[0]}.csv`)
   }
 
+  const exportBankTransfer = () => {
+    const activePayroll = employees
+      .filter(emp => emp.attendance === 'arrived' || emp.attendance === 'on_time')
+      .map(emp => {
+        const p = calcPayroll(emp)
+        return {
+          employeeId: emp.id,
+          employeeName: emp.name,
+          grandTotal: Math.round(p.total),
+          date: new Date().toISOString().split('T')[0]
+        }
+      })
+
+    if (!activePayroll.length) {
+      showToast('No present employees in today\'s attendance to transfer.', 'warning')
+      return
+    }
+
+    const csvStr = driveCsvService.exportBankTransferCSV(activePayroll)
+    const blob = new Blob([csvStr], { type: 'text/csv' })
+    const url = window.URL.createObjectURL(blob)
+    const a = Object.assign(document.createElement('a'), {
+      href: url,
+      download: `bank_transfer_neft_${new Date().toISOString().split('T')[0]}.csv`
+    })
+    a.click()
+    window.URL.revokeObjectURL(url)
+    showToast(`Bank Transfer CSV exported for ${activePayroll.length} employees ✓`)
+  }
+
   const exportVehicles = () => {
     exportToCSV(vehicles.map(v => ({ Number: v.number, Type: v.type, Status: v.status })),
       `vehicles_${new Date().toISOString().split('T')[0]}.csv`)
@@ -393,6 +441,7 @@ export default function AdminDashboard({ onLogout }) {
       <AdminHeader
         onOpenSheetsSync={() => setIsSheetsModalOpen(true)}
         onLogout={onLogout}
+        onBackupRestoreSuccess={(msg) => showToast(msg, 'success')}
       />
 
       {toast && (
@@ -430,6 +479,8 @@ export default function AdminDashboard({ onLogout }) {
           showContractor={showContractor}
           setShowContractor={setShowContractor}
           onExportCsv={exportContractor}
+          onExportBankCsv={exportBankTransfer}
+          onOpenAdvanceModal={() => setIsAdvanceModalOpen(true)}
         />
 
         <div className="content-grid">
@@ -513,6 +564,15 @@ export default function AdminDashboard({ onLogout }) {
       <GoogleSheetsSyncModal
         isOpen={isSheetsModalOpen}
         onClose={() => setIsSheetsModalOpen(false)}
+      />
+
+      <SalaryAdvanceModal
+        isOpen={isAdvanceModalOpen}
+        onClose={() => setIsAdvanceModalOpen(false)}
+        employees={employees}
+        advances={advances}
+        onSaveAdvance={handleSaveAdvance}
+        onSettleAdvance={handleSettleAdvance}
       />
     </div>
   )

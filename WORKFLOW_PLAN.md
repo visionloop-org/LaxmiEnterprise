@@ -1,7 +1,7 @@
 # Laxmi Enterprise — Coherent Workflow Plan
 
-**Last Updated:** September 3, 2026  
-**Status:** Phases 1–4 Complete, Moving to Phase 5 (PWA & Field Offline) & Phase 6 (LWAS Gate Hardware)
+**Last Updated:** September 6, 2026  
+**Status:** Phases 1–5.3 Complete (v5.0 Multi-Spreadsheet, PWA, Client-Centric Heavy Computation), Moving to Phase 5.4 (Drive PDF Archival) & Phase 6 (LWAS Hardware)
 
 ---
 
@@ -118,16 +118,43 @@
 
 ---
 
-## Phase 5: PWA & Field Offline Resilience (Current Focus)
+## Phase 5: PWA, Multi-Spreadsheet & Client-Side Computation (Completed) ✅
 
-### 5.1 Service Worker & PWA Manifest
-- [ ] Implement Progressive Web App (PWA) manifest for Android/iPad tablet home screen installation.
-- [ ] Configure Workbox / Service Worker static asset pre-caching for 100% offline app loading.
-- [ ] Implement background sync retry queue when field supervisor tablets re-enter cell coverage.
+### 5.1 Service Worker & PWA Manifest ✅
+- [x] Implement Progressive Web App (PWA) manifest for Android tablet, phone, and desktop installation.
+- [x] Configure Service Worker static asset pre-caching (`sw.js`) for 100% offline app loading in remote quarries.
+- [x] Generate crisp vector and adaptive maskable PWA icons (192×192, 512×512, Apple touch).
+- [x] Implement in-app `InstallAppButton` trigger with native prompt and iOS Safari instructions.
+- [x] Adapt supervisor layout for Android smartphones with mobile drawer navigation and touch optimization.
 
-### 5.2 Google Drive PDF Auto-Archival
-- [ ] Add direct Apps Script endpoint to upload client-generated PDF attendance sheets into `04_Supervisor_PDF_Exports`.
-- [ ] Trigger automated daily snapshot compilation for monthly payroll records.
+### 5.2 Client-Centric Heavy Computation Engine ✅
+- [x] Implement `ClientComputationService` running 100% on device CPU (Android Snapdragon, MediaTek, etc.).
+- [x] Client-side 1.5× overtime calculation, late arrival adjustments, and category wage totals.
+- [x] Automated contractor agency commission settlement engine.
+- [x] Knapsack vehicle allocation optimization with 8-passenger capacity limits.
+- [x] Instant real-time fleet conflict checking without server round-trips.
+
+### 5.3 Multi-Spreadsheet Architecture (v5.0) ✅
+- [x] Partition 15 worksheets across 3 specialized domain spreadsheets (`01_Laxmi_HR_Master`, `02_Laxmi_Attendance_Fleet`, `03_Laxmi_Payroll_Accounting`).
+- [x] Transparent domain routing via `getTableSpreadsheet` in Google Apps Script.
+- [x] Automatic Drive folder discovery and 1-click provisioning.
+- [x] Explicit role governance for `Gauravjaiswal0304@gmail.com` (Admin) and `Maalaxmi.godown@gmail.com` (Supervisor).
+
+### 5.4 5-Year Data Retention & Automated Purge Engine
+- [ ] Add scheduled monthly Apps Script/Edge maintenance routine to delete attendance records, trip logs, and audit trails older than 5 years (`shift_date < NOW() - 5 YEARS`).
+- [ ] Compile annual aggregated attendance and gross compensation totals into `03_Laxmi_Payroll_Accounting / Yearly_Archives` before raw record pruning.
+- [ ] Enforce database compaction and vacuuming to guarantee active operational data remains strictly under **50 MB** (<1% of the 2 GB allowance).
+- [ ] Direct Apps Script endpoint to upload client-generated PDF attendance sheets into `04_Supervisor_PDF_Exports`.
+
+### 5.5 Multi-User RBAC & Bank Bulk Transfer CSV Export
+- [ ] Implement formal role guards across all views:
+  - `Admin` / `Owner`: Full governance, wage rates, emergency unlocks.
+  - `Accountant` / `HR`: Attendance audit, payroll calculation, bank exports.
+  - `Supervisor`: Touch attendance, vehicle dispatch, offline queue.
+  - `Worker`: Read-only punch records and digital pay slip view.
+- [ ] Upgrade `googleSheetsService.js` and `clientComputationService.js` with micro-batch sync queue to batch flush multi-supervisor submissions in atomic transactions, eliminating sheet lock contention.
+- [ ] 1-Click Bank Transfer CSV export module supporting SBI, Axis, and HDFC bulk payroll templates.
+- [ ] Digital mobile-friendly salary slip viewer for individual workers.
 
 ---
 
@@ -145,6 +172,8 @@
 
 ```
 Sep 01 – Sep 03, 2026:  Phase 4 (100% Serverless Google Sheets & GitHub Pages deployment) ✅
-Sep 04 – Sep 12, 2026:  Phase 5 (PWA offline caching & Google Drive PDF upload)
-Sep 13 – Sep 30, 2026:  Phase 6 (Gate scanner, QR camera & turnstile hardware prototype)
+Sep 04 – Sep 06, 2026:  Phase 5.1–5.3 (PWA offline caching, Multi-Spreadsheets, Client Math) ✅
+Oct 12 – Oct 20, 2026:  Phase 5.4 (5-Year Data Retention & Auto-Archival Engine)
+Oct 20 – Oct 28, 2026:  Phase 5.5 (Multi-User RBAC & 1-Click Bank Transfer Export)
+Nov 01 – Nov 25, 2026:  Phase 6 (Gate scanner, QR camera & turnstile hardware prototype)
 ```

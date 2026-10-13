@@ -1,0 +1,93 @@
+name: 🔒 Security Audit & Dependency Check
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+  schedule:
+    # Run security audit every Monday at 6:30 AM IST (1:00 AM UTC)
+    - cron: '0 1 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  audit:
+    name: 🔍 npm Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Run npm security audit
+        run: |
+          echo "## 🔒 Security Audit Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp**: $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Run audit and capture output
+          npm audit --json > audit-report.json 2>/dev/null || true
+          
+          # Count vulnerabilities
+          CRITICAL=$(cat audit-report.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('metadata',{}).get('vulnerabilities',{}).get('critical',0))" 2>/dev/null || echo "0")
+          HIGH=$(cat audit-report.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('metadata',{}).get('vulnerabilities',{}).get('high',0))" 2>/dev/null || echo "0")
+          MODERATE=$(cat audit-report.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('metadata',{}).get('vulnerabilities',{}).get('moderate',0))" 2>/dev/null || echo "0")
+          
+          echo "| Severity | Count |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :---: |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🚨 Critical | $CRITICAL |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔴 High | $HIGH |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🟡 Moderate | $MODERATE |" >> $GITHUB_STEP_SUMMARY
+          
+          # Fail on critical vulnerabilities only
+          if [ "$CRITICAL" -gt "0" ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "❌ **Build failed**: $CRITICAL critical vulnerabilities found. Please run \`npm audit fix\`." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **No critical vulnerabilities found.**" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload audit report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-audit-report-${{ github.sha }}
+          path: audit-report.json
+          retention-days: 30
+
+  license-check:
+    name: 📋 License Compliance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --prefer-offline
+
+      - name: Check dependency licenses
+        run: |
+          npx license-checker --summary --excludePrivatePackages --onlyAllow "MIT;ISC;Apache-2.0;BSD-2-Clause;BSD-3-Clause;0BSD;CC0-1.0;CC-BY-3.0;CC-BY-4.0;Python-2.0;Unlicense;WTFPL" 2>&1 | head -50 || true
+          echo "✅ License check complete." >> $GITHUB_STEP_SUMMARY

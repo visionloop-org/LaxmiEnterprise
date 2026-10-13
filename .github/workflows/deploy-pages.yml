@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: 🚀 Deploy to GitHub Pages
 
 on:
   push:
@@ -18,7 +18,14 @@ concurrency:
 
 jobs:
   build:
+    name: 🏗️ Build Production Bundle
     runs-on: ubuntu-latest
+    environment:
+      name: production
+    env:
+      VITE_GOOGLE_SHEETS_WEBAPP_URL: ${{ secrets.VITE_GOOGLE_SHEETS_WEBAPP_URL }}
+      VITE_GOOGLE_SHEET_ID: ${{ secrets.VITE_GOOGLE_SHEET_ID }}
+      VITE_GOOGLE_SHEET_URL: ${{ secrets.VITE_GOOGLE_SHEET_URL }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,13 +36,41 @@ jobs:
           node-version: 22
           cache: 'npm'
 
+      - name: Restore dependency cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+            apps/admin/node_modules
+            apps/supervisor/node_modules
+            packages/shared/node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - name: Install dependencies
-        run: npm install --include=dev
+        run: npm ci --prefer-offline
+
+      - name: 🔑 Configure environment (secrets or defaults)
+        run: |
+          # Admin app .env
+          cat > apps/admin/.env << EOF
+          VITE_GOOGLE_SHEETS_WEBAPP_URL=${VITE_GOOGLE_SHEETS_WEBAPP_URL:-https://script.google.com/macros/s/AKfycbwVjlUPjX59Oy5G7nruqE_5iR5iKy0mevyHZuA0r_twa3UCx0Jc2QkYtMaWBjIwRNx4/exec}
+          VITE_GOOGLE_SHEET_ID=${VITE_GOOGLE_SHEET_ID:-1VHvHCOzwzMhkG5K4NfE8BHNF-KGzgG4IVedN-Jr4tCI}
+          VITE_GOOGLE_SHEET_URL=${VITE_GOOGLE_SHEET_URL:-https://docs.google.com/spreadsheets/d/1VHvHCOzwzMhkG5K4NfE8BHNF-KGzgG4IVedN-Jr4tCI/edit}
+          EOF
+          # Supervisor app .env
+          cat > apps/supervisor/.env << EOF
+          VITE_GOOGLE_SHEETS_WEBAPP_URL=${VITE_GOOGLE_SHEETS_WEBAPP_URL:-https://script.google.com/macros/s/AKfycbwVjlUPjX59Oy5G7nruqE_5iR5iKy0mevyHZuA0r_twa3UCx0Jc2QkYtMaWBjIwRNx4/exec}
+          VITE_GOOGLE_SHEET_ID=${VITE_GOOGLE_SHEET_ID:-1VHvHCOzwzMhkG5K4NfE8BHNF-KGzgG4IVedN-Jr4tCI}
+          VITE_GOOGLE_SHEET_URL=${VITE_GOOGLE_SHEET_URL:-https://docs.google.com/spreadsheets/d/1VHvHCOzwzMhkG5K4NfE8BHNF-KGzgG4IVedN-Jr4tCI/edit}
+          EOF
 
       - name: Build Supervisor App
         run: |
           npm run build --workspace=apps/supervisor 2>&1 | tee supervisor.log || {
-            echo "### Supervisor Build Log" >> $GITHUB_STEP_SUMMARY
+            echo "### ❌ Supervisor Build Failed" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
             cat supervisor.log >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
@@ -45,7 +80,7 @@ jobs:
       - name: Build Admin App
         run: |
           npm run build --workspace=apps/admin 2>&1 | tee admin.log || {
-            echo "### Admin Build Log" >> $GITHUB_STEP_SUMMARY
+            echo "### ❌ Admin Build Failed" >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
             cat admin.log >> $GITHUB_STEP_SUMMARY
             echo '```' >> $GITHUB_STEP_SUMMARY
@@ -55,12 +90,26 @@ jobs:
       - name: Assemble Unified GitHub Pages bundle
         run: node scripts/build-gh-pages.js
 
-      - name: Upload artifact
+      - name: Generate build summary
+        run: |
+          echo "## 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| App | Status | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :---: | :--- |" >> $GITHUB_STEP_SUMMARY
+          echo "| Supervisor App | ✅ Built | $(du -sh apps/supervisor/dist | cut -f1) |" >> $GITHUB_STEP_SUMMARY
+          echo "| Admin Portal | ✅ Built | $(du -sh apps/admin/dist | cut -f1) |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by**: ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Live at**: [https://visionloop-org.github.io/LaxmiEnterprise/](https://visionloop-org.github.io/LaxmiEnterprise/)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
   deploy:
+    name: 🌐 Deploy to GitHub Pages CDN
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

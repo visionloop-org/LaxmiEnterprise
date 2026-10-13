@@ -20,19 +20,25 @@
     "build:supervisor": "npm run build --workspace=apps/supervisor",
     "build:admin": "npm run build --workspace=apps/admin",
     "build:pages": "node scripts/build-gh-pages.js",
+    "sheets:api": "node scripts/sheets-api.mjs",
     "build": "npm run build --workspaces --if-present",
     "check-types": "npm run check-types --workspace=packages/shared",
     "lint": "npx oxlint packages/shared/hooks packages/shared/services apps/supervisor/src apps/admin/src",
     "lint:fix": "npx oxlint --fix packages/shared/hooks packages/shared/services apps/supervisor/src apps/admin/src",
-    "test:shared": "npm run test --workspace=packages/shared"
+    "test:shared": "npm run test --workspace=packages/shared",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "@vitejs/plugin-react": "^6.0.4",
     "autoprefixer": "^10.5.4",
     "husky": "^9.0.0",
     "lint-staged": "^15.0.0",
     "oxlint": "^1.78.0",
     "postcss": "^8.5.25",
+    "puppeteer-core": "^25.9.0",
     "tailwindcss": "^3.4.19",
     "vite": "^8.2.0"
   }

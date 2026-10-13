@@ -5,7 +5,11 @@
   "main": "index.js",
   "module": "index.js",
   "exports": {
-    ".": "./index.js"
+    ".": "./index.js",
+    "./utils/*": "./utils/*.js",
+    "./services/*": "./services/*.js",
+    "./components/*": "./components/*.jsx",
+    "./hooks/*": "./hooks/*.js"
   },
   "type": "module",
   "scripts": {
@@ -15,13 +19,15 @@
     "check:types": "node check-types.js",
     "check-types": "node check-types.js",
     "sync:types": "cd ../../ServerSide && python scripts/export_openapi.py && cd ../packages/shared && npm run generate:types",
-    "test": "mocha --exit --require @babel/register --require mocha.config.cjs tests/hooks/*.test.js tests/utils/*.test.js tests/components/*.test.jsx tests/services/googleSheetsService.test.js",
-    "test:hooks": "mocha --exit --require @babel/register --require mocha.config.cjs tests/hooks/*.test.js",
-    "test:utils": "mocha --exit --require @babel/register --require mocha.config.cjs tests/utils/*.test.js",
-    "test:components": "mocha --exit --require @babel/register --require mocha.config.cjs tests/components/*.test.jsx",
-    "test:gsheets": "mocha --exit --require @babel/register --require mocha.config.cjs tests/services/googleSheetsService.test.js",
-    "test:all": "mocha --exit --require @babel/register --require mocha.config.cjs tests/hooks/*.test.js tests/utils/*.test.js tests/components/*.test.jsx tests/services/googleSheetsService.test.js",
-    "test:services": "mocha --exit --require @babel/register --require mocha.config.cjs tests/services/googleSheetsService.test.js"
+    "test": "node --loader ./babel-test-loader.mjs ../../node_modules/mocha/bin/mocha.js --exit --require mocha.config.cjs tests/hooks/*.test.js tests/utils/*.test.js tests/components/*.test.jsx tests/services/googleSheetsService.test.js",
+    "test:hooks": "node --loader ./babel-test-loader.mjs ../../node_modules/mocha/bin/mocha.js --exit --require mocha.config.cjs tests/hooks/*.test.js",
+    "test:utils": "mocha --exit tests/utils/*.test.js",
+    "test:components": "node --loader ./babel-test-loader.mjs ../../node_modules/mocha/bin/mocha.js --exit --require mocha.config.cjs tests/components/*.test.jsx",
+    "test:gsheets": "mocha --exit --require mocha.config.cjs tests/services/googleSheetsService.test.js",
+    "test:drivecsv": "mocha --exit tests/services/driveCsvService.test.js",
+    "test:computation": "mocha --exit --require mocha.config.cjs tests/services/clientComputationService.test.js",
+    "test:all": "node --loader ./babel-test-loader.mjs ../../node_modules/mocha/bin/mocha.js --exit --require mocha.config.cjs tests/hooks/*.test.js tests/utils/*.test.js tests/components/*.test.jsx tests/services/googleSheetsService.test.js",
+    "test:services": "mocha --exit tests/services/driveCsvService.test.js tests/services/clientComputationService.test.js"
   },
   "keywords": [
     "shared",

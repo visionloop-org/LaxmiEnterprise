@@ -1,31 +1,104 @@
 /**
  * Multi-User Role-Based Authentication Service for Laxmi Enterprise
  * Supports Google / Gmail Account Roles, Admin & Supervisor Access Control
+ * Enforces strict authorization: only whitelisted & active roles can operate the app.
  * Zero Backend Server Dependency (Serverless & GitHub Pages compatible)
  */
 
-import { googleSheetsService } from './googleSheetsService.js'
+import { driveCsvService } from './driveCsvService.js'
 
 export class AuthService {
   constructor() {
     this.tokenKey = 'auth_token'
     this.userKey = 'auth_user'
+    this.memoryStore = {}
   }
 
   async login(usernameOrEmail, password = '') {
     const cleanInput = (usernameOrEmail || '').trim().toLowerCase()
-    const cleanPass = (password || '').trim()
 
-    // 1. Special Developer / Admin check for Developer accounts
-    if (cleanInput === 'ruhiljaiswal1993@gmail.com' || cleanInput === 'visionloop.in@gmail.com') {
-      const isVisionLoop = cleanInput === 'visionloop.in@gmail.com'
+    if (!cleanInput) {
+      throw new Error('Please enter your username or registered Gmail address.')
+    }
+
+    // 1. Ruhil Jaiswal — Supervisor Access
+    if (
+      cleanInput === 'ruhiljaiswal' || 
+      cleanInput === 'ruhil' || 
+      cleanInput === 'ruhiljaiswal@gmail.com' || 
+      cleanInput === 'ruhiljaiswal1993@gmail.com'
+    ) {
       const user = {
-        username: isVisionLoop ? 'visionloop.in@gmail.com' : 'Ruhiljaiswal1993@gmail.com',
-        email: isVisionLoop ? 'visionloop.in@gmail.com' : 'Ruhiljaiswal1993@gmail.com',
-        name: isVisionLoop ? 'Vision Loop (Developer)' : 'Ruhil Jaiswal (Developer)',
+        username: 'ruhiljaiswal',
+        email: cleanInput.includes('@') ? cleanInput : 'ruhiljaiswal@gmail.com',
+        name: 'Ruhil Jaiswal (Supervisor)',
+        role: 'supervisor',
+        access: 'supervisor',
+        shift: 'All',
+        status: 'Active'
+      }
+      const token = `token_supervisor_ruhil_${Date.now()}`
+      this.setToken(token)
+      this.setUser(user)
+      return { access_token: token, user }
+    }
+
+    // 2. Maa Laxmi Godown — Supervisor Access
+    if (
+      cleanInput === 'maalaxmi.godown@gmail.com' || 
+      cleanInput === 'maalaxmi' || 
+      cleanInput === 'godown' || 
+      cleanInput === 'supervisor'
+    ) {
+      const user = {
+        username: 'maalaxmi.godown@gmail.com',
+        email: 'maalaxmi.godown@gmail.com',
+        name: 'Maa Laxmi Godown (Supervisor)',
+        role: 'supervisor',
+        access: 'supervisor',
+        shift: 'All',
+        status: 'Active'
+      }
+      const token = `token_supervisor_godown_${Date.now()}`
+      this.setToken(token)
+      this.setUser(user)
+      return { access_token: token, user }
+    }
+
+    // 3. Gaurav Jaiswal — Administrator Access
+    if (
+      cleanInput === 'gauravjaiswal0304@gmail.com' || 
+      cleanInput === 'gaurav' || 
+      cleanInput === 'admin'
+    ) {
+      const user = {
+        username: 'gauravjaiswal0304@gmail.com',
+        email: 'gauravjaiswal0304@gmail.com',
+        name: 'Gaurav Jaiswal (Admin)',
+        role: 'admin',
+        access: 'admin',
+        shift: 'All',
+        status: 'Active'
+      }
+      const token = `token_admin_${Date.now()}`
+      this.setToken(token)
+      this.setUser(user)
+      return { access_token: token, user }
+    }
+
+    // 4. Vision Loop — Developer / Admin Access
+    if (
+      cleanInput === 'visionloop.in@gmail.com' || 
+      cleanInput === 'visionloop'
+    ) {
+      const user = {
+        username: 'visionloop.in@gmail.com',
+        email: 'visionloop.in@gmail.com',
+        name: 'Vision Loop (Developer)',
         role: 'developer',
         access: 'admin',
-        shift: 'All'
+        shift: 'All',
+        status: 'Active'
       }
       const token = `token_dev_${Date.now()}`
       this.setToken(token)
@@ -33,67 +106,40 @@ export class AuthService {
       return { access_token: token, user }
     }
 
-    // 2. If it's a Gmail address, verify against Google Sheets Users_Roles
-    if (cleanInput.includes('@')) {
-      try {
-        const config = googleSheetsService.loadConfig()
-        if (config && config.scriptUrl) {
-          const res = await fetch(`${config.scriptUrl}?action=checkRole&email=${encodeURIComponent(cleanInput)}`)
-          const data = await res.json()
-          if (data && data.status === 'success' && data.found) {
-            if (!data.allowed) {
-              throw new Error(`Account ${cleanInput} is suspended. Contact Administrator.`)
-            }
-            const role = (data.role || 'Supervisor').toLowerCase()
-            const isAdmin = role === 'admin' || role === 'developer'
-            const user = {
-              username: cleanInput,
-              email: cleanInput,
-              name: data.user?.name || cleanInput.split('@')[0],
-              role: role,
-              access: isAdmin ? 'admin' : (role === 'viewer' ? 'viewer' : 'supervisor'),
-              shift: data.user?.assignedShift || 'All'
-            }
-            const token = `token_gmail_${Date.now()}`
-            this.setToken(token)
-            this.setUser(user)
-            return { access_token: token, user }
-          }
+    // 5. Direct Role Lookup from driveCsvService Users_Roles table
+    try {
+      const localUsers = driveCsvService?.getTable('users_roles') || []
+      const matchedLocal = localUsers.find(u => 
+        (u.email || '').trim().toLowerCase() === cleanInput ||
+        (u.name || '').trim().toLowerCase() === cleanInput
+      )
+      if (matchedLocal) {
+        if ((matchedLocal.status || 'Active').toLowerCase() !== 'active') {
+          throw new Error(`Account "${cleanInput}" is suspended or inactive. Contact Administrator.`)
         }
-      } catch (err) {
-        console.warn('[AuthService] Live Google Sheets role check note:', err.message)
+        const role = (matchedLocal.role || 'Supervisor').toLowerCase()
+        const isAdmin = role === 'admin' || role === 'developer'
+        const isAccountant = role === 'accountant' || role === 'hr'
+        const user = {
+          username: matchedLocal.email || cleanInput,
+          email: matchedLocal.email || cleanInput,
+          name: matchedLocal.name || cleanInput,
+          role: role,
+          access: isAdmin ? 'admin' : (isAccountant ? 'accountant' : (role === 'viewer' ? 'viewer' : 'supervisor')),
+          shift: matchedLocal.assignedShift || 'All',
+          status: 'Active'
+        }
+        const token = `token_auth_${Date.now()}`
+        this.setToken(token)
+        this.setUser(user)
+        return { access_token: token, user }
       }
+    } catch (e) {
+      if (e.message && e.message.includes('suspended')) throw e
     }
 
-    // 2. Direct Username Credential Check
-    if (cleanInput === 'admin' || (cleanInput.includes('admin') && !cleanInput.includes('@'))) {
-      const user = { username: 'admin', email: 'admin@laxmi.com', name: 'System Administrator', role: 'admin' }
-      const token = `token_admin_${Date.now()}`
-      this.setToken(token)
-      this.setUser(user)
-      return { access_token: token, user }
-    }
-
-    if (cleanInput === 'supervisor' || cleanInput.startsWith('sup')) {
-      const user = { username: cleanInput, email: `${cleanInput}@laxmi.com`, name: 'Shift Supervisor', role: 'supervisor' }
-      const token = `token_supervisor_${Date.now()}`
-      this.setToken(token)
-      this.setUser(user)
-      return { access_token: token, user }
-    }
-
-    // 3. Flexible Default / Offline Access
-    const defaultRole = cleanInput.includes('admin') ? 'admin' : 'supervisor'
-    const user = { 
-      username: cleanInput || 'admin', 
-      email: cleanInput.includes('@') ? cleanInput : `${cleanInput || 'admin'}@laxmi.com`,
-      name: cleanInput ? cleanInput.split('@')[0] : 'Admin User', 
-      role: defaultRole 
-    }
-    const token = `token_${cleanInput}_${Date.now()}`
-    this.setToken(token)
-    this.setUser(user)
-    return { access_token: token, user }
+    // 6. Strict Access Denial — Reject any unauthorized user
+    throw new Error(`Access Denied: Account "${usernameOrEmail}" is not authorized. Only verified supervisors, accountants, and administrators are allowed to operate Laxmi Enterprise.`)
   }
 
   async loginWithCredentials(usernameOrEmail, password) {
@@ -107,6 +153,8 @@ export class AuthService {
   setToken(token) {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(this.tokenKey, token)
+    } else {
+      this.memoryStore[this.tokenKey] = token
     }
   }
 
@@ -114,12 +162,14 @@ export class AuthService {
     if (typeof localStorage !== 'undefined') {
       return localStorage.getItem(this.tokenKey)
     }
-    return null
+    return this.memoryStore[this.tokenKey] || null
   }
 
   setUser(user) {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(this.userKey, JSON.stringify(user))
+    } else {
+      this.memoryStore[this.userKey] = JSON.stringify(user)
     }
   }
 
@@ -128,17 +178,18 @@ export class AuthService {
       const user = localStorage.getItem(this.userKey)
       return user ? JSON.parse(user) : null
     }
-    return null
+    const user = this.memoryStore[this.userKey]
+    return user ? JSON.parse(user) : null
   }
 
   getUserRole() {
     const user = this.getUser()
-    return user ? (user.role || 'admin') : 'admin'
+    return user ? (user.role || 'supervisor') : null
   }
 
   isAdmin() {
     const user = this.getUser()
-    if (!user) return true
+    if (!user) return false
     const role = (user.role || '').toLowerCase()
     const access = (user.access || '').toLowerCase()
     return role === 'admin' || role === 'developer' || access === 'admin'
@@ -146,10 +197,10 @@ export class AuthService {
 
   isSupervisor() {
     const user = this.getUser()
-    if (!user) return true
+    if (!user) return false
     const role = (user.role || '').toLowerCase()
     const access = (user.access || '').toLowerCase()
-    return role === 'supervisor' || role === 'admin' || role === 'developer' || access === 'admin'
+    return role === 'supervisor' || role === 'admin' || role === 'developer' || access === 'admin' || access === 'supervisor'
   }
 
   clearSession() {
@@ -157,15 +208,14 @@ export class AuthService {
       localStorage.removeItem(this.tokenKey)
       localStorage.removeItem(this.userKey)
     }
+    delete this.memoryStore[this.tokenKey]
+    delete this.memoryStore[this.userKey]
   }
 
   isAuthenticated() {
-    if (typeof localStorage !== 'undefined' && !localStorage.getItem(this.tokenKey)) {
-      this.setToken('default_token')
-      this.setUser({ username: 'admin', email: 'admin@gmail.com', name: 'Administrator', role: 'admin' })
-      return true
-    }
-    return true
+    const token = this.getToken()
+    const user = this.getUser()
+    return !!(token && user)
   }
 }
 

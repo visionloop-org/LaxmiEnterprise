@@ -1,0 +1,46 @@
+# GitHub Auto-generated Release Notes Configuration
+# Controls what appears in "Generate release notes" on the Releases page
+# and the auto-generated changelog for new releases
+
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+      - automated
+      - stale
+      - wontfix
+      - duplicate
+      - invalid
+  categories:
+    - title: "🚀 New Features"
+      labels:
+        - enhancement
+    - title: "🐛 Bug Fixes"
+      labels:
+        - bug
+    - title: "🔒 Security Fixes"
+      labels:
+        - security
+    - title: "⚡ Performance Improvements"
+      labels:
+        - performance
+    - title: "📊 Google Sheets / Data"
+      labels:
+        - google-sheets
+        - data
+    - title: "📱 UI / UX Improvements"
+      labels:
+        - ui/ux
+    - title: "📦 Dependencies"
+      labels:
+        - dependencies
+    - title: "🏗️ CI / Build"
+      labels:
+        - ci/cd
+        - github-actions
+    - title: "📚 Documentation"
+      labels:
+        - documentation
+    - title: "🔧 Other Changes"
+      labels:
+        - "*"

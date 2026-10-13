@@ -1,7 +1,7 @@
 # Laxmi Enterprise TODO & Roadmap
 
-**Last Updated:** September 3, 2026  
-**Current System Status:** Production-Ready Serverless Monorepo (v4.0) with Google Sheets Database, Google Drive Storage, Supervisor Tablet UI, Admin Analytics Portal, Trip Tracking Lifecycle, and GitHub Pages Deployment.
+**Last Updated:** September 6, 2026  
+**Current System Status:** Production-Ready Serverless Monorepo (v5.0) with Multi-Spreadsheet Google Sheets Architecture, Google Drive Storage, Installable PWA Suite, Client-Centric Heavy Computation, Supervisor Tablet/Phone UI, Admin Analytics Portal, and GitHub Pages Deployment.
 
 ---
 
@@ -147,22 +147,79 @@
 - ✅ **Spreadsheet Role Governance**: Mapped Gmail addresses to permissions via the `Users_Roles` worksheet in Google Sheets.
 - ✅ **Zero Password Exposure**: No credentials stored in Google Sheets; security handled directly by Google's multi-factor authentication (2FA) and biometrics.
 
+### 14. Multi-Spreadsheet Modular Serverless Architecture (v5.0 - Completed)
+- ✅ **3 Domain Spreadsheets Database**: Partitioned the database across 3 specialized Google Spreadsheets in `Vision Loop - Laxmi Enterprise / 01_Live_Database /`:
+  - `01_Laxmi_HR_Master` (Employees, Contractors, Rates_Config, Users_Roles)
+  - `02_Laxmi_Attendance_Fleet` (Vehicles, Attendance_Sessions, Attendance_Records, Vehicle_Assignments, Vehicle_Trips, Extra_Labour_Requests, Vehicle_Maintenance)
+  - `03_Laxmi_Payroll_Accounting` (Daily_Payroll, Contractor_Settlements, Monthly_Summary, Audit_Logs)
+- ✅ **Zero Concurrency Lock Contention**: Solved spreadsheet write lock contention between field supervisors recording check-ins and finance admins running payroll.
+- ✅ **Google Drive Access Control**: Partitioned sensitive payroll and contractor settlement records into a dedicated spreadsheet for restricted owner/accountant permissions.
+- ✅ **Apps Script Gateway Router (`Code.gs` v5.0)**: Built `getTableSpreadsheet(tableName)` dynamically routing read/write operations to the appropriate spreadsheet via ScriptProperties caching, automatic Drive discovery, and graceful single-sheet fallback.
+- ✅ **Automated Multi-Spreadsheet Provisioning**: Implemented `setupMultiSpreadsheetArchitecture()` to automatically create, format, color-code, and seed data into all 3 spreadsheets with 1 click.
+- ✅ **Frontend Multi-Spreadsheet Service & UI**:
+  - Upgraded `@laxmi/shared/services/googleSheetsService.js` with `fetchMultiSpreadsheetMeta()`, `setupMultiSpreadsheets()`, and `openSpreadsheet()`.
+  - Redesigned `GoogleSheetsSyncModal.jsx` displaying live status, direct 1-click sheet links, and XLSX exports for all 3 domain spreadsheets.
+  - Added quick-access buttons (`👥 HR`, `🚛 Fleet`, `💰 Payroll`) to `AdminHeader.jsx`.
+- ✅ **Test Verification**: Added comprehensive unit test coverage in `googleSheetsService.test.js` passing 100% green.
+
+### 15. Installable Web App (PWA) & Client-Centric Heavy Computation (v5.0 - Completed)
+- ✅ **Progressive Web App (PWA) Suite**:
+  - Web App Manifests in `apps/supervisor/public/manifest.json` and `apps/admin/public/manifest.json` with standalone mode, orientation support, shortcuts, and curated high-resolution icons (192px, 512px, maskable).
+  - Service worker offline caching (`sw.js`) for fast boot in remote quarry/yard locations without internet.
+  - Reusable [`InstallAppButton.jsx`](./packages/shared/components/InstallAppButton.jsx) supporting Android `beforeinstallprompt` and iOS Safari installation workflows.
+  - Unified root portal PWA manifest and service worker in `dist/`.
+- ✅ **Client-Centric Heavy Computation Engine**:
+  - Built [`ClientComputationService.js`](./packages/shared/services/clientComputationService.js) executing all computation on the client device CPU (phone, tablet, PC).
+  - Implemented 1.5x overtime wage calculation (`extraHours * (baseRate / 8) * 1.5`).
+  - Implemented contractor commission settlements (`wages * (rate / 100)`).
+  - Implemented knapsack cargo and passenger capacity optimization (max 1 Driver, 1 Chalan Man, 6 Workers, 8 Total).
+  - Implemented live capacity violation and conflict detection.
+  - Implemented instant in-memory multi-attribute filtering.
+- ✅ **Mobile Ergonomics**:
+  - Compact header and sliding drawer menu for Android smartphones in `apps/supervisor`.
+  - Live check-in counters (`Present: X / Y`).
+  - Touch-optimized targets with `touch-action: manipulation`.
+- ✅ **Automated Unit Testing**:
+  - Created [`clientComputationService.test.js`](./packages/shared/tests/services/clientComputationService.test.js) with 9/9 passing tests in 11ms.
+  - Integrated `test:computation` into package scripts and `.husky/pre-push`.
+- ✅ **Role Assignments**:
+  - Admin: `Gauravjaiswal0304@gmail.com`
+  - Supervisor: `Maalaxmi.godown@gmail.com`
+
 ---
 
-## 🛠️ In Progress & Current Focus
+## 🛠️ In Progress & Current Focus (Milestone 5.4 & 5.5)
 
-- [ ] **PWA Offline Manifest & Service Worker**: Add Service Worker caching for complete offline operation in remote quarry/yard sites with spotty mobile networks.
+### Milestone 5.4: 5-Year Data Retention & Automated Purge Engine
+- [x] **5-Year Purge Routine**: Implemented in `DriveCsvService.pruneRecordsOlderThan5Years()` with automated cutoff logic, verified with 4/4 passing unit tests.
+- [ ] **Annual Compliance Archive**: Compile annual aggregated attendance and gross compensation totals into `03_Laxmi_Payroll_Accounting / Yearly_Archives` before raw record pruning.
+- [ ] **Storage Cap Governance**: Enforce database compaction and vacuuming to guarantee active operational data remains strictly under **50 MB** (<1% of the 2 GB allowance).
+- [ ] **Automated Monthly Payroll Run**: Add scheduled trigger to compile and archive monthly payroll summaries into `03_Monthly_Payroll_Reports`.
 - [ ] **Google Drive PDF Archival Hook**: Automatically upload generated supervisor PDF attendance sheets directly into Google Drive `04_Supervisor_PDF_Exports`.
-- [ ] **Automated Monthly Payroll Run**: Add Apps Script scheduled trigger to compile and archive monthly payroll summaries into `03_Monthly_Payroll_Reports`.
+
+### Milestone 5.5: Pure Live Attendance Engine, Batch Sync & File Size Refactoring
+- [x] **Pure Online Live Attendance Focus**: Streamlined supervisor view to eliminate extraneous logistics clutter. Categories focused 100% on workers (`Workers`, `Drivers`, `Chalan Men`, `Extra Labour`, `Office`).
+- [x] **1-Touch Fast Gate Closure ("Mark Remaining Absent")**: Added instant gate closure action with single confirmation that marks all remaining unpunched workers absent and immediately syncs to Google Sheets.
+- [x] **Micro-Batch Sync Queue**: Added `recordAttendanceBatch` to `googleSheetsService.js` and `sheetsDomainOperations.js` for instant, non-blocking multi-record updates in a single pass.
+- [x] **Modular Codebase (<600 lines per file)**: Every single active code file across `packages/shared`, `apps/supervisor`, and `apps/admin` refactored to remain strictly under 600 lines (far below 1,000 line ceiling).
+- [x] **Zero Operating Costs ($0/₹0)**: Client-side compute with free Google Sheets / Drive / GitHub Pages infrastructure ensuring zero recurring server or API costs.
+- [x] **1-Click Bank Transfer CSV Export**: Implemented in `DriveCsvService.exportBankTransferCSV()` generating bank-ready NEFT/RTGS bulk payment files (SBI/Axis/HDFC), verified with unit tests.
+- [x] **Mid-Month Salary Advance (Peshgi / Khata) Ledger**: Added dedicated ledger and UI modal in Admin dashboard (`SalaryAdvanceModal.jsx`). Automatically deducts advances from gross wages in `ClientComputationService` and annotates deductions in the bank CSV export.
+- [x] **Supervisor App Bundle Optimization**: Converted `pdfHandler` into a lazy on-demand import, reducing initial bundle size from 851 kB to 438 kB (~48% reduction).
+- [ ] **RBAC Matrix Enforcement**: Formalize role guards across all views:
+  - `Admin` / `Owner`: Full governance, wage rates, emergency unlocks.
+  - `Accountant` / `HR`: Attendance audit, payroll calculation, bank exports.
+  - `Supervisor`: Touch attendance, vehicle dispatch, offline queue.
+  - `Worker`: Read-only punch records and digital pay slip view.
 - [ ] **E2E Integration Testing**: End-to-end browser test flow validating supervisor attendance entry, vehicle dispatch, delivery completion, and admin sync.
 
 ---
 
 ## 🔮 Upcoming Roadmap
 
-### Phase 5: Hardware & Entry Scanner Integrations (LWAS Prototype)
-- [ ] Mobile/PWA camera QR scanner support for field supervisors.
-- [ ] USB QR Scanner keyboard-wedge listener for rapid worker ID scanning at entry gates.
-- [ ] Turnstile rotation sensor integration for physical gate access verification.
-- [ ] Thermal token printer integration for single-use physical entry tokens.
-- [ ] NFC / RFID badge readers and biometric face recognition evaluation.
+### Phase 6: Hardware & Entry Scanner Integrations (LWAS Prototype)
+- [x] **Mobile/PWA Camera QR Scanner**: Built native Web `BarcodeDetector` camera QR ID scanner in `CameraQrScannerModal.jsx` for supervisor phone/tablet with auto-chime and on-time rule enforcement (0 hardware cost).
+- [ ] **USB QR Scanner Keyboard-Wedge Listener**: Fast USB/Bluetooth 1D/2D barcode reader listener for desktop/laptop entry gates.
+- [ ] **Turnstile Rotation Sensor Integration**: Physical gate access verification.
+- [ ] **Thermal Token Printer Integration**: Physical single-use token slips for extra labour.
+- [ ] **NFC / RFID Badge Readers**: Biometric and proximity card integration.

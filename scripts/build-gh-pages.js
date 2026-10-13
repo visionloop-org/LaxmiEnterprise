@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
 const distDir = path.resolve(rootDir, 'dist')
 
-console.log('🚀 Assembling Laxmi Enterprise for GitHub Pages...')
+console.log('🚀 Assembling Laxmi Enterprise for GitHub Pages & PWA...')
 
 // 1. Build apps/supervisor if not already built
 const supervisorDist = path.resolve(rootDir, 'apps/supervisor/dist')
@@ -45,13 +45,149 @@ fs.cpSync(supervisorDist, path.resolve(distDir, 'supervisor'), { recursive: true
 // Copy admin build to dist/admin
 fs.cpSync(adminDist, path.resolve(distDir, 'admin'), { recursive: true })
 
-// Copy default landing page to dist/index.html
+// Copy PWA icon assets to root dist
+const supervisorPublic = path.resolve(rootDir, 'apps/supervisor/public')
+const iconFiles = [
+  'favicon.svg',
+  'icon-192.png',
+  'icon-512.png',
+  'icon-maskable.png',
+  'icon-maskable.svg',
+  'apple-touch-icon.png'
+]
+
+for (const icon of iconFiles) {
+  const src = path.resolve(supervisorPublic, icon)
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, path.resolve(distDir, icon))
+  }
+}
+
+// 4. Generate root manifest.json for unified hub
+const rootManifest = {
+  id: 'laxmi-enterprise-hub-pwa',
+  name: 'Laxmi Enterprise — Workforce & Fleet Portal',
+  short_name: 'Laxmi Enterprise',
+  description: 'Unified Workforce Attendance, Fleet Allocation & Administrative Payroll System',
+  start_url: './index.html',
+  scope: './',
+  display: 'standalone',
+  orientation: 'any',
+  background_color: '#0b0f19',
+  theme_color: '#0f172a',
+  lang: 'en-IN',
+  dir: 'ltr',
+  categories: ['business', 'productivity', 'utilities'],
+  icons: [
+    {
+      src: './favicon.svg',
+      sizes: 'any',
+      type: 'image/svg+xml',
+      purpose: 'any'
+    },
+    {
+      src: './icon-192.png',
+      sizes: '192x192',
+      type: 'image/png',
+      purpose: 'any'
+    },
+    {
+      src: './icon-512.png',
+      sizes: '512x512',
+      type: 'image/png',
+      purpose: 'any'
+    },
+    {
+      src: './icon-maskable.png',
+      sizes: '512x512',
+      type: 'image/png',
+      purpose: 'maskable'
+    }
+  ],
+  shortcuts: [
+    {
+      name: 'Supervisor Attendance',
+      short_name: 'Supervisor',
+      description: 'Open live tablet workforce attendance roster',
+      url: './supervisor/',
+      icons: [{ src: './favicon.svg', sizes: 'any' }]
+    },
+    {
+      name: 'Admin & Payroll Portal',
+      short_name: 'Admin',
+      description: 'Open admin portal, payroll & contractor settlements',
+      url: './admin/',
+      icons: [{ src: './favicon.svg', sizes: 'any' }]
+    }
+  ]
+}
+fs.writeFileSync(path.resolve(distDir, 'manifest.json'), JSON.stringify(rootManifest, null, 2), 'utf8')
+
+// 5. Generate root sw.js
+const rootSw = `/**
+ * Laxmi Enterprise Unified Portal — Service Worker
+ * Version: 1.0.0
+ */
+const CACHE_NAME = 'laxmi-hub-v1';
+const PRECACHE = [
+  './',
+  './index.html',
+  './manifest.json',
+  './favicon.svg',
+  './icon-192.png',
+  './icon-512.png',
+  './icon-maskable.png',
+  './apple-touch-icon.png'
+];
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(caches.open(CACHE_NAME).then((c) => c.addAll(PRECACHE)));
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_NAME && k.startsWith('laxmi-hub-')).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(
+    caches.match(e.request).then((res) => {
+      return res || fetch(e.request).then((fetchRes) => {
+        if (fetchRes && fetchRes.status === 200) {
+          const clone = fetchRes.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(e.request, clone));
+        }
+        return fetchRes;
+      }).catch(() => caches.match('./index.html'));
+    })
+  );
+});
+`
+fs.writeFileSync(path.resolve(distDir, 'sw.js'), rootSw, 'utf8')
+
+// 6. Copy default landing page to dist/index.html with PWA meta & Install Button
 const landingHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laxmi Enterprise — Workforce & Fleet Portal</title>
+  <title>Laxmi Enterprise — Workforce &amp; Fleet Portal</title>
+  
+  <!-- PWA & Mobile Web App Meta -->
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Laxmi Enterprise Unified Workforce Attendance, Fleet Capacity &amp; Administrative Payroll System">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Laxmi Enterprise">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -85,6 +221,14 @@ const landingHtml = `<!DOCTYPE html>
       width: 100%;
       text-align: center;
     }
+    .top-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
     .badge {
       display: inline-flex;
       align-items: center;
@@ -96,7 +240,37 @@ const landingHtml = `<!DOCTYPE html>
       font-size: 13px;
       font-weight: 600;
       color: #34d399;
-      margin-bottom: 20px;
+    }
+    .install-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(59, 130, 246, 0.18);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #93c5fd;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .install-btn:hover {
+      background: #2563eb;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .app-installed-badge {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6ee7b7;
     }
     h1 {
       font-size: 2.75rem;
@@ -209,7 +383,12 @@ const landingHtml = `<!DOCTYPE html>
 </head>
 <body>
   <div class="container">
-    <div class="badge">⚡ Serverless &amp; Google Sheets Powered</div>
+    <div class="top-badges">
+      <div class="badge">⚡ Serverless &amp; Google Sheets Powered</div>
+      <button type="button" id="installBtn" class="install-btn">📲 Install App on Device</button>
+      <div id="installedBadge" class="app-installed-badge">✓ App Installed</div>
+    </div>
+
     <h1>Laxmi Enterprise</h1>
     <p class="subtitle">Unified Workforce Attendance, Fleet Capacity &amp; Administrative Payroll System</p>
     
@@ -237,11 +416,66 @@ const landingHtml = `<!DOCTYPE html>
 
     <div class="features">
       <div class="feature-item"><span>✓</span> 100% Client-Side</div>
+      <div class="feature-item"><span>✓</span> Installable PWA</div>
       <div class="feature-item"><span>✓</span> Google Sheets Data Store</div>
       <div class="feature-item"><span>✓</span> Offline Cache &amp; Instant Sync</div>
       <div class="feature-item"><span>✓</span> GitHub Pages Hosted</div>
     </div>
   </div>
+
+  <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => console.log('✅ Hub PWA ServiceWorker registered:', reg.scope))
+          .catch((err) => console.warn('⚠️ Hub PWA ServiceWorker registration failed:', err));
+      });
+    }
+
+    // PWA Install Prompt Handler
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+    const installedBadge = document.getElementById('installedBadge');
+
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (isStandalone) {
+      if (installBtn) installBtn.style.display = 'none';
+      if (installedBadge) installedBadge.style.display = 'inline-flex';
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (installBtn) {
+        installBtn.style.display = 'inline-flex';
+        installBtn.style.background = '#2563eb';
+        installBtn.style.color = '#ffffff';
+      }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      deferredPrompt = null;
+      if (installBtn) installBtn.style.display = 'none';
+      if (installedBadge) installedBadge.style.display = 'inline-flex';
+    });
+
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            if (installBtn) installBtn.style.display = 'none';
+            if (installedBadge) installedBadge.style.display = 'inline-flex';
+          }
+          deferredPrompt = null;
+        } else {
+          alert('To install Laxmi Enterprise on your device:\\n\\n• Chrome/Edge: Click the Install icon in the address bar (⊕)\\n• Android: Tap Menu (⋮) -> Add to Home screen\\n• iOS Safari: Tap Share (⎋) -> Add to Home Screen (⊞)');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
 `
@@ -251,4 +485,4 @@ fs.writeFileSync(path.resolve(distDir, 'index.html'), landingHtml, 'utf8')
 // Also create .nojekyll so GitHub Pages serves all assets and folders properly
 fs.writeFileSync(path.resolve(distDir, '.nojekyll'), '', 'utf8')
 
-console.log('✅ GitHub Pages build completed in ./dist!')
+console.log('✅ GitHub Pages assembly completed with PWA in ./dist!')

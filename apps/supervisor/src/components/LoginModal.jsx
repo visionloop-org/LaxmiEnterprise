@@ -166,25 +166,33 @@ export default function LoginModal({ onLoginSuccess }) {
           </button>
         </form>
 
-        {/* Fast Shift Supervisor Tap */}
+        {/* Fast Authorized Access */}
         <div className="mt-4 pt-3 border-t border-slate-800 text-center">
-          <p className="text-xs text-slate-400 mb-2">Quick 1-Tap Access:</p>
-          <div className="flex justify-center gap-2">
+          <p className="text-xs text-slate-400 mb-2">Authorized 1-Tap Login:</p>
+          <div className="flex flex-wrap justify-center gap-2">
             <button
               type="button"
-              onClick={() => handleAuth('supervisor')}
+              onClick={() => handleAuth('ruhiljaiswal')}
               disabled={isLoading}
-              className="text-xs bg-slate-800 hover:bg-slate-700 text-sky-400 px-3 py-1 rounded border border-slate-700"
+              className="text-xs bg-slate-800 hover:bg-slate-700 text-sky-400 px-3 py-1.5 rounded-lg border border-slate-700 font-semibold cursor-pointer active:scale-95 transition"
             >
-              📱 Shift Supervisor
+              📱 Ruhil Jaiswal (Supervisor)
             </button>
             <button
               type="button"
-              onClick={() => handleAuth('visionloop.in@gmail.com')}
+              onClick={() => handleAuth('maalaxmi.godown@gmail.com')}
               disabled={isLoading}
-              className="text-xs bg-slate-800 hover:bg-slate-700 text-emerald-400 px-3 py-1 rounded border border-slate-700"
+              className="text-xs bg-slate-800 hover:bg-slate-700 text-emerald-400 px-3 py-1.5 rounded-lg border border-slate-700 font-semibold cursor-pointer active:scale-95 transition"
             >
-              👑 Vision Loop
+              📱 Godown Supervisor
+            </button>
+            <button
+              type="button"
+              onClick={() => handleAuth('gauravjaiswal0304@gmail.com')}
+              disabled={isLoading}
+              className="text-xs bg-slate-800 hover:bg-slate-700 text-amber-400 px-3 py-1.5 rounded-lg border border-slate-700 font-semibold cursor-pointer active:scale-95 transition"
+            >
+              🏢 Admin (Gaurav)
             </button>
           </div>
         </div>

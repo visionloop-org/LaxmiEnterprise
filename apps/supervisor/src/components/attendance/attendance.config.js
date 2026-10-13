@@ -1,24 +1,32 @@
 export const ATTENDANCE_STATUS = {
   pending: {
-    label: 'Pending',
+    label: 'Pending Entrance',
+    sublabel: 'Awaiting Entry',
+    shortLabel: 'Pending',
     bg: 'bg-gray-100',
     text: 'text-gray-800',
     icon: null
   },
   on_time: {
-    label: 'On Time',
-    bg: 'bg-green-100',
-    text: 'text-green-800',
+    label: 'Entry at Correct Time',
+    sublabel: 'Full Day Pay + Incentive',
+    shortLabel: 'Correct Time',
+    bg: 'bg-emerald-100',
+    text: 'text-emerald-800',
     icon: 'CheckCircle'
   },
   arrived: {
-    label: 'Arrived',
+    label: 'Entry after Time',
+    sublabel: 'Full Day Pay',
+    shortLabel: 'After Time',
     bg: 'bg-amber-100',
     text: 'text-amber-800',
     icon: 'Clock'
   },
   absent: {
     label: 'Absent',
+    sublabel: '0 Pay',
+    shortLabel: 'Absent',
     bg: 'bg-red-100',
     text: 'text-red-800',
     icon: 'XCircle'

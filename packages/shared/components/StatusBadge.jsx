@@ -21,9 +21,28 @@ const STATUS_MAP = {
   absent:           { label: 'Absent',          cls: 'badge-error'   },
 }
 
-export function StatusBadge({ status, className = '' }) {
+export function StatusBadge({ status, className = '', showDot = true }) {
   const b = STATUS_MAP[status] || { label: status || '—', cls: 'badge-neutral' }
-  return <span className={`badge ${b.cls} ${className}`.trim()}>{b.label}</span>
+  return (
+    <span className={`badge ${b.cls} ${className}`.trim()}>
+      {showDot && (
+        <span 
+          className="badge-dot" 
+          aria-hidden="true"
+          style={{
+            display: 'inline-block',
+            width: '6px',
+            height: '6px',
+            borderRadius: '50%',
+            backgroundColor: 'currentColor',
+            opacity: 0.85,
+            flexShrink: 0
+          }} 
+        />
+      )}
+      <span>{b.label}</span>
+    </span>
+  )
 }
 
 export default StatusBadge

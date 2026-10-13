@@ -1,7 +1,7 @@
 # Laxmi Enterprise — Master Workspace Instructions
 
-**Version:** 4.0  
-**Last Updated:** September 2, 2026
+**Version:** 5.0  
+**Last Updated:** September 6, 2026
 
 ---
 
@@ -9,91 +9,96 @@
 
 This document governs the active projects in this monorepo workspace:
 
-1. **`apps/supervisor`** — Supervisor-facing touch tablet web application.
-2. **`apps/admin`** — Administrative analytics, payroll, and governance portal.
-3. **`packages/shared`** — Centralized React Query hooks, Google Sheets services, UI components, and TypeScript contracts.
-4. **`google-sheets`** — Google Apps Script Web App API and database schema.
+1. **`apps/supervisor`** — Supervisor-facing installable PWA (Progressive Web App) optimized for Android tablets and smartphones.
+2. **`apps/admin`** — Administrative analytics, automated payroll, contractor settlements, and governance portal (PWA supported).
+3. **`packages/shared`** — Centralized React Query hooks, Google Sheets services, client computation engine (`ClientComputationService`), UI components, and TypeScript contracts.
+4. **`google-sheets`** — Google Apps Script Web App API (`Code.gs`) routing across 3 domain-specific spreadsheets, backup routines, and schema definitions.
 5. **`Marker-CS-Extractor`** — Python document data extraction utility.
 
-Each project maintains its own specific instruction document. This master document establishes core boundaries, contracts, and interaction protocols.
+This master document establishes core boundaries, multi-spreadsheet partitioning, user role assignments, client-side heavy computation rules, and interaction protocols.
 
 ---
 
-## 2. Source of Truth
+## 2. Source of Truth & Database Partitioning
 
-The **Google Sheets database and Google Drive storage** are the absolute and single source of truth for:
-- Employees and category configuration
-- Attendance sessions and attendance records
-- Vehicle assignments and capacity constraints
-- Vehicle trips and task completion lifecycles
-- Session finalization, unlocking, and locking states
-- Immutable audit trail events
-- Official report generation and payroll calculations
+The **Google Sheets database and Google Drive storage** are the absolute, 100% serverless single source of truth partitioned across **3 domain-specific Google Spreadsheets** inside Google Drive (`Vision Loop - Laxmi Enterprise / 01_Live_Database /`):
 
-**Frontend Rule:** Frontend applications are strictly presentation and user-intent collection layers. Frontends must never bypass Google Sheets validation, treat local browser state as authoritative, or implement business logic that should reside in the Google Apps Script Web App.
+1. **`01_Laxmi_HR_Master`**:
+   - `Employees`, `Contractors`, `Rates_Config`, `Users_Roles`
+2. **`02_Laxmi_Attendance_Fleet`**:
+   - `Vehicles`, `Attendance_Sessions`, `Attendance_Records`, `Vehicle_Assignments`, `Vehicle_Trips`, `Extra_Labour_Requests`, `Vehicle_Maintenance`
+3. **`03_Laxmi_Payroll_Accounting`**:
+   - `Daily_Payroll`, `Contractor_Settlements`, `Monthly_Summary`, `Audit_Logs`
+
+### Automated Daily Snapshots & 5-Year Rolling Lifecycle
+1. The Google Apps Script routine `backupSpreadsheetToDrive()` executes daily to clone all 3 active sheets into `Vision Loop - Laxmi Enterprise / 02_Daily_Attendance_Backups/` with date-time stamps.
+2. **5-Year Data Retention Engine**: Attendance records, trip histories, and audit logs older than 5 years (1,825 days) are automatically deleted via a monthly scheduled routine. Active operational data is strictly maintained under **50 MB** (<1% of the 2 GB lifetime allowance). Annual payroll summaries are archived prior to purge.
 
 ---
 
-## 3. Multi-App Integration Contract
+## 3. Role Assignments & Access Governance
 
-All client applications (React web applications, Python automation scripts, mobile clients, and kiosk scanners) communicate solely through the Google Apps Script Web App API.
+User authentication is performed via Google Identity Services (GIS) OpenID Connect JWT tokens, mapped to roles in the `Users_Roles` worksheet of `01_Laxmi_HR_Master`:
+
+| Email / Role | Assigned Role | Permissions & Access Scope |
+|---|---|---|
+| **`Gauravjaiswal0304@gmail.com`** / **`admin@gmail.com`** | **Admin / Owner** | Full system access across all spreadsheets: workforce directory, base wage editing, 1.5x overtime approval, contractor agency settlements, session emergency unlocks, and system configuration. |
+| **Finance Desk** | **Accountant / HR** | Attendance reconciliation, monthly payroll calculation, wage discrepancy adjustments, 1-click Bank Bulk Transfer CSV exports (NEFT/RTGS), and salary slip generation. |
+| **`Maalaxmi.godown@gmail.com`** | **Supervisor** | Field operations access restricted to `02_Laxmi_Attendance_Fleet` and `01_Laxmi_HR_Master`: daily shift check-ins, vehicle capacity allocations, trip dispatch & delivery tracking, and extra labour requests. |
+| **Field Employees** | **Worker** | Self-service read-only access: View personal attendance punch history, overtime hours, and digital salary slips. |
+
+---
+
+## 4. Client-Centric Heavy Computation Architecture
+
+Because both the supervisor and admin web applications are installed as Progressive Web Apps (PWA) directly on Android mobile phones, tablets, and desktop workstations, **all heavy computation is executed 100% on the client device CPU** via [`ClientComputationService`](./packages/shared/services/clientComputationService.js):
+
+- **Payroll & Overtime Calculations**: Computes base wages, 1.5x overtime compensation (`extraHours * (baseRate / 8) * 1.5`), and incentives with precision.
+- **Contractor Agency Settlements**: Aggregates worker man-days, gross labour costs, and contractor commission payouts (`wages * (rate / 100)`).
+- **Fleet Knapsack Cargo & Headcount Packing**: Optimizes worker-to-vehicle seat assignments subject to hard constraints (max 1 Driver, 1 Chalan Man, 6 Workers, 8 total passengers).
+- **Live Conflict Detection**: Detects capacity violations, duplicate vehicle assignments, and unassigned present drivers in real time.
+- **High-Speed In-Memory Filtering**: Performs multi-attribute filtering (category, status, name search, alphabetical ranges) locally with sub-millisecond responsiveness.
+
+**Performance Benefit**: Offloading heavy math from Google Apps Script ensures zero execution timeout errors, avoids Google Sheets formula overhead, and provides an instantaneous 60 FPS user experience even during remote field network latency.
+
+---
+
+## 5. Multi-App Integration Contract
+
+All client applications operate on a **Direct Auth-First Contract**. With `Code.gs` retired, clients communicate directly with partitioned storage via authenticated sessions:
 
 ```
-Client Intent → Google Sheets API → Sheet Validation → Drive Storage → Audit Event → Response (200/400)
+User Action → Client Computation Engine (Instant Feedback) → Offline IndexedDB Queue → Direct Auth Verification (AuthService) → Partitioned Storage (Drive CSV / D1) → Success
 ```
 
-- **Google Sheets Single Contract:** The Google Apps Script Web App defines and exports the complete REST API contract.
-- **Type Safety:** `packages/shared/types/` must be kept in sync with the Google Sheets schema.
-- **Optimistic Concurrency:** State-changing requests must supply current session data. Conflicts return appropriate error responses to trigger safe client reconciliation.
-- **Idempotency:** Session finalization and status mutations must be idempotent. Duplicate requests must never produce duplicate audit events or corrupt session state.
+- **Direct Auth Validation**: Operations verify caller role (`Admin`, `Supervisor`, `Accountant/HR`, `Worker`) directly in memory and session claims before performing mutations.
+- **Micro-Batch Sync**: Writes are buffered locally in IndexedDB and committed in atomic batches to eliminate lock contention.
+- **Offline-First Resilience**: Mutations are instantly saved in local storage and buffered when offline, synchronizing automatically when connectivity is restored.
+- **Optimistic Concurrency**: Session updates send version counters to prevent accidental overwrites.
+- **5-Year Data Lifecycle**: Pruning policies automatically discard raw shift records and audit logs older than 5 years to keep active storage under 50 MB (<1% of quota).
+- **Formula Injection Sanitization**: All user strings beginning with `=`, `+`, `-`, or `@` are sanitized by prepending a single quote `'`.
 
 ---
 
-## 4. Responsibilities by Component
+## 6. Installable Web App (PWA) Standards
 
-### 4.1. Supervisor Web Application (`apps/supervisor/`)
-- Display fast, landscape tablet-optimized spreadsheet views.
-- Capture attendance intent (On Time, Arrived with time, Absent) with non-blocking feedback.
-- Manage vehicle assignments and render real-time capacity progress indicators.
-- Track vehicle dispatch, site arrival, product delivery, and return via `TripTrackerModal`.
-- Submit employee addition requests (`RequestEmployeeModal`) for administrative approval.
-- Maintain an offline mutation queue for network interruptions.
-- Never finalize sessions locally or bypass Google Sheets validation.
-
-### 4.2. Admin Portal (`apps/admin/`)
-- Provide high-level organizational analytics across flexible date ranges.
-- Calculate daily payroll and overtime compensation based on verified attendance and category rates.
-- Manage the pending employee approval queue (Approve, Reject, Edit, Delete).
-- Execute audited session unlocks to reset finalized sessions when supervisor corrections are warranted.
-- Monitor active fleet utilization and vehicle trip lifecycles.
-- Export authoritative CSV reports for payroll, attendance, and fleet status.
-- Configure Google Sheets Web App URL and sync settings.
-
-### 4.3. Shared Package (`packages/shared/`)
-- Encapsulate all Google Sheets API communication inside `googleSheetsService.js`.
-- Provide synchronized React Query hooks with automatic cache invalidation.
-- Share reusable UI components (`ArrivedTimeModal`, `ErrorBoundary`, `LoadingSpinner`).
-- Prevent code duplication across applications.
-- Implement localStorage fallback for offline operation with auto-sync on reconnection.
-
-### 4.4. Google Sheets Database (`google-sheets/`)
-- Authenticate users via Gmail and enforce role-based access control (`admin`, `supervisor`).
-- Execute all data mutations inside Google Sheets with audit logging.
-- Enforce strict vehicle capacity: max 1 Driver, max 1 Chalan Man, max 6 Workers, max 8 total employees.
-- Record append-only audit events in `Audit_Logs` for every data change.
-- Provide clean JSON REST API documentation and health check endpoints.
-- Automated daily backups to Google Drive `02_Daily_Attendance_Backups` folder.
+1. **Manifest Configuration**: Both `apps/supervisor` and `apps/admin` supply valid Web App Manifests with `display: "standalone"`, `orientation: "any"`, high-resolution icons (192x192, 512x512, maskable), and quick-action shortcuts.
+2. **Service Worker Offline Caching**: Static shell assets and HTML/CSS/JS bundles are cached for seamless offline launching in remote quarry or yard locations without cellular reception.
+3. **In-App Installation**: Both applications integrate [`InstallAppButton.jsx`](./packages/shared/components/InstallAppButton.jsx) providing an intuitive "Install App" button that handles native `beforeinstallprompt` on Android and provides clear guidance for iOS Safari users.
+4. **Touch & Mobile Ergonomics**: Android tablets and smartphones feature large 48–56px touch targets, mobile sliding drawers for compact screens, and touch optimizations (`touch-action: manipulation`).
 
 ---
 
-## 5. Error and Versioning Policy
+## 7. Error and Versioning Policy
 
-- Google Sheets API errors must return standardized payloads containing:
-  - `status` (e.g. `success`, `error`)
-  - `message` (Safe user-facing description)
-  - `details` (Additional context for client-side error handling)
-- If an API breaking change is required:
-  1. Update Google Apps Script Web App (`google-sheets/Code.gs`).
-  2. Update `packages/shared/services/googleSheetsService.js` to handle new responses.
-  3. Update affected consumers in `apps/supervisor` and `apps/admin`.
-  4. Increment instruction versions accordingly.
+- Google Sheets API errors return standardized payloads containing:
+  - `status` (`success`, `error`)
+  - `message` (User-friendly message)
+  - `details` (Contextual debug details)
+- If an API schema change is made:
+  1. Update Google Apps Script (`google-sheets/Code.gs`).
+  2. Update `packages/shared/services/googleSheetsService.js`.
+  3. Update `packages/shared/types/` contracts.
+  4. Run automated test suites: `npm run test:computation`, `npm run test:gsheets`, `npm run test:utils`.
+  5. Assemble production pages bundle: `npm run build:pages`.
+

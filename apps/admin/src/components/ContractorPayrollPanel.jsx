@@ -15,7 +15,9 @@ export default function ContractorPayrollPanel({
   contractorSummary,
   showContractor,
   setShowContractor,
-  onExportCsv
+  onExportCsv,
+  onExportBankCsv,
+  onOpenAdvanceModal
 }) {
   return (
     <div className="panel">
@@ -25,6 +27,26 @@ export default function ContractorPayrollPanel({
           <p className="panel-subtitle">Daily wages, overtime &amp; incentives grouped by contractor</p>
         </div>
         <div className="panel-actions">
+          {onOpenAdvanceModal && (
+            <button
+              className="export-button"
+              style={{ backgroundColor: '#7c2d12', borderColor: '#ea580c', color: '#ffedd5' }}
+              onClick={onOpenAdvanceModal}
+              title="Record or review employee cash advances"
+            >
+              📒 Cash Advances (Khata)
+            </button>
+          )}
+          {onExportBankCsv && (
+            <button
+              className="export-button"
+              style={{ backgroundColor: '#065f46', borderColor: '#059669', color: '#6ee7b7' }}
+              onClick={onExportBankCsv}
+              title="Download NEFT / RTGS Bank Transfer CSV"
+            >
+              🏦 Bank Transfer CSV
+            </button>
+          )}
           <button className="export-button" onClick={onExportCsv}>↓ Export CSV</button>
           <button
             className={`panel-toggle ${showContractor ? 'open' : ''}`}

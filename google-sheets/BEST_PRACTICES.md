@@ -61,11 +61,23 @@ Google Sheets allows up to **10 million cells**. However, sheets with >50,000 ro
 ### ✅ Best Practices:
 1. **Monthly Archiving**: At the end of each month, export completed `Attendance_Records` to the Google Drive folder `03_Monthly_Payroll_Reports/` and clear finalized historical rows from the active sheet.
 2. **Keep the Master Lean**: Keep only the current active month in `Attendance_Records` and current shift in `Attendance_Sessions`.
-3. **Avoid Heavy Cell Formulas in Transaction Sheets**: Do calculations (e.g. `(Base / 8) * 1.5 * ExtraHours`) inside the frontend or Apps Script before inserting values, rather than placing thousands of `=SUM(...)` or `=VLOOKUP(...)` formulas across columns.
+3. **Avoid Heavy Cell Formulas in Transaction Sheets**: Do calculations (e.g. `(Base / 8) * 1.5 * ExtraHours`) inside the frontend before inserting values, rather than placing thousands of `=SUM(...)` or `=VLOOKUP(...)` formulas across columns.
 
 ---
 
-## 6. Automated Daily Google Drive Backups
+## 6. Client-Centric Heavy Computation Pattern
+
+### ⚠️ The Risk:
+Running complex iterative calculations (such as knapsack fleet cargo packing, 1.5x overtime wage distributions, contractor commissions, and live conflict checks) inside Google Apps Script leads to HTTP 504 timeouts, exceeded 6-minute execution limits, and slow UI responsiveness.
+
+### ✅ Best Practice:
+- **Execute Heavy Math on the Client Device CPU**: The supervisor tablet, phone, and admin browser run modern multi-core processors. All mathematical models and constraint-solving routines are implemented in [`ClientComputationService`](../packages/shared/services/clientComputationService.js).
+- **Google Sheets as Clean Data Store**: The client executes calculations with sub-millisecond latency and submits clean, pre-calculated, and verified numerical values to Google Sheets.
+- **Zero Script Quota Exhaustion**: Keeps Apps Script execution duration < 500ms per request, maximizing daily invocation quotas (20,000–50,000 calls).
+
+---
+
+## 7. Automated Daily Google Drive Backups
 
 ### ⚠️ The Risk:
 Accidental deletion or manual row edits directly in the Google Sheets interface.
@@ -82,11 +94,11 @@ Accidental deletion or manual row edits directly in the Google Sheets interface.
 
 ---
 
-## 7. GitHub Pages Deployment & Clean Architecture
+## 8. Progressive Web App (PWA) & GitHub Pages Deployment
 
 1. **Relative Paths**: Always ensure Vite `base: './'` is configured so scripts and stylesheets load properly on `https://<username>.github.io/<repo>/`.
-2. **Pre-Push Compilation Gate**: Ensure [`.husky/pre-push`](../.husky/pre-push) runs before any code push to compile both apps and verify unit test suites.
-3. **PWA / Mobile Bookmark**: Supervisors can tap **"Add to Home Screen"** on their Android/iPad tablets to launch the app full-screen like a native app.
+2. **Pre-Push Compilation Gate**: Ensure [`.husky/pre-push`](../.husky/pre-push) runs before any code push to compile both apps and verify unit test suites (`test:computation`, `test:gsheets`, `test:utils`).
+3. **Installable Web App (PWA)**: Both supervisor and admin applications provide full PWA manifests (`manifest.json`) and service worker offline caching (`sw.js`). Users can tap the in-app **"Install App"** button on Android tablets, smartphones, or desktop browsers to install the app as a native standalone application.
 
 ---
 
@@ -97,6 +109,9 @@ Accidental deletion or manual row edits directly in the Google Sheets interface.
 | 🔒 **Concurrency** | Use `LockService` in `Code.gs` and exponential backoff retry in client. |
 | 🛡️ **Formula Injection** | Sanitize user strings with `sanitizeCellValue` prepending `'`. |
 | 🔑 **Authentication** | Use Google Identity Services (GIS) tied to `Users_Roles` sheet. |
+| 🧮 **Heavy Computation** | Execute 100% of calculations on client device CPU via `ClientComputationService`. |
 | ⚡ **Performance** | Cache data in `localStorage`; batch wage/attendance updates. |
+| 📱 **PWA** | Installable standalone app on Android phones/tablets with service worker offline caching. |
 | 📦 **Capacity** | Archive monthly records to Google Drive to keep sheet < 20,000 rows. |
 | 💾 **Backups** | Configure a daily 6:00 PM Apps Script time-driven backup trigger. |
+
