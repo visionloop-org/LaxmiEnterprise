@@ -235,5 +235,7 @@ function getPerformanceMonitor() {
   return performanceMonitorInstance;
 }
 
-export { PerformanceMonitor, getPerformanceMonitor };
+const performanceMonitor = getPerformanceMonitor();
+
+export { PerformanceMonitor, getPerformanceMonitor, performanceMonitor };
 export default getPerformanceMonitor;

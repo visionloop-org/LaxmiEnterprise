@@ -37,8 +37,8 @@ import * as usePerformanceMonitorHooks from './hooks/usePerformanceMonitor.js'
 import * as useGoogleSheetsLiveSyncHooks from './hooks/useGoogleSheetsLiveSync.js'
 
 import * as requestIdUtils from './utils/requestId.js'
-import loggerModule from './utils/logger.js'
-import performanceMonitorModule from './utils/performanceMonitor.js'
+import * as loggerModule from './utils/logger.js'
+import * as performanceMonitorModule from './utils/performanceMonitor.js'
 import * as configModule from './utils/config.js'
 import * as securityUtils from './utils/security.js'
 
@@ -137,10 +137,10 @@ export const {
   withRequestId
 } = requestIdUtils
 
-export const logger = loggerModule.default || loggerModule
-export const { createLogger } = loggerModule
-export const performanceMonitor = performanceMonitorModule.default || performanceMonitorModule
-export const { getPerformanceMonitor } = performanceMonitorModule
+export const logger = loggerModule.logger || loggerModule.default
+export const createLogger = loggerModule.createLogger || loggerModule.default
+export const performanceMonitor = performanceMonitorModule.performanceMonitor || performanceMonitorModule.default
+export const getPerformanceMonitor = performanceMonitorModule.getPerformanceMonitor || performanceMonitorModule.default
 export const { config } = configModule
 export const { sanitizeInput, validatePhoneNumber, validateEmployeeId } = securityUtils
 

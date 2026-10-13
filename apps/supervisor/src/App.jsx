@@ -22,15 +22,15 @@ import { useStatistics } from './hooks/useStatistics'
 import { useTableSort } from './hooks/useTableSort'
 import { authService, ArrivedTimeModal, GoogleSheetsSyncModal, createLogger, getPerformanceMonitor } from '@laxmi/shared'
 
-const logger = createLogger('SupervisorApp')
-const performanceMonitor = getPerformanceMonitor()
+const logger = typeof createLogger === 'function' ? createLogger('SupervisorApp') : console
+const performanceMonitor = typeof getPerformanceMonitor === 'function' ? getPerformanceMonitor() : null
 
 function App() {
   useEffect(() => {
-    logger.info('Supervisor attendance app initialized')
-    performanceMonitor.initialize()
+    logger?.info?.('Supervisor attendance app initialized')
+    performanceMonitor?.initialize?.()
     return () => {
-      performanceMonitor.cleanup()
+      performanceMonitor?.cleanup?.()
     }
   }, [])
 

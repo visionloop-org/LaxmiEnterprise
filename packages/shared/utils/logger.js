@@ -125,5 +125,7 @@ function createLogger(context) {
   return new StructuredLogger(context);
 }
 
-export { StructuredLogger, createLogger };
+const logger = new StructuredLogger('App');
+
+export { StructuredLogger, createLogger, logger };
 export default createLogger;
